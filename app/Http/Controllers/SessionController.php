@@ -25,11 +25,12 @@ class SessionController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:session',
         ]);
-        
+
         $session = new Session();
         $session->name = $request->name;
         $session->text = $request->text;
         
+        return $validated;
         $session->save();
         return new SessionResource($session);
     }

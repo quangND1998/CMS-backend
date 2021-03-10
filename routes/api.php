@@ -21,7 +21,7 @@ Route::prefix('template')->group(function () {
     Route::get('/', [TemplateController::class, 'get']);
     Route::get('/edit/{id}', [TemplateController::class, 'edit']);
     Route::delete('/delete/{id}', [TemplateController::class, 'delete']);
-    Route::put('/update/{id}', [TemplateController::class, 'update']);
+    Route::post('/update/{id}', [TemplateController::class, 'update']);
     Route::prefix('{id}/session')->group(function () {
         Route::get('', [SessionController::class, 'getSession']);
         Route::post('/store', [SessionController::class, 'store']);

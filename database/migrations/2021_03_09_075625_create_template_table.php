@@ -16,6 +16,7 @@ class CreateTemplateTable extends Migration
         Schema::create('template', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

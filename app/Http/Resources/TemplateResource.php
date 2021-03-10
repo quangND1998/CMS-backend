@@ -17,12 +17,12 @@ class TemplateResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'image' => $this->image
         ];
     }
     public function withResponse($request, $response)
     {
         $response->header('200', 'successfully');
     }
-
 }

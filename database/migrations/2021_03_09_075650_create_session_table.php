@@ -15,8 +15,9 @@ class CreateSessionTable extends Migration
     {
         Schema::create('session', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('title');
             $table->text('text')->nullable();
+            $table->string('sub_title')->nullable();
             $table->unsignedInteger('template_id')->unsigned()->nullable();
             $table->foreign('template_id')->references('id')->on('template')->onDelete('cascade');
             $table->timestamps();

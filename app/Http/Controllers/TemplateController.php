@@ -6,16 +6,32 @@ use Illuminate\Http\Response;
 use App\Http\Resources\TemplateResource;
 use App\Models\Template;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use  App\Http\Controllers\Traits\FileUploadTrait;
 
 class TemplateController extends Controller
 {
+    use FileUploadTrait;
     public function post(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:template',
+            'image' => 'mimes:png,jpg,jpeg',
         ]);
+        if ($validator->fails()) {
+            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+        }
+
         $template = new Template();
+
+
         $template->name = $request->name;
+        if ($request->hasfile('image')) {
+            $files = $request->file('image');
+            $destinationpath = 'images/template';
+            $template->image = $this->image($files, $destinationpath);
+        }
         $template->save();
         return new TemplateResource($template);
     }
@@ -32,14 +48,30 @@ class TemplateController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'image.*' => 'mimes:png,jpg,jpeg',
         ]);
 
+        if ($validator->fails()) {
+            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+        }
 
-        $template = Template::findOrFail($id);
+        $template = Template::find($id);
 
-        $template->update(['name' => $request->name]);
+        if ($template == null) {
+            return response()->json('The template is not found ', Response::HTTP_BAD_REQUEST);
+        }
+
+        $attribute = $template->image;
+        if ($request->hasfile('image')) {
+            $files = $request->file('image');
+            $destinationpath = 'images/template';
+            $template->image = $this->update_image($files, $destinationpath, $attribute);
+        }
+        $template->name = $request->name;
+
+        $template->save();
 
         return new TemplateResource($template);
     }

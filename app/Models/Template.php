@@ -9,7 +9,7 @@ class Template extends Model
 {
     use HasFactory;
     protected $table = 'template';
-    protected $fillable = ['id', 'name'];
+    protected $fillable = ['id', 'name', 'image'];
     public function session()
     {
         return $this->hasMany(Session::class, 'template_id');
