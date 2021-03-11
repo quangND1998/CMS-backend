@@ -21,9 +21,10 @@ class CreateContentsTable extends Migration
             $table->string('short_content')->nullable();
             $table->text('detail');
             $table->string('title');
-            $table->string('icon')->nullable();
-            $table->unsignedInteger('session_id')->unsigned()->nullable();
-            $table->foreign('session_id')->references('id')->on('session')->onDelete('cascade');
+            $table->string('icon_image')->nullable();
+            $table->string('icon_class')->nullable();
+            $table->unsignedInteger('section_id')->unsigned()->nullable();
+            $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -12,6 +12,8 @@ class ItemResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+
+    public static $wrap = 'item';
     public function toArray($request)
     {
         return [
@@ -22,8 +24,9 @@ class ItemResource extends JsonResource
             'subtitle' => $this->subtitle,
             'short_content' => $this->short_content,
             'detail' => $this->detail,
-            'icon' => $this->icon,
-            'session_id' => $this->session_id
+            'icon_image' => $this->icon_image,
+            'icon_class' => $this->icon_class,
+            'section' => $this->section_id
         ];
     }
 }

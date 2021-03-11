@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSessionTable extends Migration
+class CreateSectionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSessionTable extends Migration
      */
     public function up()
     {
-        Schema::create('session', function (Blueprint $table) {
+        Schema::create('section', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->text('text')->nullable();
             $table->string('sub_title')->nullable();
-            $table->unsignedInteger('template_id')->unsigned()->nullable();
-            $table->foreign('template_id')->references('id')->on('template')->onDelete('cascade');
+            $table->unsignedInteger('page_id')->unsigned()->nullable();
+            $table->foreign('page_id')->references('id')->on('page')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSessionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('session');
+        Schema::dropIfExists('section');
     }
 }
