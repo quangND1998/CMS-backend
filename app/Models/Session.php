@@ -9,7 +9,7 @@ class Session extends Model
 {
     use HasFactory;
     protected $table = 'session';
-    protected $fillable = ['id', 'name', 'text' ,'template_id'];
+    protected $fillable = ['id', 'title','text' ,'sub_title' ,'template_id'];
     public function template()
     {
         return $this->belongsTo(Template::class);

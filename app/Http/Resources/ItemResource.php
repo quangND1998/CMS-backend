@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SessionResource extends JsonResource
+class ItemResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -12,19 +12,18 @@ class SessionResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public static $wrap = 'session';
     public function toArray($request)
     {
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'text' => $this->text,
-            'sub_title' => $this->sub_title,
-            'template_id' => $this->template_id,
+            'video' => $this->video,
+            'image' => $this->image,
+            'subtitle' => $this->subtitle,
+            'short_content' => $this->short_content,
+            'detail' => $this->detail,
+            'icon' => $this->icon,
+            'session_id' => $this->session_id
         ];
-    }
-    public function withResponse($request, $response)
-    {
-        $response->header('200', 'successfully');
     }
 }

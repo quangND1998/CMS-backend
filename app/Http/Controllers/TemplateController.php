@@ -24,12 +24,10 @@ class TemplateController extends Controller
         }
 
         $template = new Template();
-
-
         $template->name = $request->name;
         if ($request->hasfile('image')) {
             $files = $request->file('image');
-            $destinationpath = 'images/template';
+            $destinationpath = 'images/template/';
             $template->image = $this->image($files, $destinationpath);
         }
         $template->save();
@@ -42,8 +40,12 @@ class TemplateController extends Controller
     }
     public function edit($id)
     {
+        $template = Template::find($id);
+        if (!$template) {
+            return response()->json('The template is not found ', Response::HTTP_BAD_REQUEST);
+        }
 
-        return new TemplateResource(Template::findOrFail($id));
+        return new TemplateResource($template);
     }
     public function update(Request $request, $id)
     {
@@ -60,13 +62,16 @@ class TemplateController extends Controller
         $template = Template::find($id);
 
         if ($template == null) {
-            return response()->json('The template is not found ', Response::HTTP_BAD_REQUEST);
+            $msg = [
+                'msg' => 'The template is not found'
+            ];
+            return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
 
         $attribute = $template->image;
         if ($request->hasfile('image')) {
             $files = $request->file('image');
-            $destinationpath = 'images/template';
+            $destinationpath = 'images/template/';
             $template->image = $this->update_image($files, $destinationpath, $attribute);
         }
         $template->name = $request->name;
@@ -77,7 +82,17 @@ class TemplateController extends Controller
     }
     public function delete($id)
     {
-        $template = Template::findOrFail($id);
+        $template = Template::find($id);
+        if (!$template) {
+            $msg = [
+                'msg' => 'Delete the template failed'
+            ];
+            return response()->json($msg, Response::HTTP_BAD_REQUEST);
+        }
+
+        $image = $template->image;
+        $extension = " ";
+        $this->DeleteFolder($image, $extension);
         $template->delete();
         return response()->json(' Delet Sussessfully', Response::HTTP_OK);
     }

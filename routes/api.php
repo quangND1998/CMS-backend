@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TemplateController;
 use Illuminate\Http\Request;
@@ -27,8 +28,14 @@ Route::prefix('template')->group(function () {
         Route::post('/store', [SessionController::class, 'store']);
     });
 });
-
-
+Route::prefix('session')->group(function () {
+    Route::get('/{id}', [SessionController::class, 'edit']);
+    Route::put('/update/{id}', [SessionController::class, 'update']);
+    Route::delete('/delete/{id}', [SessionController::class, 'delete']);
+    Route::prefix('{id}/items')->group(function () {
+        Route::get('', [ItemController::class, 'getListItem']);   
+    });
+});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
