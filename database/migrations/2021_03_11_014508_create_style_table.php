@@ -16,9 +16,9 @@ class CreateStyleTable extends Migration
         Schema::create('style', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->string('color')->unique();
-            $table->string('background_color')->unique();
-            $table->string('font_size')->unique();
+            $table->string('color');
+            $table->string('background_color');
+            $table->string('font_size');
             $table->integer('page_id')->unique()->unsigned();
             $table->foreign('page_id')->references('id')->on('page')->onDelete('cascade');
             $table->timestamps();

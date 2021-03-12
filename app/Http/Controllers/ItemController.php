@@ -31,11 +31,11 @@ class ItemController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|unique:contents',
-            'image' => 'mimes:png,jpg,jpeg',
+            'image' => 'image',
             'icon_image' => 'mimes:svg,psd,eps,png,jpg,'
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
         $section  = Section::find($id);
         if (!$section) {

@@ -33,7 +33,7 @@ class ThemeController extends Controller
     }
     public function store(Request $request, $id)
     {
-    
+
         $section = Section::find($id);
         if (!$section) {
             $msg = [
@@ -47,16 +47,15 @@ class ThemeController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-            $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'title' => 'required|unique:theme',
-            'description' => 'unique:theme',
-            'link_code' => 'required|unique:theme',
+            'link_code' => 'required',
 
 
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
 
         $theme = new Theme();
@@ -88,6 +87,17 @@ class ThemeController extends Controller
                 'msg' => 'Theme is not found'
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
+        }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+
+            'link_code' => 'required',
+
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
         $theme->title = $request->title;
         $theme->link_code = $request->link_code;

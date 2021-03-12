@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
 use App\Http\Resources\PageResource;
 use App\Models\Page;
+use App\Http\Requests\TemplateUpdateRequest;
 
 class PageController extends Controller
 {
@@ -17,10 +18,10 @@ class PageController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:page',
-            'image' => 'mimes:png,jpg,jpeg',
+            'image' => 'image'
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
 
         $page = new Page();
@@ -43,7 +44,10 @@ class PageController extends Controller
     {
         $page = Page::find($id);
         if (!$page) {
-            return response()->json('The page is not found ', Response::HTTP_BAD_REQUEST);
+            $msg = [
+                'msg' => 'The page is not found'
+            ];
+            return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
 
         return new PageResource($page);
@@ -53,11 +57,11 @@ class PageController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'image.*' => 'mimes:png,jpg,jpeg',
+            'image' => 'image',
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
 
         $page = Page::find($id);

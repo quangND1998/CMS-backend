@@ -18,7 +18,10 @@ class SectionController extends Controller
     {
         $section = Page::with('session')->find($id);
         if (!$section) {
-            return response()->json('The section is not found ', Response::HTTP_BAD_REQUEST);
+            $msg = [
+                'msg' => "The id is not found "
+            ];
+            return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
         $response = [
             'msg' => 'Get List section sucsscesfully',
@@ -35,7 +38,7 @@ class SectionController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
         $page = Page::find($id);
         if (!$page) {
@@ -72,6 +75,14 @@ class SectionController extends Controller
                 'msg' => 'The section is not found'
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
+        }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
         $section->title = $request->title;
         $section->text = $request->text;

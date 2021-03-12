@@ -50,15 +50,13 @@ class StyleController extends Controller
         }
         $validator = Validator::make($request->all(), [
             'title' => 'required|unique:style',
-            'color' => 'unique:Style',
-            'background_color' => 'required|unique:style',
-            'font_size' => 'required|unique:style',
+
 
 
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
 
         $style = new Style();
@@ -91,6 +89,15 @@ class StyleController extends Controller
                 'msg' => 'style is not found'
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
+        }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+
+
+
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
         }
         $style->title = $request->title;
         $style->color = $request->color;

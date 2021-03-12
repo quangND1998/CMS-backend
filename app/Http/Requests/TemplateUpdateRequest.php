@@ -24,8 +24,8 @@ class TemplateUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'image.*' => 'mimes:png,jpg,jpeg',
+            'name' => 'required|unique:page',
+            'image' => 'image'
         ];
     }
 }

@@ -17,7 +17,7 @@ class CreateThemeTable extends Migration
             $table->increments('id');
             $table->string('title')->unique();
             $table->string('description')->nullable();
-            $table->string('link_code')->unique();
+            $table->string('link_code');
             $table->integer('section_id')->unique()->unsigned();
             $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
             $table->timestamps();

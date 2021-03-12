@@ -21,14 +21,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('page')->group(function () {
-    Route::post('/store', [PageController::class, 'post']);
-    Route::get('/', [PageController::class, 'get']);
-    Route::get('/edit/{id}', [PageController::class, 'edit']);
+    Route::post('', [PageController::class, 'post']);
+    Route::get('', [PageController::class, 'get']);
+    Route::get('/{id}', [PageController::class, 'edit']);
     Route::delete('/delete/{id}', [PageController::class, 'delete']);
     Route::post('/update/{id}', [PageController::class, 'update']);
     Route::prefix('{id}/section')->group(function () {
         Route::get('', [SectionController::class, 'getSession']);
-        Route::post('/store', [SectionController::class, 'store']);
+        Route::post('', [SectionController::class, 'store']);
     });
     Route::prefix('{id}/style')->group(function () {
 
