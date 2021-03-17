@@ -1,5 +1,12 @@
 <template>
       <div class="container">
+                  <div>
+                <router-link :to="{ name: 'section', params: { postId : id }  }">
+                    <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
+                      BACK
+                    </button>
+                 </router-link>
+            </div>
    <form>
           <div :class="['form-group m-1 p-3', (successful ? 'alert-success' : '')]">
             <span v-if="successful" class="label label-sucess">Published!</span>
@@ -81,7 +88,6 @@
         },
         getPost() {
           axios.get("/api/section/" + this.sectionId).then(response => {
-              console.log(response);
             this.$refs.title.value = response.data.section.title;
             this.$refs.text.value = response.data.section.text;
             this.$refs.sub_title.value = response.data.section.sub_title;

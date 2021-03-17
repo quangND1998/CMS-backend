@@ -12,6 +12,9 @@
             <span v-if="errors.description" class="label label-danger">
               {{ errors.description[0] }}
             </span>
+                  <span v-if="errors.image" class="label label-danger">
+              {{ errors.image[0] }}
+            </span>
           </div>
 
           <div class="form-group">
@@ -63,6 +66,7 @@
               this.successful = true;
               this.error = false;
               this.errors = [];
+            this.$router.push({name:'page' });
             })
             .catch(error => {
               if (!_.isEmpty(error.response)) {
@@ -79,6 +83,7 @@
            
             this.$refs.name.value = response.data.page.name;
             this.$refs.description.value = response.data.page.description;
+            this.$refs.image.files[0] = response.data.page.image;
           });
         }
       }

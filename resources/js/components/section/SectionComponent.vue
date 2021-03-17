@@ -26,7 +26,13 @@
                               
                                     <tr v-for="section in sections " :key="section.id"   data-entry-id="" class="user_input">
                                             <td></td>
-                                            <td>{{section.title}}</td>
+                         
+                                              <td>                  
+                                               <router-link :to="{ name: 'content', params: { sectionId : section.id } }">
+                                                 {{section.title}}
+                                                          </router-link></td>
+                
+                                      
                                             <td>{{section.text}}</td>
 
                                             <td>{{section.sub_title}}</td>
@@ -138,7 +144,7 @@ export default {
 
             axios.get("/api/page/"+this.postId+'/section').then(response => {
             this.sections  = response.data.data.section;
-            console.log(this.sections)
+
           });
         },
         deletePost(id) {

@@ -10,6 +10,9 @@ import CreateComponent from './components/pages/CreateComponent.vue'
 import SectionComponent from './components/section/SectionComponent.vue'
 import CreateSectionComponent from './components/section/CreateSectionComponent'
 import SectionEditComponent from './components/section/SectionEditComponent.vue'
+import ContentComponent from './components/Content/ContentComponent.vue';
+import CreateContentComponent from './components/Content/CreateContentComponent.vue'
+import EditContentComponent from './components/Content/EditContentComponent.vue'
 Vue.use(VueRouter)
 
     const router = new VueRouter({
@@ -67,7 +70,35 @@ Vue.use(VueRouter)
                 params: true,
                 props:  true 
                      
-                 }
+            },
+            {
+                path: '/admin/section/:sectionId/content',
+                name: 'content',
+                component: ContentComponent,
+                params: true,
+                props:  true 
+                     
+
+            },
+                {
+                path: '/admin/section/:sectionId/content/create',
+                name: 'content_create',
+                component: CreateContentComponent,
+                params: true,
+                props:  true 
+                     
+
+            },
+                 {
+                path: '/admin/content/:contentId/update',
+                name: 'content.update',
+                component: EditContentComponent,
+                params: true,
+                props:  true 
+                     
+
+            }
+            
         ],
     });
 const app = new Vue({
