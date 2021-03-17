@@ -16,7 +16,7 @@ class SectionController extends Controller
     use FileUploadTrait;
     public function getSession($id)
     {
-        $section = Page::with('session')->find($id);
+        $section = Page::with('section')->find($id);
         if (!$section) {
             $msg = [
                 'msg' => "The id is not found "
@@ -32,14 +32,10 @@ class SectionController extends Controller
 
     public function store(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
+
+        $this->validate($request, [
             'title' => 'required|unique:section',
-
         ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
         $page = Page::find($id);
         if (!$page) {
             $msg = [
@@ -76,14 +72,9 @@ class SectionController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'title' => 'required',
-
         ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
         $section->title = $request->title;
         $section->text = $request->text;
         $section->sub_title = $request->sub_title;

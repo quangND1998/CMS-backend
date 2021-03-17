@@ -1,83 +1,56 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/main.css') }}" />
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('backend/css/font-awesome/4.7.0/css/font-awesome.min.css') }}" />
+    <title>Login - {{ config('app.name') }}</title>
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-                            
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+    <section class="material-half-bg">
+        <div class="cover"></div>
+    </section>
+    <section class="login-content">
+        <div class="logo">
+            <h1>{{ config('app.name') }}</h1>
+        </div>
+        <div class="login-box">
+            <form class="login-form" action="{{ route('auth.login') }}" method="POST" role="form">
+                @csrf
+                <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+                <div class="form-group">
+                    <label class="control-label" for="email">Email Address</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email address"
+                        autofocus value="{{ old('email') }}">
                 </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+                <div class="form-group">
+                    <label class="control-label" for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <div class="utility">
+                        <div class="animated-checkbox">
+                            <label>
+                                <input type="checkbox" name="remember"><span class="label-text">Stay Signed in</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group btn-container">
+                    <button class="btn btn-primary btn-block" type="submit"><i
+                            class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script src="{{ asset('backend/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('backend/js/popper.min.js') }}"></script>
+    <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('backend/js/main.js') }}"></script>
+    <script src="{{ asset('backend/js/plugins/pace.min.js') }}"></script>
 </body>
-</html>

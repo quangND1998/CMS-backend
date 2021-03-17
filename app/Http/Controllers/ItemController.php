@@ -29,14 +29,14 @@ class ItemController extends Controller
     public function store(Request $request, $id)
     {
 
-        $validator = Validator::make($request->all(), [
+
+        $this->validate($request, [
             'title' => 'required|unique:contents',
             'image' => 'image',
             'icon_image' => 'mimes:svg,psd,eps,png,jpg,'
         ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
+
+
         $section  = Section::find($id);
         if (!$section) {
             $msg = [
@@ -80,14 +80,12 @@ class ItemController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
+
+        $this->validate($request, [
             'title' => 'required',
             'image.*' => 'mimes:png,jpg,jpeg',
             'icon_image.*' => 'mimes:svg,psd,eps,png,jpg,'
         ]);
-        if ($validator->fails()) {
-            return response()->json($validator->failed(), Response::HTTP_BAD_REQUEST);
-        }
         $item  = Content::find($id);
         if (!$item) {
             $msg = [

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+// Route :: view ( '/ admin' , 'admin.dashboard.index' ); 
+// Route :: view ( '/ admin / login' , 'admin.auth.login' );
+Route::group(['middleware' => ['prevent-back-history']], function () {
+    Route::get('/', function () {
+        return redirect('/login');
+    });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('auth.login');
+    Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout_user'])->name('auth.logout');
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/admin/{any}', function () {
+            return view('admin.dashboard.index');
+        })->where('any', '.*');;
+    });
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});

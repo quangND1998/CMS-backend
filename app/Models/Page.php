@@ -10,7 +10,7 @@ class Page extends Model
     use HasFactory;
     protected $table = 'page';
     protected $fillable = ['id', 'name', 'image', 'description'];
-    public function session()
+    public function section()
     {
         return $this->hasMany(Section::class, 'page_id');
     }

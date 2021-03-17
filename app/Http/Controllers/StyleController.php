@@ -48,18 +48,14 @@ class StyleController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-        $validator = Validator::make($request->all(), [
+
+        $this->validate($request, [
             'title' => 'required|unique:style',
-
-
-
         ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
 
-        $style = new Style();
+
+        $style = new Style;
         $style->title = $request->title;
         $style->color = $request->color;
         $style->background_color = $request->background_color;
@@ -90,15 +86,11 @@ class StyleController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'title' => 'required',
-
-
-
         ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
+
+
         $style->title = $request->title;
         $style->color = $request->color;
         $style->background_color = $request->background_color;

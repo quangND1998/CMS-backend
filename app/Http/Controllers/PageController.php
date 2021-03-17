@@ -16,13 +16,13 @@ class PageController extends Controller
     public function post(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'name' => 'required|unique:page',
             'image' => 'image'
         ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        // }
 
         $page = new Page();
         $page->name = $request->name;
@@ -55,14 +55,12 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->all(), [
+     
+        $this->validate($request, [
             'name' => 'required',
             'image' => 'image',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
 
         $page = Page::find($id);
 
