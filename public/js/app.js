@@ -1908,10 +1908,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "page-component",
   props: {
     sectionId: {
+      required: true
+    },
+    postId: {
       required: true
     }
   },
@@ -2025,9 +2035,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     sectionId: {
+      required: true
+    },
+    postId: {
       required: true
     }
   },
@@ -2057,10 +2075,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.errors = [];
 
         _this.$router.push({
-          name: 'content',
-          pramas: {
-            sectionId: sectionId
-          }
+          name: 'content'
         });
       })["catch"](function (error) {
         if (!_.isEmpty(error.response)) {
@@ -2162,6 +2177,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.getPost();
@@ -2171,6 +2191,9 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     sectionId: {
+      required: true
+    },
+    postId: {
       required: true
     }
   },
@@ -2331,6 +2354,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {},
   data: function data() {
@@ -2421,6 +2449,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.getPost();
@@ -2469,7 +2503,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/page/" + this.postId).then(function (response) {
         _this2.$refs.name.value = response.data.page.name;
         _this2.$refs.description.value = response.data.page.description;
-        _this2.$refs.image.files[0] = response.data.page.image;
       });
     }
   }
@@ -2629,6 +2662,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     postId: {
@@ -2693,6 +2734,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39674,7 +39720,7 @@ var render = function() {
             attrs: {
               to: {
                 name: "content_create",
-                params: { sectionId: _vm.sectionId }
+                params: { sectionId: _vm.sectionId, postId: _vm.postId }
               }
             }
           },
@@ -39686,6 +39732,23 @@ var render = function() {
                 attrs: { type: "button" }
               },
               [_vm._v("\n              NEW CONTENT\n            ")]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            attrs: { to: { name: "section", params: { postId: _vm.postId } } }
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "p-1 mx-3 float-left btn btn-sucess",
+                attrs: { type: "button" }
+              },
+              [_vm._v("\n            BACK\n            ")]
             )
           ]
         )
@@ -39727,7 +39790,20 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(content.icon_class))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(content.video))]),
+                  _c("td", [
+                    _c("iframe", {
+                      attrs: {
+                        width: "560",
+                        height: "315",
+                        src: content.video,
+                        title: "description",
+                        frameborder: "0",
+                        allow:
+                          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                        allowfullscreen: ""
+                      }
+                    })
+                  ]),
                   _vm._v(" "),
                   _c("td", [_c("img", { attrs: { src: content.image } })]),
                   _vm._v(" "),
@@ -39762,7 +39838,8 @@ var render = function() {
                               name: "content.update",
                               params: {
                                 contentId: content.id,
-                                sectionId: _vm.sectionId
+                                sectionId: _vm.sectionId,
+                                postId: _vm.postId
                               }
                             }
                           }
@@ -39848,223 +39925,250 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("h2", [_vm._v("Create Content")]),
-    _vm._v(" "),
-    _c("form", [
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
       _c(
-        "div",
+        "router-link",
         {
-          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-        },
-        [
-          _vm.successful
-            ? _c("span", { staticClass: "label label-sucess" }, [
-                _vm._v("Published!")
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-        [
-          _vm.errors.subtitle
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.subtitle[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.short_content
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.short_content[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.image
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.image[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.detail
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.detail[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.title
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.sub_title[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.icon_image
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.icon_image[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.icon_class
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.icon_class[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "title",
-          staticClass: "form-control",
           attrs: {
-            type: "title",
-            id: "title",
-            placeholder: "Enter title",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "subtitle",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "subtitle",
-            placeholder: "Enter subtitle",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          ref: "short_content",
-          staticClass: "form-control",
-          attrs: {
-            id: "short_content",
-            placeholder: "Enter  short_content",
-            rows: "8",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          ref: "detail",
-          staticClass: "form-control",
-          attrs: {
-            id: "detail",
-            placeholder: "Enter  detail",
-            rows: "8",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "icon_class",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "icon_class",
-            placeholder: "Enter class icon",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "video",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "video",
-            placeholder: "Enter video link",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "custom-file mb-3" }, [
-        _c("input", {
-          ref: "image",
-          staticClass: "custom-file-input",
-          attrs: { type: "file", name: "image", id: "image", required: "" }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "custom-file-label" }, [
-          _vm._v("Choose file...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "custom-file mb-3" }, [
-        _c("input", {
-          ref: "icon_image",
-          staticClass: "custom-file-input",
-          attrs: {
-            type: "file",
-            name: "icon_image",
-            id: "icon_image",
-            required: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "custom-file-label" }, [
-          _vm._v("Choose file...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary block",
-          attrs: { type: "submit" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.create($event)
+            to: {
+              name: "content",
+              params: { sectionId: _vm.sectionId, postId: _vm.postId }
             }
           }
         },
-        [_vm._v("\n           Submit\n         ")]
-      )
-    ])
-  ])
+        [
+          _c(
+            "button",
+            {
+              staticClass: "p-1 mx-3 float-left btn btn-sucess",
+              attrs: { type: "button" }
+            },
+            [_vm._v("\n             BACK\n           ")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("h2", [_vm._v("Create Content")]),
+      _vm._v(" "),
+      _c("form", [
+        _c(
+          "div",
+          {
+            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+          },
+          [
+            _vm.successful
+              ? _c("span", { staticClass: "label label-sucess" }, [
+                  _vm._v("Published!")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+          [
+            _vm.errors.subtitle
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.subtitle[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.short_content
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.short_content[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.image
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.image[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.detail
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.detail[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.title
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.sub_title[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.icon_image
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.icon_image[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.icon_class
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.icon_class[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "title",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "title",
+              placeholder: "Enter title",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "subtitle",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "subtitle",
+              placeholder: "Enter subtitle",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "short_content",
+            staticClass: "form-control",
+            attrs: {
+              id: "short_content",
+              placeholder: "Enter  short_content",
+              rows: "8",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "detail",
+            staticClass: "form-control",
+            attrs: {
+              id: "detail",
+              placeholder: "Enter  detail",
+              rows: "8",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "icon_class",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "icon_class",
+              placeholder: "Enter class icon",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "video",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "video",
+              placeholder: "Enter video link",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "image",
+            staticClass: "custom-file-input",
+            attrs: { type: "file", name: "image", id: "image", required: "" }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "icon_image",
+            staticClass: "custom-file-input",
+            attrs: {
+              type: "file",
+              name: "icon_image",
+              id: "icon_image",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary block",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.create($event)
+              }
+            }
+          },
+          [_vm._v("\n           Submit\n         ")]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40089,223 +40193,250 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("h2", [_vm._v("Create Content")]),
-    _vm._v(" "),
-    _c("form", [
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
       _c(
-        "div",
+        "router-link",
         {
-          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-        },
-        [
-          _vm.successful
-            ? _c("span", { staticClass: "label label-sucess" }, [
-                _vm._v("Published!")
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-        [
-          _vm.errors.subtitle
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.subtitle[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.short_content
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.short_content[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.image
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.image[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.detail
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.detail[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.title
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.sub_title[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.icon_image
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.icon_image[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.icon_class
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.icon_class[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "title",
-          staticClass: "form-control",
           attrs: {
-            type: "title",
-            id: "title",
-            placeholder: "Enter title",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "subtitle",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "subtitle",
-            placeholder: "Enter subtitle",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          ref: "short_content",
-          staticClass: "form-control",
-          attrs: {
-            id: "short_content",
-            placeholder: "Enter  short_content",
-            rows: "8",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          ref: "detail",
-          staticClass: "form-control",
-          attrs: {
-            id: "detail",
-            placeholder: "Enter  detail",
-            rows: "8",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "icon_class",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "icon_class",
-            placeholder: "Enter class icon",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "video",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "video",
-            placeholder: "Enter video link",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "custom-file mb-3" }, [
-        _c("input", {
-          ref: "image",
-          staticClass: "custom-file-input",
-          attrs: { type: "file", name: "image", id: "image", required: "" }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "custom-file-label" }, [
-          _vm._v("Choose file...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "custom-file mb-3" }, [
-        _c("input", {
-          ref: "icon_image",
-          staticClass: "custom-file-input",
-          attrs: {
-            type: "file",
-            name: "icon_image",
-            id: "icon_image",
-            required: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("label", { staticClass: "custom-file-label" }, [
-          _vm._v("Choose file...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary block",
-          attrs: { type: "submit" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.create($event)
+            to: {
+              name: "content",
+              params: { sectionId: _vm.sectionId, postId: _vm.postId }
             }
           }
         },
-        [_vm._v("\n           Submit\n         ")]
-      )
-    ])
-  ])
+        [
+          _c(
+            "button",
+            {
+              staticClass: "p-1 mx-3 float-left btn btn-sucess",
+              attrs: { type: "button" }
+            },
+            [_vm._v("\n             BACK\n           ")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("h2", [_vm._v("Create Content")]),
+      _vm._v(" "),
+      _c("form", [
+        _c(
+          "div",
+          {
+            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+          },
+          [
+            _vm.successful
+              ? _c("span", { staticClass: "label label-sucess" }, [
+                  _vm._v("Published!")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+          [
+            _vm.errors.subtitle
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.subtitle[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.short_content
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.short_content[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.image
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.image[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.detail
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.detail[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.title
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.sub_title[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.icon_image
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.icon_image[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.icon_class
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.icon_class[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "title",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "title",
+              placeholder: "Enter title",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "subtitle",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "subtitle",
+              placeholder: "Enter subtitle",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "short_content",
+            staticClass: "form-control",
+            attrs: {
+              id: "short_content",
+              placeholder: "Enter  short_content",
+              rows: "8",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "detail",
+            staticClass: "form-control",
+            attrs: {
+              id: "detail",
+              placeholder: "Enter  detail",
+              rows: "8",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "icon_class",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "icon_class",
+              placeholder: "Enter class icon",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "video",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "video",
+              placeholder: "Enter video link",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "image",
+            staticClass: "custom-file-input",
+            attrs: { type: "file", name: "image", id: "image", required: "" }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "icon_image",
+            staticClass: "custom-file-input",
+            attrs: {
+              type: "file",
+              name: "icon_image",
+              id: "icon_image",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary block",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.create($event)
+              }
+            }
+          },
+          [_vm._v("\n           Submit\n         ")]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40367,112 +40498,128 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("form", [
-      _c(
-        "div",
-        {
-          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-        },
-        [
-          _vm.successful
-            ? _c("span", { staticClass: "label label-sucess" }, [
-                _vm._v("Published!")
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-        [
-          _vm.errors.name
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.name[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.description
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.description[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.image
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.image[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "name",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "name",
-            placeholder: "Enter name",
-            required: ""
-          }
-        })
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("router-link", { attrs: { to: { name: "page" } } }, [
+        _c(
+          "button",
+          {
+            staticClass: "p-1 mx-3 float-left btn btn-sucess",
+            attrs: { type: "button" }
+          },
+          [_vm._v("\n                   BACK\n                   ")]
+        )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          ref: "description",
-          staticClass: "form-control",
-          attrs: {
-            id: "description",
-            placeholder: "Enter a body",
-            rows: "8",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "custom-file mb-3" }, [
-        _c("input", {
-          ref: "image",
-          staticClass: "custom-file-input",
-          attrs: { type: "file", name: "image", id: "image", required: "" }
-        }),
+      _c("form", [
+        _c(
+          "div",
+          {
+            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+          },
+          [
+            _vm.successful
+              ? _c("span", { staticClass: "label label-sucess" }, [
+                  _vm._v("Published!")
+                ])
+              : _vm._e()
+          ]
+        ),
         _vm._v(" "),
-        _c("label", { staticClass: "custom-file-label" }, [
-          _vm._v("Choose file...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary block",
-          attrs: { type: "submit" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.create($event)
+        _c(
+          "div",
+          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+          [
+            _vm.errors.name
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.name[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.description
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.description[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.image
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.image[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "name",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "name",
+              placeholder: "Enter name",
+              required: ""
             }
-          }
-        },
-        [_vm._v("\n           Submit\n         ")]
-      )
-    ])
-  ])
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "description",
+            staticClass: "form-control",
+            attrs: {
+              id: "description",
+              placeholder: "Enter a body",
+              rows: "8",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "image",
+            staticClass: "custom-file-input",
+            attrs: { type: "file", name: "image", id: "image", required: "" }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary block",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.create($event)
+              }
+            }
+          },
+          [_vm._v("\n           Submit\n         ")]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40497,112 +40644,128 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("form", [
-      _c(
-        "div",
-        {
-          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-        },
-        [
-          _vm.successful
-            ? _c("span", { staticClass: "label label-sucess" }, [
-                _vm._v("Updated!")
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-        [
-          _vm.errors.name
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.name[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.description
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.description[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.image
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n             " +
-                    _vm._s(_vm.errors.image[0]) +
-                    "\n           "
-                )
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "name",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "name",
-            placeholder: "Enter title",
-            required: ""
-          }
-        })
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("router-link", { attrs: { to: { name: "page" } } }, [
+        _c(
+          "button",
+          {
+            staticClass: "p-1 mx-3 float-left btn btn-sucess",
+            attrs: { type: "button" }
+          },
+          [_vm._v("\n                   BACK\n                   ")]
+        )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          ref: "description",
-          staticClass: "form-control",
-          attrs: {
-            id: "description",
-            placeholder: "Enter a body",
-            rows: "8",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "custom-file mb-3" }, [
-        _c("input", {
-          ref: "image",
-          staticClass: "custom-file-input",
-          attrs: { type: "file", name: "image", id: "image", required: "" }
-        }),
+      _c("form", [
+        _c(
+          "div",
+          {
+            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+          },
+          [
+            _vm.successful
+              ? _c("span", { staticClass: "label label-sucess" }, [
+                  _vm._v("Updated!")
+                ])
+              : _vm._e()
+          ]
+        ),
         _vm._v(" "),
-        _c("label", { staticClass: "custom-file-label" }, [
-          _vm._v("Choose file...")
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary block",
-          attrs: { type: "submit" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.update($event)
+        _c(
+          "div",
+          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+          [
+            _vm.errors.name
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.name[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.description
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.description[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.image
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.errors.image[0]) +
+                      "\n           "
+                  )
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "name",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "name",
+              placeholder: "Enter title",
+              required: ""
             }
-          }
-        },
-        [_vm._v("\n           Submit\n         ")]
-      )
-    ])
-  ])
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "description",
+            staticClass: "form-control",
+            attrs: {
+              id: "description",
+              placeholder: "Enter a body",
+              rows: "8",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "image",
+            staticClass: "custom-file-input",
+            attrs: { type: "file", name: "image", id: "image", required: "" }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary block",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.update($event)
+              }
+            }
+          },
+          [_vm._v("\n           Submit\n         ")]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40734,113 +40897,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("form", [
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
       _c(
-        "div",
-        {
-          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-        },
+        "router-link",
+        { attrs: { to: { name: "section", params: { postId: _vm.postId } } } },
         [
-          _vm.successful
-            ? _c("span", { staticClass: "label label-sucess" }, [
-                _vm._v("Published!")
-              ])
-            : _vm._e()
+          _c(
+            "button",
+            {
+              staticClass: "p-1 mx-3 float-left btn btn-sucess",
+              attrs: { type: "button" }
+            },
+            [_vm._v("\r\n                    BACK\r\n                    ")]
+          )
         ]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-        [
-          _vm.errors.title
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\r\n              " +
-                    _vm._s(_vm.errors.title[0]) +
-                    "\r\n            "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.text
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\r\n              " +
-                    _vm._s(_vm.errors.text[0]) +
-                    "\r\n            "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.sub_title
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\r\n              " +
-                    _vm._s(_vm.errors.sub_title[0]) +
-                    "\r\n            "
-                )
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "title",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "title",
-            placeholder: "Enter name",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          ref: "text",
-          staticClass: "form-control",
-          attrs: {
-            id: "text",
-            placeholder: "Enter a body",
-            rows: "8",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          ref: "sub_title",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "sub_title",
-            placeholder: "Enter sub title",
-            required: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary block",
-          attrs: { type: "submit" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.create($event)
+      _c("form", [
+        _c(
+          "div",
+          {
+            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+          },
+          [
+            _vm.successful
+              ? _c("span", { staticClass: "label label-sucess" }, [
+                  _vm._v("Published!")
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+          [
+            _vm.errors.title
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\r\n              " +
+                      _vm._s(_vm.errors.title[0]) +
+                      "\r\n            "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.text
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\r\n              " +
+                      _vm._s(_vm.errors.text[0]) +
+                      "\r\n            "
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.errors.sub_title
+              ? _c("span", { staticClass: "label label-danger" }, [
+                  _vm._v(
+                    "\r\n              " +
+                      _vm._s(_vm.errors.sub_title[0]) +
+                      "\r\n            "
+                  )
+                ])
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "title",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "title",
+              placeholder: "Enter name",
+              required: ""
             }
-          }
-        },
-        [_vm._v("\r\n            Submit\r\n          ")]
-      )
-    ])
-  ])
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "text",
+            staticClass: "form-control",
+            attrs: {
+              id: "text",
+              placeholder: "Enter a body",
+              rows: "8",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "sub_title",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "sub_title",
+              placeholder: "Enter sub title",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary block",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.create($event)
+              }
+            }
+          },
+          [_vm._v("\r\n            Submit\r\n          ")]
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40890,7 +41073,18 @@ var render = function() {
               ]
             )
           ]
-        )
+        ),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: { name: "page" } } }, [
+          _c(
+            "button",
+            {
+              staticClass: "p-1 mx-3 float-left btn btn-sucess",
+              attrs: { type: "button" }
+            },
+            [_vm._v("\n                    BACK\n                    ")]
+          )
+        ])
       ],
       1
     ),
@@ -40928,7 +41122,10 @@ var render = function() {
                           attrs: {
                             to: {
                               name: "content",
-                              params: { sectionId: section.id }
+                              params: {
+                                sectionId: section.id,
+                                postId: _vm.postId
+                              }
                             }
                           }
                         },

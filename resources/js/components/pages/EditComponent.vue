@@ -1,5 +1,11 @@
 <template>
+
       <div class="container">
+                  <router-link :to="{ name: 'page' }">
+                  <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
+                    BACK
+                    </button>
+                 </router-link>
         <form>
           <div :class="['form-group m-1 p-3', successful ? 'alert-success' : '']">
             <span v-if="successful" class="label label-sucess">Updated!</span>
@@ -83,7 +89,7 @@
            
             this.$refs.name.value = response.data.page.name;
             this.$refs.description.value = response.data.page.description;
-            this.$refs.image.files[0] = response.data.page.image;
+       
           });
         }
       }

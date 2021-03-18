@@ -18,7 +18,7 @@ class PageController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:page',
-            'image' => 'image'
+            'image.*' => 'mimes:png,jpg,jpeg'
         ]);
         // if ($validator->fails()) {
         //     return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -55,10 +55,10 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
 
-     
+
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'image',
+            'image.*' => 'mimes:png,jpg,jpeg',
         ]);
 
 

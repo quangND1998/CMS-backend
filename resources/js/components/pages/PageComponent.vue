@@ -3,7 +3,7 @@
         <div id="posts">
              
             <div>
-                           <router-link :to="{ name: 'create' }">
+                  <router-link :to="{ name: 'create' }">
                   <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
                     NEW POST
                     </button>

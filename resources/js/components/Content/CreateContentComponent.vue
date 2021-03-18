@@ -1,5 +1,10 @@
 <template>
  <div class="container">
+       <router-link :to="{ name: 'content', params: { sectionId : sectionId, postId:postId }  }">
+            <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
+              BACK
+            </button>
+        </router-link>
      <h2>Create Content</h2>
         <form>
           <div :class="['form-group m-1 p-3', (successful ? 'alert-success' : '')]">
@@ -74,7 +79,13 @@ export default {
   props: {
           sectionId: {
           required: true
-        }
+        },
+          postId:{
+            required:true
+          }
+      
+        
+    
       },
       data() {
         return {
@@ -102,7 +113,7 @@ export default {
               this.successful = true;
               this.error = false;
               this.errors = [];
-              this.$router.push({name:'content', pramas:{sectionId: sectionId}});
+              this.$router.push({name:'content'});
             })
             .catch(error => {
               if (!_.isEmpty(error.response)) {

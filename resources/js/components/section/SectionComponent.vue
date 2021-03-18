@@ -1,12 +1,17 @@
 
       <template>
         <div id="posts">
-
+          
               
             <div>
                 <router-link :to="{ name: 'section_create', params: { postId : postId }  }">
                     <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
                       NEW SECTION
+                    </button>
+                 </router-link>
+                  <router-link :to="{ name: 'page' }">
+                  <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
+                    BACK
                     </button>
                  </router-link>
             </div>
@@ -28,7 +33,7 @@
                                             <td></td>
                          
                                               <td>                  
-                                               <router-link :to="{ name: 'content', params: { sectionId : section.id } }">
+                                               <router-link :to="{ name: 'content', params: { sectionId : section.id ,postId:postId} }">
                                                  {{section.title}}
                                                           </router-link></td>
                 

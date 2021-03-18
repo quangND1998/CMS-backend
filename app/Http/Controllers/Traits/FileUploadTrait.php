@@ -20,7 +20,7 @@ trait FileUploadTrait
     /**
      * File upload trait used in controllers to upload files
      */
-  
+
     public function uploadFile($name, $image, $url_folder)
     {
         $current = Carbon::now()->format('YmdHs');
@@ -153,10 +153,10 @@ trait FileUploadTrait
     //update image ground
     public function image($file, $destinationpath)
     {
-       
+
         $name = time() . "." . $file->getClientOriginalName();
         $file->move($destinationpath, $name);
-        $path = $destinationpath . $name;
+        $path = '/' . $destinationpath . $name;
 
         return $path;
     }
@@ -164,16 +164,18 @@ trait FileUploadTrait
     public function update_image($file, $destinationpath, $attribute)
     {
 
-  
-        $name = time() . "." . $file->getClientOriginalName();
 
-        if ($attribute == null || file_exists($attribute) == false) {
+        $name = time() . "." . $file->getClientOriginalName();
+        $link_old = Str::of($attribute)->ltrim('/');
+
+        if ($attribute == null || file_exists($link_old) == false) {
             $file->move($destinationpath, $name);
-            $path = $destinationpath . $name;
+            $path = '/' . $destinationpath . $name;
         } else {
-            unlink($attribute);
+            $link_old = Str::of($attribute)->ltrim('/');
+            unlink($link_old);
             $file->move($destinationpath, $name);
-            $path = $destinationpath . $name;
+            $path = '/' . $destinationpath . $name;
         }
 
         return $path;
@@ -229,13 +231,14 @@ trait FileUploadTrait
     }
     public function DeleteFolder($attribute, $extension)
     {
-        if (file_exists($attribute)) {
-            $oldzip = explode($extension, $attribute)[0];
+        $link_old = Str::of($attribute)->ltrim('/');
+        if (file_exists($link_old)) {
+            $oldzip = explode($extension, $link_old)[0];
 
             if (is_dir($oldzip)) {
                 File::deleteDirectory($oldzip); //xoa dc file nay
             } else {
-                unlink($attribute);
+                unlink($link_old);
             }
         }
     }
