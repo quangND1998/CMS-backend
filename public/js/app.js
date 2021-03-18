@@ -39420,9 +39420,9 @@ var render = function() {
           _vm.errors.title
             ? _c("span", { staticClass: "label label-danger" }, [
                 _vm._v(
-                  "\r\n              " +
+                  "\n              " +
                     _vm._s(_vm.errors.title[0]) +
-                    "\r\n            "
+                    "\n            "
                 )
               ])
             : _vm._e(),
@@ -39430,9 +39430,9 @@ var render = function() {
           _vm.errors.text
             ? _c("span", { staticClass: "label label-danger" }, [
                 _vm._v(
-                  "\r\n              " +
+                  "\n              " +
                     _vm._s(_vm.errors.text[0]) +
-                    "\r\n            "
+                    "\n            "
                 )
               ])
             : _vm._e(),
@@ -39440,9 +39440,9 @@ var render = function() {
           _vm.errors.sub_title
             ? _c("span", { staticClass: "label label-danger" }, [
                 _vm._v(
-                  "\r\n              " +
+                  "\n              " +
                     _vm._s(_vm.errors.sub_title[0]) +
-                    "\r\n            "
+                    "\n            "
                 )
               ])
             : _vm._e()
@@ -39500,7 +39500,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("\r\n            Submit\r\n          ")]
+        [_vm._v("\n            Submit\n          ")]
       )
     ])
   ])
