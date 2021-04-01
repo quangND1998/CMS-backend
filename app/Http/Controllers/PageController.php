@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use App\Http\Resources\PageResource;
 use App\Models\Page;
 use App\Http\Requests\TemplateUpdateRequest;
+use App\Events\PageSent;
 
 class PageController extends Controller
 {
@@ -33,6 +34,7 @@ class PageController extends Controller
         }
         $page->description = $request->description;
         $page->save();
+
         return new PageResource($page);
     }
     public function get()
@@ -92,11 +94,22 @@ class PageController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-
-        $image = $page->image;
         $extension = " ";
-        $this->DeleteFolder($image, $extension);
-        $page->delete();
-        return response()->json(' Delete Sussessfully', Response::HTTP_OK);
+        $image = $page->image;
+        if ($image != null) {
+            $this->DeleteFolder($image, $extension);
+            $sections = $page->section;
+            foreach ($sections as $section) {
+                foreach ($section->contents as $content) {
+                    $this->DeleteFolder($content->image, $extension);
+                    $this->DeleteFolder($content->icon_image, $extension);
+                }
+            }
+            $page->delete();
+            return response()->json(' Delete Sussessfully', Response::HTTP_OK);
+        } else {
+            $page->delete();
+            return response()->json(' Delete Sussessfully', Response::HTTP_OK);
+        }
     }
 }

@@ -1,5 +1,7 @@
 <template>
  <div class="container">
+
+
      <router-link :to="{ name: 'content', params: { sectionId : sectionId, postId:postId }  }">
             <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
               BACK
@@ -36,24 +38,24 @@
           </div>
 
           <div class="form-group">
-            <input type="title" ref="title" class="form-control" id="title" placeholder="Enter title" required>
+            <input type="title" ref="title" v-model="content.title" class="form-control" id="title" placeholder="Enter title" required>
           </div>
             <div class="form-group">
-            <input type="title" ref="subtitle" class="form-control" id="subtitle" placeholder="Enter subtitle" required>
+            <input type="title" ref="subtitle" v-model="content.subtitle" class="form-control" id="subtitle" placeholder="Enter subtitle" required>
           </div>
 
           <div class="form-group">
-            <textarea class="form-control" ref="short_content" id="short_content" placeholder="Enter  short_content" rows="8" required></textarea>
+            <textarea class="form-control" v-model="content.short_content" ref="short_content" id="short_content" placeholder="Enter  short_content" rows="8" required></textarea>
           </div>
           
           <div class="form-group">
-            <textarea class="form-control" ref="detail" id="detail" placeholder="Enter  detail" rows="8" required></textarea>
+            <textarea class="form-control" v-model="content.detail" ref="detail" id="detail" placeholder="Enter  detail" rows="8" required></textarea>
           </div>
             <div class="form-group">
-            <input type="title" ref="icon_class" class="form-control" id="icon_class" placeholder="Enter class icon" required>
+            <input type="title" ref="icon_class" v-model="content.icon_class" class="form-control" id="icon_class" placeholder="Enter class icon" required>
           </div>
                   <div class="form-group">
-            <input type="title" ref="video" class="form-control" id="video" placeholder="Enter video link" required>
+            <input type="title" ref="video" v-model="content.video" class="form-control" id="video" placeholder="Enter video link" required>
           </div>
 
           <div class="custom-file mb-3">
@@ -65,7 +67,7 @@
             <label class="custom-file-label" >Choose file...</label>
           </div>
 
-          <button type="submit" @click.prevent="create" class="btn btn-primary block">
+          <button type="submit" @click.prevent="update" class="btn btn-primary block">
             Submit
           </button>
         </form>
@@ -73,6 +75,10 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+import {ITEM_EDIT, GET_ITEM_ID} from '../store/actions/item'
+import {PAGE_RESET_STATE } from '../store/actions/page';
+import store        from '../store/store';
 export default {
        mounted() {
         this.getPost();
@@ -88,6 +94,9 @@ export default {
           required:true
         }
       },
+      computed:{
+        ...mapGetters(['content'])
+      },
       data() {
         return {
           error: false,
@@ -95,8 +104,12 @@ export default {
           errors: []
         };
       },
+      async beforeRouteLeave(to, from, next) {
+        await store.dispatch(PAGE_RESET_STATE);
+        next();
+      },
       methods: {
-        create() {
+        update() {
           const formData = new FormData();
           formData.append("title", this.$refs.title.value);
           formData.append("subtitle", this.$refs.subtitle.value);
@@ -108,45 +121,16 @@ export default {
           formData.append("image", this.$refs.image.files[0]);
             formData.append("icon_image", this.$refs.icon_image.files[0]);
 
-          axios
-            .post("/api/item/update/"+this.contentId, formData)
-            .then(response => {
-              this.successful = true;
-              this.error = false;
-              this.errors = [];
-            this.$router.push({name:'content' });
-            //   this.$router.push({name:'content', params:{sectionId: sectionId}});
-            })
-            .catch(error => {
-              if (!_.isEmpty(error.response)) {
-                if ((error.response.status == 422)) {
-                  this.errors = error.response.data.errors;
-                  this.successful = false;
-                  this.error = true;
-                }
-              }
-            });
+          this.$store.dispatch(ITEM_EDIT,{slug:this.content.id,data:formData})
+         this.$router.back();
+        
 
-        //   this.$refs.name.value = "";
-        //   this.$refs.description.value = "";
-        //     this.$refs.name.value = "";
-        //   this.$refs.description.value = "";
-        // this.$refs.name.value = "";
-        //   this.$refs.description.value = "";
+    
 
         }
         ,
         getPost() {
-  
-            axios.get("/api/item/" + this.contentId).then(response => {
-                console.log(response);
-                this.$refs.title.value = response.data.item.title;
-                this.$refs.subtitle.value = response.data.item.subtitle;
-                this.$refs.short_content.value = response.data.item.short_content;
-                this.$refs.detail.value = response.data.item.detail;
-                this.$refs.icon_class.value = response.data.item.icon_class;
-                this.$refs.video.value = response.data.item.video;
-          });
+            this.$store.dispatch(GET_ITEM_ID,this.contentId);
         }
       }
 

@@ -34,5 +34,6 @@
                 <span class="app-menu__label">Settings</span>
             </a>
         </li>
+        
     </ul>
 </aside>

@@ -321,7 +321,6 @@ trait FileUploadTrait
 
         $user_id = Auth::user()->id;
         $name = time() . $user_id . "." . $file->getClientOriginalName();
-
         if ($attribute == null || file_exists($attribute) == false) {
             $file->move($destinationpath, $name);
             $path = $name;
@@ -330,7 +329,6 @@ trait FileUploadTrait
             $file->move($destinationpath, $name);
             $path = $name;
         }
-
         return $path;
     }
 }

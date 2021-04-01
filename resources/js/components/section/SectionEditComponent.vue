@@ -24,15 +24,15 @@
           </div>
 
           <div class="form-group">
-            <input type="title" ref="title" class="form-control" id="title" placeholder="Enter name" required>
+            <input type="title" ref="title" v-model="section.title" class="form-control" id="title" placeholder="Enter name" required>
           </div>
 
           <div class="form-group">
-            <textarea class="form-control" ref="text" id="text" placeholder="Enter a body" rows="8" required></textarea>
+            <textarea class="form-control" v-model="section.text" ref="text" id="text" placeholder="Enter a body" rows="8" required></textarea>
           </div>
         
           <div class="form-group">
-            <input type="title" ref="sub_title" class="form-control" id="sub_title" placeholder="Enter sub title" required>
+            <input type="title" ref="sub_title" v-model="section.sub_title" class="form-control" id="sub_title" placeholder="Enter sub title" required>
           </div>
          
 
@@ -44,6 +44,10 @@
 </template>
 
 <script>
+import {GET_SECTION_ID ,SECTION_EDIT} from '../store/actions/section'
+import {PAGE_RESET_STATE} from '../store/actions/page'
+import { mapGetters } from "vuex";
+import store from '../store/store';
  export default {
       mounted() {
         this.getPost();
@@ -63,36 +67,25 @@
           errors: []
         };
       },
+       computed:{
+         ...mapGetters(["section"])
+      },
+      async beforeRouteLeave(to, from, next) {
+        await store.dispatch(PAGE_RESET_STATE);
+        next();
+      },
       methods: {
         update() {
-            let title = this.$refs.title.value;
-            let text = this.$refs.text.value;
-            let sub_title = this.$refs.sub_title.value;
-          axios
-            .put("/api/section/update/" + this.sectionId, { title, text, sub_title })
-            .then(response => {
-              this.successful = true;
-              this.error = false;
-              this.errors = [];
-              this.$router.push({name:'section', params: { postId: this.id } });
-            })
-            .catch(error => {
-              if (!_.isEmpty(error.response)) {
-                if ((error.response.status = 422)) {
-                  this.errors = error.response.data.errors;
-                  this.successful = false;
-                  this.error = true;
-                }
-              }
-            });
+        this.section.title = this.$refs.title.value;
+            this.section.text = this.$refs.text.value;
+            this.section.sub_title = this.$refs.sub_title.value;
+            this.$store.dispatch(SECTION_EDIT,this.section.id)
+            this.$router.push({name:'section', params: { postId: this.id } });
+
         },
         getPost() {
-          axios.get("/api/section/" + this.sectionId).then(response => {
-            this.$refs.title.value = response.data.section.title;
-            this.$refs.text.value = response.data.section.text;
-            this.$refs.sub_title.value = response.data.section.sub_title;
-          });
-        }
+            this.$store.dispatch(GET_SECTION_ID,this.sectionId);
+        } 
       }
     };
 </script>

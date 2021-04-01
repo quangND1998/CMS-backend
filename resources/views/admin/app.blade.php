@@ -12,11 +12,12 @@
 </head>
 
 <body class="app sidebar-mini rtl">
-    @include('admin.partials.header')
-    @include('admin.partials.sidebar')
-    <main id="app" class="app-content">
-        <home-component></home-component>
-    </main>
+    {{-- @include('admin.partials.header')
+    @include('admin.partials.sidebar') --}}
+    <div id="app" class="app sidebar-mini rtl">
+        <router-view></router-view>
+    </div>
+
     <script src="{{ asset('backend/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('backend/js/popper.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>

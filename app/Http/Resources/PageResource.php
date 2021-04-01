@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\SectionResource;
 
 class PageResource extends JsonResource
 {
@@ -19,7 +20,9 @@ class PageResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'image' => $this->image
+            'image' => $this->image,
+            'section' => SectionResource::collection($this->section)
+
         ];
     }
     public function withResponse($request, $response)

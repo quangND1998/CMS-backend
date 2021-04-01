@@ -1,38 +1,106 @@
 <template>
+    <div class="app sidebar-mini rtl">
+      <header-component></header-component>
 
 
-        
-          <div>
-            <a>    <router-link :to="{ name: 'page' }">
+        <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+        <aside class="app-sidebar">
+            <div class="app-sidebar__user">
+                <div>
+                    <p class="app-sidebar__user-name">John Doe</p>
+                    <p class="app-sidebar__user-designation">Frontend Developer</p>
+                </div>
+            </div>
+            <ul class="app-menu">
+                <li>
+                    <a class="app-menu__item active" href="#"><i class="app-menu__icon fa fa-dashboard"></i>
+                        <span class="app-menu__label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i>
+                        <span class="app-menu__label">Users</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Admin Users</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="#" target="_blank" rel="noopener noreferrer"><i class="icon fa fa-circle-o"></i> Roles</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Permissions</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-cogs"></i>
+                        <span class="app-menu__label">Settings</span>
+                    </a>
+                </li>
+                  <li>
+                      <a class="app-menu__item" href="#" @click.prevent="logout"><i class="app-menu__icon fa fa-cogs"></i>
+                          <span class="app-menu__label">Logout</span>
+                      </a>
+                  </li>
+            </ul>
+        </aside>
+          <main id="app" class="app-content">
+                  <a>    <router-link :to="{ name: 'page' }">
                   List Page
                  </router-link></a>
                
                  <div>
-                      <router-view></router-view>
+                   <transition name="slide">
+                     <router-view></router-view>
+                   </transition>
+                      
                  </div>
-         
-          </div>
-  
+          
+            </main>
+  </div>
 
 </template>
 
 <script>
+import HeaderComponent from './HeaderComponent';
+
+import {LOGOUT} from './store/actions/login'
+import {mapGetters} from 'vuex'
+import store from './store/store'
 export default {
   name:"home-component",
+  components:{HeaderComponent},
   data (){
     return {
           title:0,
     }
   },
+  computed:{
+    ...mapGetters(['isAuthenticated'])
+  }
+  ,
+      //  beforeRouteEnter (to, from, next) {
+      //   if(this.isAuthenticated ===undefined){
+            
+      //          next(false)
+      //     }
+      //     else{
+      //         next()
+            
+      //     }
+      // },
+
    methods: {
 
-
+       logout(){
+               this.$store.dispatch(LOGOUT);
+                this.$router.push("/admin/login")
+           }
+           
 
  
-    ChangeTitle(){
-    this.title++ ;
-    },
-
  
   },
 
@@ -91,6 +159,24 @@ export default {
       article > header {
         height: 60px;
         border-bottom: 1px solid #2a3843;
+      }
+      .slide-leave-active{
+        transition: opacity 0.51s ease;
+        opacity: 0;
+        animation: slide-out 0.5s ease-out forwards;
+      }
+      .slide-leave{
+        opacity: 1;
+        transform: translateX(0);
+      }
+      @keyframes slide-out {
+        0%{
+          transform: translateX(0);
+        }
+        100% {
+          transform:  translateX(50px);
+        }
+        
       }
 
 </style>

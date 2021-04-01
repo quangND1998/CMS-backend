@@ -13,24 +13,25 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Auth::routes();
+// Auth::routes();
 // Route :: view ( '/ admin' , 'admin.dashboard.index' ); 
 // Route :: view ( '/ admin / login' , 'admin.auth.login' );
 Route::group(['middleware' => ['prevent-back-history']], function () {
     Route::get('/', function () {
-        return redirect('/login');
+        return redirect('/admin/login');
     });
 
 
 
-    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('auth.login');
-    Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout_user'])->name('auth.logout');
 
-    Route::group(['middleware' => ['auth']], function () {
-        Route::get('/admin/{any}', function () {
-            return view('admin.dashboard.index');
-        })->where('any', '.*');;
-    });
+    // Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+    // Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('auth.login');
+    // Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout_user'])->name('auth.logout');
+
+    // Route::group(['middleware' => ['auth']], function () {
+    Route::get('/admin/{any}', function () {
+        return view('admin.dashboard.index');
+    })->where('any', '.*');;
+    // });
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

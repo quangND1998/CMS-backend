@@ -74,7 +74,10 @@
 </template>
 
 <script>
-
+import {PAGE_RESET_STATE } from '../store/actions/page';
+import {CREATE_ITEM} from '../store/actions/item'
+import { mapGetters } from "vuex";
+import store        from '../store/store';
 export default {
   props: {
           sectionId: {
@@ -94,6 +97,13 @@ export default {
           errors: []
         };
       },
+        computed: {
+        ...mapGetters(["page"])
+      },
+      async beforeRouteLeave(to, from, next) {
+        await store.dispatch(PAGE_RESET_STATE);
+        next();
+      },
       methods: {
         create() {
           const formData = new FormData();
@@ -107,24 +117,12 @@ export default {
           formData.append("image", this.$refs.image.files[0]);
             formData.append("icon_image", this.$refs.icon_image.files[0]);
 
-          axios
-            .post("/api/section/"+this.sectionId+"/items", formData)
-            .then(response => {
-              this.successful = true;
-              this.error = false;
-              this.errors = [];
-              this.$router.push({name:'content'});
-            })
-            .catch(error => {
-              if (!_.isEmpty(error.response)) {
-                if ((error.response.status == 422)) {
-                  this.errors = error.response.data.errors;
-                  this.successful = false;
-                  this.error = true;
-                }
-              }
-            });
-
+          this.$store.dispatch(CREATE_ITEM,{slug:this.sectionId, data:formData})
+    
+            this.$refs.body.value = "";
+   
+            this.$router.back();
+     
         //   this.$refs.name.value = "";
         //   this.$refs.description.value = "";
         //     this.$refs.name.value = "";

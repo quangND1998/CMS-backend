@@ -45,6 +45,12 @@
 </template>
 
 <script>
+import {PAGE_RESET_STATE } from '../store/actions/page';
+import {CREATE_SECTION} from '../store/actions/section'
+import { mapGetters } from "vuex";
+import store        from '../store/store';
+
+
 export default {
  props: {
         postId: {
@@ -58,28 +64,26 @@ export default {
           errors: []
         };
       },
+         async beforeRouteLeave(to, from, next) {
+        await store.dispatch(PAGE_RESET_STATE);
+        next();
+      },
+
+      computed: {
+        ...mapGetters(["section","sections"])
+      },
       methods: {
         create() {
-            let title = this.$refs.title.value;
-            let text = this.$refs.text.value;
-            let sub_title = this.$refs.sub_title.value;
-          axios
-            .post("/api/page/"+this.postId+"/section", { title, text, sub_title })
-            .then(response => {
-              this.successful = true;
-              this.error = false;
-              this.errors = [];
-              this.$router.push({name:'section', params: { posId: this.postId } });
-            })
-            .catch(error => {
-              if (!_.isEmpty(error.response)) {
-                if ((error.response.status == 422)) {
-                  this.errors = error.response.data.errors;
-                  this.successful = false;
-                  this.error = true;
-                }
-              }
+            this.section.title = this.$refs.title.value;
+            this.section.text = this.$refs.text.value;
+            this.section.sub_title = this.$refs.sub_title.value;
+            this.$store.dispatch(CREATE_SECTION,this.postId);
+              this.sections.push({
+              title: this.$refs.title.value,
+              text: this.$refs.text.value,
+              sub_title:  this.$refs.sub_title.value
             });
+            this.$router.push({name:'section', params: { posId: this.postId } });
 
             this.$refs.title.value = "";
             this.$refs.text.value = "";

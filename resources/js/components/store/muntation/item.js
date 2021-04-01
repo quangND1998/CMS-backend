@@ -1,0 +1,1 @@
+export const FETCH_ID_ITEM = 'fetch_id_item'

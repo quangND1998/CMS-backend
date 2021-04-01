@@ -1,25 +1,30 @@
 
       <template>
         <div id="posts">
-             
+
+        <div  v-if="msg" :class="['form-group m-1 p-3', msg ? 'alert alert-success alert-dismissible fade show' : '']" role="alert">
+          <strong>Congratulations !!!</strong> {{msg}}.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
             <div>
                   <router-link :to="{ name: 'create' }">
                   <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
                     NEW POST
                     </button>
                  </router-link>
-            </div>
-
+            </div> 
             <div class="border p-3" v-for="post in posts " :key="post.id" >
               
                 <router-link :to="{ name: 'section', params: { postId : post.id } }">
-                 
-                     {{ post.name }}
+                 {{post.name}}
+              
        
                 </router-link>
                 {{post.description}}
                 <img v-bind:src="post.image">
-                <router-link :to="{ name: 'update', params: { postId : post.id } }">
+                <router-link :to="{ name: 'update', params: { postId : post.id }  }">
                     <button type="button" class="p-1 mx-3 float-right btn btn-light">
                         Update
                     </button>
@@ -34,55 +39,64 @@
                     Delete
                 </button>
             </div>
-            <!-- <div>
-                <button
-                    v-if="next"
-                    type="button"
-                    @click="navigate(next)"
-                    class="m-3 btn btn-primary"
-                >
-                  Next
-                </button>
-                <button
-                    v-if="prev"
-                    type="button"
-                    @click="navigate(prev)"
-                    class="m-3 btn btn-primary"
-                >
-                  Previous
-                </button>
-            </div> -->
-                <div>
-                      <router-view></router-view>
-                 </div>
-        </div>
+            </div>
 
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import store        from '../store/store';
+import { FETCH_PAGES, PAGE_DELETE,PAGE_RESET_STATE } from '../store/actions/page';
+
 export default {
+  
     name:"page-component",
-      mounted() {
-        this.getPosts();
+        components: { },
+        created() {
+            this.fetchPages();
+       
+
       },
+      props:{
+        msg:{
+          
+        }
+      }
+      ,
+
+ 
+      computed: {
+          ...mapGetters(["posts","page","isAuthenticated"])
+       },
       data() {
         return {
-          posts: {},
+
+       
+         
+       
     
         };
       },
-
+      async beforeRouteLeave(to, from, next) {
+        await store.dispatch(PAGE_RESET_STATE);
+        next();
+      },
+ 
       methods: {
+    fetchPages() {
+         this.$store.dispatch(FETCH_PAGES);
 
-
-        getPosts(address) {
-            var address ='http://127.0.0.1:8000';
-            axios.get(address +"/api/page").then(response => {
-            this.posts = response.data.data;
-          });
         },
-        deletePost(id) {
-          axios.delete("/api/page/delete/" +id).then(response => this.getPosts())
+        // getPosts(address) {
+        //     var address ='http://127.0.0.1:8000';
+        //     axios.get(address +"/api/page").then(response => {
+        //     this.posts = response.data.data;
+        //   });
+        // },
+         deletePost(id) {
+     
+              this.$store.dispatch(PAGE_DELETE,id)
+              this.fetchPages()
         },
       }
     };

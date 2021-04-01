@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use  App\Http\Controllers\Traits\FileUploadTrait;
 use App\Models\Section;
+use App\Events\PageSent;
 
 class SectionController extends Controller
 {
@@ -27,6 +28,7 @@ class SectionController extends Controller
             'msg' => 'Get List section sucsscesfully',
             'data' => $section
         ];
+
         return response()->json($response, Response::HTTP_OK);
     }
 
@@ -50,6 +52,7 @@ class SectionController extends Controller
             $section->page_id = $page->id;
             $section->save();
         }
+        broadcast(new PageSent($section))->toOthers();
         return new SectionResource($section);
     }
     public function edit($id)
