@@ -33,7 +33,7 @@ class ItemController extends Controller
         $this->validate($request, [
             'title' => 'required|unique:contents',
             'image' => 'image',
-            'icon_image' => 'mimes:svg,psd,eps,png,jpg,'
+            'icon_image.*' => 'mimes:svg,psd,eps,png,jpg,'
         ]);
 
 

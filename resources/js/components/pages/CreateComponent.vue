@@ -30,7 +30,7 @@
           </div>
 
           <div class="custom-file mb-3">
-            <input type="file" ref="image"     name="image" class="custom-file-input" id="image" required>
+            <input type="file" ref="image"     name="image" class="custom-file-input" id="image" >
             <label class="custom-file-label" >Choose file...</label>
           </div>
 
@@ -79,7 +79,7 @@ export default {
           // this.page.image = formData.get('image')
 
           this.$store.dispatch(PAGE_PUBLISH,formData).then(({ data }) => {
-                this.$refs.name.value = "";
+          this.$refs.name.value = "";
           this.$refs.description.value = "";
 
          this.$router.push({name:'page'});

@@ -1,0 +1,445 @@
+.integrio_module_clients.anim-grayscale .clients_image img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 6;
+}
+
+.integrio_module_carousel .slick-list {
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+
+.integrio_module_clients .clients_image {
+    float: left;
+    padding-bottom: 30px;
+}
+
+.integrio_module_carousel .slick-slide {
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+    /* height: auto; */
+    height: 100%;
+    min-height: 1px;
+    cursor: pointer;
+}
+
+.integrio_module_clients .clients_image .image_wrapper {
+    display: inline-block;
+    position: relative;
+    z-index: 1
+}
+
+.integrio_module_clients.anim-grayscale .clients_image img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+.integrio_module_clients img {
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s
+}
+
+.integrio_module_clients.anim-zoom .clients_image img {
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95)
+}
+
+img {
+    vertical-align: top;
+    max-width: 100%;
+    height: auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.integrio_module_clients {
+    text-align: center;
+}
+
+.integrio_module_clients.anim-zoom .clients_image img {
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    transform: scale(0.95)
+}
+
+.integrio_module_clients.anim-zoom .clients_image:hover img {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1)
+}
+
+.integrio_module_clients.anim-opacity .clients_image img {
+    opacity: .5
+}
+
+.integrio_module_clients.anim-opacity .clients_image:hover img {
+    opacity: 1
+}
+
+.integrio_module_clients.anim-grayscale .clients_image img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+.integrio_module_clients.anim-grayscale .clients_image:hover img {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    opacity: 1
+}
+
+.integrio_module_clients.anim-shadow .integrio_module_carousel-wrapper {
+    overflow: unset
+}
+
+.integrio_module_clients.anim-shadow .integrio_module_carousel-wrapper .clients_image:hover img {
+    -webkit-box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1)
+}
+
+.integrio_module_clients.anim-shadow .clients_image img {
+    padding: 35px 15px;
+    -webkit-border-radius: unset;
+    -moz-border-radius: unset;
+    border-radius: unset
+}
+
+.integrio_module_clients.anim-shadow .clients_image:hover img {
+    -webkit-box-shadow: 0 15px 38px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 15px 38px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 38px rgba(0, 0, 0, 0.1);
+    background-color: #fff
+}
+
+.integrio_module_clients.anim-shadow .hover_image {
+    display: block
+}
+
+.integrio_module_clients.anim-contrast .clients_image:hover img {
+    -webkit-filter: contrast(300%);
+    filter: contrast(300%)
+}
+
+.integrio_module_clients.anim-blur .clients_image:hover img {
+    -webkit-filter: blur(1px);
+    filter: blur(1px)
+}
+
+.integrio_module_clients.anim-invert .clients_image:hover img {
+    -webkit-filter: invert(100%);
+    filter: invert(100%)
+}
+
+.integrio_module_clients.anim-ex_images .hover_image {
+    display: block;
+    opacity: 0
+}
+
+.integrio_module_clients.anim-ex_images .clients_image:hover .hover_image {
+    opacity: 1
+}
+
+.integrio_module_clients.anim-ex_images .clients_image:hover .main_image {
+    opacity: 0
+}
+
+.integrio_module_testimonials.type_author_bottom .integrio_module_carousel:not(.prev_next_pos_right) .integrio_carousel_slick {
+    margin-left: 72px;
+    margin-right: 72px
+}
+
+.integrio_module_testimonials.type_author_bottom .integrio_module_carousel:not(.prev_next_pos_right) .integrio_carousel_slick .testimonials_item {
+    padding-left: 11%;
+    padding-right: 11%
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right) .slick-arrow {
+    width: 58px;
+    height: 58px
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right) .slick-arrow:after {
+    font-size: 40px;
+    line-height: 58px
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right) .slick-arrow.slick-prev {
+    left: 20px;
+    -webkit-transform: translate(0, -50%) rotate(0.5turn);
+    -moz-transform: translate(0, -50%) rotate(0.5turn);
+    -ms-transform: translate(0, -50%) rotate(0.5turn);
+    -o-transform: translate(0, -50%) rotate(0.5turn);
+    transform: translate(0, -50%) rotate(0.5turn)
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right) .slick-arrow.slick-prev:after {
+    content: '\f190'
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right) .slick-arrow.slick-next {
+    right: 20px;
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%)
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right) .slick-arrow.slick-next:after {
+    content: '\f190'
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right):hover .slick-prev {
+    -webkit-transform: translate(-14px, -50%) rotate(0.5turn);
+    -moz-transform: translate(-14px, -50%) rotate(0.5turn);
+    -ms-transform: translate(-14px, -50%) rotate(0.5turn);
+    -o-transform: translate(-14px, -50%) rotate(0.5turn);
+    transform: translate(-14px, -50%) rotate(0.5turn)
+}
+
+.integrio_module_testimonials .integrio_module_carousel:not(.prev_next_pos_right):hover .slick-next {
+    -webkit-transform: translate(14px, -50%);
+    -moz-transform: translate(14px, -50%);
+    -ms-transform: translate(14px, -50%);
+    -o-transform: translate(14px, -50%);
+    transform: translate(14px, -50%)
+}
+
+.integrio_module_services.service_front_slide.anim_dir_to_left .services_button {
+    right: -200%;
+    left: initial;
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%)
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-prev,
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-next {
+    width: 70px;
+    height: 70px;
+    top: initial;
+    bottom: 0;
+    left: 50%;
+    right: initial;
+    background: transparent;
+    -webkit-transition: 0s;
+    -o-transition: 0s;
+    -moz-transition: 0s;
+    transition: 0s
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-prev:after,
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-next:after {
+    line-height: 70px;
+    -webkit-transition: .4s;
+    -o-transition: .4s;
+    -moz-transition: .4s;
+    transition: .4s
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-prev:before,
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-next:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 20px;
+    width: 1px;
+    height: 30px;
+    background: #dedede
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-prev {
+    -webkit-transform: translate(-70px, 0);
+    -moz-transform: translate(-70px, 0);
+    -ms-transform: translate(-70px, 0);
+    -o-transform: translate(-70px, 0);
+    transform: translate(-70px, 0)
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-prev:before {
+    top: 0;
+    width: 140px;
+    height: 70px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #fff;
+    -webkit-box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 6px 5px 30px rgba(0, 0, 0, 0.12)
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-next {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0)
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.arrows_center_mode .slick-next:before {
+    top: 20px;
+    width: 1px;
+    height: 30px;
+    background: #dedede
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel.center_info .slick-current .wgl_portfolio_item-description,
+.wgl_portfolio_list-container .integrio_module_carousel.center_info .slick-current .overlay,
+.wgl_portfolio_list-container .integrio_module_carousel.center_info .slick-current .portfolio_link {
+    opacity: 1
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel .integrio_carousel_slick {
+    padding-bottom: 5px;
+    margin-bottom: 30px
+}
+
+.wgl_portfolio_list-container .integrio_module_carousel .wgl_portfolio_list-item {
+    width: 1000px
+}
+
+.wgl_portfolio_list-container.appear-animation .item .wgl_portfolio_item-wrapper {
+    opacity: 0
+}
+
+.wgl_portfolio_list-container.appear-animation.anim-fade-in .animate .wgl_portfolio_item-wrapper {
+    -webkit-animation: fade_in .9s ease forwards;
+    -moz-animation: fade_in .9s ease forwards;
+    -o-animation: fade_in .9s ease forwards;
+    animation: fade_in .9s ease forwards
+}
+
+.wgl_portfolio_list-container.appear-animation.anim-slide-top .animate .wgl_portfolio_item-wrapper {
+    -webkit-animation: slide_top .5s ease forwards;
+    -moz-animation: slide_top .5s ease forwards;
+    -o-animation: slide_top .5s ease forwards;
+    animation: slide_top .5s ease forwards;
+    -webkit-transform: translateY(50px);
+    -moz-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    -o-transform: translateY(50px);
+    transform: translateY(50px)
+}
+
+.wgl_portfolio_list-container.appear-animation.anim-slide-bottom .animate .wgl_portfolio_item-wrapper {
+    -webkit-animation: slide_bottom .5s ease forwards;
+    -moz-animation: slide_bottom .5s ease forwards;
+    -o-animation: slide_bottom .5s ease forwards;
+    animation: slide_bottom .5s ease forwards;
+    -webkit-transform: translateY(-50px);
+    -moz-transform: translateY(-50px);
+    -ms-transform: translateY(-50px);
+    -o-transform: translateY(-50px);
+    transform: translateY(-50px)
+}
+
+.wgl_portfolio_list-container.appear-animation.anim-slide-left .animate .wgl_portfolio_item-wrapper {
+    -webkit-animation: slide_left .5s ease forwards;
+    -moz-animation: slide_left .5s ease forwards;
+    -o-animation: slide_left .5s ease forwards;
+    animation: slide_left .5s ease forwards;
+    -webkit-transform: translateX(50px);
+    -moz-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    -o-transform: translateX(50px);
+    transform: translateX(50px)
+}
+
+.wgl_portfolio_list-container.appear-animation.anim-slide-right .animate .wgl_portfolio_item-wrapper {
+    -webkit-animation: slide_right .5s ease forwards;
+    -moz-animation: slide_right .5s ease forwards;
+    -o-animation: slide_right .5s ease forwards;
+    animation: slide_right .5s ease forwards;
+    -webkit-transform: translateX(-50px);
+    -moz-transform: translateX(-50px);
+    -ms-transform: translateX(-50px);
+    -o-transform: translateX(-50px);
+    transform: translateX(-50px)
+}
+
+.wgl_portfolio_list-container.appear-animation.anim-zoom .animate .wgl_portfolio_item-wrapper {
+    -webkit-animation: zoom_in .5s ease forwards;
+    -moz-animation: zoom_in .5s ease forwards;
+    -o-animation: zoom_in .5s ease forwards;
+    animation: zoom_in .5s ease forwards;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5)
+}
+
+.integrio_module_carousel .slick-slider {
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden
+}
+
+.integrio_module_carousel .slick-list {
+    position: relative;
+    z-index: 1;
+    display: block
+}
+
+.integrio_module_carousel .slick-track {
+    position: relative;
+    z-index: 1
+}
+
+.integrio_module_carousel .slick-track:after {
+    content: '';
+    display: table;
+    clear: both
+}
+
+.integrio_module_carousel .slick-slide {
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+    height: auto;
+    /* height: 100%; */
+    min-height: 1px;
+    cursor: pointer
+}
+
+.integrio_module_carousel .slick-slide.dragging img {
+    pointer-events: none
+}
+
+.integrio_module_carousel .slick-loading .slick-track,
+.integrio_module_carousel .slick-loading .slick-slide {
+    visibility: hidden
+}
+
+.integrio_module_carousel-wrapper {
+    overflow: hidden
+}
+
+.wgl-pagination {
+    padding-bottom: 30px
+}

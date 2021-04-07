@@ -33,7 +33,7 @@
             <textarea class="form-control"  ref="description" v-model="page.description" id="description" placeholder="Enter a body" rows="8" required></textarea>
           </div>
  <div class="custom-file mb-3">
-            <input type="file" ref="image" name="image" class="custom-file-input" id="image" required>
+            <input type="file" ref="image" name="image" class="custom-file-input" id="image" >
             <label class="custom-file-label" >Choose file...</label>
           </div>
           <button type="submit" class="btn btn-primary block">

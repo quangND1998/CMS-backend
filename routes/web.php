@@ -33,7 +33,8 @@ Route::group(['middleware' => ['prevent-back-history']], function () {
         return view('admin.dashboard.index');
     })->where('any', '.*');;
     // });
+    Route::get('/showroom', function () {
+        return view('landingpage.landingpage');
+    });
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
-

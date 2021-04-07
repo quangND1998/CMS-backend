@@ -1,0 +1,60 @@
+.main-banner{
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+}
+.text-color-red{
+    color: red;
+}
+.margin-center{
+    margin-left: 32%;
+}
+.background-red{
+    background-color: rgba(18, 17, 17, 0.26);
+}
+.background-white{
+    background-color: white;
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    min-height: 360px;
+}
+.img-circle{
+    width: 160px;
+    height: 160px;
+}
+.recomment{
+    margin-top: 120px;
+}
+.client-comment{
+    margin-top: 70px;
+}
+.background-cmt{
+     background-color: white;
+     border-radius: 5px;
+    padding: 10px;
+    color: black;
+    margin: 10px;
+    min-height: 250px;
+}
+.icon-cmt{
+    color: red;
+}
+.top-cmt{
+    border-bottom: 1px dotted #7e7979;
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+.main-banner-product{
+    padding-top: 6rem;
+    padding-bottom: 0rem;
+}
+@media all and (max-width: 768px) {
+        .margin-center{
+        margin-left: 22% !important;
+    }
+}
+@media all and (max-width: 414px) {
+        .margin-center{
+        margin-left: 0% !important;
+    }
+}

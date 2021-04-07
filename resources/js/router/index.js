@@ -14,16 +14,24 @@ import IndexSectionComponent from '../components/section/IndexSectionComponent.v
 import loginComponent from '../components/Auth/loginComponent'
 import HomeComponent from '../components/HomeComponent'
 import PageNotFound from '../components/PageNotFound.vue'
+import LandingComponent from '../components/landingpage/LandingComponent'
 Vue.use(Router)
 export default new Router({
         mode: 'history',
    
-            routes: [
-            {
-                path: "/admin/login",
-                name: 'login',
-                component: loginComponent,
-            },
+        routes: [
+                   {
+                path: '*',
+                component: PageNotFound,
+              
+                },
+           
+     
+                {
+                    path: "/admin/login",
+                    name: 'login',
+                    component: loginComponent,
+                },
                 {
                     path: '/admin/page',
                     name: 'index',
@@ -121,12 +129,7 @@ export default new Router({
                     
                 ]
             },
-                 {
-                path: '*',
-                component: PageNotFound,
               
-            },
-     
          
             
         ],

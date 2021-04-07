@@ -7,14 +7,16 @@ import router from './router/index'
 import HomeComponent from './components/HomeComponent'
 import loginComponent from './components/Auth/loginComponent'
 import jwtToken from './common/token'
-
+import LandingComponent  from './components/landingpage/LandingComponent'
 const app = new Vue({
         el: '#app',
-        components: {HomeComponent  },
+        components: {HomeComponent,LandingComponent},
         router,
         store,
   
 });
+
+
 router.beforeEach((to, from, next) => {
        if (to.name !== 'login' && (jwtToken.getToken()==null)) next({ name: 'login' })
   else next()
