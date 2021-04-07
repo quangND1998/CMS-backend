@@ -22,7 +22,7 @@
           </div>
 
           <div class="form-group">
-            <input type="title" ref="name"  v-model="page.name" class="form-control" id="name" placeholder="Enter name" required>
+            <input type="text" ref="name"  class="form-control" id="name" placeholder="Enter name" required>
           </div>
 
           <div class="form-group">
@@ -61,8 +61,8 @@ export default {
       computed: {
         ...mapGetters(["page"])
       },
-      async beforeRouteLeave(to, from, next) {
-        await store.dispatch(PAGE_RESET_STATE);
+       beforeRouteLeave(to, from, next) {
+       store.dispatch(PAGE_RESET_STATE);
         next();
       },
       methods: {
@@ -79,7 +79,8 @@ export default {
           // this.page.image = formData.get('image')
 
           this.$store.dispatch(PAGE_PUBLISH,formData).then(({ data }) => {
-
+                this.$refs.name.value = "";
+          this.$refs.description.value = "";
 
          this.$router.push({name:'page'});
         })
@@ -105,8 +106,7 @@ export default {
           //     }
           //   });
 
-          this.$refs.name.value = "";
-          this.$refs.description.value = "";
+      
 
         }
       }

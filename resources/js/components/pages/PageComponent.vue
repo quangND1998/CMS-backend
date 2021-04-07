@@ -70,6 +70,9 @@ export default {
        },
       data() {
         return {
+      
+    
+
 
        
          
@@ -77,8 +80,8 @@ export default {
     
         };
       },
-      async beforeRouteLeave(to, from, next) {
-        await store.dispatch(PAGE_RESET_STATE);
+       beforeRouteLeave(to, from, next) {
+         store.dispatch(PAGE_RESET_STATE);
         next();
       },
  

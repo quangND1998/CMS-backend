@@ -4,7 +4,8 @@ import { contenService } from '../../../common/contentService'
 import {FETCH_ITEM ,CREATE_ITEM,ITEM_DELETE,GET_ITEM_ID,ITEM_EDIT} from '../actions/item'
 import { FETCH_ID_ITEM } from '../muntation/item';
 import {  FETCH_END ,RESET_STATE} from '../muntation/page'
-
+import jwtToken from '../../../common/token';
+import ApiService from '../../../common/api.service'
 const initialState = {
   contents: [],
 
@@ -27,17 +28,19 @@ export const state = { ...initialState };
 
 export const actions = {
   [FETCH_ITEM]({ commit },slug) {
-    // console.log(slug)
-    return contenService.get(slug)
+    if (jwtToken.getToken()) {
+      ApiService.setHeader();
+      return contenService.get(slug)
         .then(({ data }) => {
             
-        //   console.log(data)
-            commit(FETCH_END, data);
+          //   console.log(data)
+          commit(FETCH_END, data);
             
-      })
-      .catch(error => {
-        throw new Error(error);
-      });
+        })
+        .catch(error => {
+          throw new Error(error);
+        });
+    }
   },
     [ITEM_EDIT](content, { slug, data }  ) {
         // console.log('ITEM_EDIT', slug);

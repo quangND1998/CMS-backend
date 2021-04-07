@@ -1,12 +1,11 @@
 <template>
 
 <div>
-   
     <section class="material-half-bg">
     <div class="cover"></div>
 </section>
 <section class="login-content">
-
+    
      <div v-if="data.errors" :class="['form-group m-1 p-3', data.errors ? 'alert alert-danger alert-dismissible fade show' : '']" role="alert">
           <strong>Opps !!!</strong> {{data.errors}}.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -10,7 +10,7 @@ export const pageService = {
     },
     getbyid(slug) {
         // console.log('pageService',slug)
-        return ApiService.get('page', slug);
+        return ApiService.get('pages', slug);
     },
     create(parmas) {
         // console.log('pageservice',parmas)

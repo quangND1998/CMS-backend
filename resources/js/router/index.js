@@ -10,7 +10,7 @@ import SectionEditComponent from '../components/section/SectionEditComponent.vue
 import ContentComponent from '../components/Content/ContentComponent.vue';
 import CreateContentComponent from '../components/Content/CreateContentComponent.vue'
 import EditContentComponent from '../components/Content/EditContentComponent.vue'
-
+import IndexSectionComponent from '../components/section/IndexSectionComponent.vue';
 import loginComponent from '../components/Auth/loginComponent'
 import HomeComponent from '../components/HomeComponent'
 import PageNotFound from '../components/PageNotFound.vue'
@@ -50,11 +50,49 @@ export default new Router({
                     },
                      {
                         path: ':postId/section',
-                        name: 'section',
-                        component: SectionComponent,
+                        
+                        component: IndexSectionComponent,
                         params: true,
-                        props: true
+                         props: true,
+                         children: [
+                                {
+                                    path: '',
+                                    name: "section",
+                                    component: SectionComponent,
+                                    props: true,
+                                    params:true
+                                },
+                              {
+                                path: ':sectionId/content',
+                                name: 'content',
+                                component: ContentComponent,
+                                params: true,
+                                props:  true 
+                                    
+
+                            },
+                                {
+                                path: ':sectionId/content/create',
+                                name: 'content_create',
+                                component: CreateContentComponent,
+                                params: true,
+                                props:  true 
+                                    
+
+                            },
+                                {
+                                path: ':contentId/update',
+                                name: 'content.update',
+                                component: EditContentComponent,
+                                params: true,
+                                props:  true 
+                                    
+
+                            },
+                     
+                     ],
                     },
+                   
                       {
                         path: 'update/:postId',
                         name: 'update',
@@ -77,33 +115,7 @@ export default new Router({
                         props:  true 
                             
                     },
-                    {
-                        path: 'section/:sectionId/content',
-                        name: 'content',
-                        component: ContentComponent,
-                        params: true,
-                        props:  true 
-                            
-
-                    },
-                        {
-                        path: 'section/:sectionId/content/create',
-                        name: 'content_create',
-                        component: CreateContentComponent,
-                        params: true,
-                        props:  true 
-                            
-
-                    },
-                        {
-                        path: 'content/:contentId/update',
-                        name: 'content.update',
-                        component: EditContentComponent,
-                        params: true,
-                        props:  true 
-                            
-
-                    },
+                   
          
                   
                     

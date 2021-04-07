@@ -10,6 +10,7 @@ use App\Http\Resources\PageResource;
 use App\Models\Page;
 use App\Http\Requests\TemplateUpdateRequest;
 use App\Events\PageSent;
+use Illuminate\Support\Facades\Cache;
 
 class PageController extends Controller
 {
@@ -39,8 +40,9 @@ class PageController extends Controller
     }
     public function get()
     {
-
-        return  PageResource::collection(Page::get());
+  
+            return  PageResource::collection(Page::get());
+    
     }
     public function edit($id)
     {

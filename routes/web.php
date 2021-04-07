@@ -28,10 +28,12 @@ Route::group(['middleware' => ['prevent-back-history']], function () {
     // Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('auth.login');
     // Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout_user'])->name('auth.logout');
 
-    // Route::group(['middleware' => ['auth']], function () {
+    // Route::group(['middleware' => ['auth']], funct0ion () {
     Route::get('/admin/{any}', function () {
         return view('admin.dashboard.index');
     })->where('any', '.*');;
     // });
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
+
+

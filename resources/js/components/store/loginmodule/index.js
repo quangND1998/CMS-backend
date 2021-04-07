@@ -26,6 +26,7 @@ export const actions = {
     [LOGIN]({ commit }, { email, password }) {
         return new Promise((resolve, reject) => {
             axios.post(API_URL + "/v1/login", { email, password }, {
+
     
             })
                 .then(({ data }) => {

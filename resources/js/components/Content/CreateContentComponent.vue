@@ -5,6 +5,7 @@
               BACK
             </button>
         </router-link>
+        {{page}}
      <h2>Create Content</h2>
         <form>
           <div :class="['form-group m-1 p-3', (successful ? 'alert-success' : '')]">
@@ -119,8 +120,8 @@ export default {
 
           this.$store.dispatch(CREATE_ITEM,{slug:this.sectionId, data:formData})
     
-            this.$refs.body.value = "";
-   
+          
+          
             this.$router.back();
      
         //   this.$refs.name.value = "";

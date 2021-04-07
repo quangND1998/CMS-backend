@@ -87,11 +87,16 @@ class SectionController extends Controller
     public function delete($id)
     {
         $section = Section::find($id);
+        $extension = " ";
         if (!$section) {
             $msg = [
                 'msg' => 'Delete section  is not working'
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
+        }
+        foreach ($section->contents as $content) {
+            $this->DeleteFolder($content->image, $extension);
+            $this->DeleteFolder($content->icon_image, $extension);
         }
         $section->delete();
         return response()->json('Delet Sussessfully', Response::HTTP_OK);

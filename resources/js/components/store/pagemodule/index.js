@@ -47,10 +47,9 @@ export const actions = {
     
     // console.log('PAGE_EDIT', slug);
     // console.log('PAGE_EDIT', formdata);
-    // if (jwtToken.getToken()) {
-      ApiService.setHeader();
+
       return pageService.update(formdata, slug);
-    // }
+    
   },
   [GET_PAGE_ID]( { commit }, slug) {
 

@@ -29,7 +29,6 @@ export const actions = {
       return sectionService.get(slug)
         .then(({ data }) => {
   
-          //   console.log(data)
           commit(FETCH_END, data);
             
         })

@@ -7,7 +7,7 @@
                     BACK
                     </button>
                  </router-link>
-                 {{page}}
+
         <form @submit.prevent="update()">
           <div :class="['form-group m-1 p-3', successful ? 'alert-success' : '']">
             <span v-if="successful" class="label label-sucess">Updated!</span>
