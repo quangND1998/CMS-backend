@@ -20,7 +20,7 @@ class PageController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:page',
-            'image.*' => 'mimes:png,jpg,jpeg'
+            // 'image.*' => 'mimes:png,jpg,jpeg'
         ]);
         // if ($validator->fails()) {
         //     return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -40,9 +40,9 @@ class PageController extends Controller
     }
     public function get()
     {
-  
+
             return  PageResource::collection(Page::get());
-    
+
     }
     public function edit($id)
     {
@@ -62,7 +62,7 @@ class PageController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            'image.*' => 'mimes:png,jpg,jpeg',
+            // 'image.*' => 'mimes:png,jpg,jpeg',
         ]);
 
 

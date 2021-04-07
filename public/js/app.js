@@ -2075,6 +2075,72 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2158,6 +2224,93 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2407,6 +2560,113 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2426,7 +2686,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       required: true
     }
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(['content'])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["content"])),
   data: function data() {
     return {
       error: false,
@@ -2660,6 +2920,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2674,7 +2948,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       title: 0
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(['isAuthenticated'])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)(["isAuthenticated"])),
   //  beforeRouteEnter (to, from, next) {
   //   if(this.isAuthenticated ===undefined){
   //          next(false)
@@ -2790,6 +3064,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2824,7 +3145,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.$refs.description.value = "";
 
         _this.$router.push({
-          name: 'page'
+          name: "page"
         });
       })["catch"](function (_ref2) {
         var response = _ref2.response;
@@ -2928,6 +3249,61 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2977,9 +3353,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("name", this.$refs.name.value);
       formData.append("description", this.$refs.description.value);
       formData.append("image", this.$refs.image.files[0]);
-      this.page.name = formData.get('name');
-      this.page.description = formData.get('description');
-      this.page.image = formData.get('image');
+      this.page.name = formData.get("name");
+      this.page.description = formData.get("description");
+      this.page.image = formData.get("image");
       this.$store.dispatch(_store_actions_page__WEBPACK_IMPORTED_MODULE_1__.PAGE_EDIT, {
         slug: this.postId,
         formdata: formData
@@ -2987,7 +3363,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var data = _ref.data;
 
         _this.$router.push({
-          name: 'page'
+          name: "page"
         });
       })["catch"](function (_ref2) {
         var response = _ref2.response;
@@ -3068,6 +3444,105 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3092,12 +3567,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     fetchPages: function fetchPages() {
       this.$store.dispatch(_store_actions_page__WEBPACK_IMPORTED_MODULE_1__.FETCH_PAGES);
     },
-    // getPosts(address) {
-    //     var address ='http://127.0.0.1:8000';
-    //     axios.get(address +"/api/page").then(response => {
-    //     this.posts = response.data.data;
-    //   });
-    // },
     deletePost: function deletePost(id) {
       this.$store.dispatch(_store_actions_page__WEBPACK_IMPORTED_MODULE_1__.PAGE_DELETE, id);
       this.fetchPages();
@@ -3136,6 +3605,53 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3232,7 +3748,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         sub_title: this.$refs.sub_title.value
       });
       this.$router.push({
-        name: 'section',
+        name: "section",
         params: {
           posId: this.postId
         }
@@ -3294,6 +3810,114 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3501,6 +4125,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3552,7 +4234,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.section.sub_title = this.$refs.sub_title.value;
       this.$store.dispatch(_store_actions_section__WEBPACK_IMPORTED_MODULE_1__.SECTION_EDIT, this.section.id);
       this.$router.push({
-        name: 'section',
+        name: "section",
         params: {
           postId: this.id
         }
@@ -3645,8 +4327,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   broadcaster: 'pusher',
-  key: "c1e3368bd97f0a568889",
-  cluster: "ap1",
+  key: "",
+  cluster: "mt1",
   encrypted: true
 });
 
@@ -3724,11 +4406,9 @@ var ApiService = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "API_URL": () => (/* binding */ API_URL),
-/* harmony export */   "API_TEST_NESTJS": () => (/* binding */ API_TEST_NESTJS),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var API_URL = "http://127.0.0.1:8000/api";
-var API_TEST_NESTJS = 'http://localhost:3000/api/pages';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API_URL);
 
 /***/ }),
@@ -3788,11 +4468,11 @@ var pageService = {
   },
   getbyid: function getbyid(slug) {
     // console.log('pageService',slug)
-    return _api_service__WEBPACK_IMPORTED_MODULE_0__.default.get('pages', slug);
+    return _api_service__WEBPACK_IMPORTED_MODULE_0__.default.get('page', slug);
   },
-  create: function create(parmas) {
-    // console.log('pageservice',parmas)
-    return _api_service__WEBPACK_IMPORTED_MODULE_0__.default.post("page", parmas);
+  create: function create(params) {
+    // console.log('pageservice',params)
+    return _api_service__WEBPACK_IMPORTED_MODULE_0__.default.post("page", params);
   },
   update: function update(params, slug) {
     return _api_service__WEBPACK_IMPORTED_MODULE_0__.default.update("page/update", params, slug);
@@ -4613,17 +5293,17 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_13__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_14__.default);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_14__.default({
-  mode: 'history',
+  mode: "history",
   routes: [{
     path: "/admin/login",
-    name: 'login',
+    name: "login",
     component: _components_Auth_loginComponent__WEBPACK_IMPORTED_MODULE_10__.default
   }, {
-    path: '/admin/page',
-    name: 'index',
+    path: "/admin/page",
+    name: "index",
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
-      name: 'page'
+      name: "page"
     },
     props: true,
     params: true,
@@ -4631,67 +5311,67 @@ vue__WEBPACK_IMPORTED_MODULE_13__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
       next();
     },
     children: [{
-      path: '',
+      path: "",
       name: "page",
       component: _components_pages_PageComponent_vue__WEBPACK_IMPORTED_MODULE_0__.default,
       props: true,
       params: true
     }, {
-      path: 'create',
-      name: 'create',
+      path: "create",
+      name: "create",
       component: _components_pages_CreateComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
       props: true
     }, {
-      path: ':postId/section',
+      path: ":postId/section",
       component: _components_section_IndexSectionComponent_vue__WEBPACK_IMPORTED_MODULE_9__.default,
       params: true,
       props: true,
       children: [{
-        path: '',
+        path: "",
         name: "section",
         component: _components_section_SectionComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default,
         props: true,
         params: true
       }, {
-        path: ':sectionId/content',
-        name: 'content',
+        path: ":sectionId/item",
+        name: "content",
         component: _components_Content_ContentComponent_vue__WEBPACK_IMPORTED_MODULE_6__.default,
         params: true,
         props: true
       }, {
-        path: ':sectionId/content/create',
-        name: 'content_create',
+        path: ":sectionId/item/create",
+        name: "content_create",
         component: _components_Content_CreateContentComponent_vue__WEBPACK_IMPORTED_MODULE_7__.default,
         params: true,
         props: true
       }, {
-        path: ':contentId/update',
-        name: 'content.update',
+        path: ":contentId/update",
+        name: "content.update",
         component: _components_Content_EditContentComponent_vue__WEBPACK_IMPORTED_MODULE_8__.default,
         params: true,
         props: true
       }]
     }, {
-      path: 'update/:postId',
-      name: 'update',
+      path: ":postId/update",
+      name: "update",
       component: _components_pages_EditComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default,
       params: true,
       props: true
     }, {
-      path: ':postId/create',
-      name: 'section_create',
+      path: ":postId/section/create",
+      name: "section_create",
       component: _components_section_CreateSectionComponent__WEBPACK_IMPORTED_MODULE_4__.default,
       params: true,
       props: true
     }, {
-      path: 'section/:sectionId/update',
-      name: 'section.update',
+      path: ":postId/section/:sectionId/update",
+      name: "section.update",
       component: _components_section_SectionEditComponent_vue__WEBPACK_IMPORTED_MODULE_5__.default,
       params: true,
       props: true
     }]
   }, {
-    path: '*',
+    path: "*",
     component: _components_PageNotFound_vue__WEBPACK_IMPORTED_MODULE_12__.default
   }]
 }));
@@ -9155,10 +9835,10 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,\n    400,\n    600,\n    700|Roboto+Condensed:300,\n    700|Open+Sans+Condensed:300,\n    600|Open+Sans:400,\n    300,\n    600,\n    700|Maven+Pro:400,\n    700);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-782dcf83] {\n  box-sizing: border-box;\n}\nheader[data-v-782dcf83] {\n  color: #d3d3d3;\n}\nnav[data-v-782dcf83] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 82%;\n  left: 0;\n  padding: 22px;\n  border-right: 2px solid #161e23;\n}\nnav > header[data-v-782dcf83] {\n  font-weight: 700;\n  font-size: 0.8rem;\n  text-transform: uppercase;\n}\nnav section[data-v-782dcf83] {\n  font-weight: 600;\n}\nnav section header[data-v-782dcf83] {\n  padding-top: 30px;\n}\nnav section ul[data-v-782dcf83] {\n  list-style: none;\n  padding: 0px;\n}\nnav section ul a[data-v-782dcf83] {\n  color: white;\n  text-decoration: none;\n  font-weight: bold;\n}\narticle[data-v-782dcf83] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 18%;\n  overflow: auto;\n  border-left: 2px solid #2a3843;\n  padding: 20px;\n}\narticle > header[data-v-782dcf83] {\n  height: 60px;\n  border-bottom: 1px solid #2a3843;\n}\n.slide-leave-active[data-v-782dcf83]{\n  transition: opacity 0.51s ease;\n  opacity: 0;\n  -webkit-animation: slide-out-data-v-782dcf83 0.5s ease-out forwards;\n          animation: slide-out-data-v-782dcf83 0.5s ease-out forwards;\n}\n.slide-leave[data-v-782dcf83]{\n  opacity: 1;\n  transform: translateX(0);\n}\n@-webkit-keyframes slide-out-data-v-782dcf83 {\n0%{\n    transform: translateX(0);\n}\n100% {\n    transform:  translateX(50px);\n}\n}\n@keyframes slide-out-data-v-782dcf83 {\n0%{\n    transform: translateX(0);\n}\n100% {\n    transform:  translateX(50px);\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-782dcf83] {\n    box-sizing: border-box;\n}\nheader[data-v-782dcf83] {\n    color: #d3d3d3;\n}\nnav[data-v-782dcf83] {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    right: 82%;\n    left: 0;\n    padding: 22px;\n    border-right: 2px solid #161e23;\n}\nnav > header[data-v-782dcf83] {\n    font-weight: 700;\n    font-size: 0.8rem;\n    text-transform: uppercase;\n}\nnav section[data-v-782dcf83] {\n    font-weight: 600;\n}\nnav section header[data-v-782dcf83] {\n    padding-top: 30px;\n}\nnav section ul[data-v-782dcf83] {\n    list-style: none;\n    padding: 0px;\n}\nnav section ul a[data-v-782dcf83] {\n    color: white;\n    text-decoration: none;\n    font-weight: bold;\n}\narticle[data-v-782dcf83] {\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    right: 0;\n    left: 18%;\n    overflow: auto;\n    border-left: 2px solid #2a3843;\n    padding: 20px;\n}\narticle > header[data-v-782dcf83] {\n    height: 60px;\n    border-bottom: 1px solid #2a3843;\n}\n.slide-leave-active[data-v-782dcf83] {\n    transition: opacity 0.51s ease;\n    opacity: 0;\n    -webkit-animation: slide-out-data-v-782dcf83 0.5s ease-out forwards;\n            animation: slide-out-data-v-782dcf83 0.5s ease-out forwards;\n}\n.slide-leave[data-v-782dcf83] {\n    opacity: 1;\n    transform: translateX(0);\n}\n@-webkit-keyframes slide-out-data-v-782dcf83 {\n0% {\n        transform: translateX(0);\n}\n100% {\n        transform: translateX(50px);\n}\n}\n@keyframes slide-out-data-v-782dcf83 {\n0% {\n        transform: translateX(0);\n}\n100% {\n        transform: translateX(50px);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48642,7 +49322,39 @@ var render = function() {
   return _c("div", { attrs: { id: "posts" } }, [
     _c(
       "div",
+      { staticClass: "app-title" },
       [
+        _c("div", [
+          _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "breadcrumb-item active" },
+              [
+                _c("router-link", { attrs: { to: { name: "page" } } }, [
+                  _vm._v(
+                    "\n                        Page list\n                    "
+                  )
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+              _vm._v("Page name")
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
+            _vm._v(" "),
+            _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+              _vm._v("Section name")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ]),
+        _vm._v(" "),
         _c(
           "router-link",
           {
@@ -48657,14 +49369,20 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "p-1 mx-3 float-left btn btn-sucess",
+                staticClass: "p-2 mx-3 float-left btn btn-success",
                 attrs: { type: "button" }
               },
-              [_vm._v("\n              NEW CONTENT\n            ")]
+              [_vm._v("\n                NEW ITEM\n            ")]
             )
           ]
-        ),
-        _vm._v(" "),
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
         _c(
           "router-link",
           {
@@ -48677,7 +49395,7 @@ var render = function() {
                 staticClass: "p-1 mx-3 float-left btn btn-sucess",
                 attrs: { type: "button" }
               },
-              [_vm._v("\n            BACK\n            ")]
+              [_vm._v("\n                BACK\n            ")]
             )
           ]
         )
@@ -48685,120 +49403,168 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "table-responsive" }, [
-      _c(
-        "table",
-        {
-          staticClass: "table table-striped table-bordered responsive",
-          staticStyle: { width: "100%" },
-          attrs: { id: "user-table" }
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
+    _c("div", { staticClass: "col-md-12 px-0" }, [
+      _c("div", {}, [
+        _c("div", { staticClass: "table-responsive" }, [
           _c(
-            "tbody",
-            _vm._l(_vm.contents, function(content) {
-              return _c(
-                "tr",
-                {
-                  key: content.id,
-                  staticClass: "user_input",
-                  attrs: { "data-entry-id": "" }
-                },
-                [
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(content.title))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(content.subtitle))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(content.short_content))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(content.detail))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(content.icon_class))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("iframe", {
-                      attrs: {
-                        width: "560",
-                        height: "315",
-                        src: content.video,
-                        title: "description",
-                        frameborder: "0",
-                        allow:
-                          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-                        allowfullscreen: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_c("img", { attrs: { src: content.image } })]),
-                  _vm._v(" "),
-                  _c("td", [_c("img", { attrs: { src: content.icon_image } })]),
-                  _vm._v(" "),
-                  _c(
-                    "td",
+            "table",
+            {
+              staticClass: "table",
+              staticStyle: { width: "100%" },
+              attrs: { id: "user-table" }
+            },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.contents, function(content, index) {
+                  return _c(
+                    "tr",
+                    {
+                      key: content.id,
+                      staticClass: "user_input",
+                      attrs: { "data-entry-id": "" }
+                    },
                     [
+                      _c("td", { staticClass: "align-middle" }, [
+                        _vm._v(_vm._s(index + 1))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "align-middle" }, [
+                        _vm._v(_vm._s(content.title))
+                      ]),
+                      _vm._v(" "),
                       _c(
-                        "button",
+                        "td",
                         {
-                          staticClass: "btn btn-xs btn-danger deleteRecord",
-                          attrs: { id: "deleteRecord" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deletePost(content.id)
-                            }
-                          }
+                          class: [
+                            content.subtitle ? "" : "text-success",
+                            "align-middle"
+                          ]
                         },
                         [
                           _vm._v(
-                            "Delete\n                                            "
+                            _vm._s(
+                              content.subtitle
+                                ? content.subtitle
+                                : "Updating..."
+                            )
                           )
                         ]
                       ),
                       _vm._v(" "),
                       _c(
-                        "router-link",
+                        "td",
                         {
-                          attrs: {
-                            to: {
-                              name: "content.update",
-                              params: {
-                                contentId: content.id,
-                                sectionId: _vm.sectionId,
-                                postId: _vm.postId
-                              }
-                            }
-                          }
+                          class: [
+                            content.short_content ? "" : "text-success",
+                            "align-middle"
+                          ]
                         },
                         [
+                          _vm._v(
+                            _vm._s(
+                              content.short_content
+                                ? content.short_content
+                                : "Updating..."
+                            )
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      content.video
+                        ? _c("td", [
+                            _c("iframe", {
+                              attrs: {
+                                width: "560",
+                                height: "315",
+                                src: content.video,
+                                title: "description",
+                                frameborder: "0",
+                                allow:
+                                  "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+                                allowfullscreen: ""
+                              }
+                            })
+                          ])
+                        : _c(
+                            "td",
+                            { staticClass: "text-success align-middle" },
+                            [_vm._v("Updating...")]
+                          ),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("img", {
+                          staticStyle: { width: "150px" },
+                          attrs: { src: content.image }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { staticClass: "align-middle" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "content.update",
+                                  params: {
+                                    contentId: content.id,
+                                    sectionId: _vm.sectionId,
+                                    postId: _vm.postId
+                                  }
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-xs btn-info deleteRecord",
+                                  attrs: { id: "deleteRecord" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        Update\n                                    "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
                           _c(
                             "button",
                             {
-                              staticClass:
-                                "btn btn-xs btn-success deleteRecord",
-                              attrs: { id: "deleteRecord" }
+                              staticClass: "btn btn-xs btn-danger deleteRecord",
+                              attrs: { id: "deleteRecord" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deletePost(content.id)
+                                }
+                              }
                             },
                             [
                               _vm._v(
-                                "Update\n                                            "
+                                "\n                                    Delete\n                                "
                               )
                             ]
                           )
-                        ]
+                        ],
+                        1
                       )
-                    ],
-                    1
+                    ]
                   )
-                ]
+                }),
+                0
               )
-            }),
-            0
+            ]
           )
-        ]
-      )
+        ])
+      ])
     ])
   ])
 }
@@ -48807,27 +49573,38 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Item list")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("title")]),
+        _c("th", [_vm._v("Title")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Subtile")]),
+        _c("th", [_vm._v("Sub-title")]),
         _vm._v(" "),
         _c("th", [_vm._v("Short content")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Detail")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("String icon")]),
         _vm._v(" "),
         _c("th", [_vm._v("Video")]),
         _vm._v(" "),
         _c("th", [_vm._v("Image")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Image Icon")]),
-        _vm._v(" "),
-        _c("th", { staticStyle: { width: "15%" } }, [_vm._v("Action")])
+        _c("th")
       ])
     ])
   }
@@ -48854,125 +49631,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: {
-              name: "content",
-              params: { sectionId: _vm.sectionId, postId: _vm.postId }
-            }
-          }
-        },
-        [
+  return _c("div", [
+    _c("div", { staticClass: "app-title" }, [
+      _c("div", [
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+          _vm._m(0),
+          _vm._v(" "),
           _c(
-            "button",
-            {
-              staticClass: "p-1 mx-3 float-left btn btn-sucess",
-              attrs: { type: "button" }
-            },
-            [_vm._v("\n             BACK\n           ")]
-          )
-        ]
-      ),
-      _vm._v("\n       " + _vm._s(_vm.page) + "\n    "),
-      _c("h2", [_vm._v("Create Content")]),
-      _vm._v(" "),
-      _c("form", [
-        _c(
-          "div",
-          {
-            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-          },
-          [
-            _vm.successful
-              ? _c("span", { staticClass: "label label-sucess" }, [
-                  _vm._v("Published!")
-                ])
-              : _vm._e()
-          ]
-        ),
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "page" } } }, [
+                _vm._v(
+                  "\n                        Page list\n                    "
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Page name")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Section name")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Item")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Create")])
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-          [
-            _vm.errors.subtitle
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.subtitle[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.short_content
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.short_content[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.image
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.image[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.detail
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.detail[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.sub_title[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.icon_image
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.icon_image[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.icon_class
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.icon_class[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v("\n\n    " + _vm._s(_vm.page) + "\n    "),
+    _c(
+      "form",
+      [
         _c("div", { staticClass: "form-group" }, [
           _c("input", {
             ref: "title",
@@ -48993,8 +49692,7 @@ var render = function() {
             attrs: {
               type: "title",
               id: "subtitle",
-              placeholder: "Enter subtitle",
-              required: ""
+              placeholder: "Enter subtitle"
             }
           })
         ]),
@@ -49006,8 +49704,7 @@ var render = function() {
             attrs: {
               id: "short_content",
               placeholder: "Enter  short_content",
-              rows: "8",
-              required: ""
+              rows: "8"
             }
           })
         ]),
@@ -49016,12 +49713,7 @@ var render = function() {
           _c("textarea", {
             ref: "detail",
             staticClass: "form-control",
-            attrs: {
-              id: "detail",
-              placeholder: "Enter  detail",
-              rows: "8",
-              required: ""
-            }
+            attrs: { id: "detail", placeholder: "Enter  detail", rows: "8" }
           })
         ]),
         _vm._v(" "),
@@ -49032,8 +49724,7 @@ var render = function() {
             attrs: {
               type: "title",
               id: "icon_class",
-              placeholder: "Enter class icon",
-              required: ""
+              placeholder: "Enter class icon"
             }
           })
         ]),
@@ -49045,8 +49736,7 @@ var render = function() {
             attrs: {
               type: "title",
               id: "video",
-              placeholder: "Enter video link",
-              required: ""
+              placeholder: "Enter video link"
             }
           })
         ]),
@@ -49059,7 +49749,7 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("label", { staticClass: "custom-file-label" }, [
-            _vm._v("Choose file...")
+            _vm._v("Choose image file...")
           ])
         ]),
         _vm._v(" "),
@@ -49081,6 +49771,20 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c(
+          "router-link",
+          {
+            staticClass: "btn btn-white block",
+            attrs: {
+              to: {
+                name: "content",
+                params: { sectionId: _vm.sectionId, postId: _vm.postId }
+              }
+            }
+          },
+          [_vm._v("\n            Back\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
           "button",
           {
             staticClass: "btn btn-primary block",
@@ -49092,14 +49796,32 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n           Submit\n         ")]
+          [_vm._v("\n            Create\n        ")]
         )
-      ])
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Item list")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -49124,8 +49846,67 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
     [
+      _c(
+        "div",
+        { staticClass: "app-title" },
+        [
+          _c("div", [
+            _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "breadcrumb-item active" },
+                [
+                  _c("router-link", { attrs: { to: { name: "page" } } }, [
+                    _vm._v(
+                      "\n                        Page list\n                    "
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+                _vm._v("Page name")
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
+              _vm._v(" "),
+              _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+                _vm._v("Section name")
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ]),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              attrs: {
+                to: {
+                  name: "content_create",
+                  params: { sectionId: _vm.sectionId, postId: _vm.postId }
+                }
+              }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "p-2 mx-3 float-left btn btn-success",
+                  attrs: { type: "button" }
+                },
+                [_vm._v("\n                NEW ITEM\n            ")]
+              )
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c(
         "router-link",
         {
@@ -49143,7 +49924,7 @@ var render = function() {
               staticClass: "p-1 mx-3 float-left btn btn-sucess",
               attrs: { type: "button" }
             },
-            [_vm._v("\n             BACK\n           ")]
+            [_vm._v("\n            BACK\n        ")]
           )
         ]
       ),
@@ -49172,9 +49953,9 @@ var render = function() {
             _vm.errors.subtitle
               ? _c("span", { staticClass: "label label-danger" }, [
                   _vm._v(
-                    "\n             " +
+                    "\n                " +
                       _vm._s(_vm.errors.subtitle[0]) +
-                      "\n           "
+                      "\n            "
                   )
                 ])
               : _vm._e(),
@@ -49182,9 +49963,9 @@ var render = function() {
             _vm.errors.short_content
               ? _c("span", { staticClass: "label label-danger" }, [
                   _vm._v(
-                    "\n             " +
+                    "\n                " +
                       _vm._s(_vm.errors.short_content[0]) +
-                      "\n           "
+                      "\n            "
                   )
                 ])
               : _vm._e(),
@@ -49192,9 +49973,9 @@ var render = function() {
             _vm.errors.image
               ? _c("span", { staticClass: "label label-danger" }, [
                   _vm._v(
-                    "\n             " +
+                    "\n                " +
                       _vm._s(_vm.errors.image[0]) +
-                      "\n           "
+                      "\n            "
                   )
                 ])
               : _vm._e(),
@@ -49202,9 +49983,9 @@ var render = function() {
             _vm.errors.detail
               ? _c("span", { staticClass: "label label-danger" }, [
                   _vm._v(
-                    "\n             " +
+                    "\n                " +
                       _vm._s(_vm.errors.detail[0]) +
-                      "\n           "
+                      "\n            "
                   )
                 ])
               : _vm._e(),
@@ -49212,9 +49993,9 @@ var render = function() {
             _vm.errors.title
               ? _c("span", { staticClass: "label label-danger" }, [
                   _vm._v(
-                    "\n             " +
+                    "\n                " +
                       _vm._s(_vm.errors.sub_title[0]) +
-                      "\n           "
+                      "\n            "
                   )
                 ])
               : _vm._e(),
@@ -49222,9 +50003,9 @@ var render = function() {
             _vm.errors.icon_image
               ? _c("span", { staticClass: "label label-danger" }, [
                   _vm._v(
-                    "\n             " +
+                    "\n                " +
                       _vm._s(_vm.errors.icon_image[0]) +
-                      "\n           "
+                      "\n            "
                   )
                 ])
               : _vm._e(),
@@ -49232,9 +50013,9 @@ var render = function() {
             _vm.errors.icon_class
               ? _c("span", { staticClass: "label label-danger" }, [
                   _vm._v(
-                    "\n             " +
+                    "\n                " +
                       _vm._s(_vm.errors.icon_class[0]) +
-                      "\n           "
+                      "\n            "
                   )
                 ])
               : _vm._e()
@@ -49462,14 +50243,32 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n           Submit\n         ")]
+          [_vm._v("\n            Submit\n        ")]
         )
       ])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Item list")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -49763,28 +50562,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("main", { staticClass: "app-content", attrs: { id: "app" } }, [
-        _c(
-          "a",
-          [
-            _c("router-link", { attrs: { to: { name: "page" } } }, [
-              _vm._v("\n                List Page\n               ")
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c(
-              "transition",
-              { attrs: { name: "slide" } },
-              [_c("router-view")],
-              1
-            )
-          ],
-          1
-        )
+        _c("div", [_c("router-view")], 1)
       ])
     ],
     1
@@ -49802,7 +50580,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "app-sidebar__user-designation" }, [
-          _vm._v("Frontend Developer")
+          _vm._v("\n                    Frontend Developer\n                ")
         ])
       ])
     ])
@@ -49843,7 +50621,7 @@ var staticRenderFns = [
         _c("li", [
           _c("a", { staticClass: "treeview-item", attrs: { href: "#" } }, [
             _c("i", { staticClass: "icon fa fa-circle-o" }),
-            _vm._v(" Admin Users")
+            _vm._v(" Admin\n                            Users")
           ])
         ]),
         _vm._v(" "),
@@ -49861,7 +50639,7 @@ var staticRenderFns = [
         _c("li", [
           _c("a", { staticClass: "treeview-item", attrs: { href: "#" } }, [
             _c("i", { staticClass: "icon fa fa-circle-o" }),
-            _vm._v(" Permissions")
+            _vm._v("\n                            Permissions")
           ])
         ])
       ])
@@ -49956,20 +50734,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "button",
-      {
-        staticClass: "p-1 mx-3 float-left btn btn-sucess",
-        attrs: { type: "button" },
-        on: {
-          click: function($event) {
-            return _vm.$router.push({ name: "page" })
-          }
-        }
-      },
-      [_vm._v("\n                   BACK\n                   ")]
-    ),
+  return _c("div", {}, [
+    _c("div", { staticClass: "app-title" }, [
+      _c("div", [
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "page" } } }, [
+                _vm._v(
+                  "\n                        Page list\n                    "
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Create")])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "form",
@@ -49982,56 +50771,6 @@ var render = function() {
         }
       },
       [
-        _c(
-          "div",
-          {
-            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-          },
-          [
-            _vm.successful
-              ? _c("span", { staticClass: "label label-sucess" }, [
-                  _vm._v("Published!")
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-          [
-            _vm.errors.name
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.name[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.description
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.description[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.image
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n             " +
-                      _vm._s(_vm.errors.image[0]) +
-                      "\n           "
-                  )
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("input", {
             ref: "name",
@@ -50039,7 +50778,7 @@ var render = function() {
             attrs: {
               type: "text",
               id: "name",
-              placeholder: "Enter name",
+              placeholder: "Enter page name",
               required: ""
             }
           })
@@ -50051,9 +50790,8 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               id: "description",
-              placeholder: "Enter a body",
-              rows: "8",
-              required: ""
+              placeholder: "Enter description for page",
+              rows: "8"
             }
           })
         ]),
@@ -50062,7 +50800,7 @@ var render = function() {
           _c("input", {
             ref: "image",
             staticClass: "custom-file-input",
-            attrs: { type: "file", name: "image", id: "image", required: "" }
+            attrs: { type: "file", name: "image", id: "image" }
           }),
           _vm._v(" "),
           _c("label", { staticClass: "custom-file-label" }, [
@@ -50072,14 +50810,46 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
+          {
+            staticClass: "mr-1 btn btn-sucess block",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                return _vm.$router.push({ name: "page" })
+              }
+            }
+          },
+          [_vm._v("\n            Back\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
           { staticClass: "btn btn-primary block", attrs: { type: "submit" } },
-          [_vm._v("\n           Submit\n         ")]
+          [_vm._v("Submit")]
         )
       ]
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Page list")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50102,177 +50872,160 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("router-link", { attrs: { to: { name: "page" } } }, [
-        _c(
-          "button",
-          {
-            staticClass: "p-1 mx-3 float-left btn btn-sucess",
-            attrs: { type: "button" }
-          },
-          [_vm._v("\n                   BACK\n                   ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.update()
-            }
+  return _c("div", {}, [
+    _c("div", { staticClass: "app-title" }, [
+      _c("div", [
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "page" } } }, [
+                _vm._v(
+                  "\n                        Page list\n                    "
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Update")])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.update()
           }
-        },
-        [
-          _c(
-            "div",
-            {
-              class: [
-                "form-group m-1 p-3",
-                _vm.successful ? "alert-success" : ""
-              ]
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.page.name,
+                expression: "page.name"
+              }
+            ],
+            ref: "name",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "name",
+              placeholder: "Enter title",
+              required: ""
             },
-            [
-              _vm.successful
-                ? _c("span", { staticClass: "label label-sucess" }, [
-                    _vm._v("Updated!")
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-            [
-              _vm.errors.name
-                ? _c("span", { staticClass: "label label-danger" }, [
-                    _vm._v(
-                      "\n             " +
-                        _vm._s(_vm.errors.name[0]) +
-                        "\n           "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.errors.description
-                ? _c("span", { staticClass: "label label-danger" }, [
-                    _vm._v(
-                      "\n             " +
-                        _vm._s(_vm.errors.description[0]) +
-                        "\n           "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.errors.image
-                ? _c("span", { staticClass: "label label-danger" }, [
-                    _vm._v(
-                      "\n             " +
-                        _vm._s(_vm.errors.image[0]) +
-                        "\n           "
-                    )
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.page.name,
-                  expression: "page.name"
+            domProps: { value: _vm.page.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              ],
-              ref: "name",
-              staticClass: "form-control",
-              attrs: {
-                type: "title",
-                id: "name",
-                placeholder: "Enter title",
-                required: ""
-              },
-              domProps: { value: _vm.page.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.page, "name", $event.target.value)
-                }
+                _vm.$set(_vm.page, "name", $event.target.value)
               }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.page.description,
-                  expression: "page.description"
-                }
-              ],
-              ref: "description",
-              staticClass: "form-control",
-              attrs: {
-                id: "description",
-                placeholder: "Enter a body",
-                rows: "8",
-                required: ""
-              },
-              domProps: { value: _vm.page.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.page, "description", $event.target.value)
-                }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.page.description,
+                expression: "page.description"
               }
-            })
-          ]),
+            ],
+            ref: "description",
+            staticClass: "form-control",
+            attrs: {
+              id: "description",
+              placeholder: "Enter a body",
+              rows: "8",
+              required: ""
+            },
+            domProps: { value: _vm.page.description },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.page, "description", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "image",
+            staticClass: "custom-file-input",
+            attrs: { type: "file", name: "image", id: "image" }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "custom-file mb-3" }, [
-            _c("input", {
-              ref: "image",
-              staticClass: "custom-file-input",
-              attrs: { type: "file", name: "image", id: "image", required: "" }
-            }),
-            _vm._v(" "),
-            _c("label", { staticClass: "custom-file-label" }, [
-              _vm._v("Choose file...")
-            ])
-          ]),
-          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: { name: "page" } } }, [
           _c(
             "button",
-            { staticClass: "btn btn-primary block", attrs: { type: "submit" } },
-            [_vm._v("\n           Submit\n         ")]
+            { staticClass: "btn btn-white block", attrs: { type: "button" } },
+            [_vm._v("\n                Back\n            ")]
           )
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticStyle: { height: "700px" } }),
-      _vm._v(" "),
-      _c("h3", { attrs: { id: "react" } }, [
-        _vm._v("Learn React with Sky Albert")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticStyle: { height: "1700px" } })
-    ],
-    1
-  )
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary block", attrs: { type: "submit" } },
+          [_vm._v("\n            Submit\n        ")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticStyle: { height: "700px" } }),
+    _vm._v(" "),
+    _c("h3", { attrs: { id: "react" } }, [
+      _vm._v("Learn React with Sky Albert")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticStyle: { height: "1700px" } })
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Page list")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50295,105 +51048,201 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "posts" } },
-    [
-      _vm.msg
-        ? _c(
-            "div",
-            {
-              class: [
-                "form-group m-1 p-3",
-                _vm.msg ? "alert alert-success alert-dismissible fade show" : ""
-              ],
-              attrs: { role: "alert" }
-            },
-            [
-              _c("strong", [_vm._v("Congratulations !!!")]),
-              _vm._v(" " + _vm._s(_vm.msg) + ".\n  "),
-              _vm._m(0)
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "div",
-        [
-          _c("router-link", { attrs: { to: { name: "create" } } }, [
+  return _c("div", { attrs: { id: "posts" } }, [
+    _c(
+      "div",
+      { staticClass: "app-title" },
+      [
+        _c("div", [
+          _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+            _vm._m(0),
+            _vm._v(" "),
             _c(
-              "button",
-              {
-                staticClass: "p-1 mx-3 float-left btn btn-sucess",
-                attrs: { type: "button" }
-              },
-              [_vm._v("\n            NEW POST\n            ")]
+              "li",
+              { staticClass: "breadcrumb-item active" },
+              [
+                _c("router-link", { attrs: { to: { name: "page" } } }, [
+                  _vm._v(
+                    "\n                        Page list\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ]),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "btn btn-success", attrs: { to: { name: "create" } } },
+          [_vm._v("\n            ADD NEW\n        ")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm.msg
+      ? _c(
+          "div",
+          {
+            class: [
+              "form-group m-1 p-3",
+              _vm.msg ? "alert alert-success alert-dismissible fade show" : ""
+            ],
+            attrs: { role: "alert" }
+          },
+          [
+            _c("strong", [_vm._v("Congratulations !!!")]),
+            _vm._v(" " + _vm._s(_vm.msg) + ".\n        "),
+            _vm._m(2)
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div"),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-12 px-0" }, [
+      _c("div", {}, [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c("table", { staticClass: "table" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.posts, function(post, index) {
+                return _c("tr", { key: post.id }, [
+                  _c("td", { staticClass: "align-middle" }, [
+                    _vm._v(_vm._s(index + 1))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "align-middle" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-uppercase font-weight-bold",
+                          attrs: {
+                            to: {
+                              name: "section",
+                              params: { postId: post.id }
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(post.name) +
+                              "\n                                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "align-middle" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(post.description) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  post.image
+                    ? _c("td", { staticClass: "align-middle" }, [
+                        _c("img", {
+                          staticStyle: { width: "100px" },
+                          attrs: { src: post.image }
+                        })
+                      ])
+                    : _c("td", [
+                        _c("span", { staticClass: "text-success" }, [
+                          _vm._v("Updating...")
+                        ])
+                      ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "align-middle" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: "update",
+                              params: { postId: post.id }
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "p-1 mr-1 btn btn-info",
+                              attrs: { type: "button" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        Update\n                                    "
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "p-1 btn btn-danger",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deletePost(post.id)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Delete\n                                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              }),
+              0
             )
           ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.posts, function(post) {
-        return _c(
-          "div",
-          { key: post.id, staticClass: "border p-3" },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: { to: { name: "section", params: { postId: post.id } } }
-              },
-              [
-                _vm._v(
-                  "\n         " + _vm._s(post.name) + "\n      \n\n        "
-                )
-              ]
-            ),
-            _vm._v("\n        " + _vm._s(post.description) + "\n        "),
-            _c("img", { attrs: { src: post.image } }),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
-                attrs: { to: { name: "update", params: { postId: post.id } } }
-              },
-              [
-                _c(
-                  "button",
-                  {
-                    staticClass: "p-1 mx-3 float-right btn btn-light",
-                    attrs: { type: "button" }
-                  },
-                  [_vm._v("\n                Update\n            ")]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("ul"),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "p-1 mx-3 float-right btn btn-danger",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.deletePost(post.id)
-                  }
-                }
-              },
-              [_vm._v("\n            Delete\n        ")]
-            )
-          ],
-          1
-        )
-      })
-    ],
-    2
-  )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Page list")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -50410,6 +51259,24 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Image")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("#")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -50434,76 +51301,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c(
-        "router-link",
-        { attrs: { to: { name: "section", params: { postId: _vm.postId } } } },
-        [
+  return _c("div", {}, [
+    _c("div", { staticClass: "app-title" }, [
+      _c("div", [
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+          _vm._m(0),
+          _vm._v(" "),
           _c(
-            "button",
-            {
-              staticClass: "p-1 mx-3 float-left btn btn-sucess",
-              attrs: { type: "button" }
-            },
-            [_vm._v("\r\n                    BACK\r\n                    ")]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("form", [
-        _c(
-          "div",
-          {
-            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-          },
-          [
-            _vm.successful
-              ? _c("span", { staticClass: "label label-sucess" }, [
-                  _vm._v("Published!")
-                ])
-              : _vm._e()
-          ]
-        ),
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "page" } } }, [
+                _vm._v(
+                  "\n                        Page list\n                    "
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Page name")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Create")])
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-          [
-            _vm.errors.title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\r\n              " +
-                      _vm._s(_vm.errors.title[0]) +
-                      "\r\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.text
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\r\n              " +
-                      _vm._s(_vm.errors.text[0]) +
-                      "\r\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.sub_title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\r\n              " +
-                      _vm._s(_vm.errors.sub_title[0]) +
-                      "\r\n            "
-                  )
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      [
         _c("div", { staticClass: "form-group" }, [
           _c("input", {
             ref: "title",
@@ -50512,19 +51344,6 @@ var render = function() {
               type: "title",
               id: "title",
               placeholder: "Enter name",
-              required: ""
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            ref: "text",
-            staticClass: "form-control",
-            attrs: {
-              id: "text",
-              placeholder: "Enter a body",
-              rows: "8",
               required: ""
             }
           })
@@ -50543,6 +51362,28 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            ref: "text",
+            staticClass: "form-control",
+            attrs: {
+              id: "text",
+              placeholder: "Enter a body",
+              rows: "6",
+              required: ""
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-white block",
+            attrs: { to: { name: "section", params: { postId: _vm.postId } } }
+          },
+          [_vm._v("\n            Back\n        ")]
+        ),
+        _vm._v(" "),
         _c(
           "button",
           {
@@ -50555,14 +51396,32 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\r\n            Submit\r\n          ")]
+          [_vm._v("\n            Submit\n        ")]
         )
-      ])
-    ],
-    1
-  )
+      ],
+      1
+    )
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Section list")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50613,7 +51472,35 @@ var render = function() {
   return _c("div", { attrs: { id: "posts" } }, [
     _c(
       "div",
+      { staticClass: "app-title" },
       [
+        _c("div", [
+          _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "breadcrumb-item active" },
+              [
+                _c("router-link", { attrs: { to: { name: "page" } } }, [
+                  _vm._v(
+                    "\n                        Page list\n                    "
+                  )
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+              _vm._v("Page name")
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ]),
+        _vm._v(" "),
         _c(
           "router-link",
           {
@@ -50624,142 +51511,172 @@ var render = function() {
           [
             _c(
               "button",
-              {
-                staticClass: "p-1 mx-3 float-left btn btn-sucess",
-                attrs: { type: "button" }
-              },
-              [_vm._v("\n              NEW SECTION\n            ")]
+              { staticClass: "btn btn-success", attrs: { type: "button" } },
+              [_vm._v("\n                NEW SECTION\n            ")]
             )
           ]
-        ),
-        _vm._v(" "),
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
         _c("router-link", { attrs: { to: { name: "page" } } }, [
           _c(
             "button",
             {
-              staticClass: "p-1 mx-3 float-left btn btn-sucess",
+              staticClass: "p-1 mx-3 float-left btn btn-success",
               attrs: { type: "button" }
             },
-            [_vm._v("\n            BACK\n            ")]
+            [_vm._v("\n                Back\n            ")]
           )
         ])
       ],
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "table-responsive" }, [
-      _c(
-        "table",
-        {
-          staticClass: "table table-striped table-bordered responsive",
-          staticStyle: { width: "100%" },
-          attrs: { id: "user-table" }
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.sections, function(section) {
-              return _c(
-                "tr",
-                {
-                  key: section.id,
-                  staticClass: "user_input",
-                  attrs: { "data-entry-id": "" }
-                },
-                [
-                  _c("td"),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: {
-                              name: "content",
-                              params: {
-                                sectionId: section.id,
-                                postId: _vm.postId
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", {}, [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c("table", { staticClass: "table" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.sections, function(section, index) {
+                return _c(
+                  "tr",
+                  {
+                    key: section.id,
+                    staticClass: "user_input",
+                    attrs: { "data-entry-id": "" }
+                  },
+                  [
+                    _c("td", { staticClass: "align-middle" }, [
+                      _vm._v(_vm._s(index + 1))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        staticClass:
+                          "align-middle text-uppercase font-weight-bold"
+                      },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "content",
+                                params: {
+                                  sectionId: section.id,
+                                  postId: _vm.postId
+                                }
                               }
                             }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                         " +
-                              _vm._s(section.title) +
-                              "\n                                                  "
-                          )
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(section.title) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: [
+                          section.sub_title ? "" : "text-success",
+                          "align-middle"
                         ]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(section.text))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(section.sub_title))]),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-xs btn-danger deleteRecord",
-                          attrs: { id: "deleteRecord" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deletePost(section.id)
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            section.sub_title
+                              ? section.sub_title
+                              : "Updating..."
+                          )
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: [
+                          section.text ? "" : "text-success",
+                          "align-middle"
+                        ]
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(section.text ? section.text : "Updating...")
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      { staticClass: "align-middle" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-xs btn-info deleteRecord",
+                            attrs: {
+                              to: {
+                                name: "section.update",
+                                params: {
+                                  sectionId: section.id,
+                                  id: _vm.postId
+                                }
+                              }
                             }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "Delete\n                                            "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: {
-                              name: "section.update",
-                              params: { sectionId: section.id, id: _vm.postId }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    Update\n                                "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-xs btn-danger deleteRecord",
+                            attrs: { id: "deleteRecord" },
+                            on: {
+                              click: function($event) {
+                                return _vm.deletePost(section.id)
+                              }
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "btn btn-xs btn-success deleteRecord",
-                              attrs: { id: "deleteRecord" }
-                            },
-                            [
-                              _vm._v(
-                                "Update\n                                            "
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ]
-              )
-            }),
-            0
-          )
-        ]
-      )
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    Delete\n                                "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -50768,17 +51685,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Section list")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("title")]),
+        _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Text")]),
+        _c("th", [_vm._v("Sub-title")]),
         _vm._v(" "),
-        _c("th", [_vm._v("subtitle")]),
+        _c("th", [_vm._v("Description")]),
         _vm._v(" "),
-        _c("th", { staticStyle: { width: "15%" } }, [_vm._v("Action")])
+        _c("th", [_vm._v("#")])
       ])
     ])
   }
@@ -50805,10 +51739,135 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", {}, [
+    _c("div", { staticClass: "app-title" }, [
+      _c("div", [
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "page" } } }, [
+                _vm._v(
+                  "\n                        Page list\n                    "
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Page name")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Section name")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Update")])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
     _c(
-      "div",
+      "form",
       [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.section.title,
+                expression: "section.title"
+              }
+            ],
+            ref: "title",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "title",
+              placeholder: "Enter name",
+              required: ""
+            },
+            domProps: { value: _vm.section.title },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.section, "title", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.section.sub_title,
+                expression: "section.sub_title"
+              }
+            ],
+            ref: "sub_title",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "sub_title",
+              placeholder: "Enter sub title",
+              required: ""
+            },
+            domProps: { value: _vm.section.sub_title },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.section, "sub_title", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.section.text,
+                expression: "section.text"
+              }
+            ],
+            ref: "text",
+            staticClass: "form-control",
+            attrs: {
+              id: "text",
+              placeholder: "Enter a body",
+              rows: "8",
+              required: ""
+            },
+            domProps: { value: _vm.section.text },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.section, "text", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
         _c(
           "router-link",
           { attrs: { to: { name: "section", params: { postId: _vm.id } } } },
@@ -50819,169 +51878,49 @@ var render = function() {
                 staticClass: "p-1 mx-3 float-left btn btn-sucess",
                 attrs: { type: "button" }
               },
-              [_vm._v("\n                   BACK\n                 ")]
+              [_vm._v("\n                Back\n            ")]
             )
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary block",
+            attrs: { type: "submit" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.update($event)
+              }
+            }
+          },
+          [_vm._v("\n            Update\n        ")]
         )
       ],
       1
-    ),
-    _vm._v(" "),
-    _c("form", [
-      _c(
-        "div",
-        {
-          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-        },
-        [
-          _vm.successful
-            ? _c("span", { staticClass: "label label-sucess" }, [
-                _vm._v("Published!")
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-        [
-          _vm.errors.title
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n           " + _vm._s(_vm.errors.title[0]) + "\n         "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.text
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n           " + _vm._s(_vm.errors.text[0]) + "\n         "
-                )
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.errors.sub_title
-            ? _c("span", { staticClass: "label label-danger" }, [
-                _vm._v(
-                  "\n           " +
-                    _vm._s(_vm.errors.sub_title[0]) +
-                    "\n         "
-                )
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.section.title,
-              expression: "section.title"
-            }
-          ],
-          ref: "title",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "title",
-            placeholder: "Enter name",
-            required: ""
-          },
-          domProps: { value: _vm.section.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.section, "title", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.section.text,
-              expression: "section.text"
-            }
-          ],
-          ref: "text",
-          staticClass: "form-control",
-          attrs: {
-            id: "text",
-            placeholder: "Enter a body",
-            rows: "8",
-            required: ""
-          },
-          domProps: { value: _vm.section.text },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.section, "text", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.section.sub_title,
-              expression: "section.sub_title"
-            }
-          ],
-          ref: "sub_title",
-          staticClass: "form-control",
-          attrs: {
-            type: "title",
-            id: "sub_title",
-            placeholder: "Enter sub title",
-            required: ""
-          },
-          domProps: { value: _vm.section.sub_title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.section, "sub_title", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary block",
-          attrs: { type: "submit" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.update($event)
-            }
-          }
-        },
-        [_vm._v("\n         Submit\n       ")]
-      )
-    ])
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "breadcrumb-item" }, [
+      _c("i", { staticClass: "fa fa-home fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "mt-2" }, [
+      _c("i", { staticClass: "fa fa-th-list" }),
+      _vm._v(" Section list")
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -32,8 +32,8 @@ class ItemController extends Controller
 
         $this->validate($request, [
             'title' => 'required|unique:contents',
-            'image' => 'image',
-            'icon_image' => 'mimes:svg,psd,eps,png,jpg,'
+            'image.*' => 'mimes:svg,psd,eps,png,jpg',
+            // 'icon_image' => 'mimes:svg,psd,eps,png,jpg,'
         ]);
 
 
@@ -83,8 +83,8 @@ class ItemController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-            'image.*' => 'mimes:png,jpg,jpeg',
-            'icon_image.*' => 'mimes:svg,psd,eps,png,jpg,'
+            'image.*' => 'mimes:svg,png,jpg,jpeg',
+            // 'icon_image.*' => 'mimes:svg,psd,eps,png,jpg,'
         ]);
         $item  = Content::find($id);
         if (!$item) {
