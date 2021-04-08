@@ -21,7 +21,6 @@
             </div>
         </div>
 
-        {{ page }}
         <form>
             <!-- <div
                 :class="[
@@ -74,7 +73,6 @@
                     class="form-control"
                     id="subtitle"
                     placeholder="Enter subtitle"
-
                 />
             </div>
 
@@ -85,7 +83,6 @@
                     id="short_content"
                     placeholder="Enter  short_content"
                     rows="8"
-
                 ></textarea>
             </div>
 
@@ -98,7 +95,7 @@
                     rows="8"
                 ></textarea>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input
                     type="title"
                     ref="icon_class"
@@ -106,7 +103,7 @@
                     id="icon_class"
                     placeholder="Enter class icon"
                 />
-            </div>
+            </div> -->
             <div class="form-group">
                 <input
                     type="title"
@@ -114,7 +111,6 @@
                     class="form-control"
                     id="video"
                     placeholder="Enter video link"
-
                 />
             </div>
 
@@ -129,7 +125,7 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
-            <div class="custom-file mb-3">
+            <!-- <div class="custom-file mb-3">
                 <input
                     type="file"
                     ref="icon_image"
@@ -139,24 +135,26 @@
                     required
                 />
                 <label class="custom-file-label">Choose file...</label>
-            </div>
+            </div> -->
 
-            <router-link
-                :to="{
-                    name: 'content',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
-                class="btn btn-white block"
-            >
-                Back
-            </router-link>
-            <button
-                type="submit"
-                @click.prevent="create"
-                class="btn btn-primary block"
-            >
-                Create
-            </button>
+            <div class="modal-footer justify-content-center">
+                <router-link
+                    :to="{
+                        name: 'content',
+                        params: { sectionId: sectionId, postId: postId }
+                    }"
+                    class="btn btn-white block"
+                >
+                    Back
+                </router-link>
+                <button
+                    type="submit"
+                    @click.prevent="create"
+                    class="btn btn-primary block"
+                >
+                    Create
+                </button>
+            </div>
         </form>
     </div>
 </template>
@@ -196,11 +194,11 @@ export default {
             formData.append("subtitle", this.$refs.subtitle.value);
             formData.append("short_content", this.$refs.short_content.value);
             formData.append("detail", this.$refs.detail.value);
-            formData.append("icon_class", this.$refs.icon_class.value);
+            // formData.append("icon_class", this.$refs.icon_class.value);
             formData.append("video", this.$refs.video.value);
 
             formData.append("image", this.$refs.image.files[0]);
-            formData.append("icon_image", this.$refs.icon_image.files[0]);
+            // formData.append("icon_image", this.$refs.icon_image.files[0]);
 
             this.$store.dispatch(CREATE_ITEM, {
                 slug: this.sectionId,

@@ -83,17 +83,14 @@
                 />
                 <label class="custom-file-label">Choose file...</label>
             </div>
-            <router-link :to="{ name: 'page' }">
-                <button
-                    type="button"
-                    class="btn btn-white block"
-                >
+            <div class="modal-footer justify-content-center">
+                <router-link :to="{ name: 'page' }" class="btn btn-white block">
                     Back
+                </router-link>
+                <button type="submit" class="btn btn-primary block">
+                    Update
                 </button>
-            </router-link>
-            <button type="submit" class="btn btn-primary block">
-                Submit
-            </button>
+            </div>
         </form>
         <div style="height: 700px;"></div>
         <h3 id="react">Learn React with Sky Albert</h3>

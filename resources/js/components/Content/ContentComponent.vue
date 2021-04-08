@@ -31,29 +31,6 @@
                 </button>
             </router-link>
         </div>
-        <div>
-            <!-- <router-link
-                :to="{
-                    name: 'content_create',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
-            >
-                <button
-                    type="button"
-                    class="p-2 mx-3 float-left btn btn-success"
-                >
-                    NEW CONTENT
-                </button>
-            </router-link> -->
-            <router-link :to="{ name: 'section', params: { postId: postId } }">
-                <button
-                    type="button"
-                    class="p-1 mx-3 float-left btn btn-sucess"
-                >
-                    BACK
-                </button>
-            </router-link>
-        </div>
         <div class="col-md-12 px-0">
             <div class="">
                 <div class="table-responsive">
@@ -77,9 +54,35 @@
                                 class="user_input"
                             >
                                 <td class="align-middle">{{ index + 1 }}</td>
-                                <td class="align-middle">{{ content.title }}</td>
-                                <td :class="[content.subtitle ? '' : 'text-success', 'align-middle']">{{ content.subtitle ? content.subtitle : 'Updating...' }}</td>
-                                <td :class="[content.short_content ? '' : 'text-success', 'align-middle']">{{ content.short_content ? content.short_content : 'Updating...' }}</td>
+                                <td class="align-middle">
+                                    {{ content.title }}
+                                </td>
+                                <td
+                                    :class="[
+                                        content.subtitle ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.subtitle
+                                            ? content.subtitle
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                <td
+                                    :class="[
+                                        content.short_content
+                                            ? ''
+                                            : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.short_content
+                                            ? content.short_content
+                                            : "Updating..."
+                                    }}
+                                </td>
                                 <td v-if="content.video">
                                     <iframe
                                         width="560"
@@ -91,11 +94,13 @@
                                         allowfullscreen
                                     ></iframe>
                                 </td>
-                                <td v-else class="text-success align-middle">Updating...</td>
+                                <td v-else class="text-success align-middle">
+                                    Updating...
+                                </td>
                                 <td>
                                     <img
                                         :src="content.image"
-                                        style="width: 150px"
+                                        style="width: 80px"
                                     />
                                 </td>
 
@@ -114,7 +119,7 @@
                                             class="btn btn-xs btn-info deleteRecord"
                                             id="deleteRecord"
                                         >
-                                            Update
+                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
                                         </button>
                                     </router-link>
                                     <button
@@ -122,12 +127,23 @@
                                         id="deleteRecord"
                                         @click="deletePost(content.id)"
                                     >
-                                        Delete
+                                         <i class="fa fa-trash mr-0" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="modal-footer justify-content-center">
+                        <router-link
+                            :to="{
+                                name: 'section',
+                                params: { postId: postId }
+                            }"
+                            class="btn btn-white block"
+                        >
+                            Back
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>

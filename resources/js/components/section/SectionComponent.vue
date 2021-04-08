@@ -24,23 +24,6 @@
                 </button>
             </router-link>
         </div>
-        <div>
-            <!-- <router-link
-                :to="{ name: 'section_create', params: { postId: postId } }"
-            >
-                <button type="button" class="btn btn-success">
-                    NEW SECTION
-                </button>
-            </router-link> -->
-            <router-link :to="{ name: 'page' }">
-                <button
-                    type="button"
-                    class="p-1 mx-3 float-left btn btn-success"
-                >
-                    Back
-                </button>
-            </router-link>
-        </div>
         <!-- <div class="table-responsive">
             <table
                 id="user-table"
@@ -134,7 +117,9 @@
                             >
                                 <td class="align-middle">{{ index + 1 }}</td>
 
-                                <td class="align-middle text-uppercase font-weight-bold">
+                                <td
+                                    class="align-middle text-uppercase font-weight-bold"
+                                >
                                     <router-link
                                         :to="{
                                             name: 'content',
@@ -149,8 +134,30 @@
                                 </td>
 
                                 <!-- <td class="align-middle">{{ section.sub_title }}</td> -->
-                                <td :class="[section.sub_title ? '' : 'text-success', 'align-middle']">{{ section.sub_title ? section.sub_title : 'Updating...' }}</td>
-                                <td :class="[section.text ? '' : 'text-success', 'align-middle']">{{ section.text ? section.text : 'Updating...' }}</td>
+                                <td
+                                    :class="[
+                                        section.sub_title ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        section.sub_title
+                                            ? section.sub_title
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                <td
+                                    :class="[
+                                        section.text ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        section.text
+                                            ? section.text
+                                            : "Updating..."
+                                    }}
+                                </td>
 
                                 <td class="align-middle">
                                     <router-link
@@ -163,19 +170,33 @@
                                         }"
                                         class="btn btn-xs btn-info deleteRecord"
                                     >
-                                        Update
+                                        <i
+                                            class="fa fa-pencil mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </router-link>
                                     <button
                                         class="btn btn-xs btn-danger deleteRecord"
                                         id="deleteRecord"
                                         @click="deletePost(section.id)"
                                     >
-                                        Delete
+                                        <i
+                                            class="fa fa-trash mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="modal-footer justify-content-center">
+                        <router-link
+                            :to="{ name: 'page' }"
+                            class="btn btn-white block"
+                        >
+                            Back
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
