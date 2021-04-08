@@ -33,8 +33,8 @@
             </router-link>
             <router-link
                 :to="{
-                    name: 'content_create',
-                    params: { sectionId: sectionId, postId: postId }
+                    name: 'section_category_content.create',
+                    params: { sectionId: sectionId, postId: postId,categoryId:categoryId }
                 }"
             >
                 <button
@@ -117,11 +117,12 @@
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
-                                            name: 'content.update',
+                                            name: 'section_category_content.update',
                                             params: {
                                                 contentId: content.id,
                                                 sectionId: sectionId,
-                                                postId: postId
+                                                postId: postId,
+                                                categoryId :categoryId
                                             }
                                         }"
                                     >
@@ -151,9 +152,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import store from "../store/store";
-import { FETCH_ITEM, ITEM_DELETE, GET_ITEM_ID } from "../store/actions/item";
-import { PAGE_RESET_STATE } from "../store/actions/page";
+import store from '../../store/store'
+// import store from "../store/store";
+import { FETCH_ITEM, ITEM_DELETE, FETCH_ITEM_BY_CATEGORY} from "../../store/actions/item";
+import { PAGE_RESET_STATE } from "../../store/actions/page";
 export default {
     name: "page-component",
     props: {
@@ -162,6 +164,9 @@ export default {
         },
         postId: {
             required: true
+        },
+        categoryId:{
+          required: true
         }
     },
 
@@ -182,7 +187,7 @@ export default {
 
     methods: {
         getPosts() {
-            this.$store.dispatch(FETCH_ITEM, this.sectionId);
+            this.$store.dispatch(FETCH_ITEM_BY_CATEGORY, this.categoryId);
         },
         deletePost(id) {
             this.$store.dispatch(ITEM_DELETE, id);

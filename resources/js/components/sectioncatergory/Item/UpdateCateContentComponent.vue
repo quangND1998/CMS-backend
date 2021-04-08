@@ -183,9 +183,9 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { ITEM_EDIT, GET_ITEM_ID } from "../store/actions/item";
-import { PAGE_RESET_STATE } from "../store/actions/page";
-import store from "../store/store";
+import { ITEM_EDIT, GET_ITEM_ID } from "../../store/actions/item";
+import { PAGE_RESET_STATE } from "../../store/actions/page";
+import store from "../../store/store";
 export default {
     mounted() {
         this.getPost();

@@ -1,5 +1,5 @@
 <template>
-    <div id="posts">
+      <div id="posts">
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
@@ -14,10 +14,10 @@
                     <li class="breadcrumb-item text-danger">Page name</li>
                     <li class="breadcrumb-item">Section</li>
                 </ul>
-                <h1 class="mt-2"><i class="fa fa-th-list"></i> Section list</h1>
+                <h1 class="mt-2"><i class="fa fa-th-list"></i> Section Category list</h1>
             </div>
             <router-link
-                :to="{ name: 'section_create', params: { postId: postId } }"
+                :to="{ name: 'section_category_create', params: { postId: postId ,sectionId:sectionId} }"
             >
                 <button type="button" class="btn btn-success">
                     NEW SECTION
@@ -25,7 +25,7 @@
             </router-link>
         </div>
         <div>
-            <router-link :to="{ name: 'page' }">
+            <router-link :to="{ name: 'content', params: { postId: postId ,sectionId: sectionId} }">
                 <button
                     type="button"
                     class="p-1 mx-3  btn btn-success"
@@ -43,15 +43,14 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Sub-title</th>
-                                <th>Description</th>
+                         
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr
-                                v-for="(section, index) in sections"
-                                :key="section.id"
+                                v-for="(category, index) in section_categorys"
+                                :key="category.id"
                                 data-entry-id=""
                                 class="user_input"
                             >
@@ -60,28 +59,28 @@
                                 <td class="align-middle text-uppercase font-weight-bold">
                                     <router-link
                                         :to="{
-                                            name: 'content',
+                                            name: 'section_category_content',
                                             params: {
-                                                sectionId: section.id,
-                                                postId: postId
+                                                categoryId: category.id,
+                                                postId: postId,
+                                                sectionId: sectionId
                                             }
                                         }"
                                     >
-                                        {{ section.title }}
+                                        {{ category.title }}
                                     </router-link>
                                 </td>
 
                                 <!-- <td class="align-middle">{{ section.sub_title }}</td> -->
-                                <td :class="[section.sub_title ? '' : 'text-success', 'align-middle']">{{ section.sub_title ? section.sub_title : 'Updating...' }}</td>
-                                <td :class="[section.text ? '' : 'text-success', 'align-middle']">{{ section.text ? section.text : 'Updating...' }}</td>
 
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
-                                            name: 'section.update',
+                                            name: 'section_category_update',
                                             params: {
-                                                sectionId: section.id,
-                                                id: postId
+                                                categoryId: category.id,
+                                                id: postId,
+                                                sectionId: sectionId
                                             }
                                         }"
                                         class="btn btn-xs btn-info deleteRecord"
@@ -91,7 +90,7 @@
                                     <button
                                         class="btn btn-xs btn-danger deleteRecord"
                                         id="deleteRecord"
-                                        @click="deletePost(section.id)"
+                                        @click="deletePost(category.id)"
                                     >
                                         Delete
                                     </button>
@@ -108,12 +107,15 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "../store/store";
-import { FETCH_SECTION, SECTION_DELETE } from "../store/actions/section";
+import { FETCH_SECTION_CATEGORY, SECTION_CATEGORY_DELETE } from "../store/actions/sectioncategory";
 import { PAGE_RESET_STATE } from "../store/actions/page";
 export default {
-    props: {
+  props: {
         postId: {
             required: true
+        },
+        sectionId:{
+                    required: true
         }
     },
 
@@ -122,7 +124,7 @@ export default {
      
     },
     computed: {
-        ...mapGetters(["sections", "section"])
+        ...mapGetters(["section_categorys", "category"])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
@@ -135,12 +137,16 @@ export default {
 
     methods: {
         getPosts() {
-            this.$store.dispatch(FETCH_SECTION, this.postId);
+            this.$store.dispatch(FETCH_SECTION_CATEGORY, this.sectionId);
         },
         deletePost(id) {
-            this.$store.dispatch(SECTION_DELETE, id);
+            this.$store.dispatch(SECTION_CATEGORY_DELETE, id);
             this.getPosts();
         }
     }
-};
+}
 </script>
+
+<style>
+
+</style>

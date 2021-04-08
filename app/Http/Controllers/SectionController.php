@@ -38,6 +38,13 @@ class SectionController extends Controller
         $this->validate($request, [
             'title' => 'required|unique:section',
         ]);
+        // $validator = Validator::make($request->all(), [
+        //     'title' => 'required|unique:section',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        // }
         $page = Page::find($id);
         if (!$page) {
             $msg = [
@@ -68,6 +75,9 @@ class SectionController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
         $section = Section::find($id);
         if (!$section) {
             $msg = [
@@ -75,9 +85,7 @@ class SectionController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-        $this->validate($request, [
-            'title' => 'required',
-        ]);
+
         $section->title = $request->title;
         $section->text = $request->text;
         $section->sub_title = $request->sub_title;
@@ -98,9 +106,9 @@ class SectionController extends Controller
             $this->DeleteFolder($content->image, $extension);
             $this->DeleteFolder($content->icon_image, $extension);
         }
-        if($section->section_category !=null){
-            foreach($section->section_category as $category){
-                foreach($category as $item){
+        if ($section->section_category != null) {
+            foreach ($section->section_category as $category) {
+                foreach ($category as $item) {
                     $this->DeleteFolder($item->image, $extension);
                     $this->DeleteFolder($item->icon_image, $extension);
                 }

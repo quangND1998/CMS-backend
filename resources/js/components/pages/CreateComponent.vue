@@ -20,10 +20,11 @@
                 ADD NEW
             </router-link> -->
         </div>
+ 
 
         <!-- {{page}}   -->
         <form @submit.prevent="create()">
-            <!-- <div
+            <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -43,7 +44,7 @@
                 <span v-if="errors.image" class="label label-danger">
                     {{ errors.image[0] }}
                 </span>
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <input
@@ -52,7 +53,7 @@
                     class="form-control"
                     id="name"
                     placeholder="Enter page name"
-                    required
+                 
                 />
             </div>
 
@@ -123,15 +124,21 @@ export default {
 
             this.$store
                 .dispatch(PAGE_PUBLISH, formData)
-                .then(({ data }) => {
-                    this.$refs.name.value = "";
-                    this.$refs.description.value = "";
-
-                    this.$router.push({ name: "page" });
-                })
-                .catch(({ response }) => {
-                    this.errors = response.data.errors;
-                });
+                .then(response => {
+                        this.successful = true;
+                        this.error = false;
+                        this.errors = [];
+                        this.$router.push({name:'page'});
+                    })
+                    .catch(error => {
+                        if (!_.isEmpty(error.response)) {
+                        if ((error.response.status == 422)) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                        }
+                    });
 
             // axios
             //   .post("/api/page", formData)

@@ -24,7 +24,7 @@
 
         </div> -->
         <form>
-            <!-- <div
+            <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -44,7 +44,7 @@
                 <span v-if="errors.sub_title" class="label label-danger">
                     {{ errors.sub_title[0] }}
                 </span>
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <input
@@ -137,8 +137,23 @@ export default {
             this.section.title = this.$refs.title.value;
             this.section.text = this.$refs.text.value;
             this.section.sub_title = this.$refs.sub_title.value;
-            this.$store.dispatch(SECTION_EDIT, this.section.id);
-            this.$router.push({ name: "section", params: { postId: this.id } });
+            this.$store.dispatch(SECTION_EDIT, this.section.id)
+                        .then(response => {
+                        this.successful = true;
+                        this.error = false;
+                        this.errors = [];
+                        this.$router.push({ name: "section", params: { postId: this.id } });
+                    })
+                    .catch(error => {
+                        if (!_.isEmpty(error.response)) {
+                        if ((error.response.status == 422)) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                        }
+                    });;
+            
         },
         getPost() {
             this.$store.dispatch(GET_SECTION_ID, this.sectionId);

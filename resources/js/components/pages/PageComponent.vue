@@ -1,5 +1,6 @@
 <template>
     <div id="posts">
+        {{time}}
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
@@ -161,7 +162,7 @@ export default {
         msg: {}
     },
     computed: {
-        ...mapGetters(["posts", "page", "isAuthenticated"])
+        ...mapGetters(["posts", "page", "isAuthenticated", 'time'])
     },
     data() {
         return {};

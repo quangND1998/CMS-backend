@@ -19,6 +19,7 @@ import {
 import ApiService from "../../../common/api.service";
 import jwtToken from "../../../common/token";
 const initialState = {
+    time:'aaaaaaaaaaaaaaa',
     posts: [],
     isLoading: true,
     page: {
@@ -113,6 +114,9 @@ const getters = {
     },
     isLoading(state) {
         return state.isLoading;
+    },
+    time(state) {
+        return state.time
     }
 };
 

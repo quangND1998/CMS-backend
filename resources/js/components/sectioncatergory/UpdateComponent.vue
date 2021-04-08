@@ -47,6 +47,7 @@
                 <input
                     type="title"
                     ref="title"
+                    v-model="category.title"
                     class="form-control"
                     id="title"
                     placeholder="Enter name"
@@ -55,29 +56,9 @@
             </div>
 
 
-            <div class="form-group">
-                <input
-                    type="title"
-                    ref="sub_title"
-                    class="form-control"
-                    id="sub_title"
-                    placeholder="Enter sub title"
-                    required
-                />
-            </div>
+            {{category}}
 
-            <div class="form-group">
-                <textarea
-                    class="form-control"
-                    ref="text"
-                    id="text"
-                    placeholder="Enter a body"
-                    rows="6"
-                    required
-                ></textarea>
-            </div>
-
-            <router-link :to="{ name: 'section', params: { postId: postId } }" class="btn btn-white block">
+            <router-link :to="{ name: 'section_category',    params: { posId: this.postId ,sectionId:this.sectionId} }" class="btn btn-white block">
                 Back
             </router-link>
             <button
@@ -93,14 +74,23 @@
 
 <script>
 import { PAGE_RESET_STATE } from "../store/actions/page";
-import { CREATE_SECTION } from "../store/actions/section";
+import { SECTION_CATEGORY_EDIT,GET_SECTION_CATEGORY_ID } from "../store/actions/sectioncategory";
 import { mapGetters } from "vuex";
 import store from "../store/store";
 
 export default {
+       mounted() {
+        this.getPost();
+    },
     props: {
         postId: {
             required: true
+        },
+        sectionId:{
+            required: true
+        },
+        categoryId:{
+            required:true
         }
     },
     data() {
@@ -116,25 +106,26 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["section", "sections"])
+        ...mapGetters(["category"])
     },
     methods: {
         create() {
-            this.section.title = this.$refs.title.value;
-            this.section.text = this.$refs.text.value;
-            this.section.sub_title = this.$refs.sub_title.value;
-            this.$store.dispatch(CREATE_SECTION, this.postId)
+            this.category.title = this.$refs.title.value;
+            this.$store.dispatch(SECTION_CATEGORY_EDIT, this.categoryId)
             .then(response => {
                         this.successful = true;
                         this.error = false;
                         this.errors = [];
                          this.$router.push({
-                            name: "section",
-                            params: { posId: this.postId }
+                            name: "section_category",
+                            params: { posId: this.postId ,sectionId:this.sectionId}
                         });
+                        console.log(response)
+              
 
                     })
                     .catch(error => {
+                            console.log(error)
                         if (!_.isEmpty(error.response)) {
                         if ((error.response.status == 422)) {
                             this.errors = error.response.data.errors;
@@ -146,8 +137,10 @@ export default {
       
           
             this.$refs.title.value = "";
-            this.$refs.text.value = "";
-            this.$refs.sub_title.value = "";
+
+        },
+        getPost() {
+            this.$store.dispatch(GET_SECTION_CATEGORY_ID, this.categoryId);
         }
     }
 };

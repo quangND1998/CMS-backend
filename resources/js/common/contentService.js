@@ -15,6 +15,12 @@ export const contenService = {
     },
     delete(slug) {
         return ApiService.delete(`item/delete/${slug}`);
-    }
+    },
+    getItemCategory(slug) {
+        return ApiService.get("section_category", `${slug}/items`);
+    },
+    postItemCategory(slug, pramas) {
+        return ApiService.post(`section_category/${slug}/items`, pramas)
+    },
     
 }

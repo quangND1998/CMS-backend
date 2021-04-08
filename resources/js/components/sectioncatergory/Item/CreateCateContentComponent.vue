@@ -14,37 +14,16 @@
                     <li class="breadcrumb-item text-danger">Page name</li>
                     <li class="breadcrumb-item">Section</li>
                     <li class="breadcrumb-item text-danger">Section name</li>
+                    <li class="breadcrumb-item">Item</li>
+                    <li class="breadcrumb-item">Create</li>
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
-            <router-link
-                :to="{
-                    name: 'content_create',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
-            >
-                <button
-                    type="button"
-                    class="p-2 mx-3 float-left btn btn-success"
-                >
-                    NEW ITEM
-                </button>
-            </router-link>
         </div>
 
-        <router-link
-            :to="{
-                name: 'content',
-                params: { sectionId: sectionId, postId: postId }
-            }"
-        >
-            <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
-                BACK
-            </button>
-        </router-link>
-        <h2>Create Content</h2>
+        {{ page }}
         <form>
-            <div
+            <!-- <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -76,13 +55,12 @@
                 <span v-if="errors.icon_class" class="label label-danger">
                     {{ errors.icon_class[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
                     type="title"
                     ref="title"
-                    v-model="content.title"
                     class="form-control"
                     id="title"
                     placeholder="Enter title"
@@ -93,57 +71,50 @@
                 <input
                     type="title"
                     ref="subtitle"
-                    v-model="content.subtitle"
                     class="form-control"
                     id="subtitle"
                     placeholder="Enter subtitle"
-                    required
+
                 />
             </div>
 
             <div class="form-group">
                 <textarea
                     class="form-control"
-                    v-model="content.short_content"
                     ref="short_content"
                     id="short_content"
                     placeholder="Enter  short_content"
                     rows="8"
-                    required
+
                 ></textarea>
             </div>
 
             <div class="form-group">
                 <textarea
                     class="form-control"
-                    v-model="content.detail"
                     ref="detail"
                     id="detail"
                     placeholder="Enter  detail"
                     rows="8"
-                    required
                 ></textarea>
             </div>
             <div class="form-group">
                 <input
                     type="title"
                     ref="icon_class"
-                    v-model="content.icon_class"
                     class="form-control"
                     id="icon_class"
                     placeholder="Enter class icon"
-                    required
                 />
             </div>
             <div class="form-group">
                 <input
                     type="title"
                     ref="video"
-                    v-model="content.video"
                     class="form-control"
                     id="video"
                     placeholder="Enter video link"
-                    required
+
                 />
             </div>
 
@@ -156,7 +127,7 @@
                     id="image"
                     required
                 />
-                <label class="custom-file-label">Choose file...</label>
+                <label class="custom-file-label">Choose image file...</label>
             </div>
             <div class="custom-file mb-3">
                 <input
@@ -170,39 +141,42 @@
                 <label class="custom-file-label">Choose file...</label>
             </div>
 
+            <router-link
+                :to="{
+                    name: 'content',
+                    params: { sectionId: sectionId, postId: postId }
+                }"
+                class="btn btn-white block"
+            >
+                Back
+            </router-link>
             <button
                 type="submit"
-                @click.prevent="update"
+                @click.prevent="create"
                 class="btn btn-primary block"
             >
-                Submit
+                Create
             </button>
         </form>
     </div>
 </template>
 
 <script>
+import { PAGE_RESET_STATE } from "../../store/actions/page";
+import { CREATE_ITEM,CREATE_ITEM_BY_CATEGORY} from "../../store/actions/item";
 import { mapGetters } from "vuex";
-import { ITEM_EDIT, GET_ITEM_ID } from "../store/actions/item";
-import { PAGE_RESET_STATE } from "../store/actions/page";
-import store from "../store/store";
+import store from "../../store/store";
 export default {
-    mounted() {
-        this.getPost();
-    },
     props: {
-        contentId: {
-            required: true
-        },
         sectionId: {
             required: true
         },
         postId: {
             required: true
+        },
+        categoryId:{
+            required:true
         }
-    },
-    computed: {
-        ...mapGetters(["content"])
     },
     data() {
         return {
@@ -211,12 +185,15 @@ export default {
             errors: []
         };
     },
+    computed: {
+        ...mapGetters(["page"])
+    },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
         next();
     },
     methods: {
-        update() {
+        create() {
             const formData = new FormData();
             formData.append("title", this.$refs.title.value);
             formData.append("subtitle", this.$refs.subtitle.value);
@@ -228,15 +205,19 @@ export default {
             formData.append("image", this.$refs.image.files[0]);
             formData.append("icon_image", this.$refs.icon_image.files[0]);
 
-            this.$store.dispatch(ITEM_EDIT, {
-                slug: this.content.id,
+            this.$store.dispatch(CREATE_ITEM_BY_CATEGORY, {
+                slug: this.categoryId,
                 data: formData
-            })
-            ;
+            });
+
             this.$router.back();
-        },
-        getPost() {
-            this.$store.dispatch(GET_ITEM_ID, this.contentId);
+
+            //   this.$refs.name.value = "";
+            //   this.$refs.description.value = "";
+            //     this.$refs.name.value = "";
+            //   this.$refs.description.value = "";
+            // this.$refs.name.value = "";
+            //   this.$refs.description.value = "";
         }
     }
 };
