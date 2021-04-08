@@ -1,5 +1,4 @@
-
-import Vue          from 'vue'
+import Vue from 'vue'
 import Router from 'vue-router'
 import PageComponent from '../components/pages/PageComponent.vue'
 import EditComponent from '../components/pages/EditComponent.vue'
@@ -17,120 +16,99 @@ import PageNotFound from '../components/PageNotFound.vue'
 import LandingComponent from '../components/landingpage/LandingComponent'
 Vue.use(Router)
 export default new Router({
-        mode: 'history',
-   
-        routes: [
-                   {
-                path: '*',
-                component: PageNotFound,
-              
-                },
-           
-     
-                {
-                    path: "/admin/login",
-                    name: 'login',
-                    component: loginComponent,
-                },
-                {
-                    path: '/admin/page',
-                    name: 'index',
-                    component: HomeComponent,
-                    redirect: { name: 'page' },
-                    props: true,
-                    params: true,
-                    beforeEnter: (to, from, next) => {
-                        next()
-                    },
-                children: [
-                    {
-                        path: '',
-                        name: "page",
-                        component: PageComponent,
-                        props: true,
-                        params:true
-                    },
-                     {
-                        path: 'create',
-                        name: 'create',
-                        component: CreateComponent,
-                        props: true
-                    },
-                     {
-                        path: ':postId/section',
-                        
-                        component: IndexSectionComponent,
-                        params: true,
-                         props: true,
-                         children: [
-                                {
-                                    path: '',
-                                    name: "section",
-                                    component: SectionComponent,
-                                    props: true,
-                                    params:true
-                                },
-                              {
-                                path: ':sectionId/content',
-                                name: 'content',
-                                component: ContentComponent,
-                                params: true,
-                                props:  true 
-                                    
+    mode: "history",
 
-                            },
-                                {
-                                path: ':sectionId/content/create',
-                                name: 'content_create',
-                                component: CreateContentComponent,
-                                params: true,
-                                props:  true 
-                                    
-
-                            },
-                                {
-                                path: ':contentId/update',
-                                name: 'content.update',
-                                component: EditContentComponent,
-                                params: true,
-                                props:  true 
-                                    
-
-                            },
-                     
-                     ],
-                    },
-                   
-                      {
-                        path: 'update/:postId',
-                        name: 'update',
-                        component: EditComponent,
-                        params: true,
-                        props: true
-                    },
-                    {
-                        path: ':postId/create',
-                        name: 'section_create',
-                        component: CreateSectionComponent,
-                        params: true,
-                        props: true
-                    },
-                       {
-                        path: 'section/:sectionId/update',
-                        name: 'section.update',
-                        component: SectionEditComponent,
-                        params: true,
-                        props:  true 
-                            
-                    },
-                   
-         
-                  
-                    
-                ]
+    routes: [{
+            path: "/admin/login",
+            name: "login",
+            component: loginComponent
+        },
+        {
+            path: "/admin/page",
+            name: "index",
+            component: HomeComponent,
+            redirect: { name: "page" },
+            props: true,
+            params: true,
+            beforeEnter: (to, from, next) => {
+                next();
             },
-              
-         
-            
-        ],
+            children: [{
+                    path: "",
+                    name: "page",
+                    component: PageComponent,
+                    props: true,
+                    params: true
+                },
+                {
+                    path: "create",
+                    name: "create",
+                    component: CreateComponent,
+                    props: true
+                },
+                {
+                    path: ":postId/section",
+
+                    component: IndexSectionComponent,
+                    params: true,
+                    props: true,
+                    children: [{
+                            path: "",
+                            name: "section",
+                            component: SectionComponent,
+                            props: true,
+                            params: true
+                        },
+                        {
+                            path: ":sectionId/item",
+                            name: "content",
+                            component: ContentComponent,
+                            params: true,
+                            props: true
+                        },
+                        {
+                            path: ":sectionId/item/create",
+                            name: "content_create",
+                            component: CreateContentComponent,
+                            params: true,
+                            props: true
+                        },
+                        {
+                            path: ":contentId/update",
+                            name: "content.update",
+                            component: EditContentComponent,
+                            params: true,
+                            props: true
+                        }
+                    ]
+                },
+
+                {
+                    path: ":postId/update",
+                    name: "update",
+                    component: EditComponent,
+                    params: true,
+                    props: true
+                },
+                {
+                    path: ":postId/section/create",
+                    name: "section_create",
+                    component: CreateSectionComponent,
+                    params: true,
+                    props: true
+                },
+                {
+                    path: ":postId/section/:sectionId/update",
+                    name: "section.update",
+                    component: SectionEditComponent,
+                    params: true,
+                    props: true
+                }
+            ]
+        },
+        {
+            path: "*",
+            component: PageNotFound
+        }
+    ]
 });

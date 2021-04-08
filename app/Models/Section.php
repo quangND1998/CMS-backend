@@ -22,4 +22,8 @@ class Section extends Model
     {
         return $this->hasOne(Theme::class, 'section_id');
     }
+    public function section_category()
+    {
+        return $this->hasMany(Section_Category::class, 'section_id');
+    }
 }

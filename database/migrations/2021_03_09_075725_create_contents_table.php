@@ -25,6 +25,8 @@ class CreateContentsTable extends Migration
             $table->string('icon_class')->nullable();
             $table->unsignedInteger('section_id')->unsigned()->nullable();
             $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
+            $table->unsignedInteger('section_category_id')->unsigned()->nullable();
+            $table->foreign('section_category_id')->references('id')->on('section_category')->onDelete('cascade');
             $table->timestamps();
         });
     }

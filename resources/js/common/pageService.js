@@ -5,19 +5,19 @@ export const pageService = {
         return ApiService.query("page")
     },
     get() {
-   
+
         return ApiService.get('page');
     },
     getbyid(slug) {
         // console.log('pageService',slug)
         return ApiService.get('page', slug);
     },
-    create(parmas) {
-        // console.log('pageservice',parmas)
-        return ApiService.post("page", parmas)
+    create(params) {
+        // console.log('pageservice',params)
+        return ApiService.post("page", params)
     },
-    update(params, slug ) {
-        return ApiService.update("page/update", params,slug);
+    update(params, slug) {
+        return ApiService.update("page/update", params, slug);
     },
     destroy(slug) {
         return ApiService.delete(`page/delete/${slug}`);
