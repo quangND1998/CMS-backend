@@ -50266,7 +50266,7 @@ var staticRenderFns = [
                 "aria-label": "Open Profile Menu"
               }
             },
-            [_c("i", { staticClass: "fa fa-user-circle-o fa-lg" })]
+            [_c("i", { staticClass: "fa fa-user-o fa-lg" })]
           ),
           _vm._v(" "),
           _c(
