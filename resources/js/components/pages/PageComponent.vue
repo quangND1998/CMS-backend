@@ -21,7 +21,7 @@
                 ADD NEW
             </router-link>
         </div>
-        <div
+        <!-- <div
             v-if="msg"
             :class="[
                 'form-group m-1 p-3',
@@ -38,7 +38,7 @@
             >
                 <span aria-hidden="true">&times;</span>
             </button>
-        </div>
+        </div> -->
         <div>
             <!-- <router-link :to="{ name: 'create' }" class="btn btn-success">
                 ADD NEW
@@ -119,20 +119,16 @@
                                             name: 'update',
                                             params: { postId: post.id }
                                         }"
+                                        class="btn btn-xs btn-info"
                                     >
-                                        <button
-                                            type="button"
-                                            class="p-1 mr-1 btn btn-info"
-                                        >
-                                            Update
-                                        </button>
+                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
                                     </router-link>
                                     <button
                                         type="button"
                                         @click="deletePost(post.id)"
-                                        class="p-1 btn btn-danger"
+                                        class="btn btn-xs btn-danger"
                                     >
-                                        Delete
+                                       <i class="fa fa-trash mr-0" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>

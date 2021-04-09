@@ -11,8 +11,8 @@
                             Page list
                         </router-link>
                     </li>
-                    <li class="breadcrumb-item text-danger">Page name</li>
-                    <li class="breadcrumb-item">Section</li>
+                    <li class="breadcrumb-item">{{posts.name}}</li>
+                    <!-- <li class="breadcrumb-item">Section</li> -->
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Section list</h1>
             </div>
@@ -57,7 +57,9 @@
                             >
                                 <td class="align-middle">{{ index + 1 }}</td>
 
-                                <td class="align-middle text-uppercase font-weight-bold">
+                                <td
+                                    class="align-middle text-uppercase font-weight-bold"
+                                >
                                     <router-link
                                         :to="{
                                             name: 'content',
@@ -72,8 +74,30 @@
                                 </td>
 
                                 <!-- <td class="align-middle">{{ section.sub_title }}</td> -->
-                                <td :class="[section.sub_title ? '' : 'text-success', 'align-middle']">{{ section.sub_title ? section.sub_title : 'Updating...' }}</td>
-                                <td :class="[section.text ? '' : 'text-success', 'align-middle']">{{ section.text ? section.text : 'Updating...' }}</td>
+                                <td
+                                    :class="[
+                                        section.sub_title ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        section.sub_title
+                                            ? section.sub_title
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                <td
+                                    :class="[
+                                        section.text ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        section.text
+                                            ? section.text
+                                            : "Updating..."
+                                    }}
+                                </td>
 
                                 <td class="align-middle">
                                     <router-link
@@ -86,22 +110,38 @@
                                         }"
                                         class="btn btn-xs btn-info deleteRecord"
                                     >
-                                        Update
+                                        <i
+                                            class="fa fa-pencil mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </router-link>
                                     <button
                                         class="btn btn-xs btn-danger deleteRecord"
                                         id="deleteRecord"
                                         @click="deletePost(section.id)"
                                     >
-                                        Delete
+                                        <i
+                                            class="fa fa-trash mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="modal-footer justify-content-center">
+                        <router-link
+                            :to="{ name: 'page' }"
+                            class="btn btn-white block"
+                        >
+                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                            Back
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -122,7 +162,7 @@ export default {
      
     },
     computed: {
-        ...mapGetters(["sections", "section"])
+        ...mapGetters(["posts" ,"sections", "section"])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);

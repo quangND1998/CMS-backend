@@ -2156,6 +2156,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2401,7 +2450,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2449,11 +2497,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("title", this.$refs.title.value);
       formData.append("subtitle", this.$refs.subtitle.value);
       formData.append("short_content", this.$refs.short_content.value);
-      formData.append("detail", this.$refs.detail.value);
-      formData.append("icon_class", this.$refs.icon_class.value);
+      formData.append("detail", this.$refs.detail.value); // formData.append("icon_class", this.$refs.icon_class.value);
+
       formData.append("video", this.$refs.video.value);
-      formData.append("image", this.$refs.image.files[0]);
-      formData.append("icon_image", this.$refs.icon_image.files[0]);
+      formData.append("image", this.$refs.image.files[0]); // formData.append("icon_image", this.$refs.icon_image.files[0]);
+
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_2__.CREATE_ITEM, {
         slug: this.sectionId,
         data: formData
@@ -2499,23 +2547,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2735,11 +2766,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("title", this.$refs.title.value);
       formData.append("subtitle", this.$refs.subtitle.value);
       formData.append("short_content", this.$refs.short_content.value);
-      formData.append("detail", this.$refs.detail.value);
-      formData.append("icon_class", this.$refs.icon_class.value);
+      formData.append("detail", this.$refs.detail.value); // formData.append("icon_class", this.$refs.icon_class.value);
+
       formData.append("video", this.$refs.video.value);
-      formData.append("image", this.$refs.image.files[0]);
-      formData.append("icon_image", this.$refs.icon_image.files[0]);
+      formData.append("image", this.$refs.image.files[0]); // formData.append("icon_image", this.$refs.icon_image.files[0]);
+
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_1__.ITEM_EDIT, {
         slug: this.content.id,
         data: formData
@@ -2870,6 +2901,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -3155,6 +3189,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -3250,8 +3289,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -3596,10 +3633,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -3662,6 +3695,11 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3985,6 +4023,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3998,7 +4076,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.getPosts();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["sections", "section"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["posts", "sections", "section"])),
   beforeRouteLeave: function beforeRouteLeave(to, from, next) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -4064,6 +4142,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -51681,7 +51760,11 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", { staticClass: "align-middle" }, [
-                        _vm._v(_vm._s(content.title))
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(content.title) +
+                            "\n                            "
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -51694,11 +51777,13 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            _vm._s(
-                              content.subtitle
-                                ? content.subtitle
-                                : "Updating..."
-                            )
+                            "\n                                " +
+                              _vm._s(
+                                content.subtitle
+                                  ? content.subtitle
+                                  : "Updating..."
+                              ) +
+                              "\n                            "
                           )
                         ]
                       ),
@@ -51713,11 +51798,13 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            _vm._s(
-                              content.short_content
-                                ? content.short_content
-                                : "Updating..."
-                            )
+                            "\n                                " +
+                              _vm._s(
+                                content.short_content
+                                  ? content.short_content
+                                  : "Updating..."
+                              ) +
+                              "\n                            "
                           )
                         ]
                       ),
@@ -51740,12 +51827,16 @@ var render = function() {
                         : _c(
                             "td",
                             { staticClass: "text-success align-middle" },
-                            [_vm._v("Updating...")]
+                            [
+                              _vm._v(
+                                "\n                                Updating...\n                            "
+                              )
+                            ]
                           ),
                       _vm._v(" "),
                       _c("td", [
                         _c("img", {
-                          staticStyle: { width: "150px" },
+                          staticStyle: { width: "80px" },
                           attrs: { src: content.image }
                         })
                       ]),
@@ -51777,9 +51868,10 @@ var render = function() {
                                   attrs: { id: "deleteRecord" }
                                 },
                                 [
-                                  _vm._v(
-                                    "\n                                        Update\n                                    "
-                                  )
+                                  _c("i", {
+                                    staticClass: "fa fa-pencil mr-0",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
                                 ]
                               )
                             ]
@@ -51797,9 +51889,10 @@ var render = function() {
                               }
                             },
                             [
-                              _vm._v(
-                                "\n                                    Delete\n                                "
-                              )
+                              _c("i", {
+                                staticClass: "fa fa-trash mr-0",
+                                attrs: { "aria-hidden": "true" }
+                              })
                             ]
                           )
                         ],
@@ -51811,6 +51904,33 @@ var render = function() {
                 0
               )
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-footer justify-content-center" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-white block",
+                  attrs: {
+                    to: {
+                      name: "section",
+                      params: { postId: _vm.postId }
+                    }
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-long-arrow-left",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v("\n                        Back\n                    ")
+                ]
+              )
+            ],
+            1
           )
         ])
       ])
@@ -51917,139 +52037,115 @@ var render = function() {
         _vm._m(1)
       ])
     ]),
-    _vm._v("\n\n    " + _vm._s(_vm.page) + "\n    "),
-    _c(
-      "form",
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            ref: "title",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "title",
-              placeholder: "Enter title",
-              required: ""
-            }
-          })
-        ]),
+    _vm._v(" "),
+    _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "title",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "title",
+            placeholder: "Enter title",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "subtitle",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "subtitle",
+            placeholder: "Enter subtitle"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          ref: "short_content",
+          staticClass: "form-control",
+          attrs: {
+            id: "short_content",
+            placeholder: "Enter  short_content",
+            rows: "8"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          ref: "detail",
+          staticClass: "form-control",
+          attrs: { id: "detail", placeholder: "Enter  detail", rows: "8" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "video",
+          staticClass: "form-control",
+          attrs: { type: "title", id: "video", placeholder: "Enter video link" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "custom-file mb-3" }, [
+        _c("input", {
+          ref: "image",
+          staticClass: "custom-file-input",
+          attrs: { type: "file", name: "image", id: "image", required: "" }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            ref: "subtitle",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "subtitle",
-              placeholder: "Enter subtitle"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            ref: "short_content",
-            staticClass: "form-control",
-            attrs: {
-              id: "short_content",
-              placeholder: "Enter  short_content",
-              rows: "8"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            ref: "detail",
-            staticClass: "form-control",
-            attrs: { id: "detail", placeholder: "Enter  detail", rows: "8" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            ref: "icon_class",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "icon_class",
-              placeholder: "Enter class icon"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            ref: "video",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "video",
-              placeholder: "Enter video link"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "custom-file mb-3" }, [
-          _c("input", {
-            ref: "image",
-            staticClass: "custom-file-input",
-            attrs: { type: "file", name: "image", id: "image", required: "" }
-          }),
-          _vm._v(" "),
-          _c("label", { staticClass: "custom-file-label" }, [
-            _vm._v("Choose image file...")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "custom-file mb-3" }, [
-          _c("input", {
-            ref: "icon_image",
-            staticClass: "custom-file-input",
-            attrs: {
-              type: "file",
-              name: "icon_image",
-              id: "icon_image",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { staticClass: "custom-file-label" }, [
-            _vm._v("Choose file...")
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          {
-            staticClass: "btn btn-white block",
-            attrs: {
-              to: {
-                name: "content",
-                params: { sectionId: _vm.sectionId, postId: _vm.postId }
+        _c("label", { staticClass: "custom-file-label" }, [
+          _vm._v("Choose image file...")
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal-footer justify-content-center" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-white block",
+              attrs: {
+                to: {
+                  name: "content",
+                  params: { sectionId: _vm.sectionId, postId: _vm.postId }
+                }
               }
-            }
-          },
-          [_vm._v("\n            Back\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary block",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.create($event)
+            },
+            [
+              _c("i", {
+                staticClass: "fa fa-long-arrow-left",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v("\n                Back\n            ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary block",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.create($event)
+                }
               }
-            }
-          },
-          [_vm._v("\n            Create\n        ")]
-        )
-      ],
-      1
-    )
+            },
+            [_vm._v("\n                Create\n            ")]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -52093,411 +52189,240 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "div",
-        { staticClass: "app-title" },
-        [
-          _c("div", [
-            _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "breadcrumb-item active" },
-                [
-                  _c("router-link", { attrs: { to: { name: "page" } } }, [
-                    _vm._v(
-                      "\n                        Page list\n                    "
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("li", { staticClass: "breadcrumb-item text-danger" }, [
-                _vm._v("Page name")
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
-              _vm._v(" "),
-              _c("li", { staticClass: "breadcrumb-item text-danger" }, [
-                _vm._v("Section name")
+  return _c("div", [
+    _c("div", { staticClass: "app-title" }, [
+      _c("div", [
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "page" } } }, [
+                _vm._v(
+                  "\n                        Page list\n                    "
+                )
               ])
-            ]),
-            _vm._v(" "),
-            _vm._m(1)
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Page name")
           ]),
           _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Section name")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Update")])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.content.title,
+              expression: "content.title"
+            }
+          ],
+          ref: "title",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "title",
+            placeholder: "Enter title",
+            required: ""
+          },
+          domProps: { value: _vm.content.title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.content, "title", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.content.subtitle,
+              expression: "content.subtitle"
+            }
+          ],
+          ref: "subtitle",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "subtitle",
+            placeholder: "Enter subtitle"
+          },
+          domProps: { value: _vm.content.subtitle },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.content, "subtitle", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.content.short_content,
+              expression: "content.short_content"
+            }
+          ],
+          ref: "short_content",
+          staticClass: "form-control",
+          attrs: {
+            id: "short_content",
+            placeholder: "Enter  short_content",
+            rows: "8"
+          },
+          domProps: { value: _vm.content.short_content },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.content, "short_content", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.content.detail,
+              expression: "content.detail"
+            }
+          ],
+          ref: "detail",
+          staticClass: "form-control",
+          attrs: { id: "detail", placeholder: "Enter  detail", rows: "8" },
+          domProps: { value: _vm.content.detail },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.content, "detail", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.content.video,
+              expression: "content.video"
+            }
+          ],
+          ref: "video",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "video",
+            placeholder: "Enter video link"
+          },
+          domProps: { value: _vm.content.video },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.content, "video", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "custom-file mb-3" }, [
+        _c("input", {
+          ref: "image",
+          staticClass: "custom-file-input",
+          attrs: { type: "file", name: "image", id: "image", required: "" }
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "custom-file-label" }, [
+          _vm._v("Choose image file...")
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal-footer justify-content-center" },
+        [
           _c(
             "router-link",
             {
+              staticClass: "btn btn-white block",
               attrs: {
                 to: {
-                  name: "content_create",
+                  name: "content",
                   params: { sectionId: _vm.sectionId, postId: _vm.postId }
                 }
               }
             },
             [
-              _c(
-                "button",
-                {
-                  staticClass: "p-2 mx-3 float-left btn btn-success",
-                  attrs: { type: "button" }
-                },
-                [_vm._v("\n                NEW ITEM\n            ")]
-              )
+              _c("i", {
+                staticClass: "fa fa-long-arrow-left",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v("\n            Back\n        ")
             ]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: {
-              name: "content",
-              params: { sectionId: _vm.sectionId, postId: _vm.postId }
-            }
-          }
-        },
-        [
+          ),
+          _vm._v(" "),
           _c(
             "button",
             {
-              staticClass: "p-1 mx-3 float-left btn btn-sucess",
-              attrs: { type: "button" }
+              staticClass: "btn btn-primary block",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.update($event)
+                }
+              }
             },
-            [_vm._v("\n            BACK\n        ")]
+            [_vm._v("\n            Update\n        ")]
           )
-        ]
-      ),
-      _vm._v(" "),
-      _c("h2", [_vm._v("Create Content")]),
-      _vm._v(" "),
-      _c("form", [
-        _c(
-          "div",
-          {
-            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-          },
-          [
-            _vm.successful
-              ? _c("span", { staticClass: "label label-sucess" }, [
-                  _vm._v("Published!")
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-          [
-            _vm.errors.subtitle
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.subtitle[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.short_content
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.short_content[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.image
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.image[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.detail
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.detail[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.sub_title[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.icon_image
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.icon_image[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.icon_class
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.icon_class[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.content.title,
-                expression: "content.title"
-              }
-            ],
-            ref: "title",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "title",
-              placeholder: "Enter title",
-              required: ""
-            },
-            domProps: { value: _vm.content.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.content, "title", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.content.subtitle,
-                expression: "content.subtitle"
-              }
-            ],
-            ref: "subtitle",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "subtitle",
-              placeholder: "Enter subtitle",
-              required: ""
-            },
-            domProps: { value: _vm.content.subtitle },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.content, "subtitle", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.content.short_content,
-                expression: "content.short_content"
-              }
-            ],
-            ref: "short_content",
-            staticClass: "form-control",
-            attrs: {
-              id: "short_content",
-              placeholder: "Enter  short_content",
-              rows: "8",
-              required: ""
-            },
-            domProps: { value: _vm.content.short_content },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.content, "short_content", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.content.detail,
-                expression: "content.detail"
-              }
-            ],
-            ref: "detail",
-            staticClass: "form-control",
-            attrs: {
-              id: "detail",
-              placeholder: "Enter  detail",
-              rows: "8",
-              required: ""
-            },
-            domProps: { value: _vm.content.detail },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.content, "detail", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.content.icon_class,
-                expression: "content.icon_class"
-              }
-            ],
-            ref: "icon_class",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "icon_class",
-              placeholder: "Enter class icon",
-              required: ""
-            },
-            domProps: { value: _vm.content.icon_class },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.content, "icon_class", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.content.video,
-                expression: "content.video"
-              }
-            ],
-            ref: "video",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "video",
-              placeholder: "Enter video link",
-              required: ""
-            },
-            domProps: { value: _vm.content.video },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.content, "video", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "custom-file mb-3" }, [
-          _c("input", {
-            ref: "image",
-            staticClass: "custom-file-input",
-            attrs: { type: "file", name: "image", id: "image", required: "" }
-          }),
-          _vm._v(" "),
-          _c("label", { staticClass: "custom-file-label" }, [
-            _vm._v("Choose file...")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "custom-file mb-3" }, [
-          _c("input", {
-            ref: "icon_image",
-            staticClass: "custom-file-input",
-            attrs: {
-              type: "file",
-              name: "icon_image",
-              id: "icon_image",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", { staticClass: "custom-file-label" }, [
-            _vm._v("Choose file...")
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary block",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.update($event)
-              }
-            }
-          },
-          [_vm._v("\n            Submit\n        ")]
-        )
-      ])
-    ],
-    1
-  )
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -52689,7 +52614,7 @@ var staticRenderFns = [
                 "aria-label": "Open Profile Menu"
               }
             },
-            [_c("i", { staticClass: "fa fa-user fa-lg" })]
+            [_c("i", { staticClass: "fa fa-user-o fa-lg" })]
           ),
           _vm._v(" "),
           _c(
@@ -52701,7 +52626,7 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass: "dropdown-item",
-                    attrs: { href: "page-user.html" }
+                    attrs: { href: "javascript:void(0)" }
                   },
                   [
                     _c("i", { staticClass: "fa fa-cog fa-lg" }),
@@ -52715,7 +52640,7 @@ var staticRenderFns = [
                   "a",
                   {
                     staticClass: "dropdown-item",
-                    attrs: { href: "page-user.html" }
+                    attrs: { href: "javascript:void(0)" }
                   },
                   [
                     _c("i", { staticClass: "fa fa-user fa-lg" }),
@@ -52781,10 +52706,6 @@ var render = function() {
         _c("ul", { staticClass: "app-menu" }, [
           _vm._m(1),
           _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
           _c("li", [
             _c(
               "a",
@@ -52799,7 +52720,7 @@ var render = function() {
                 }
               },
               [
-                _c("i", { staticClass: "app-menu__icon fa fa-cogs" }),
+                _c("i", { staticClass: "app-menu__icon fa fa-sign-out" }),
                 _vm._v(" "),
                 _c("span", { staticClass: "app-menu__label" }, [
                   _vm._v("Logout")
@@ -52823,13 +52744,13 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "app-sidebar__user" }, [
-      _c("div", [
+      _c("div", { staticClass: "mx-auto" }, [
         _c("p", { staticClass: "app-sidebar__user-name" }, [
-          _vm._v("John Doe")
+          _vm._v("Admin VNi")
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "app-sidebar__user-designation" }, [
-          _vm._v("\n                    Frontend Developer\n                ")
+          _vm._v("\n                    Administrator\n                ")
         ])
       ])
     ])
@@ -52840,69 +52761,12 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", [
       _c("a", { staticClass: "app-menu__item active", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "app-menu__icon fa fa-dashboard" }),
+        _c("i", {
+          staticClass: "app-menu__icon fa fa-file-text-o",
+          attrs: { "aria-hidden": "true" }
+        }),
         _vm._v(" "),
-        _c("span", { staticClass: "app-menu__label" }, [_vm._v("Dashboard")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "treeview" }, [
-      _c(
-        "a",
-        {
-          staticClass: "app-menu__item",
-          attrs: { href: "#", "data-toggle": "treeview" }
-        },
-        [
-          _c("i", { staticClass: "app-menu__icon fa fa-users" }),
-          _vm._v(" "),
-          _c("span", { staticClass: "app-menu__label" }, [_vm._v("Users")]),
-          _vm._v(" "),
-          _c("i", { staticClass: "treeview-indicator fa fa-angle-right" })
-        ]
-      ),
-      _vm._v(" "),
-      _c("ul", { staticClass: "treeview-menu" }, [
-        _c("li", [
-          _c("a", { staticClass: "treeview-item", attrs: { href: "#" } }, [
-            _c("i", { staticClass: "icon fa fa-circle-o" }),
-            _vm._v(" Admin\n                            Users")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c(
-            "a",
-            {
-              staticClass: "treeview-item",
-              attrs: { href: "#", target: "_blank", rel: "noopener noreferrer" }
-            },
-            [_c("i", { staticClass: "icon fa fa-circle-o" }), _vm._v(" Roles")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { staticClass: "treeview-item", attrs: { href: "#" } }, [
-            _c("i", { staticClass: "icon fa fa-circle-o" }),
-            _vm._v("\n                            Permissions")
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { staticClass: "app-menu__item", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "app-menu__icon fa fa-cogs" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "app-menu__label" }, [_vm._v("Settings")])
+        _c("span", { staticClass: "app-menu__label" }, [_vm._v("Page list")])
       ])
     ])
   }
@@ -53135,23 +52999,34 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c(
-          "button",
-          {
-            staticClass: "mr-1 btn btn-sucess block",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                return _vm.$router.push({ name: "page" })
-              }
-            }
-          },
-          [_vm._v("\n            Back\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary block", attrs: { type: "submit" } },
-          [_vm._v("Submit")]
+          "div",
+          { staticClass: "modal-footer justify-content-center" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "mr-1 btn btn-sucess block",
+                attrs: { to: { name: "page" }, type: "button" }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-long-arrow-left",
+                  attrs: { "aria-hidden": "true" }
+                }),
+                _vm._v("\n                Back\n            ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary block",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("\n                Create\n            ")]
+            )
+          ],
+          1
         )
       ]
     )
@@ -53352,21 +53227,37 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("router-link", { attrs: { to: { name: "page" } } }, [
-          _c(
-            "button",
-            { staticClass: "btn btn-white block", attrs: { type: "button" } },
-            [_vm._v("\n                Back\n            ")]
-          )
-        ]),
-        _vm._v(" "),
         _c(
-          "button",
-          { staticClass: "btn btn-primary block", attrs: { type: "submit" } },
-          [_vm._v("\n            Submit\n        ")]
+          "div",
+          { staticClass: "modal-footer justify-content-center" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "btn btn-white block",
+                attrs: { to: { name: "page" } }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-long-arrow-left",
+                  attrs: { "aria-hidden": "true" }
+                }),
+                _vm._v("\n                Back\n            ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary block",
+                attrs: { type: "submit" }
+              },
+              [_vm._v("\n                Update\n            ")]
+            )
+          ],
+          1
         )
-      ],
-      1
+      ]
     ),
     _vm._v(" "),
     _c("div", { staticStyle: { height: "700px" } }),
@@ -53454,31 +53345,13 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm.msg
-      ? _c(
-          "div",
-          {
-            class: [
-              "form-group m-1 p-3",
-              _vm.msg ? "alert alert-success alert-dismissible fade show" : ""
-            ],
-            attrs: { role: "alert" }
-          },
-          [
-            _c("strong", [_vm._v("Congratulations !!!")]),
-            _vm._v(" " + _vm._s(_vm.msg) + ".\n        "),
-            _vm._m(2)
-          ]
-        )
-      : _vm._e(),
-    _vm._v(" "),
     _c("div"),
     _vm._v(" "),
     _c("div", { staticClass: "col-md-12 px-0" }, [
       _c("div", {}, [
         _c("div", { staticClass: "table-responsive" }, [
           _c("table", { staticClass: "table" }, [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c(
               "tbody",
@@ -53543,6 +53416,7 @@ var render = function() {
                       _c(
                         "router-link",
                         {
+                          staticClass: "btn btn-xs btn-info",
                           attrs: {
                             to: {
                               name: "update",
@@ -53551,25 +53425,17 @@ var render = function() {
                           }
                         },
                         [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "p-1 mr-1 btn btn-info",
-                              attrs: { type: "button" }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                        Update\n                                    "
-                              )
-                            ]
-                          )
+                          _c("i", {
+                            staticClass: "fa fa-pencil mr-0",
+                            attrs: { "aria-hidden": "true" }
+                          })
                         ]
                       ),
                       _vm._v(" "),
                       _c(
                         "button",
                         {
-                          staticClass: "p-1 btn btn-danger",
+                          staticClass: "btn btn-xs btn-danger",
                           attrs: { type: "button" },
                           on: {
                             click: function($event) {
@@ -53578,9 +53444,10 @@ var render = function() {
                           }
                         },
                         [
-                          _vm._v(
-                            "\n                                    Delete\n                                "
-                          )
+                          _c("i", {
+                            staticClass: "fa fa-trash mr-0",
+                            attrs: { "aria-hidden": "true" }
+                          })
                         ]
                       )
                     ],
@@ -53613,23 +53480,6 @@ var staticRenderFns = [
       _c("i", { staticClass: "fa fa-th-list" }),
       _vm._v(" Page list")
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "alert",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
   },
   function() {
     var _vm = this
@@ -53704,124 +53554,133 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "form",
-      [
-        _c(
-          "div",
-          {
-            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
-          },
-          [
-            _vm.successful
-              ? _c("span", { staticClass: "label label-sucess" }, [
-                  _vm._v("Published!")
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-          [
-            _vm.errors.title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.title[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.text
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.text[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.sub_title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.sub_title[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            ref: "title",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "title",
-              placeholder: "Enter name",
-              required: ""
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            ref: "sub_title",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "sub_title",
-              placeholder: "Enter sub title",
-              required: ""
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            ref: "text",
-            staticClass: "form-control",
-            attrs: {
-              id: "text",
-              placeholder: "Enter a body",
-              rows: "6",
-              required: ""
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          {
-            staticClass: "btn btn-white block",
-            attrs: { to: { name: "section", params: { postId: _vm.postId } } }
-          },
-          [_vm._v("\n            Back\n        ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary block",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.create($event)
+    _c("form", [
+      _c(
+        "div",
+        {
+          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+        },
+        [
+          _vm.successful
+            ? _c("span", { staticClass: "label label-sucess" }, [
+                _vm._v("Published!")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.title
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.title[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.text
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.text[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.sub_title
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.sub_title[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "title",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "title",
+            placeholder: "Enter name",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          ref: "sub_title",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "sub_title",
+            placeholder: "Enter sub title",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          ref: "text",
+          staticClass: "form-control",
+          attrs: {
+            id: "text",
+            placeholder: "Enter a body",
+            rows: "6",
+            required: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal-footer justify-content-center" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-white block",
+              attrs: { to: { name: "section", params: { postId: _vm.postId } } }
+            },
+            [
+              _c("i", {
+                staticClass: "fa fa-long-arrow-left",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v("\n                Back\n            ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary block",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.create($event)
+                }
               }
-            }
-          },
-          [_vm._v("\n            Submit\n        ")]
-        )
-      ],
-      1
-    )
+            },
+            [_vm._v("\n                Create\n            ")]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -53912,11 +53771,9 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c("li", { staticClass: "breadcrumb-item text-danger" }, [
-              _vm._v("Page name")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")])
+            _c("li", { staticClass: "breadcrumb-item" }, [
+              _vm._v(_vm._s(_vm.posts.name))
+            ])
           ]),
           _vm._v(" "),
           _vm._m(1)
@@ -54021,11 +53878,13 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          _vm._s(
-                            section.sub_title
-                              ? section.sub_title
-                              : "Updating..."
-                          )
+                          "\n                                " +
+                            _vm._s(
+                              section.sub_title
+                                ? section.sub_title
+                                : "Updating..."
+                            ) +
+                            "\n                            "
                         )
                       ]
                     ),
@@ -54040,7 +53899,11 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          _vm._s(section.text ? section.text : "Updating...")
+                          "\n                                " +
+                            _vm._s(
+                              section.text ? section.text : "Updating..."
+                            ) +
+                            "\n                            "
                         )
                       ]
                     ),
@@ -54064,9 +53927,10 @@ var render = function() {
                             }
                           },
                           [
-                            _vm._v(
-                              "\n                                    Update\n                                "
-                            )
+                            _c("i", {
+                              staticClass: "fa fa-pencil mr-0",
+                              attrs: { "aria-hidden": "true" }
+                            })
                           ]
                         ),
                         _vm._v(" "),
@@ -54082,9 +53946,10 @@ var render = function() {
                             }
                           },
                           [
-                            _vm._v(
-                              "\n                                    Delete\n                                "
-                            )
+                            _c("i", {
+                              staticClass: "fa fa-trash mr-0",
+                              attrs: { "aria-hidden": "true" }
+                            })
                           ]
                         )
                       ],
@@ -54095,7 +53960,29 @@ var render = function() {
               }),
               0
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-footer justify-content-center" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-white block",
+                  attrs: { to: { name: "page" } }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-long-arrow-left",
+                    attrs: { "aria-hidden": "true" }
+                  }),
+                  _vm._v("\n                        Back\n                    ")
+                ]
+              )
+            ],
+            1
+          )
         ])
       ])
     ])
@@ -54196,181 +54083,184 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "form",
-      [
-        _c(
-          "div",
-          {
-            class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+    _c("form", [
+      _c(
+        "div",
+        {
+          class: ["form-group m-1 p-3", _vm.successful ? "alert-success" : ""]
+        },
+        [
+          _vm.successful
+            ? _c("span", { staticClass: "label label-sucess" }, [
+                _vm._v("Published!")
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
+        [
+          _vm.errors.title
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.title[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.text
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.text[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.errors.sub_title
+            ? _c("span", { staticClass: "label label-danger" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.errors.sub_title[0]) +
+                    "\n            "
+                )
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.section.title,
+              expression: "section.title"
+            }
+          ],
+          ref: "title",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "title",
+            placeholder: "Enter name",
+            required: ""
           },
-          [
-            _vm.successful
-              ? _c("span", { staticClass: "label label-sucess" }, [
-                  _vm._v("Published!")
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: ["form-group m-1 p-3", _vm.error ? "alert-danger" : ""] },
-          [
-            _vm.errors.title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.title[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.text
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.text[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.errors.sub_title
-              ? _c("span", { staticClass: "label label-danger" }, [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.errors.sub_title[0]) +
-                      "\n            "
-                  )
-                ])
-              : _vm._e()
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.section.title,
-                expression: "section.title"
+          domProps: { value: _vm.section.title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
-            ],
-            ref: "title",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "title",
-              placeholder: "Enter name",
-              required: ""
-            },
-            domProps: { value: _vm.section.title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.section, "title", $event.target.value)
-              }
+              _vm.$set(_vm.section, "title", $event.target.value)
             }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.section.sub_title,
-                expression: "section.sub_title"
-              }
-            ],
-            ref: "sub_title",
-            staticClass: "form-control",
-            attrs: {
-              type: "title",
-              id: "sub_title",
-              placeholder: "Enter sub title",
-              required: ""
-            },
-            domProps: { value: _vm.section.sub_title },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.section, "sub_title", $event.target.value)
-              }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.section.sub_title,
+              expression: "section.sub_title"
             }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.section.text,
-                expression: "section.text"
-              }
-            ],
-            ref: "text",
-            staticClass: "form-control",
-            attrs: {
-              id: "text",
-              placeholder: "Enter a body",
-              rows: "8",
-              required: ""
-            },
-            domProps: { value: _vm.section.text },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.section, "text", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          { attrs: { to: { name: "section", params: { postId: _vm.id } } } },
-          [
-            _c(
-              "button",
-              {
-                staticClass: "p-1 mx-3 float-left btn btn-sucess",
-                attrs: { type: "button" }
-              },
-              [_vm._v("\n                Back\n            ")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary block",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.update($event)
-              }
-            }
+          ],
+          ref: "sub_title",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "sub_title",
+            placeholder: "Enter sub title",
+            required: ""
           },
-          [_vm._v("\n            Update\n        ")]
-        )
-      ],
-      1
-    )
+          domProps: { value: _vm.section.sub_title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.section, "sub_title", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.section.text,
+              expression: "section.text"
+            }
+          ],
+          ref: "text",
+          staticClass: "form-control",
+          attrs: {
+            id: "text",
+            placeholder: "Enter a body",
+            rows: "8",
+            required: ""
+          },
+          domProps: { value: _vm.section.text },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.section, "text", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal-footer justify-content-center" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-white block",
+              attrs: { to: { name: "section", params: { postId: _vm.id } } }
+            },
+            [
+              _c("i", {
+                staticClass: "fa fa-long-arrow-left",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v("\n                Back\n            ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary block",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.update($event)
+                }
+              }
+            },
+            [_vm._v("\n                Update\n            ")]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = [

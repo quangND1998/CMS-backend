@@ -5,21 +5,24 @@
         <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
         <aside class="app-sidebar">
             <div class="app-sidebar__user">
-                <div>
-                    <p class="app-sidebar__user-name">John Doe</p>
+                <div class="mx-auto">
+                    <p class="app-sidebar__user-name">Admin VNi</p>
                     <p class="app-sidebar__user-designation">
-                        Frontend Developer
+                        Administrator
                     </p>
                 </div>
             </div>
             <ul class="app-menu">
                 <li>
-                    <a class="app-menu__item active" href="#"
-                        ><i class="app-menu__icon fa fa-dashboard"></i>
-                        <span class="app-menu__label">Dashboard</span>
+                    <a class="app-menu__item active" href="#">
+                        <i
+                            class="app-menu__icon fa fa-file-text-o"
+                            aria-hidden="true"
+                        ></i>
+                        <span class="app-menu__label">Page list</span>
                     </a>
                 </li>
-                <li class="treeview">
+                <!-- <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"
                         ><i class="app-menu__icon fa fa-users"></i>
                         <span class="app-menu__label">Users</span>
@@ -48,16 +51,16 @@
                             >
                         </li>
                     </ul>
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                     <a class="app-menu__item" href="#"
                         ><i class="app-menu__icon fa fa-cogs"></i>
                         <span class="app-menu__label">Settings</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a class="app-menu__item" href="#" @click.prevent="logout"
-                        ><i class="app-menu__icon fa fa-cogs"></i>
+                        ><i class="app-menu__icon fa fa-sign-out"></i>
                         <span class="app-menu__label">Logout</span>
                     </a>
                 </li>

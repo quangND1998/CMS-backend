@@ -22,6 +22,7 @@ import IndexCateComponent from '../components/sectioncatergory/Item/IndexCateCom
 import CreateCateContentComponent from '../components/sectioncatergory/Item/CreateCateContentComponent';
 import UpdateCateContentComponent from '../components/sectioncatergory/Item/UpdateCateContentComponent'
 Vue.use(Router)
+
 export default new Router({
     mode: "history",
 

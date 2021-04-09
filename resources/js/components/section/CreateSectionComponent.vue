@@ -54,7 +54,6 @@
                 />
             </div>
 
-
             <div class="form-group">
                 <input
                     type="title"
@@ -77,16 +76,22 @@
                 ></textarea>
             </div>
 
-            <router-link :to="{ name: 'section', params: { postId: postId } }" class="btn btn-white block">
-                Back
-            </router-link>
-            <button
-                type="submit"
-                @click.prevent="create"
-                class="btn btn-primary block"
-            >
-                Submit
-            </button>
+            <div class="modal-footer justify-content-center">
+                <router-link
+                    :to="{ name: 'section', params: { postId: postId } }"
+                    class="btn btn-white block"
+                >
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    Back
+                </router-link>
+                <button
+                    type="submit"
+                    @click.prevent="create"
+                    class="btn btn-primary block"
+                >
+                    Create
+                </button>
+            </div>
         </form>
     </div>
 </template>

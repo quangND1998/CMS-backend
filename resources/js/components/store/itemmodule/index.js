@@ -7,23 +7,23 @@ import {  FETCH_END ,RESET_STATE} from '../muntation/page'
 import jwtToken from '../../../common/token';
 import ApiService from '../../../common/api.service'
 const initialState = {
-  contents: [],
+    contents: [],
 
     content: {
-        title:"",
+        title: "",
         video: "",
         image: {},
         subtitle: "",
         short_content: "",
         detail: "",
         icon_image: {},
-        icon_class:""
-    
-  }
+        icon_class: ""
+
+    }
 
 };
 
-export const state = { ...initialState };
+export const state = {...initialState };
 
 
 export const actions = {
@@ -107,8 +107,8 @@ export const actions = {
 }
 export const mutations = {
 
-    [FETCH_END](state, { data }  ) {
-    // console.log('FETCH_END',data)
+    [FETCH_END](state, { data }) {
+        // console.log('FETCH_END',data)
         state.contents = data;
       
    
@@ -135,19 +135,19 @@ export const mutations = {
 };
 
 const getters = {
-  contents(state) {
-    return state.contents;
-  },
-  content(state) {
-    return state.content;
-  }
+    contents(state) {
+        return state.contents;
+    },
+    content(state) {
+        return state.content;
+    }
 
 };
 
 
 export default {
-  state,
-  actions,
-  mutations,
-  getters
+    state,
+    actions,
+    mutations,
+    getters
 };

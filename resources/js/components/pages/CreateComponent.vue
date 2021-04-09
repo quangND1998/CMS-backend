@@ -78,14 +78,19 @@
                 <label class="custom-file-label">Choose file...</label>
             </div>
 
-            <button
-                @click="$router.push({ name: 'page' })"
-                type="button"
-                class="mr-1 btn btn-sucess block"
-            >
-                Back
-            </button>
-            <button type="submit" class="btn btn-primary block">Submit</button>
+            <div class="modal-footer justify-content-center">
+                <router-link
+                    :to="{ name: 'page' }"
+                    type="button"
+                    class="mr-1 btn btn-sucess block"
+                >
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    Back
+                </router-link>
+                <button type="submit" class="btn btn-primary block">
+                    Create
+                </button>
+            </div>
         </form>
     </div>
 </template>

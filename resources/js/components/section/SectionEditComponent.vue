@@ -82,21 +82,22 @@
                 ></textarea>
             </div>
 
-            <router-link :to="{ name: 'section', params: { postId: id } }">
-                <button
-                    type="button"
-                    class="p-1 mx-3 float-left btn btn-sucess"
+            <div class="modal-footer justify-content-center">
+                <router-link
+                    :to="{ name: 'section', params: { postId: id } }"
+                    class="btn btn-white block"
                 >
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
+                </router-link>
+                <button
+                    type="submit"
+                    @click.prevent="update"
+                    class="btn btn-primary block"
+                >
+                    Update
                 </button>
-            </router-link>
-            <button
-                type="submit"
-                @click.prevent="update"
-                class="btn btn-primary block"
-            >
-                Update
-            </button>
+            </div>
         </form>
     </div>
 </template>
