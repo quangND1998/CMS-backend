@@ -89,10 +89,11 @@ return [
 
     '3D-contents' => [
         'title' => '3D CONTENTS',
-        'des' => '3D Videos, Perpective and Tour 360 for Digital transformation',
+        'des' => '3D Videos, Perpective, Tour 360 and 3D scan for Digital transformation',
         'tab1' => '3D Videos',
         'tab2' => 'Perspective Images',
-        'tab3' => 'Tour 360'
+        'tab3' => 'Tour 360',
+        'tab4' => '3D scan',
     ],
 
     'our-mission' => [

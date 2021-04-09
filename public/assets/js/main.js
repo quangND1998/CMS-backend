@@ -29,6 +29,13 @@
                             <img src="https://vni.pro.vn/True360/${project.thumbnail}" alt="Project Image">
                         </div>
                         <div class="project-content">
+                        <div class="post-meta m-0">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
+                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                            </ul>
+                        </div>
                             <h3 class="title">${project.title}</h3>
                         </div>
                     </a>

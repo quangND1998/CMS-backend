@@ -7,15 +7,22 @@ import { FETCH_ID_SECTION } from '../muntation/section';
 import {  FETCH_END ,RESET_STATE} from '../muntation/page'
 import jwtToken from '../../../common/token'
 import ApiService from '../../../common/api.service'
+
 const initialState = {
   sections: [],
 
   section: {
     title: "",
     text: "",
-    sub_title:""
+    sub_title: "",
+    template:"",
     
-  }
+  },
+  options: [
+      { text: 'styles.template1' },
+      { text: 'styles.template2'},
+      { text: 'styles.template3' }
+  ]
 
 };
 
@@ -95,6 +102,9 @@ const getters = {
   },
   section(state) {
     return state.section;
+  },
+  options(state) {
+    return state.options
   }
 
 };

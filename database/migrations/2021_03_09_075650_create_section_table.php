@@ -18,6 +18,7 @@ class CreateSectionTable extends Migration
             $table->string('title');
             $table->text('text')->nullable();
             $table->string('sub_title')->nullable();
+            $table->string('template');
             $table->unsignedInteger('page_id')->unsigned()->nullable();
             $table->foreign('page_id')->references('id')->on('page')->onDelete('cascade');
             $table->timestamps();

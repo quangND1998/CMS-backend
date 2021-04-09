@@ -3793,6 +3793,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3830,7 +3838,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     }))();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["section", "sections"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["section", "sections", "options"])),
   methods: {
     create: function create() {
       var _this = this;
@@ -3916,6 +3924,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6798,8 +6819,16 @@ var initialState = {
   section: {
     title: "",
     text: "",
-    sub_title: ""
-  }
+    sub_title: "",
+    template: ""
+  },
+  options: [{
+    text: 'styles.template1'
+  }, {
+    text: 'styles.template2'
+  }, {
+    text: 'styles.template3'
+  }]
 };
 var state = _objectSpread({}, initialState);
 var actions = (_actions = {}, _defineProperty(_actions, _actions_section__WEBPACK_IMPORTED_MODULE_1__.FETCH_SECTION, function (_ref, slug) {
@@ -6859,6 +6888,9 @@ var getters = {
   },
   section: function section(state) {
     return state.section;
+  },
+  options: function options(state) {
+    return state.options;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -53643,6 +53675,51 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+          _vm._v("Example select")
+        ]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.section.template,
+                expression: "section.template"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { id: "exampleFormControlSelect1" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.section,
+                  "template",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.options, function(option) {
+            return _c("option", { key: option.index }, [
+              _vm._v(_vm._s(option.text))
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "modal-footer justify-content-center" },
@@ -53909,6 +53986,27 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "td",
+                      {
+                        class: [
+                          section.template ? "" : "text-success",
+                          "align-middle"
+                        ]
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(
+                              section.template
+                                ? section.template
+                                : "Updating..."
+                            ) +
+                            "\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
                       { staticClass: "align-middle" },
                       [
                         _c(
@@ -54018,6 +54116,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Sub-title")]),
         _vm._v(" "),
         _c("th", [_vm._v("Description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Template")]),
         _vm._v(" "),
         _c("th", [_vm._v("#")])
       ])

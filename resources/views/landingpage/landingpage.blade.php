@@ -44,7 +44,8 @@
             <video src="assets/video/header-video.mp4" loop muted autoplay>
             </video>
         </div>
-
+        {{-- <div class="overlay-hd">
+        </div> --}}
         <header class="header">
             <nav class="navbar navbar-expand-lg navbar-sticky">
                 <div class="container">
@@ -86,11 +87,22 @@
             <section id="home" class="parallax-fixed main-banner bg-videos video-placeholder">
                 <div class="container">
                     <div class="">
-                        <div class="wow zoomIn bottom-center">
+                        <div class="wow zoomIn bottom-center" style="width: fit-content">
                             <h1 class="text-white strong text-uppercase text-center" data-wow-duration=".2s"
                                 data-wow-delay=".1s">{{ trans('home.caption') }}</h1>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
         </header>
     </div>
+    <!-- End Section App Feature -->
+
+
+    <!-- PARTNER -->
     <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true"
         class="vc_row wpb_row vc_row-fluid vc_custom_1557304191682 vc_row-has-fill vc_row-no-padding">
         <div class="wpb_column vc_column_container vc_col-sm-12">
@@ -155,32 +167,16 @@
             </div>
         </div>
     </div>
-    <!-- LOGIN FORM -->
-    {{-- <div class="wrap-login-form">
-        <div class="login-form">
-            <div class="form__logo">
-                <img src="https://vni.pro.vn/assets/images/vni/faicon.png" alt="">
-            </div>
-            <form class="mt-5">
-                <span>&times;</span>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                        placeholder="Enter your password">
-                </div>
-                <button type="submit" class="btn">Login</button>
-            </form>
-        </div>
-    </div> --}}
+    <!-- PARTNER -->
+
     <!-- LOGIN FORM -->
 
 
-    <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
-    <section id="vr-showroom">
+    @foreach ($data->section as $section)
+        <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
+
+        @include($section->template)
+        {{-- <section id="vr-showroom">
         <div class="container">
             <div class="row">
                 <div class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp" data-wow-duration=".2s"
@@ -202,8 +198,7 @@
                 <div id="product-demo" class="tabcontent tabcontent1 main">
                     <div class="project">
                         <div class="row grid" id="project-list">
-
-
+                          
                         </div>
                     </div>
                 </div>
@@ -244,9 +239,10 @@
             </div>
         </div>
         </div>
-    </section>
-    <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
+    </section> --}}
+        <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
 
+    @endforeach
     <!-- Section Features -->
     <section id="solution">
         <div class="container">
@@ -306,7 +302,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
     </section>
@@ -379,9 +374,11 @@
                             onclick="showContentTab(event, 'perspective-image')">{{ trans('home.3D-contents.tab2') }}</button>
                         <button class="tablinks tablinks2"
                             onclick="showContentTab(event, 'tour360')">{{ trans('home.3D-contents.tab3') }}</button>
+                        <button class="tablinks tablinks2"
+                            onclick="showContentTab(event, '3d-scanning')">{{ trans('home.3D-contents.tab4') }}</button>
                     </div>
                     <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
-                        {{ trans('home.project-sample.tab1_des') }}
+                        {{ trans('home.3D-contents.des') }}
                     </p>
                 </div>
             </div>
@@ -571,6 +568,75 @@
                         </div>
                     </section>
                 </div>
+
+                <div id="3d-scanning" class="tabcontent tabcontent2">
+                    <section class="customer">
+                        <div class="container ">
+                            <div class="app-screenshots center-align owl-carousel owl-theme row">
+                                <div class="item fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                    <div class="post-block">
+                                        <img id="4" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/1.PNG" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1760</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>25</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2287</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Sol River - Two bedroom</h6>
+                                    </div>
+                                </div>
+                                <div class="item fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
+                                    <div class="post-block">
+                                        <img id="5" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/2.png" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1673</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2325</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Shophouse - Three bedroom</h6>
+                                    </div>
+                                </div>
+                                <div class="item fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
+                                    <div class="post-block">
+                                        <img id="6" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/3.png" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1746</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>22</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2534</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Dragan - Tầng 23 - Căn E</h6>
+                                    </div>
+                                </div>
+                                <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                    <div class="post-block">
+                                        <img id="7" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/4.png" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Bien Hoa Universe Complex - Three bedroom</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+
+
             </div>
 
         </div>
@@ -644,10 +710,10 @@
         <div class="w3-content w3-display-container">
             <button onclick="closeImage()" class="w3-button w3-black w3-display-close">&#10006;</button>
 
-            <img class="mySlides" src="assets/images/project/1.png" style="width:100%">
-            <img class="mySlides" src="assets/images/project/2.jpg" style="width:100%">
-            <img class="mySlides" src="assets/images/project/3.jpg" style="width:100%">
-            <img class="mySlides" src="assets/images/project/4.png" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/1.jpg" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/2.jpg" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/3.jpg" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/4.jpg" style="width:100%">
 
             <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
             <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
@@ -695,48 +761,8 @@
         </div>
 
     </div>
-    {{-- <section id="app">
-        <landing-component>
 
-        </landing-component>
-    </section> --}}
 
-    @include('landingpage.footer')
-
-    <div style="text-align: left;" id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-login">
-
-            <!-- Modal content-->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Đăng nhập</h4>
-                </div>
-                <div class="panel-body">
-
-                    <form action="dang-nhap" method="POST">
-                        {{ csrf_field() }}
-                        <div>
-                            <label>Email</label>
-                            <input type="email" class="form-control input" placeholder="Địa Chỉ Email" name="email">
-                        </div>
-                        <br>
-                        <div>
-                            <label>Mật khẩu</label>
-                            <input type="password" class="form-control" placeholder="Mật Khẩu" name="password">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Đăng nhập
-                            </button>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 3em;">
-                            <a href="">Quên Mật Khẩu?</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 

@@ -37,6 +37,7 @@ class SectionController extends Controller
 
         $this->validate($request, [
             'title' => 'required|unique:section',
+            'template' => 'required',
         ]);
         // $validator = Validator::make($request->all(), [
         //     'title' => 'required|unique:section',
@@ -56,6 +57,7 @@ class SectionController extends Controller
             $section->title = $request->title;
             $section->text = $request->text;
             $section->sub_title = $request->sub_title;
+            $section->template = $request->template;
             $section->page_id = $page->id;
             $section->save();
         }
@@ -109,7 +111,7 @@ class SectionController extends Controller
 
         if ($section->section_category != null) {
             foreach ($section->section_category as $category) {
-       
+
                 foreach ($category->contents as $content) {
                     $this->DeleteFolder($content->image, $extension);
                     $this->DeleteFolder($content->icon_image, $extension);

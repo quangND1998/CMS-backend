@@ -75,6 +75,14 @@
                     required
                 ></textarea>
             </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select class="form-control" id="exampleFormControlSelect1" v-model="section.template">
+                <option v-for="option in options" :key="option.index" >{{option.text}}</option>
+            
+         
+            </select>
+              </div>
 
             <div class="modal-footer justify-content-center">
                 <router-link
@@ -121,13 +129,14 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["section", "sections"])
+        ...mapGetters(["section", "sections","options"])
     },
     methods: {
         create() {
             this.section.title = this.$refs.title.value;
             this.section.text = this.$refs.text.value;
             this.section.sub_title = this.$refs.sub_title.value;
+    
             this.$store.dispatch(CREATE_SECTION, this.postId)
             .then(response => {
                         this.successful = true;
@@ -140,6 +149,7 @@ export default {
 
                     })
                     .catch(error => {
+                
                         if (!_.isEmpty(error.response)) {
                         if ((error.response.status == 422)) {
                             this.errors = error.response.data.errors;

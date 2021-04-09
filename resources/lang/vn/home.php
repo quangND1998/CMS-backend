@@ -95,10 +95,11 @@ return [
 
     '3D-contents' => [
         'title' => 'NỘI DUNG 3D TÍCH HỢP',
-        'des' => 'Phim, Ảnh, Tour 360 sử dụng trên mọi nền tảng số',
+        'des' => 'Phim, Ảnh, Tour 360 và 3D scan sử dụng trên mọi nền tảng số',
         'tab1' => '3D Videos',
         'tab2' => 'Ảnh phối cảnh',
-        'tab3' => 'Tour 360'
+        'tab3' => 'Tour 360',
+        'tab4' => '3D scan',
     ],
 
     'errors' => [

@@ -45,6 +45,7 @@
                                 <th>Name</th>
                                 <th>Sub-title</th>
                                 <th>Description</th>
+                                <th>Template</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -95,6 +96,18 @@
                                     {{
                                         section.text
                                             ? section.text
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                     <td
+                                    :class="[
+                                        section.template ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        section.template
+                                            ? section.template
                                             : "Updating..."
                                     }}
                                 </td>
