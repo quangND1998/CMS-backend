@@ -1382,13 +1382,13 @@ Banners styles
 .project-content {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 0.6rem 1rem;
     width: 100%;
     box-shadow: 0 1px 3px #0000001f, 0 1px 3px #0000003d;
 }
 
 .project-content .title {
-    text-align: center;
+    /* text-align: center; */
     font-size: 1rem;
     font-weight: 600;
     line-height: inherit;
@@ -2134,11 +2134,39 @@ Footer style
     .btn-login {
         display: block !important;
     }
+    .video {
+        margin-top: 95px;
+        height: 50vh;
+    }
+    .video video {
+        object-fit: cover;
+    }
+    .bg-videos {
+        height: 65vh;
+    }
 }
 
 @media (max-width: 768px) {
     .login-form {
         width: 90% !important;
+    }
+    .bg-videos {
+        height: 65vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .video {
+        height: 40vh;
+    }
+    .video video {
+        object-fit: fill;
+    }
+    .bg-videos {
+        height: 56vh;
+    }
+    .owl-carousel.row .owl-item {
+        padding: 0 40px !important;
     }
 }
 
@@ -2296,4 +2324,8 @@ Animation
     cursor: pointer;
     color: #000;
     font-weight: 500;
+}
+
+font-weight: 500;
+
 }

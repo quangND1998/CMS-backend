@@ -44,7 +44,8 @@
             <video src="assets/video/header-video.mp4" loop muted autoplay>
             </video>
         </div>
-
+        {{-- <div class="overlay-hd">
+        </div> --}}
         <header class="header">
             <nav class="navbar navbar-expand-lg navbar-sticky">
                 <div class="container">
@@ -72,7 +73,7 @@
                         </ul>
                         {{-- <a href="{{ url('#contact') }}"
                             class="btn btn-light btn-rounded d-none d-lg-block">{{ trans('home.contact') }}</a> --}}
-                        <a href="{{ url('admin/login') }}" target="_blank"
+                        <a href="javascript:void(0)"
                             class="btn btn-light btn-rounded d-none d-lg-block btn-login">{{ trans('home.login') }}</a>
                         <li class=" navbar-nav nav-item-left flat">
                             <a class="flat_icon" href="{{ url(Request::getPathInfo() . '?lang=en') }}"><img
@@ -86,11 +87,19 @@
             <section id="home" class="parallax-fixed main-banner bg-videos video-placeholder">
                 <div class="container">
                     <div class="">
-                        <div class="wow zoomIn bottom-center">
+                        <div class="wow zoomIn bottom-center" style="width: fit-content">
                             <h1 class="text-white strong text-uppercase text-center" data-wow-duration=".2s"
                                 data-wow-delay=".1s">{{ trans('home.caption') }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </header>
     </div>
+    <!-- End Section App Feature -->
+
+
+    <!-- PARTNER -->
     <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true"
         class="vc_row wpb_row vc_row-fluid vc_custom_1557304191682 vc_row-has-fill vc_row-no-padding">
         <div class="wpb_column vc_column_container vc_col-sm-12">
@@ -155,29 +164,7 @@
             </div>
         </div>
     </div>
-    <!-- LOGIN FORM -->
-    {{-- <div class="wrap-login-form">
-        <div class="login-form">
-            <div class="form__logo">
-                <img src="https://vni.pro.vn/assets/images/vni/faicon.png" alt="">
-            </div>
-            <form class="mt-5">
-                <span>&times;</span>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                        placeholder="Enter your password">
-                </div>
-                <button type="submit" class="btn">Login</button>
-            </form>
-        </div>
-    </div> --}}
-    <!-- LOGIN FORM -->
-
+    <!-- PARTNER -->
 
     <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
     <section id="vr-showroom">
@@ -185,16 +172,26 @@
             <div class="row">
                 <div class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp" data-wow-duration=".2s"
                     data-wow-delay=".1s">
-                    <h2 class="heading">{{ trans('home.vr-showroom.title') }}</h2>
+                    {{-- <h2 class="heading">{{ trans('home.vr-showroom.title') }}</h2> --}}
+                    <h2 class="heading"> {{ $data[0]['section'][0]['title'] }}</h2>
 
                     <div class="tab">
-                        <button class="tablinks tablinks1 active" id="defaultOpen"
+                        {{-- <button class="tablinks tablinks1 active" id="defaultOpen"
                             onclick="openCity(event, 'product-demo')">{{ trans('home.vr-showroom.tab-1') }}</button>
                         <button class="tablinks tablinks1"
-                            onclick="openCity(event, 'user-manual')">{{ trans('home.vr-showroom.tab-2') }}</button>
+                            onclick="openCity(event, 'users-manual')">{{ trans('home.vr-showroom.tab-2') }}</button> --}}
+                        @foreach ($data[0]['section'][0]['section_category'] as $tab_item)
+                            @if($loop->first)
+                                <button class="tablinks tablinks1 active" id="defaultOpen"
+                                    onclick="openCity(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
+                            @else
+                                <button class="tablinks tablinks1"
+                                        onclick="openCity(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
+                            @endif
+                        @endforeach
                     </div>
                     <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
-                        {{ trans('home.vr-showroom.sub-title') }}
+                        {{ $data[0]['section'][0]['sub_title'] }}
                     </p>
                 </div>
             </div>
@@ -202,18 +199,21 @@
                 <div id="product-demo" class="tabcontent tabcontent1 main">
                     <div class="project">
                         <div class="row grid" id="project-list">
-
-
                         </div>
+                    </div>
+                    <div class="btn-tab-info col-lg-12 align-items-center text-center" data-wow-duration=".3s"
+                        data-wow-delay=".2s">
+                        <a href="javascript:void(0)" id="load-more"
+                            class="btn btn-cta btn-lg btn-rounded">{{ trans('home.see-more') }}</a>
                     </div>
                 </div>
             </div>
 
-            <div id="user-manual" class="tabcontent tabcontent1">
+            <div id="users-manual" class="tabcontent tabcontent1">
                 <section class="customer">
                     <div class="container ">
                         <div class="app-screenshots center-align owl-carousel owl-theme row">
-                            <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                            {{-- <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
                                 <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
                                     src="https://www.youtube.com/embed/0aSNM-w4P80"></iframe>
                                 <h6 class="text-center mb-3 mt-3">Tổng quan</h6>
@@ -227,22 +227,29 @@
                                 <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
                                     src="https://www.youtube.com/embed/zIHB9pq4vZQ"></iframe>
                                 <h6 class="text-center mb-3 mt-3"><a>Nội thất</a></h6>
-                            </div>
+                            </div> --}}
+                            @foreach ($data[0]['section'][0]['section_category'][1]['contents'] as $item)
+                                <div class="item wow fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
+                                    <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
+                                        src="{{ $item->video }}"></iframe>
+                                    <h6 class="text-center mb-3 mt-3"><a>{{ $item->title }}</a></h6>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </section>
             </div>
 
         </div>
-        <div class="btn-tab-info col-lg-12 align-items-center">
-            <div class="col-xl-5 col-lg-10 col-md-12 ml-md-auto mr-md-auto text-white wow zoomIn"
-                data-wow-duration=".3s" data-wow-delay=".2s">
+        {{-- <div class="btn-tab-info col-lg-12 align-items-center">
+            <div class="col-xl-5 col-lg-10 col-md-12 ml-md-auto mr-md-auto text-white wow zoomIn" data-wow-duration=".3s"
+                data-wow-delay=".2s">
                 <div class="text-center btn-tuvan ">
                     <a href="javascript:void(0)" id="load-more"
                         class="btn btn-cta btn-lg btn-rounded">{{ trans('home.see-more') }}</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         </div>
     </section>
     <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
@@ -253,12 +260,12 @@
             <div class="row">
                 <div class="col-lg-10 ml-auto mr-auto text-center topsection_margin wow fadeInUp"
                     data-wow-duration=".2s" data-wow-delay=".1s">
-                    <h2 class="heading">{{ trans('home.solution.title') }}</h2>
-                    <p>{{ trans('home.solution.des') }}</p>
+                    <h2 class="heading">{{ $data[0]['section'][1]['title'] }}</h2>
+                    <p>{{ $data[0]['section'][1]['sub_title'] }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".2s"
+                {{-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".2s"
                     data-wow-delay=".1s">
                     <div class=" mb-md-5 mb-sm-4">
                         <img src="assets/images/icon/money.svg">
@@ -304,10 +311,17 @@
                         <img src="assets/images/icon/settings.svg">
                         <h5>{{ trans('home.solution.s6') }}</h5>
                     </div>
-                </div>
+                </div> --}}
+                @foreach ($data[0]['section'][1]['contents'] as $solution)
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".5s"
+                    data-wow-delay=".3s">
+                        <div class=" mb-md-5 mb-sm-4">
+                            <img src="{{ $solution->image }}">
+                            <h5>{{ $solution->title }}</h5>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
-
         </div>
     </section>
 
@@ -316,8 +330,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 ml-auto mr-auto topsection_margin text-center">
-                    <h2 class="heading">{{ trans('home.process.title') }}</h2>
-                    <p>{{ trans('home.process.des') }}
+                    <h2 class="heading">{{ $data[0]['section'][2]['title'] }}</h2>
+                    <p>{{ $data[0]['section'][2]['sub_title'] }}
                     </p>
                 </div>
             </div>
@@ -373,24 +387,36 @@
                     <h2 class="heading">{{ trans('home.3D-contents.title') }}</h2>
 
                     <div class="tab">
-                        <button class="tablinks tablinks2 active" id="defaultOpen1"
-                            onclick="showContentTab(event, '3D-videos')">{{ trans('home.3D-contents.tab1') }}</button>
+                        {{-- <button class="tablinks tablinks2 active" id="defaultOpen1"
+                            onclick="showContentTab(event, '3d-videos')">{{ trans('home.3D-contents.tab1') }}</button>
                         <button class="tablinks tablinks2"
                             onclick="showContentTab(event, 'perspective-image')">{{ trans('home.3D-contents.tab2') }}</button>
                         <button class="tablinks tablinks2"
-                            onclick="showContentTab(event, 'tour360')">{{ trans('home.3D-contents.tab3') }}</button>
+                            onclick="showContentTab(event, 'tour-360')">{{ trans('home.3D-contents.tab3') }}</button>
+                        <button class="tablinks tablinks2"
+                            onclick="showContentTab(event, '3d-scan')">{{ trans('home.3D-contents.tab4') }}</button> --}}
+                            @foreach ($data[0]['section'][3]['section_category'] as $tab_item)
+                                @if($loop->first)
+                                <button class="tablinks tablinks2 active" id="defaultOpen1"
+                                    onclick="showContentTab(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
+                                @else
+                                    <button class="tablinks tablinks2"
+                                            onclick="showContentTab(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
+                                @endif
+                            @endforeach
                     </div>
                     <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
-                        {{ trans('home.project-sample.tab1_des') }}
+                       {{ $data[0]['section'][3]['sub_title'] }}
                     </p>
                 </div>
             </div>
             <div class="row">
-                <div id="3D-videos" class="tabcontent tabcontent2">
+
+                <div id="3d-videos" class="tabcontent tabcontent2">
                     <section class="customer">
                         <div class="container ">
                             <div class="app-screenshots center-align owl-carousel owl-theme row">
-                                <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s"
+                                {{-- <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s"
                                     data-wow-delay=".1s">
                                     <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
                                         src="https://www.youtube.com/embed/Bf0jXixd950"></iframe>
@@ -442,17 +468,33 @@
                                         </ul>
                                     </div>
                                     <h6 class="px-3 py-1 my-0"><a>Sun Grand City Hillside Residences</a></h6>
-                                </div>
+                                </div> --}}
+                                @foreach ($data[0]['section'][3]['section_category'][0]['contents'] as $item)
+                                    <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s"
+                                        data-wow-delay=".1s">
+                                        <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
+                                            src="{{$item->video}}"></iframe>
+
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1147</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>24</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>4211</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">{{$item->title}}</h6>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </section>
                 </div>
 
-                <div id="perspective-image" class="tabcontent tabcontent2">
+                <div id="perspective-images" class="tabcontent tabcontent2">
                     <section class="customer">
                         <div class="container ">
                             <div class="app-screenshots center-align owl-carousel owl-theme row">
-                                <div class="item ml-auto mr-auto fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                {{-- <div class="item ml-auto mr-auto fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
                                     <img id="0" onclick="openImage(this.id)" class=" w-100"
                                         src="assets/images/vni/congtrinh/1.jpg" alt="" />
                                     <div class="post-meta m-0 px-3 py-2">
@@ -499,17 +541,31 @@
                                         </ul>
                                     </div>
                                     <h6 class="px-3 py-1 my-0">Interior Images</h6>
-                                </div>
+                                </div> --}}
+                                @foreach ($data[0]['section'][3]['section_category'][1]['contents'] as $item)
+                                    <div class="item fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
+                                        <img id="2" onclick="openImage(this.id)" class=" w-100"
+                                            src="{{ $item->image }}" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1013</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>18</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1625</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </section>
                 </div>
 
-                <div id="tour360" class="tabcontent tabcontent2">
+                <div id="tour-360" class="tabcontent tabcontent2">
                     <section class="customer">
                         <div class="container ">
                             <div class="app-screenshots center-align owl-carousel owl-theme row">
-                                <div class="item fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                {{-- <div class="item fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
                                     <div class="post-block">
                                         <img id="0" onclick="openTour360(this.id)" class=" w-100"
                                             src="assets/images/vni/thumb/sun_village.PNG" alt="" />
@@ -564,21 +620,123 @@
                                         </div>
                                         <h6 class="px-3 py-1 my-0">Aria Đà Nẵng</h6>
                                     </div>
-                                </div>
-
+                                </div> --}}
+                                @foreach ($data[0]['section'][3]['section_category'][2]['contents'] as $item)
+                                    <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                        <div class="post-block">
+                                            <img id="3" onclick="openTour360(this.id)" class=" w-100"
+                                                src="{{$item->image}}" alt="" />
+                                            <div class="post-meta m-0 px-3 py-2">
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                                                </ul>
+                                            </div>
+                                            <h6 class="px-3 py-1 my-0">{{$item->title}}</h6>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
+                        </div>
+                    </section>
+                </div>
 
+                <div id="3d-scan" class="tabcontent tabcontent2">
+                    <section class="customer">
+                        <div class="container ">
+                            <div class="app-screenshots center-align owl-carousel owl-theme row">
+                                {{-- <div class="item fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                    <div class="post-block">
+                                        <img id="4" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/1.PNG" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1760</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>25</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2287</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Sol River - Two bedroom</h6>
+                                    </div>
+                                </div>
+                                <div class="item fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
+                                    <div class="post-block">
+                                        <img id="5" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/2.PNG" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1673</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2325</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Shophouse - Three bedroom</h6>
+                                    </div>
+                                </div>
+                                <div class="item fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
+                                    <div class="post-block">
+                                        <img id="6" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/3.PNG" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1746</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>22</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2534</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Dragan - Tầng 23 - Căn E</h6>
+                                    </div>
+                                </div>
+                                <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                    <div class="post-block">
+                                        <img id="7" onclick="openTour360(this.id)" class=" w-100"
+                                            src="assets/images/vni/thumb/3d-scan/4.PNG" alt="" />
+                                        <div class="post-meta m-0 px-3 py-2">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="px-3 py-1 my-0">Bien Hoa Universe Complex - Three bedroom</h6>
+                                    </div>
+                                </div> --}}
+                                @foreach ($data[0]['section'][3]['section_category'][3]['contents'] as $item)
+                                    <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
+                                        <div class="post-block">
+                                            <img id="7" onclick="openTour360(this.id)" class=" w-100"
+                                                src="{{ $item->image }}" alt="" />
+                                            <div class="post-meta m-0 px-3 py-2">
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                                                </ul>
+                                            </div>
+                                            <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </section>
                 </div>
             </div>
-
+            {{-- <div class="btn-tab-info col-lg-12 align-items-center">
+                <div class="col-xl-5 col-lg-10 col-md-12 ml-md-auto mr-md-auto text-white wow zoomIn"
+                    data-wow-duration=".3s" data-wow-delay=".2s">
+                    <div class="text-center btn-tuvan ">
+                        <a href="#contact" class="btn btn-cta btn-lg btn-rounded">{{ trans('home.contact_2') }}</a>
+                    </div>
+                </div>
+            </div> --}}
         </div>
     </section>
     <!-- 3D CONTENT -->
 
-
-    <section id="blogs news">
+    <!-- NEWS -->
+    {{-- <section id="blogs news">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 ml-auto mr-auto text-center">
@@ -587,7 +745,7 @@
                 </div>
             </div>
             <div class="blog-slider center-align owl-carousel owl-theme">
-                {{-- @foreach ($data['theloai'] as $theloai)
+                @foreach ($data['theloai'] as $theloai)
                     @if (count($theloai->LoaiTin) > 0)
                         <?php $data = $theloai->TinTuc
                             ->where('NoiBat', 1)
@@ -612,10 +770,12 @@
                             </div>
                         @endforeach
                     @endif
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
+    <!-- NEWS -->
+
     <section class="bg-light">
         <div class="container">
             {{-- <div class="row">
@@ -624,16 +784,15 @@
                 <div class="col-lg-6 mr-auto text-left btn-our-mission  order-md-1 wow zoomIn" data-wow-duration=".5s"
                     data-wow-delay=".2s">
                     <div class="col-lg-12 ">
-                        <h2 class="heading">{{ trans('home.our-mission.title') }}</h2>
-                        <p>{{ trans('home.our-mission.des') }}
+                        <h2 class="heading">{{ $data[0]['section'][5]['title'] }}</h2>
+                        <p>{{ $data[0]['section'][5]['sub_title'] }}
                         </p>
                         <p><a href="#contact" class="btn btn-cta btn-lg btn-rounded">JOIN US</a></p>
                     </div>
 
                 </div>
                 <div class="col-lg-6  order-md-2 wow zoomIn" data-wow-duration=".5s" data-wow-delay=".2s">
-                    <img class="img-row" src="assets/images/action/tamnhin.png" alt="" />
-
+                    <img class="img-row" src="{{$data[0]['section'][5]['contents'][0]['image']}}" alt="" />
                 </div>
 
             </div>
@@ -644,10 +803,10 @@
         <div class="w3-content w3-display-container">
             <button onclick="closeImage()" class="w3-button w3-black w3-display-close">&#10006;</button>
 
-            <img class="mySlides" src="assets/images/project/1.png" style="width:100%">
-            <img class="mySlides" src="assets/images/project/2.jpg" style="width:100%">
-            <img class="mySlides" src="assets/images/project/3.jpg" style="width:100%">
-            <img class="mySlides" src="assets/images/project/4.png" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/1.jpg" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/2.jpg" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/3.jpg" style="width:100%">
+            <img class="mySlides" src="assets/images/vni/congtrinh/4.jpg" style="width:100%">
 
             <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
             <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
@@ -730,7 +889,8 @@
                             </button>
                         </div>
                         <div class="form-group" style="margin-bottom: 3em;">
-                            <a href="">Quên Mật Khẩu?</a>
+                            <a href="">Quên Mật Khẩu?</a>3
+
                         </div>
                     </form>
                 </div>

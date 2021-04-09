@@ -15,6 +15,8 @@ class ShowRoomController extends Controller
             'section.section_category.contents',
         ])->get();
 
+        // return $data;
+
         return view('landingpage.landingpage', compact('data'));
     }
 }

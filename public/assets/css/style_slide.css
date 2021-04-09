@@ -1,12 +1,14 @@
-body{
-  background:#ccc;
+body {
+    background: #ccc;
 }
+
 .main {
-  font-family:Arial;
-  width:500px;
-  display:block;
-  margin:0 auto;
+    font-family: Arial;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
 }
+
 h3 {
     background: #fff;
     color: #3498db;
@@ -17,19 +19,22 @@ h3 {
     position: relative;
     text-align: center;
 }
-.action{
-  display:block;
-  margin:100px auto;
-  width:100%;
-  text-align:center;
+
+.action {
+    display: block;
+    margin: 100px auto;
+    width: 100%;
+    text-align: center;
 }
+
 .action a {
-  display:inline-block;
-  padding:5px 10px; 
-  background:#f30;
-  color:#fff;
-  text-decoration:none;
+    display: inline-block;
+    padding: 5px 10px;
+    background: #f30;
+    color: #fff;
+    text-decoration: none;
 }
-.action a:hover{
-  background:#000;
+
+.action a:hover {
+    background: #000;
 }

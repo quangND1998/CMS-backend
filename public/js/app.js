@@ -5563,11 +5563,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("title", this.$refs.title.value);
       formData.append("subtitle", this.$refs.subtitle.value);
       formData.append("short_content", this.$refs.short_content.value);
-      formData.append("detail", this.$refs.detail.value);
-      formData.append("icon_class", this.$refs.icon_class.value);
+      formData.append("detail", this.$refs.detail.value); // formData.append("icon_class", this.$refs.icon_class.value);
+
       formData.append("video", this.$refs.video.value);
-      formData.append("image", this.$refs.image.files[0]);
-      formData.append("icon_image", this.$refs.icon_image.files[0]);
+      formData.append("image", this.$refs.image.files[0]); // formData.append("icon_image", this.$refs.icon_image.files[0]);
+
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_1__.ITEM_EDIT, {
         slug: this.content.id,
         data: formData

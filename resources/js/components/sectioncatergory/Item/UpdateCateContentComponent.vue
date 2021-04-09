@@ -220,11 +220,11 @@ export default {
             formData.append("subtitle", this.$refs.subtitle.value);
             formData.append("short_content", this.$refs.short_content.value);
             formData.append("detail", this.$refs.detail.value);
-            formData.append("icon_class", this.$refs.icon_class.value);
+            // formData.append("icon_class", this.$refs.icon_class.value);
             formData.append("video", this.$refs.video.value);
 
             formData.append("image", this.$refs.image.files[0]);
-            formData.append("icon_image", this.$refs.icon_image.files[0]);
+            // formData.append("icon_image", this.$refs.icon_image.files[0]);
 
             this.$store.dispatch(ITEM_EDIT, {
                 slug: this.content.id,

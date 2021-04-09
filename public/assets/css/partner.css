@@ -83,7 +83,7 @@ img {
 }
 
 .integrio_module_clients.anim-opacity .clients_image img {
-    opacity: .5
+    opacity: .5;
 }
 
 .integrio_module_clients.anim-opacity .clients_image:hover img {
@@ -91,9 +91,9 @@ img {
 }
 
 .integrio_module_clients.anim-grayscale .clients_image img {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    opacity: 0.6;
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
 .integrio_module_clients.anim-grayscale .clients_image:hover img {

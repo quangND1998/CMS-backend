@@ -1,6 +1,5 @@
-(function ($) {
+(function($) {
     ("use strict");
-
 
     // const API_URL = "https://jsonplaceholder.typicode.com/photos";
     const API_URL = "https://vni.pro.vn/True360/api/v1/get_project";
@@ -9,7 +8,7 @@
 
     // GET DATA FROM API
     function fetchDataProject(num) {
-        $.get(API_URL + '?page=' + num, function (data) {
+        $.get(API_URL + "?page=" + num, function(data) {
             renderData(data.data);
             if (num === data.last_page) {
                 $("#load-more").hide();
@@ -21,14 +20,21 @@
     fetchDataProject(pageNumber);
 
     function renderData(projects) {
-        projects.forEach(function (project) {
+        projects.forEach(function(project) {
             $("#project-list").append(`
                 <div class"project-item">
                     <a href="${project.project.url}" target="_blank">
                         <div class="project-image">
-                            <img src="https://vni.pro.vn/True360/${project.thumbnail}" alt="Project Image">
+                            <img src="http://land.vni.pro.vn/${project.thumbnail}" alt="Project Image">
                         </div>
                         <div class="project-content">
+                        <div class="post-meta m-0">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
+                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
+                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                            </ul>
+                        </div>
                             <h3 class="title">${project.title}</h3>
                         </div>
                     </a>
@@ -38,13 +44,10 @@
     }
 
     // LOAD MORE EVENT
-    $("#load-more").on("click", function (e) {
+    $("#load-more").on("click", function(e) {
         e.preventDefault();
         fetchDataProject(pageNumber);
     });
-
-
-
 
     $(".main-slider").owlCarousel({
         items: 1,
@@ -60,7 +63,7 @@
             "<i class='fa fa-arrow-right' aria-hidden='true'></i>",
         ],
     });
-    $(function () {
+    $(function() {
         $(".video-player").YTPlayer();
     });
     /**swiper slider **/
@@ -150,8 +153,9 @@
     });
     $(".owl-carousel").owlCarousel({
         items: 1,
+        video: true,
         margin: 0,
-        stagePadding: 0,
+        stagePadding: 50,
         smartSpeed: 450,
     });
 
@@ -174,33 +178,33 @@
         time: 5000,
     });
 
-    $(".navbar-toggler").on("click", function () {
+    $(".navbar-toggler").on("click", function() {
         $(this).toggleClass("open");
     });
-    $("#navbarCollapse").on("show.bs.offcanvas", function (e) {
+    $("#navbarCollapse").on("show.bs.offcanvas", function(e) {
         $(".navbar-toggler").addClass("open");
         $("body").css("width", $(window).innerWidth() + "px");
     });
-    $("#navbarCollapse").on("hide.bs.offcanvas", function (e) {
+    $("#navbarCollapse").on("hide.bs.offcanvas", function(e) {
         $(".navbar-toggler").removeClass("open");
         $("body").css("overflow", "auto");
         $("body").css("width", "auto");
         $("body").css("width", "");
     });
-    $(window).on("resize", function () {
+    $(window).on("resize", function() {
         $("body").css("width", "");
     });
-    $(".zero-scrolltop").on("click", function () {
+    $(".zero-scrolltop").on("click", function() {
         $("html, body").animate({ scrollTop: 0 }, 800);
         return false;
     });
 
     /**auto close navbar-collapse on click a**/
-    $("[data-scroll]").on("click", function () {
+    $("[data-scroll]").on("click", function() {
         $(".navbar-toggler:visible").click();
     });
     /**navbar sticky **/
-    $(window).on("scroll", function () {
+    $(window).on("scroll", function() {
         var winTop = $(window).scrollTop();
         if (winTop >= 100) {
             $(".navbar-sticky").addClass("sticky-active");
@@ -215,7 +219,7 @@
         }
     });
     /**preloader **/
-    $(window).on("load", function () {
+    $(window).on("load", function() {
         $("#preloader").addClass("d-none");
     });
 
@@ -247,13 +251,13 @@
         messages: {
             mc_email: "Please enter a valid email address",
         },
-        submitHandler: function () {
+        submitHandler: function() {
             var form = $("#mc-form");
             $.ajax({
                 type: "POST",
                 url: form.attr("action"),
                 data: form.serialize(),
-                success: function (response) {
+                success: function(response) {
                     //alert(response);
                     $("#mc-form")[0].reset();
                     $("#mc-result").html(response);
@@ -281,11 +285,11 @@
         speed: 500, // Integer. How fast to complete the scroll in milliseconds
         offset: 0, // Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
         easing: "easeInOutCubic", // Easing pattern to use
-        customEasing: function (time) { }, // Function. Custom easing pattern
+        customEasing: function(time) {}, // Function. Custom easing pattern
 
         // Callback API
-        before: function () { }, // Callback to run before scroll
-        after: function () { }, // Callback to run after scroll
+        before: function() {}, // Callback to run before scroll
+        after: function() {}, // Callback to run after scroll
     });
     /**Blog Single Post Slider**/
     $(".gallery-slider").flexslider({
@@ -294,7 +298,7 @@
         slideshowSpeed: 5000,
     });
 
-    $(".nav-item .nav-link").click(function () {
+    $(".nav-item .nav-link").click(function() {
         $(this).addClass("active");
         $(this).parent().siblings().children("a").removeClass("active");
     });
