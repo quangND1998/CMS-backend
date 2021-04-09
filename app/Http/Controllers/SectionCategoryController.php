@@ -151,7 +151,4 @@ class SectionCategoryController extends Controller
         $item->save();
         return new ItemCategoryResource($item);
     }
-
-
-  
 }

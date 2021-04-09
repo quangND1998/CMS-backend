@@ -27,7 +27,7 @@
         </router-link> -->
 
         <form @submit.prevent="update()">
-            <!-- <div
+            <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -48,7 +48,7 @@
                 <span v-if="errors.image" class="label label-danger">
                     {{ errors.image[0] }}
                 </span>
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <input
@@ -58,7 +58,7 @@
                     class="form-control"
                     id="name"
                     placeholder="Enter title"
-                    required
+                    
                 />
             </div>
 
@@ -145,13 +145,23 @@ export default {
 
             this.$store
                 .dispatch(PAGE_EDIT, { slug: this.postId, formdata: formData })
-                .then(({ data }) => {
-                    this.$router.push({ name: "page" });
-                })
-                .catch(({ response }) => {
-                    console.log(response);
-                    this.errors = response.data.errors;
-                });
+             .then(response => {
+                this.successful = true;
+                this.error = false;
+                this.errors = [];
+                this.$router.push({name:'page'});
+              })
+              .catch(error => {
+                if (!_.isEmpty(error.response)) {
+                  if ((error.response.status == 422)) {
+                    this.errors = error.response.data.errors;
+                    this.successful = false;
+                    this.error = true;
+                  }
+                }
+              });
+          
+
         },
         getPost() {
             this.$store.dispatch(GET_PAGE_ID, this.postId);

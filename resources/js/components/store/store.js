@@ -4,6 +4,7 @@ import page from './pagemodule/'
 import section from './sectionmodule'
 import item from './itemmodule'
 import login from './loginmodule'
+import category from './sectioncategory'
 Vue.use(Vuex)
 
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
         page,
         section,
         item,
-        login
+        login,
+        category
     },
 
     state: {

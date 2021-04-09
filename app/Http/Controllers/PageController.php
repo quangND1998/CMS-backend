@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Traits\FileUploadTrait;
-use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Http\Response;
 use App\Http\Resources\PageResource;
 use App\Models\Page;
 use App\Http\Requests\TemplateUpdateRequest;
 use App\Events\PageSent;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
@@ -20,8 +21,13 @@ class PageController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:page',
-            // 'image.*' => 'mimes:png,jpg,jpeg'
+            'image.*' => 'mimes:png,jpg,jpeg'
         ]);
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required|unique:page',
+        //     'image.*' => 'mimes:png,jpg,jpeg'
+        // ]);
+
         // if ($validator->fails()) {
         //     return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
         // }
@@ -41,8 +47,7 @@ class PageController extends Controller
     public function get()
     {
 
-            return  PageResource::collection(Page::get());
-
+        return  PageResource::collection(Page::get());
     }
     public function edit($id)
     {
@@ -62,7 +67,7 @@ class PageController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
-            // 'image.*' => 'mimes:png,jpg,jpeg',
+            'image.*' => 'mimes:png,jpg,jpeg',
         ]);
 
 

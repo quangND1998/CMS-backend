@@ -1,0 +1,1 @@
+export const FETCH_ID_SECTION_CATEGORY = "fetch_id_section_category"

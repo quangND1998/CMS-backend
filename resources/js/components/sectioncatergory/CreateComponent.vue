@@ -14,15 +14,12 @@
                     </li>
                     <li class="breadcrumb-item text-danger">Page name</li>
                     <li class="breadcrumb-item">Section</li>
-                    <li class="breadcrumb-item text-danger">Section name</li>
-                    <li class="breadcrumb-item">Update</li>
+                    <li class="breadcrumb-item">Create</li>
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Section list</h1>
             </div>
         </div>
-        <!-- <div>
 
-        </div> -->
         <form>
             <div
                 :class="[
@@ -50,7 +47,6 @@
                 <input
                     type="title"
                     ref="title"
-                    v-model="section.title"
                     class="form-control"
                     id="title"
                     placeholder="Enter name"
@@ -58,64 +54,35 @@
                 />
             </div>
 
-            <div class="form-group">
-                <input
-                    type="title"
-                    ref="sub_title"
-                    v-model="section.sub_title"
-                    class="form-control"
-                    id="sub_title"
-                    placeholder="Enter sub title"
-                    required
-                />
-            </div>
 
-            <div class="form-group">
-                <textarea
-                    class="form-control"
-                    v-model="section.text"
-                    ref="text"
-                    id="text"
-                    placeholder="Enter a body"
-                    rows="8"
-                    required
-                ></textarea>
-            </div>
+            {{category}}
 
-            <div class="modal-footer justify-content-center">
-                <router-link
-                    :to="{ name: 'section', params: { postId: id } }"
-                    class="btn btn-white block"
-                >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    Back
-                </router-link>
-                <button
-                    type="submit"
-                    @click.prevent="update"
-                    class="btn btn-primary block"
-                >
-                    Update
-                </button>
-            </div>
+            <router-link :to="{ name: 'section_category',    params: { posId: this.postId ,sectionId:this.sectionId} }" class="btn btn-white block">
+                Back
+            </router-link>
+            <button
+                type="submit"
+                @click.prevent="create"
+                class="btn btn-primary block"
+            >
+                Submit
+            </button>
         </form>
     </div>
 </template>
 
 <script>
-import { GET_SECTION_ID, SECTION_EDIT } from "../store/actions/section";
 import { PAGE_RESET_STATE } from "../store/actions/page";
+import {  } from "../store/actions/sectioncategory";
 import { mapGetters } from "vuex";
 import store from "../store/store";
+
 export default {
-    mounted() {
-        this.getPost();
-    },
     props: {
-        sectionId: {
+        postId: {
             required: true
         },
-        id: {
+        sectionId:{
             required: true
         }
     },
@@ -126,24 +93,30 @@ export default {
             errors: []
         };
     },
-    computed: {
-        ...mapGetters(["section"])
-    },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
         next();
     },
+
+    computed: {
+        ...mapGetters(["category"])
+    },
     methods: {
-        update() {
-            this.section.title = this.$refs.title.value;
-            this.section.text = this.$refs.text.value;
-            this.section.sub_title = this.$refs.sub_title.value;
-            this.$store.dispatch(SECTION_EDIT, this.section.id)
-                        .then(response => {
+        create() {
+            this.category.title = this.$refs.title.value;
+            
+
+            this.$store.dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
+            .then(response => {
                         this.successful = true;
                         this.error = false;
                         this.errors = [];
-                        this.$router.push({ name: "section", params: { postId: this.id } });
+                         this.$router.push({
+                            name: "section_category",
+                            params: { posId: this.postId ,sectionId:this.sectionId}
+                        });
+              
+
                     })
                     .catch(error => {
                         if (!_.isEmpty(error.response)) {
@@ -154,10 +127,10 @@ export default {
                         }
                         }
                     });;
-            
-        },
-        getPost() {
-            this.$store.dispatch(GET_SECTION_ID, this.sectionId);
+      
+          
+            this.$refs.title.value = "";
+
         }
     }
 };

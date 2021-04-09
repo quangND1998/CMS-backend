@@ -18,17 +18,56 @@
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
-            <div>
                 <router-link
-                    :to="{
-                        name: 'content_create',
-                        params: { sectionId: sectionId, postId: postId }
-                    }"
-                    class="btn btn-success"
+                :to="{
+                    name: 'section_category',
+                    params: { sectionId: sectionId, postId: postId }
+                }"
+            >
+                <button
+                    type="button"
+                    class="p-2 mx-3 float-left btn btn-success"
+                >
+                    Section Category
+                </button>
+            </router-link>
+            <router-link
+                :to="{
+                    name: 'section_category_content.create',
+                    params: { sectionId: sectionId, postId: postId,categoryId:categoryId }
+                }"
+            >
+                <button
+                    type="button"
+                    class="p-2 mx-3 float-left btn btn-success"
                 >
                     NEW ITEM
-                </router-link>
-            </div>
+                </button>
+            </router-link>
+            
+        </div>
+        <div>
+            <!-- <router-link
+                :to="{
+                    name: 'content_create',
+                    params: { sectionId: sectionId, postId: postId }
+                }"
+            >
+                <button
+                    type="button"
+                    class="p-2 mx-3 float-left btn btn-success"
+                >
+                    NEW CONTENT
+                </button>
+            </router-link> -->
+            <router-link :to="{ name: 'section', params: { postId: postId } }">
+                <button
+                    type="button"
+                     class="p-1 mx-3  btn btn-success"
+                >
+                    BACK
+                </button>
+            </router-link>
         </div>
         <div class="col-md-12 px-0">
             <div class="">
@@ -53,35 +92,9 @@
                                 class="user_input"
                             >
                                 <td class="align-middle">{{ index + 1 }}</td>
-                                <td class="align-middle">
-                                    {{ content.title }}
-                                </td>
-                                <td
-                                    :class="[
-                                        content.subtitle ? '' : 'text-success',
-                                        'align-middle'
-                                    ]"
-                                >
-                                    {{
-                                        content.subtitle
-                                            ? content.subtitle
-                                            : "Updating..."
-                                    }}
-                                </td>
-                                <td
-                                    :class="[
-                                        content.short_content
-                                            ? ''
-                                            : 'text-success',
-                                        'align-middle'
-                                    ]"
-                                >
-                                    {{
-                                        content.short_content
-                                            ? content.short_content
-                                            : "Updating..."
-                                    }}
-                                </td>
+                                <td class="align-middle">{{ content.title }}</td>
+                                <td :class="[content.subtitle ? '' : 'text-success', 'align-middle']">{{ content.subtitle ? content.subtitle : 'Updating...' }}</td>
+                                <td :class="[content.short_content ? '' : 'text-success', 'align-middle']">{{ content.short_content ? content.short_content : 'Updating...' }}</td>
                                 <td v-if="content.video">
                                     <iframe
                                         width="560"
@@ -93,24 +106,23 @@
                                         allowfullscreen
                                     ></iframe>
                                 </td>
-                                <td v-else class="text-success align-middle">
-                                    Updating...
-                                </td>
+                                <td v-else class="text-success align-middle">Updating...</td>
                                 <td>
                                     <img
                                         :src="content.image"
-                                        style="width: 80px"
+                                        style="width: 150px"
                                     />
                                 </td>
 
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
-                                            name: 'content.update',
+                                            name: 'section_category_content.update',
                                             params: {
                                                 contentId: content.id,
                                                 sectionId: sectionId,
-                                                postId: postId
+                                                postId: postId,
+                                                categoryId :categoryId
                                             }
                                         }"
                                     >
@@ -118,10 +130,7 @@
                                             class="btn btn-xs btn-info deleteRecord"
                                             id="deleteRecord"
                                         >
-                                            <i
-                                                class="fa fa-pencil mr-0"
-                                                aria-hidden="true"
-                                            ></i>
+                                            Update
                                         </button>
                                     </router-link>
                                     <button
@@ -129,30 +138,12 @@
                                         id="deleteRecord"
                                         @click="deletePost(content.id)"
                                     >
-                                        <i
-                                            class="fa fa-trash mr-0"
-                                            aria-hidden="true"
-                                        ></i>
+                                        Delete
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="modal-footer justify-content-center">
-                        <router-link
-                            :to="{
-                                name: 'section',
-                                params: { postId: postId }
-                            }"
-                            class="btn btn-white block"
-                        >
-                            <i
-                                class="fa fa-long-arrow-left"
-                                aria-hidden="true"
-                            ></i>
-                            Back
-                        </router-link>
-                    </div>
                 </div>
             </div>
         </div>
@@ -161,9 +152,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import store from "../store/store";
-import { FETCH_ITEM, ITEM_DELETE, GET_ITEM_ID } from "../store/actions/item";
-import { PAGE_RESET_STATE } from "../store/actions/page";
+import store from '../../store/store'
+// import store from "../store/store";
+import { FETCH_ITEM, ITEM_DELETE, FETCH_ITEM_BY_CATEGORY} from "../../store/actions/item";
+import { PAGE_RESET_STATE } from "../../store/actions/page";
 export default {
     name: "page-component",
     props: {
@@ -172,6 +164,9 @@ export default {
         },
         postId: {
             required: true
+        },
+        categoryId:{
+          required: true
         }
     },
 
@@ -192,7 +187,7 @@ export default {
 
     methods: {
         getPosts() {
-            this.$store.dispatch(FETCH_ITEM, this.sectionId);
+            this.$store.dispatch(FETCH_ITEM_BY_CATEGORY, this.categoryId);
         },
         deletePost(id) {
             this.$store.dispatch(ITEM_DELETE, id);

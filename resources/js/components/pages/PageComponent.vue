@@ -157,7 +157,7 @@ export default {
         msg: {}
     },
     computed: {
-        ...mapGetters(["posts", "page", "isAuthenticated"])
+        ...mapGetters(["posts", "page", "isAuthenticated", 'time'])
     },
     data() {
         return {};

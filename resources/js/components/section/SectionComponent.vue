@@ -211,7 +211,6 @@ import store from "../store/store";
 import { FETCH_SECTION, SECTION_DELETE } from "../store/actions/section";
 import { PAGE_RESET_STATE } from "../store/actions/page";
 export default {
-    name: "page-component",
     props: {
         postId: {
             required: true
@@ -220,13 +219,7 @@ export default {
 
     created() {
         this.getPosts();
-        //    Echo.private("page").listen("PageSent", e => {
-        //     this.sections.push({
-        //       title: e.title.body,
-        //       text: e.text.body,
-        //       sub_title: e.sub_title.body,
-        //     });
-        // });
+
     },
     computed: {
         ...mapGetters(["posts" ,"sections", "section"])

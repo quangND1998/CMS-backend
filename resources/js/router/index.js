@@ -14,6 +14,13 @@ import loginComponent from '../components/Auth/loginComponent'
 import HomeComponent from '../components/HomeComponent'
 import PageNotFound from '../components/PageNotFound.vue'
 import LandingComponent from '../components/landingpage/LandingComponent'
+import IndexComponent from '../components/sectioncatergory/IndexComponent'
+import CreateCategoryComponent from '../components/sectioncatergory/CreateComponent'
+import UpdateCategoryComponent from '../components/sectioncatergory/UpdateComponent';
+import ContentCateComponent from '../components/sectioncatergory/Item/ContentCateComponent';
+import IndexCateComponent from '../components/sectioncatergory/Item/IndexCateComponent';
+import CreateCateContentComponent from '../components/sectioncatergory/Item/CreateCateContentComponent';
+import UpdateCateContentComponent from '../components/sectioncatergory/Item/UpdateCateContentComponent';
 
 Vue.use(Router)
 
@@ -76,11 +83,66 @@ export default new Router({
                             props: true
                         },
                         {
+                            path: ":sectionId/section_category",
+                            name: "section_category",
+                            component: IndexComponent,
+                            params: true,
+                            props: true,
+
+                        },
+                        {
+                            path: ":sectionId/section_category/create",
+                            name: "section_category_create",
+                            component: CreateCategoryComponent,
+                            params: true,
+                            props: true
+                        },
+                        {
+                            path: ":sectionId/section_category/:categoryId/update",
+                            name: "section_category_update",
+                            component: UpdateCategoryComponent,
+                            params: true,
+                            props: true
+                        },
+
+                        {
                             path: ":contentId/update",
                             name: "content.update",
                             component: EditContentComponent,
                             params: true,
                             props: true
+                        }
+
+                        ///CateGory item
+                        , {
+                            path: ":sectionId/section_category/:categoryId",
+                            name: "section_category_content",
+                            component: ContentCateComponent,
+                            params: true,
+                            props: true,
+                            children: [{
+                                    path: "",
+                                    name: "section_category_content",
+                                    component: IndexCateComponent,
+                                    params: true,
+                                    props: true,
+                                },
+                                {
+                                    path: "create",
+                                    name: "section_category_content.create",
+                                    component: CreateCateContentComponent,
+                                    params: true,
+                                    props: true,
+                                },
+                                {
+                                    path: "update",
+                                    name: "section_category_content.update",
+                                    component: UpdateCateContentComponent,
+                                    params: true,
+                                    props: true,
+                                }
+                            ]
+
                         }
                     ]
                 },

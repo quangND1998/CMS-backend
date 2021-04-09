@@ -14,13 +14,37 @@
                     <li class="breadcrumb-item text-danger">Page name</li>
                     <li class="breadcrumb-item">Section</li>
                     <li class="breadcrumb-item text-danger">Section name</li>
-                    <li class="breadcrumb-item">Update</li>
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
+            <router-link
+                :to="{
+                    name: 'content_create',
+                    params: { sectionId: sectionId, postId: postId }
+                }"
+            >
+                <button
+                    type="button"
+                    class="p-2 mx-3 float-left btn btn-success"
+                >
+                    NEW ITEM
+                </button>
+            </router-link>
         </div>
+
+        <router-link
+            :to="{
+                name: 'content',
+                params: { sectionId: sectionId, postId: postId }
+            }"
+        >
+            <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
+                BACK
+            </button>
+        </router-link>
+        <h2>Create Content</h2>
         <form>
-            <!-- <div
+            <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -52,7 +76,7 @@
                 <span v-if="errors.icon_class" class="label label-danger">
                     {{ errors.icon_class[0] }}
                 </span>
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <input
@@ -73,6 +97,7 @@
                     class="form-control"
                     id="subtitle"
                     placeholder="Enter subtitle"
+                    required
                 />
             </div>
 
@@ -84,6 +109,7 @@
                     id="short_content"
                     placeholder="Enter  short_content"
                     rows="8"
+                    required
                 ></textarea>
             </div>
 
@@ -95,9 +121,10 @@
                     id="detail"
                     placeholder="Enter  detail"
                     rows="8"
+                    required
                 ></textarea>
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <input
                     type="title"
                     ref="icon_class"
@@ -107,7 +134,7 @@
                     placeholder="Enter class icon"
                     required
                 />
-            </div> -->
+            </div>
             <div class="form-group">
                 <input
                     type="title"
@@ -116,6 +143,7 @@
                     class="form-control"
                     id="video"
                     placeholder="Enter video link"
+                    required
                 />
             </div>
 
@@ -128,9 +156,9 @@
                     id="image"
                     required
                 />
-                <label class="custom-file-label">Choose image file...</label>
+                <label class="custom-file-label">Choose file...</label>
             </div>
-            <!-- <div class="custom-file mb-3">
+            <div class="custom-file mb-3">
                 <input
                     type="file"
                     ref="icon_image"
@@ -140,35 +168,24 @@
                     required
                 />
                 <label class="custom-file-label">Choose file...</label>
-            </div> -->
-            <div class="modal-footer justify-content-center">
-                <router-link
-                :to="{
-                    name: 'content',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
-                class="btn btn-white block"
-            >
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                Back
-            </router-link>
+            </div>
+
             <button
                 type="submit"
                 @click.prevent="update"
                 class="btn btn-primary block"
             >
-                Update
+                Submit
             </button>
-            </div>
         </form>
     </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { ITEM_EDIT, GET_ITEM_ID } from "../store/actions/item";
-import { PAGE_RESET_STATE } from "../store/actions/page";
-import store from "../store/store";
+import { ITEM_EDIT, GET_ITEM_ID } from "../../store/actions/item";
+import { PAGE_RESET_STATE } from "../../store/actions/page";
+import store from "../../store/store";
 export default {
     mounted() {
         this.getPost();
@@ -205,11 +222,11 @@ export default {
             formData.append("subtitle", this.$refs.subtitle.value);
             formData.append("short_content", this.$refs.short_content.value);
             formData.append("detail", this.$refs.detail.value);
-            // formData.append("icon_class", this.$refs.icon_class.value);
+            formData.append("icon_class", this.$refs.icon_class.value);
             formData.append("video", this.$refs.video.value);
 
             formData.append("image", this.$refs.image.files[0]);
-            // formData.append("icon_image", this.$refs.icon_image.files[0]);
+            formData.append("icon_image", this.$refs.icon_image.files[0]);
 
             this.$store.dispatch(ITEM_EDIT, {
                 slug: this.content.id,

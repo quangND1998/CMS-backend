@@ -21,7 +21,7 @@
         </div>
 
         <form>
-            <!-- <div
+            <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -30,8 +30,8 @@
                 <span v-if="successful" class="label label-sucess"
                     >Published!</span
                 >
-            </div> -->
-            <!-- <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+            </div>
+            <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
                 <span v-if="errors.title" class="label label-danger">
                     {{ errors.title[0] }}
                 </span>
@@ -41,7 +41,7 @@
                 <span v-if="errors.sub_title" class="label label-danger">
                     {{ errors.sub_title[0] }}
                 </span>
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <input
@@ -128,17 +128,28 @@ export default {
             this.section.title = this.$refs.title.value;
             this.section.text = this.$refs.text.value;
             this.section.sub_title = this.$refs.sub_title.value;
-            this.$store.dispatch(CREATE_SECTION, this.postId);
-            this.sections.push({
-                title: this.$refs.title.value,
-                text: this.$refs.text.value,
-                sub_title: this.$refs.sub_title.value
-            });
-            this.$router.push({
-                name: "section",
-                params: { posId: this.postId }
-            });
+            this.$store.dispatch(CREATE_SECTION, this.postId)
+            .then(response => {
+                        this.successful = true;
+                        this.error = false;
+                        this.errors = [];
+                         this.$router.push({
+                            name: "section",
+                            params: { posId: this.postId }
+                        });
 
+                    })
+                    .catch(error => {
+                        if (!_.isEmpty(error.response)) {
+                        if ((error.response.status == 422)) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                        }
+                    });;
+      
+          
             this.$refs.title.value = "";
             this.$refs.text.value = "";
             this.$refs.sub_title.value = "";
