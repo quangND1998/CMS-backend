@@ -20,11 +20,11 @@
                 ADD NEW
             </router-link> -->
         </div>
- 
+
 
         <!-- {{page}}   -->
         <form @submit.prevent="create()">
-            <div
+            <!-- <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -44,7 +44,7 @@
                 <span v-if="errors.image" class="label label-danger">
                     {{ errors.image[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
@@ -53,7 +53,7 @@
                     class="form-control"
                     id="name"
                     placeholder="Enter page name"
-                 
+
                 />
             </div>
 

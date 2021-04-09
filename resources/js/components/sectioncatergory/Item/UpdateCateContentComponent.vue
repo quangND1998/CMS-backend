@@ -32,17 +32,6 @@
             </router-link>
         </div>
 
-        <router-link
-            :to="{
-                name: 'content',
-                params: { sectionId: sectionId, postId: postId }
-            }"
-        >
-            <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
-                BACK
-            </button>
-        </router-link>
-        <h2>Create Content</h2>
         <form>
             <div
                 :class="[
@@ -107,7 +96,7 @@
                     v-model="content.short_content"
                     ref="short_content"
                     id="short_content"
-                    placeholder="Enter  short_content"
+                    placeholder="Enter short_content"
                     rows="8"
                     required
                 ></textarea>
@@ -119,12 +108,12 @@
                     v-model="content.detail"
                     ref="detail"
                     id="detail"
-                    placeholder="Enter  detail"
+                    placeholder="Enter detail"
                     rows="8"
                     required
                 ></textarea>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input
                     type="title"
                     ref="icon_class"
@@ -134,7 +123,7 @@
                     placeholder="Enter class icon"
                     required
                 />
-            </div>
+            </div> -->
             <div class="form-group">
                 <input
                     type="title"
@@ -156,9 +145,9 @@
                     id="image"
                     required
                 />
-                <label class="custom-file-label">Choose file...</label>
+                <label class="custom-file-label">Choose image file...</label>
             </div>
-            <div class="custom-file mb-3">
+            <!-- <div class="custom-file mb-3">
                 <input
                     type="file"
                     ref="icon_image"
@@ -168,14 +157,23 @@
                     required
                 />
                 <label class="custom-file-label">Choose file...</label>
-            </div>
-
+            </div> -->
+            <router-link
+                :to="{
+                    name: 'content',
+                    params: { sectionId: sectionId, postId: postId }
+                }"
+                class="btn btn-white block"
+            >
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                Back
+            </router-link>
             <button
                 type="submit"
                 @click.prevent="update"
                 class="btn btn-primary block"
             >
-                Submit
+                Update
             </button>
         </form>
     </div>
@@ -231,8 +229,7 @@ export default {
             this.$store.dispatch(ITEM_EDIT, {
                 slug: this.content.id,
                 data: formData
-            })
-            ;
+            });
             this.$router.back();
         },
         getPost() {

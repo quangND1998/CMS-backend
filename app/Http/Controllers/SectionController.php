@@ -106,11 +106,13 @@ class SectionController extends Controller
             $this->DeleteFolder($content->image, $extension);
             $this->DeleteFolder($content->icon_image, $extension);
         }
+
         if ($section->section_category != null) {
             foreach ($section->section_category as $category) {
-                foreach ($category as $item) {
-                    $this->DeleteFolder($item->image, $extension);
-                    $this->DeleteFolder($item->icon_image, $extension);
+       
+                foreach ($category->contents as $content) {
+                    $this->DeleteFolder($content->image, $extension);
+                    $this->DeleteFolder($content->icon_image, $extension);
                 }
             }
         }

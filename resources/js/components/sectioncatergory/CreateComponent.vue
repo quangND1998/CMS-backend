@@ -21,7 +21,7 @@
         </div>
 
         <form>
-            <div
+            <!-- <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -41,7 +41,7 @@
                 <span v-if="errors.sub_title" class="label label-danger">
                     {{ errors.sub_title[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
@@ -54,10 +54,15 @@
                 />
             </div>
 
-
-            {{category}}
-
-            <router-link :to="{ name: 'section_category',    params: { posId: this.postId ,sectionId:this.sectionId} }" class="btn btn-white block">
+            <div class="text-center">
+                <router-link
+                :to="{
+                    name: 'section_category',
+                    params: { posId: this.postId, sectionId: this.sectionId }
+                }"
+                class="btn btn-white block"
+            >
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                 Back
             </router-link>
             <button
@@ -65,15 +70,16 @@
                 @click.prevent="create"
                 class="btn btn-primary block"
             >
-                Submit
+                Create
             </button>
+            </div>
         </form>
     </div>
 </template>
 
 <script>
 import { PAGE_RESET_STATE } from "../store/actions/page";
-import {  } from "../store/actions/sectioncategory";
+import { CREATE_SECTION_CATEGORY } from "../store/actions/sectioncategory";
 import { mapGetters } from "vuex";
 import store from "../store/store";
 
@@ -82,7 +88,7 @@ export default {
         postId: {
             required: true
         },
-        sectionId:{
+        sectionId: {
             required: true
         }
     },
@@ -104,33 +110,32 @@ export default {
     methods: {
         create() {
             this.category.title = this.$refs.title.value;
-            
 
-            this.$store.dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
-            .then(response => {
-                        this.successful = true;
-                        this.error = false;
-                        this.errors = [];
-                         this.$router.push({
-                            name: "section_category",
-                            params: { posId: this.postId ,sectionId:this.sectionId}
-                        });
-              
-
-                    })
-                    .catch(error => {
-                        if (!_.isEmpty(error.response)) {
-                        if ((error.response.status == 422)) {
+            this.$store
+                .dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.push({
+                        name: "section_category",
+                        params: {
+                            posId: this.postId,
+                            sectionId: this.sectionId
+                        }
+                    });
+                })
+                .catch(error => {
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
                             this.successful = false;
                             this.error = true;
                         }
-                        }
-                    });;
-      
-          
-            this.$refs.title.value = "";
+                    }
+                });
 
+            this.$refs.title.value = "";
         }
     }
 };

@@ -18,7 +18,7 @@
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
-                <router-link
+                <!-- <router-link
                 :to="{
                     name: 'section_category',
                     params: { sectionId: sectionId, postId: postId }
@@ -30,7 +30,7 @@
                 >
                     Section Category
                 </button>
-            </router-link>
+            </router-link> -->
             <router-link
                 :to="{
                     name: 'section_category_content.create',
@@ -44,7 +44,7 @@
                     NEW ITEM
                 </button>
             </router-link>
-            
+
         </div>
         <div>
             <!-- <router-link
@@ -130,7 +130,7 @@
                                             class="btn btn-xs btn-info deleteRecord"
                                             id="deleteRecord"
                                         >
-                                            Update
+                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
                                         </button>
                                     </router-link>
                                     <button
@@ -138,7 +138,7 @@
                                         id="deleteRecord"
                                         @click="deletePost(content.id)"
                                     >
-                                        Delete
+                                       <i class="fa fa-trash mr-0" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>

@@ -110,7 +110,11 @@
                                         style="width: 100px"
                                     />
                                 </td>
-                                <td v-else><span class="text-success">Updating...</span></td>
+                                <td v-else>
+                                    <span class="text-success"
+                                        >Updating...</span
+                                    >
+                                </td>
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
@@ -119,14 +123,20 @@
                                         }"
                                         class="btn btn-xs btn-info"
                                     >
-                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
+                                        <i
+                                            class="fa fa-pencil mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </router-link>
                                     <button
                                         type="button"
                                         @click="deletePost(post.id)"
                                         class="btn btn-xs btn-danger"
                                     >
-                                       <i class="fa fa-trash mr-0" aria-hidden="true"></i>
+                                        <i
+                                            class="fa fa-trash mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </button>
                                 </td>
                             </tr>
@@ -157,7 +167,7 @@ export default {
         msg: {}
     },
     computed: {
-        ...mapGetters(["posts", "page", "isAuthenticated", 'time'])
+        ...mapGetters(["posts", "page", "isAuthenticated", "time"])
     },
     data() {
         return {};

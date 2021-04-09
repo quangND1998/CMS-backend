@@ -1,5 +1,4 @@
 <template>
-
     <div id="posts">
         <div class="app-title">
             <div>
@@ -21,14 +20,43 @@
             <div>
                 <router-link
                     :to="{
+                        name: 'section_category',
+                        params: { sectionId: sectionId, postId: postId }
+                    }"
+                    class="p-2 float-left btn btn-success"
+                >
+                        SECTION CATEGORY
+                </router-link>
+                <router-link
+                    :to="{
                         name: 'content_create',
                         params: { sectionId: sectionId, postId: postId }
                     }"
-                    class="btn btn-success"
+                    class="p-2 mx-3 float-left btn btn-success"
                 >
-                    NEW ITEM
+                        NEW ITEM
                 </router-link>
             </div>
+        </div>
+        <div>
+            <!-- <router-link
+                :to="{
+                    name: 'content_create',
+                    params: { sectionId: sectionId, postId: postId }
+                }"
+            >
+                <button
+                    type="button"
+                    class="p-2 mx-3 float-left btn btn-success"
+                >
+                    NEW CONTENT
+                </button>
+            </router-link> -->
+            <router-link :to="{ name: 'section', params: { postId: postId } }">
+                <button type="button" class="p-1 mx-3  btn btn-success">
+                    BACK
+                </button>
+            </router-link>
         </div>
         <div class="col-md-12 px-0">
             <div class="">
@@ -179,7 +207,7 @@ export default {
         this.getPosts();
     },
     computed: {
-        ...mapGetters(["contents", "content","time"])
+        ...mapGetters(["contents", "content", "time"])
     },
 
     data() {

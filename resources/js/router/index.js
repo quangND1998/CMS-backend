@@ -20,8 +20,7 @@ import UpdateCategoryComponent from '../components/sectioncatergory/UpdateCompon
 import ContentCateComponent from '../components/sectioncatergory/Item/ContentCateComponent';
 import IndexCateComponent from '../components/sectioncatergory/Item/IndexCateComponent';
 import CreateCateContentComponent from '../components/sectioncatergory/Item/CreateCateContentComponent';
-import UpdateCateContentComponent from '../components/sectioncatergory/Item/UpdateCateContentComponent';
-
+import UpdateCateContentComponent from '../components/sectioncatergory/Item/UpdateCateContentComponent'
 Vue.use(Router)
 
 export default new Router({
