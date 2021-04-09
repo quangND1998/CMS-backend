@@ -85,6 +85,7 @@
             </div>
             <div class="modal-footer justify-content-center">
                 <router-link :to="{ name: 'page' }" class="btn btn-white block">
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
                 <button type="submit" class="btn btn-primary block">

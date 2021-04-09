@@ -83,6 +83,7 @@
                     type="button"
                     class="mr-1 btn btn-sucess block"
                 >
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
                 <button type="submit" class="btn btn-primary block">

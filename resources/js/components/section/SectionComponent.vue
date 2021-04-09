@@ -11,8 +11,8 @@
                             Page list
                         </router-link>
                     </li>
-                    <li class="breadcrumb-item text-danger">Page name</li>
-                    <li class="breadcrumb-item">Section</li>
+                    <li class="breadcrumb-item">{{posts.name}}</li>
+                    <!-- <li class="breadcrumb-item">Section</li> -->
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Section list</h1>
             </div>
@@ -194,12 +194,14 @@
                             :to="{ name: 'page' }"
                             class="btn btn-white block"
                         >
+                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                             Back
                         </router-link>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -227,7 +229,7 @@ export default {
         // });
     },
     computed: {
-        ...mapGetters(["sections", "section"])
+        ...mapGetters(["posts" ,"sections", "section"])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);

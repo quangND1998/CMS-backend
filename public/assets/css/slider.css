@@ -1,0 +1,32 @@
+.slider{
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    z-index: 100;
+    position: fixed;
+    background-color: rgba(39, 41, 42, 0.83);
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+.w3-content{
+    top: 20%;
+}
+.mySlides {
+    display:none;
+}
+.w3-display-close{
+    position: absolute;
+    right: 0px;
+    
+}
+.swiper-slide:hover{
+    transform: scale(1.5);
+    
+}
+.content-tour360{
+    z-index: 999;
+    height: 100%;
+}

@@ -1,0 +1,28 @@
+
+@font-face {
+  font-family: Font-Roboto;
+  src: url(../font/Roboto/Roboto-Medium.ttf);
+}
+
+h1,h2,h3,h4,h5{
+  font-family: Font-Roboto !important;
+}
+.img-news{
+    width: 80% !important;
+    font-family: Font-Product-Sans;
+}
+.text-news-black{
+    color: black;
+}
+.frame-news{
+    height: 300px;
+}
+.background-news{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-top: 1px dotted #ccc;
+}
+.frame-news{
+    margin: 0px;
+    padding: 0px;
+}

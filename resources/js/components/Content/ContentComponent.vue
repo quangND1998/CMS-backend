@@ -17,19 +17,17 @@
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
-            <router-link
-                :to="{
-                    name: 'content_create',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
-            >
-                <button
-                    type="button"
-                    class="p-2 mx-3 float-left btn btn-success"
+            <div>
+                <router-link
+                    :to="{
+                        name: 'content_create',
+                        params: { sectionId: sectionId, postId: postId }
+                    }"
+                    class="btn btn-success"
                 >
                     NEW ITEM
-                </button>
-            </router-link>
+                </router-link>
+            </div>
         </div>
         <div class="col-md-12 px-0">
             <div class="">
@@ -119,7 +117,10 @@
                                             class="btn btn-xs btn-info deleteRecord"
                                             id="deleteRecord"
                                         >
-                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
+                                            <i
+                                                class="fa fa-pencil mr-0"
+                                                aria-hidden="true"
+                                            ></i>
                                         </button>
                                     </router-link>
                                     <button
@@ -127,7 +128,10 @@
                                         id="deleteRecord"
                                         @click="deletePost(content.id)"
                                     >
-                                         <i class="fa fa-trash mr-0" aria-hidden="true"></i>
+                                        <i
+                                            class="fa fa-trash mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </button>
                                 </td>
                             </tr>
@@ -141,6 +145,10 @@
                             }"
                             class="btn btn-white block"
                         >
+                            <i
+                                class="fa fa-long-arrow-left"
+                                aria-hidden="true"
+                            ></i>
                             Back
                         </router-link>
                     </div>

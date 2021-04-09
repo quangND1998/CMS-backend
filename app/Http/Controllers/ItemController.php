@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use  App\Http\Controllers\Traits\FileUploadTrait;
+use App\Http\Resources\ItemCategoryResource;
 
 
 class ItemController extends Controller
@@ -26,6 +27,10 @@ class ItemController extends Controller
             return ItemResource::collection($item->contents);
         }
     }
+
+
+
+
     public function store(Request $request, $id)
     {
 
@@ -112,7 +117,11 @@ class ItemController extends Controller
             $item->icon_image = $this->update_image($files, $destinationpath, $attribute);
         }
         $item->save();
-        return new ItemResource($item);
+        if ($item->section_id) {
+            return new ItemResource($item);
+        } else {
+            return new  ItemCategoryResource($item);
+        }
     }
     public function delete($id)
     {

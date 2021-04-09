@@ -5,7 +5,7 @@
         <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
         <aside class="app-sidebar">
             <div class="app-sidebar__user">
-                <div>
+                <div class="mx-auto">
                     <p class="app-sidebar__user-name">Admin VNi</p>
                     <p class="app-sidebar__user-designation">
                         Administrator

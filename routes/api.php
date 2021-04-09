@@ -3,6 +3,7 @@
 use App\Http\Controllers\APi\AuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SectionCategoryController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\ThemeController;
@@ -55,6 +56,11 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
             Route::get('', [ItemController::class, 'getListItem']);
             Route::post('', [ItemController::class, 'store']);
         });
+
+        Route::prefix('{id}/section_category')->group(function () {
+            Route::get('', [SectionCategoryController::class, 'getSectionCateGory']);
+            Route::post('', [SectionCategoryController::class, 'store']);
+        });
         Route::prefix('{id}/theme')->group(function () {
             Route::get('', [ThemeController::class, 'getTheme']);
             Route::post('', [ThemeController::class, 'store']);
@@ -75,6 +81,19 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
         Route::put('update/{id}', [StyleController::class, 'update']);
         Route::delete('delete/{id}', [StyleController::class, 'delete']);
     });
+
+    Route::prefix('section_category')->group(function () {
+        Route::get('{id}', [SectionCategoryController::class, 'edit']);
+        Route::put('update/{id}', [SectionCategoryController::class, 'update']);
+        Route::delete('delete/{id}', [SectionCategoryController::class, 'delete']);
+        Route::prefix('{id}/items')->group(function () {
+            Route::get('', [SectionCategoryController::class, 'getItembySectionCateGory']);
+            Route::post('', [SectionCategoryController::class, 'storebySectionCategory']);
+        });
+    });
+
+
+
     Route::post("logout", [AuthController::class, 'logout']);
 });
 

@@ -145,6 +145,7 @@
                     }"
                     class="btn btn-white block"
                 >
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
                 <button
