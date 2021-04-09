@@ -6367,8 +6367,7 @@ var actions = (_actions = {}, _defineProperty(_actions, _actions_login__WEBPACK_
     })["catch"](function (_ref4) {
       var response = _ref4.response;
       // console.log('b');
-      commit(_muntation_login__WEBPACK_IMPORTED_MODULE_3__.PURGE_AUTH, response.data);
-      reject(response);
+      commit(_muntation_login__WEBPACK_IMPORTED_MODULE_3__.PURGE_AUTH, response.data); // reject(response);
     });
   });
 }), _defineProperty(_actions, _actions_page__WEBPACK_IMPORTED_MODULE_4__.PAGE_RESET_STATE, function (_ref5) {

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ShowRoomController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +18,7 @@ use Illuminate\Support\Facades\Auth;
 // Route :: view ( '/ admin' , 'admin.dashboard.index' ); 
 // Route :: view ( '/ admin / login' , 'admin.auth.login' );
 Route::group(['middleware' => ['prevent-back-history']], function () {
-    Route::get('/', function () {
-        return redirect('/admin/login');
-    });
-
+    Route::get('/', [ShowRoomController::class, 'index']);
 
 
 
@@ -33,8 +31,7 @@ Route::group(['middleware' => ['prevent-back-history']], function () {
         return view('admin.dashboard.index');
     })->where('any', '.*');;
     // });
-    Route::get('/showroom', function () {
-        return view('landingpage.landingpage');
-    });
+
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

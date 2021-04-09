@@ -72,7 +72,7 @@
                         </ul>
                         {{-- <a href="{{ url('#contact') }}"
                             class="btn btn-light btn-rounded d-none d-lg-block">{{ trans('home.contact') }}</a> --}}
-                        <a href="javascript:void(0)"
+                        <a href="{{ url('admin/login') }}" target="_blank"
                             class="btn btn-light btn-rounded d-none d-lg-block btn-login">{{ trans('home.login') }}</a>
                         <li class=" navbar-nav nav-item-left flat">
                             <a class="flat_icon" href="{{ url(Request::getPathInfo() . '?lang=en') }}"><img
@@ -156,7 +156,7 @@
         </div>
     </div>
     <!-- LOGIN FORM -->
-    <div class="wrap-login-form">
+    {{-- <div class="wrap-login-form">
         <div class="login-form">
             <div class="form__logo">
                 <img src="https://vni.pro.vn/assets/images/vni/faicon.png" alt="">
@@ -175,7 +175,7 @@
                 <button type="submit" class="btn">Login</button>
             </form>
         </div>
-    </div>
+    </div> --}}
     <!-- LOGIN FORM -->
 
 

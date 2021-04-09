@@ -37,7 +37,7 @@ export const actions = {
                 .catch(({ response }) => {
                     // console.log('b');
                     commit(PURGE_AUTH, response.data);
-                    reject(response);
+                    // reject(response);
                 });
         });
     },
