@@ -73,7 +73,7 @@
 
 <script>
 import { PAGE_RESET_STATE } from "../store/actions/page";
-import {  } from "../store/actions/sectioncategory";
+import { CREATE_SECTION_CATEGORY  } from "../store/actions/sectioncategory";
 import { mapGetters } from "vuex";
 import store from "../store/store";
 

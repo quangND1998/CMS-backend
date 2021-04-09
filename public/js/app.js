@@ -3599,6 +3599,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -4395,7 +4396,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       this.category.title = this.$refs.title.value;
-      this.$store.dispatch(CREATE_SECTION_CATEGORY, this.sectionId).then(function (response) {
+      this.$store.dispatch(_store_actions_sectioncategory__WEBPACK_IMPORTED_MODULE_2__.CREATE_SECTION_CATEGORY, this.sectionId).then(function (response) {
         _this.successful = true;
         _this.error = false;
         _this.errors = [];
@@ -53419,7 +53420,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "posts" } }, [
-    _vm._v("\n    " + _vm._s(_vm.time) + "\n    "),
     _c(
       "div",
       { staticClass: "app-title" },

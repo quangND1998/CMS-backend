@@ -103,7 +103,7 @@ class PageController extends Controller
         }
         $extension = " ";
         $image = $page->image;
-        if ($image != null) {
+
             $this->DeleteFolder($image, $extension);
             $sections = $page->section;
             foreach ($sections as $section) {
@@ -112,11 +112,21 @@ class PageController extends Controller
                     $this->DeleteFolder($content->icon_image, $extension);
                 }
             }
+            foreach ($page->section as $section){
+                if ($section->section_category != null) {
+
+                    foreach ($section->section_category as $category) {
+
+                        foreach ($category->contents as $content) {
+                            $this->DeleteFolder($content->image, $extension);
+                            $this->DeleteFolder($content->icon_image, $extension);
+                        }
+                    }
+                }
+            }
+           
             $page->delete();
             return response()->json(' Delete Sussessfully', Response::HTTP_OK);
-        } else {
-            $page->delete();
-            return response()->json(' Delete Sussessfully', Response::HTTP_OK);
-        }
+        
     }
 }

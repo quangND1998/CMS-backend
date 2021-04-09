@@ -1,6 +1,7 @@
 <template>
     <div id="posts">
-        {{time}}
+        
+        
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
