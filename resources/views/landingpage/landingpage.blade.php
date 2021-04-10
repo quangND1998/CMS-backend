@@ -15,6 +15,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="assets/css/fancybox.css">
+
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
@@ -166,27 +169,23 @@
     </div>
     <!-- PARTNER -->
 
+
     <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
     <section id="vr-showroom">
         <div class="container">
             <div class="row">
                 <div class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp" data-wow-duration=".2s"
                     data-wow-delay=".1s">
-                    {{-- <h2 class="heading">{{ trans('home.vr-showroom.title') }}</h2> --}}
                     <h2 class="heading"> {{ $data[0]['section'][0]['title'] }}</h2>
 
                     <div class="tab">
-                        {{-- <button class="tablinks tablinks1 active" id="defaultOpen"
-                            onclick="openCity(event, 'product-demo')">{{ trans('home.vr-showroom.tab-1') }}</button>
-                        <button class="tablinks tablinks1"
-                            onclick="openCity(event, 'users-manual')">{{ trans('home.vr-showroom.tab-2') }}</button> --}}
                         @foreach ($data[0]['section'][0]['section_category'] as $tab_item)
-                            @if($loop->first)
+                            @if ($loop->first)
                                 <button class="tablinks tablinks1 active" id="defaultOpen"
                                     onclick="openCity(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
                             @else
                                 <button class="tablinks tablinks1"
-                                        onclick="openCity(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
+                                    onclick="openCity(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
                             @endif
                         @endforeach
                     </div>
@@ -213,21 +212,6 @@
                 <section class="customer">
                     <div class="container ">
                         <div class="app-screenshots center-align owl-carousel owl-theme row">
-                            {{-- <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
-                                    src="https://www.youtube.com/embed/0aSNM-w4P80"></iframe>
-                                <h6 class="text-center mb-3 mt-3">Tổng quan</h6>
-                            </div>
-                            <div class="item wow fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
-                                <iframe class="fame_mobile" width="100%" height="300"
-                                    src="https://www.youtube.com/embed/kf5SPtyYWE0"></iframe>
-                                <h6 class="text-center mb-3 mt-3"><a>Sa bàn ảo</a></h6>
-                            </div>
-                            <div class="item wow fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
-                                <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
-                                    src="https://www.youtube.com/embed/zIHB9pq4vZQ"></iframe>
-                                <h6 class="text-center mb-3 mt-3"><a>Nội thất</a></h6>
-                            </div> --}}
                             @foreach ($data[0]['section'][0]['section_category'][1]['contents'] as $item)
                                 <div class="item wow fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
                                     <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
@@ -265,56 +249,9 @@
                 </div>
             </div>
             <div class="row">
-                {{-- <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".2s"
-                    data-wow-delay=".1s">
-                    <div class=" mb-md-5 mb-sm-4">
-                        <img src="assets/images/icon/money.svg">
-                        <h5 class="">{{ trans('home.solution.s1') }}</h5>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".5s"
-                    data-wow-delay=".3s">
-                    <div class=" mb-md-5 mb-sm-4">
-                        <img src="assets/images/icon/360-degree.svg">
-                        <h5>{{ trans('home.solution.s3') }}</h5>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".4s"
-                    data-wow-delay=".3s">
-                    <div class=" mb-md-5 mb-sm-4">
-                        <img src="assets/images/icon/24h.svg">
-                        <h5>{{ trans('home.solution.s2') }}</h5>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".2s"
-                    data-wow-delay=".1s">
-                    <div class=" mb-md-5 mb-sm-4">
-                        <img src="assets/images/icon/timer.svg">
-                        <h5 class="">{{ trans('home.solution.s4') }}</h5>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".5s"
-                    data-wow-delay=".3s">
-                    <div class=" mb-md-5 mb-sm-4">
-                        <img src="assets/images/icon/easy.svg">
-                        <h5>{{ trans('home.solution.s5') }}</h5>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".4s"
-                    data-wow-delay=".3s">
-                    <div class=" mb-md-5 mb-sm-4">
-                        <img src="assets/images/icon/settings.svg">
-                        <h5>{{ trans('home.solution.s6') }}</h5>
-                    </div>
-                </div> --}}
                 @foreach ($data[0]['section'][1]['contents'] as $solution)
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 text-center wow zoomIn" data-wow-duration=".5s"
-                    data-wow-delay=".3s">
+                        data-wow-delay=".3s">
                         <div class=" mb-md-5 mb-sm-4">
                             <img src="{{ $solution->image }}">
                             <h5>{{ $solution->title }}</h5>
@@ -387,26 +324,18 @@
                     <h2 class="heading">{{ trans('home.3D-contents.title') }}</h2>
 
                     <div class="tab">
-                        {{-- <button class="tablinks tablinks2 active" id="defaultOpen1"
-                            onclick="showContentTab(event, '3d-videos')">{{ trans('home.3D-contents.tab1') }}</button>
-                        <button class="tablinks tablinks2"
-                            onclick="showContentTab(event, 'perspective-image')">{{ trans('home.3D-contents.tab2') }}</button>
-                        <button class="tablinks tablinks2"
-                            onclick="showContentTab(event, 'tour-360')">{{ trans('home.3D-contents.tab3') }}</button>
-                        <button class="tablinks tablinks2"
-                            onclick="showContentTab(event, '3d-scan')">{{ trans('home.3D-contents.tab4') }}</button> --}}
-                            @foreach ($data[0]['section'][3]['section_category'] as $tab_item)
-                                @if($loop->first)
+                        @foreach ($data[0]['section'][3]['section_category'] as $tab_item)
+                            @if ($loop->first)
                                 <button class="tablinks tablinks2 active" id="defaultOpen1"
                                     onclick="showContentTab(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
-                                @else
-                                    <button class="tablinks tablinks2"
-                                            onclick="showContentTab(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
-                                @endif
-                            @endforeach
+                            @else
+                                <button class="tablinks tablinks2"
+                                    onclick="showContentTab(event, '{{ Str::of($tab_item->title)->slug('-') }}')">{{ $tab_item->title }}</button>
+                            @endif
+                        @endforeach
                     </div>
                     <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
-                       {{ $data[0]['section'][3]['sub_title'] }}
+                        {{ $data[0]['section'][3]['sub_title'] }}
                     </p>
                 </div>
             </div>
@@ -416,64 +345,11 @@
                     <section class="customer">
                         <div class="container ">
                             <div class="app-screenshots center-align owl-carousel owl-theme row">
-                                {{-- <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s"
-                                    data-wow-delay=".1s">
-                                    <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
-                                        src="https://www.youtube.com/embed/Bf0jXixd950"></iframe>
-
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>1147</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>24</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>4211</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0">Flamingo The Legend</h6>
-                                </div>
-                                <div class="item wow fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
-                                    <iframe class="fame_mobile" width="100%" height="300"
-                                        src="https://www.youtube.com/embed/hOeKhllGlmI"></iframe>
-
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>1343</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>21</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>2975</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0"><a>Vinhomes Ocean Park</a></h6>
-                                </div>
-                                <div class="item wow fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
-                                    <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
-                                        src="https://www.youtube.com/embed/ZpomEFPKiZo"></iframe>
-
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>1478</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>19</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>3161</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0"><a>BIM Group - Aqua City Halong</a></h6>
-                                </div>
-                                <div class="item wow fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                    <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
-                                        src="https://www.youtube.com/embed/XuVMOXZSGaU"></iframe>
-
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>1027</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>31</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>2136</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0"><a>Sun Grand City Hillside Residences</a></h6>
-                                </div> --}}
                                 @foreach ($data[0]['section'][3]['section_category'][0]['contents'] as $item)
                                     <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s"
                                         data-wow-delay=".1s">
                                         <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
-                                            src="{{$item->video}}"></iframe>
+                                            src="{{ $item->video }}"></iframe>
 
                                         <div class="post-meta m-0 px-3 py-2">
                                             <ul class="list-inline mb-0">
@@ -482,7 +358,7 @@
                                                 <li class="list-inline-item"><a><i class="fa fa-eye"></i>4211</a></li>
                                             </ul>
                                         </div>
-                                        <h6 class="px-3 py-1 my-0">{{$item->title}}</h6>
+                                        <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
                                     </div>
                                 @endforeach
                             </div>
@@ -494,67 +370,25 @@
                     <section class="customer">
                         <div class="container ">
                             <div class="app-screenshots center-align owl-carousel owl-theme row">
-                                {{-- <div class="item ml-auto mr-auto fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                    <img id="0" onclick="openImage(this.id)" class=" w-100"
-                                        src="assets/images/vni/congtrinh/1.jpg" alt="" />
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>985</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>21</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>1270</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0"> Urban Planning Images</h6>
-                                </div>
-                                <div class="item fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
-                                    <img id="1" onclick="openImage(this.id)" class=" w-100"
-                                        src="assets/images/vni/congtrinh/2.jpg" alt="" />
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>1343</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>21</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>1521</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0">Lowrise Building Images</h6>
-                                </div>
-                                <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                    <img id="3" onclick="openImage(this.id)" class=" w-100"
-                                        src="assets/images/vni/congtrinh/4.jpg" alt="" />
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>701</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>16</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>2389</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0">Highrise Building Images</h6>
-                                </div>
-                                <div class="item fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
-                                    <img id="2" onclick="openImage(this.id)" class=" w-100"
-                                        src="assets/images/vni/congtrinh/3.jpg" alt="" />
-                                    <div class="post-meta m-0 px-3 py-2">
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a><i class="fa fa-heart"></i>1013</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-comment"></i>18</a></li>
-                                            <li class="list-inline-item"><a><i class="fa fa-eye"></i>1625</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="px-3 py-1 my-0">Interior Images</h6>
-                                </div> --}}
                                 @foreach ($data[0]['section'][3]['section_category'][1]['contents'] as $item)
+
                                     <div class="item fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
-                                        <img id="2" onclick="openImage(this.id)" class=" w-100"
-                                            src="{{ $item->image }}" alt="" />
+                                        <a class="fcb" href="{{ $item->image }}" data-fancybox="images">
+                                            <img id="2" class=" w-100" src="{{ $item->image }}" alt="" />
+                                        </a>
                                         <div class="post-meta m-0 px-3 py-2">
                                             <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1013</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>18</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1625</a></li>
+                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1013</a>
+                                                </li>
+                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>18</a>
+                                                </li>
+                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1625</a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
                                     </div>
+
                                 @endforeach
                             </div>
                         </div>
@@ -565,75 +399,22 @@
                     <section class="customer">
                         <div class="container ">
                             <div class="app-screenshots center-align owl-carousel owl-theme row">
-                                {{-- <div class="item fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                    <div class="post-block">
-                                        <img id="0" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/sun_village.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1760</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>25</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2287</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">Sun Premier Village Primavera</h6>
-                                    </div>
-                                </div>
-                                <div class="item fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
-                                    <div class="post-block">
-                                        <img id="1" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/the-sol-city.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1673</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2325</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">The SOL City</h6>
-                                    </div>
-                                </div>
-                                <div class="item fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
-                                    <div class="post-block">
-                                        <img id="2" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/gem-sky-world.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1746</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>22</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2534</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">Gem Sky World</h6>
-                                    </div>
-                                </div>
-                                <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                    <div class="post-block">
-                                        <img id="3" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/aria-dn.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">Aria Đà Nẵng</h6>
-                                    </div>
-                                </div> --}}
                                 @foreach ($data[0]['section'][3]['section_category'][2]['contents'] as $item)
                                     <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
                                         <div class="post-block">
                                             <img id="3" onclick="openTour360(this.id)" class=" w-100"
-                                                src="{{$item->image}}" alt="" />
+                                                src="{{ $item->image }}" alt="" />
                                             <div class="post-meta m-0 px-3 py-2">
                                                 <ul class="list-inline mb-0">
-                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
-                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
-                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a>
+                                                    </li>
                                                 </ul>
                                             </div>
-                                            <h6 class="px-3 py-1 my-0">{{$item->title}}</h6>
+                                            <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
                                         </div>
                                     </div>
                                 @endforeach
@@ -646,62 +427,6 @@
                     <section class="customer">
                         <div class="container ">
                             <div class="app-screenshots center-align owl-carousel owl-theme row">
-                                {{-- <div class="item fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                    <div class="post-block">
-                                        <img id="4" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/3d-scan/1.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1760</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>25</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2287</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">Sol River - Two bedroom</h6>
-                                    </div>
-                                </div>
-                                <div class="item fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
-                                    <div class="post-block">
-                                        <img id="5" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/3d-scan/2.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1673</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2325</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">Shophouse - Three bedroom</h6>
-                                    </div>
-                                </div>
-                                <div class="item fadeIn" data-wow-duration=".4s" data-wow-delay=".3s">
-                                    <div class="post-block">
-                                        <img id="6" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/3d-scan/3.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1746</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>22</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>2534</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">Dragan - Tầng 23 - Căn E</h6>
-                                    </div>
-                                </div>
-                                <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                    <div class="post-block">
-                                        <img id="7" onclick="openTour360(this.id)" class=" w-100"
-                                            src="assets/images/vni/thumb/3d-scan/4.PNG" alt="" />
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">Bien Hoa Universe Complex - Three bedroom</h6>
-                                    </div>
-                                </div> --}}
                                 @foreach ($data[0]['section'][3]['section_category'][3]['contents'] as $item)
                                     <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
                                         <div class="post-block">
@@ -709,9 +434,12 @@
                                                 src="{{ $item->image }}" alt="" />
                                             <div class="post-meta m-0 px-3 py-2">
                                                 <ul class="list-inline mb-0">
-                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a></li>
-                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a></li>
-                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a></li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
@@ -792,7 +520,7 @@
 
                 </div>
                 <div class="col-lg-6  order-md-2 wow zoomIn" data-wow-duration=".5s" data-wow-delay=".2s">
-                    <img class="img-row" src="{{$data[0]['section'][5]['contents'][0]['image']}}" alt="" />
+                    <img class="img-row" src="{{ $data[0]['section'][5]['contents'][0]['image'] }}" alt="" />
                 </div>
 
             </div>
@@ -897,6 +625,23 @@
             </div>
         </div>
     </div>
+
+    <!-- Lightbox JS -->
+    <script src="assets/js/fancybox.js"></script>
+    <script>
+        $().fancybox({
+            selector: '#perspective-images .owl-item:not(.cloned) .fcb',
+            hash: false,
+            thumbs: {
+                autoStart: true
+            },
+            buttons: [
+                'zoom',
+                'close'
+            ],
+        });
+
+    </script>
 
 </body>
 

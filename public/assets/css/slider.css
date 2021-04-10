@@ -1,4 +1,4 @@
-.slider{
+.slider {
     left: 0px;
     top: 0px;
     overflow: hidden;
@@ -11,22 +11,27 @@
     height: 100%;
     visibility: hidden;
 }
-.w3-content{
+
+.w3-content {
     top: 20%;
 }
+
 .mySlides {
-    display:none;
+    display: none;
 }
-.w3-display-close{
+
+.w3-display-close {
     position: absolute;
     right: 0px;
-    
 }
-.swiper-slide:hover{
+
+.swiper-slide:hover {
     transform: scale(1.5);
-    
 }
-.content-tour360{
+
+.content-tour360 {
     z-index: 999;
-    height: 100%;
+    height: 90%;
+    width: 90%;
+    margin: 50px auto;
 }
