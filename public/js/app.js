@@ -4450,6 +4450,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4490,7 +4498,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     }))();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["category"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["category", "types"])),
   methods: {
     create: function create() {
       var _this = this;
@@ -4509,6 +4517,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         });
       })["catch"](function (error) {
+        console.log(error);
+
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -6703,8 +6713,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var initialState = {
   section_categorys: [],
   category: {
-    title: ""
-  }
+    title: "",
+    type: ""
+  },
+  types: [{
+    text: 'Video',
+    value: 0
+  }, {
+    text: 'Image',
+    value: 1
+  }, {
+    text: 'Tour',
+    value: 2
+  }, {
+    text: 'Scan',
+    value: 3
+  }]
 };
 var state = _objectSpread({}, initialState);
 var actions = (_actions = {}, _defineProperty(_actions, _actions_sectioncategory__WEBPACK_IMPORTED_MODULE_1__.FETCH_SECTION_CATEGORY, function (_ref, slug) {
@@ -6765,6 +6789,9 @@ var getters = {
   },
   category: function category(state) {
     return state.category;
+  },
+  types: function types(state) {
+    return state.types;
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6823,11 +6850,23 @@ var initialState = {
     template: ""
   },
   options: [{
-    text: 'styles.template1'
+    text: 'styles.template1',
+    value: 'styles.template1'
   }, {
-    text: 'styles.template2'
+    text: 'styles.template2',
+    value: 'styles.template2'
   }, {
-    text: 'styles.template3'
+    text: 'styles.template3',
+    value: 'styles.template3'
+  }, {
+    text: 'styles.template4',
+    value: 'styles.template4'
+  }, {
+    text: 'styles.template5',
+    value: 'styles.template5'
+  }, {
+    text: 'styles.template6',
+    value: 'styles.template6'
   }]
 };
 var state = _objectSpread({}, initialState);
@@ -54500,7 +54539,54 @@ var render = function() {
             }
           })
         ]),
-        _vm._v("\n\n\n        " + _vm._s(_vm.category) + "\n\n        "),
+        _vm._v("\n\n\n        " + _vm._s(_vm.category) + "\n        "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("Example select")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.category.type,
+                  expression: "category.type"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "exampleFormControlSelect1" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.category,
+                    "type",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            _vm._l(_vm.types, function(type) {
+              return _c(
+                "option",
+                { key: type.index, domProps: { value: type.value } },
+                [_vm._v(_vm._s(type.text))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
         _c(
           "router-link",
           {

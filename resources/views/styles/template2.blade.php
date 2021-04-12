@@ -3,7 +3,7 @@
         <div class="row">
             <div class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp" data-wow-duration=".2s"
                 data-wow-delay=".1s">
-                <h2 class="heading">{{ trans('home.vr-showroom.title') }}</h2>
+                <h2 class="heading">{{ $section->title }}</h2>
 
                 <div class="tab">
 
@@ -33,7 +33,7 @@
         </div>
         @foreach ($section->section_category as $categorys)
 
-            @if (count($categorys->contents) != 0 && $categorys->contents[0]->video == null)
+            @if ($categorys->type == 0)
 
                 <div class="row">
                     <div id="{{ Str::of($categorys->title)->slug('-') }}" class="tabcontent tabcontent1 main">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-            @else
+            @elseif($categorys->type ==1)
 
 
 
@@ -65,6 +65,56 @@
                                         <h6 class="text-center mb-3 mt-3">{{ $content->title }}</h6>
                                     </div>
 
+
+                                @endforeach
+
+
+
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            @elseif ($categorys->type ==2)
+                <div id="{{ Str::of($categorys->title)->slug('-') }}" class="tabcontent tabcontent2">
+                    <section class="customer">
+                        <div class="container ">
+                            <div class="app-screenshots center-align owl-carousel owl-theme row">
+                                @foreach ($categorys->contents as $content)
+                                    @if ($loop->first)
+                                        <div class="item ml-auto mr-auto fadeIn" data-wow-duration=".2s"
+                                            data-wow-delay=".1s">
+                                            <img id={{ $content->id }} onclick="openImage(this.id)" class=" w-100"
+                                                src={{ $content->image }} alt="" />
+                                            <div class="post-meta m-0 px-3 py-2">
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>985</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>21</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1270</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h6 class="px-3 py-1 my-0">{{ $content->title }}</h6>
+                                        </div>
+                                    @else
+                                        <div class="item fadeIn" data-wow-duration=".3s" data-wow-delay=".2s">
+                                            <img id={{ $content->id }} onclick="openImage(this.id)" class=" w-100"
+                                                src={{ $content->image }} alt="" />
+                                            <div class="post-meta m-0 px-3 py-2">
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>1343</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>21</a>
+                                                    </li>
+                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1521</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <h6 class="px-3 py-1 my-0">{{ $content->title }}</h6>
+                                        </div>
+                                    @endif
 
                                 @endforeach
 

@@ -26,6 +26,22 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="assets/css/partner.css" />
     <script src="assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="assets/css/fancybox.css">
+    <script src="assets/js/fancybox.js"></script>
+    <script>
+        $().fancybox({
+            selector: '#perspective-images .owl-item:not(.cloned) .fcb',
+            hash: false,
+            thumbs: {
+                autoStart: true
+            },
+            buttons: [
+                'zoom',
+                'close'
+            ],
+        });
+
+    </script>
     <style>
         button:focus {
             outline: inherit;
@@ -56,25 +72,30 @@
             transition: 0.3s;
             font-size: 17px;
         }
+
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126581925-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126581925-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-126581925-2');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-126581925-2');
+
+    </script>
 
 </head>
 
 <body class="transparent-header" data-spy="scroll" data-offset="75" data-target="#navbarCollapse">
     <!-- Loader -->
 
-        @yield('content')
+    @yield('content')
 
-        @include('client.layout.footer')
+    @include('client.layout.footer')
 
     <script src="assets/plugins/dist/js/plugins.min.js"></script>
     <!-- Main JS -->
@@ -88,10 +109,15 @@
     <script type='text/javascript' src='assets/js/theme/jquery.paroller.min.js?ver=5.2.2'></script>
     <script>
         var language = window.navigator.userLanguage || window.navigator.language;
+
     </script>
     <script>
         var video = document.getElementById("myVideo");
         var btn = document.getElementById("myBtn");
+
+
+
+
         var array = [
             'https://vni.pro.vn/duan/SunPrimavera/index.html',
             'https://vni.pro.vn/duan/SolCity/final/tour.html',
@@ -156,10 +182,13 @@
 
         /*tour 360*/
         function openTour360(id) {
+
+
+
+
             unmute();
             document.getElementById("slider-tour360").style.visibility = "visible";
             document.getElementById("slidetour360").src = array[id];
-
         }
 
         function closeTour360() {
@@ -188,6 +217,7 @@
                 status = 1;
             }
         }
+
     </script>
     <script>
         var slideIndex = 1;
@@ -202,7 +232,7 @@
         function showDivs(n) {
             var i;
             var x = document.getElementsByClassName("mySlides");
-            if( x != null){
+            if (x != null) {
                 if (n > x.length) {
                     slideIndex = 1
                 }
@@ -224,7 +254,7 @@
             console.log(slideIndex);
             var i;
             var x = document.getElementsByClassName("mySlides_pre");
-            if( x != null){
+            if (x != null) {
                 if (n > x.length) {
                     slideIndex = 1
                 }
@@ -246,24 +276,25 @@
             console.log(slideIndex);
             var i;
             var x = document.getElementsByClassName("mySlides_standard");
-                if( x != null){
-                    if (n > x.length) {
-                        slideIndex = 1
-                    }
-                    if (n < 1) {
-                        slideIndex = x.length
-                    }
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = "none";
-                    }
-                    x[slideIndex - 1].style.display = "block";
+            if (x != null) {
+                if (n > x.length) {
+                    slideIndex = 1
                 }
+                if (n < 1) {
+                    slideIndex = x.length
+                }
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                x[slideIndex - 1].style.display = "block";
+            }
 
         }
+
     </script>
     <script>
         function openCity(evt, el) {
-           let i, tabcontent1, tablinks1;
+            let i, tabcontent1, tablinks1;
             tabcontent1 = document.getElementsByClassName("tabcontent1");
             for (i = 0; i < tabcontent1.length; i++) {
                 tabcontent1[i].style.display = "none";
@@ -291,15 +322,14 @@
         }
 
 
-        if(document.getElementById("defaultOpen") != null){
+        if (document.getElementById("defaultOpen") != null) {
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         }
-        if(document.getElementById("defaultOpen1") != null){
+        if (document.getElementById("defaultOpen1") != null) {
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen1").click();
         }
-
 
     </script>
     <script>
@@ -317,10 +347,11 @@
             evt_img.currentTarget.className += " active";
         }
 
-        if(document.getElementById("defaultOpen_img") != null){
+        if (document.getElementById("defaultOpen_img") != null) {
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen_img").click();
         }
+
     </script>
     <script>
         $(".btn-login").click(function() {
@@ -329,5 +360,6 @@
         $(".login-form span").click(function() {
             $(".wrap-login-form").fadeOut();
         })
+
     </script>
 </body>

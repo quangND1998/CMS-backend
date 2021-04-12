@@ -56,6 +56,14 @@
 
 
             {{category}}
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select class="form-control" id="exampleFormControlSelect1" v-model="category.type">
+                <option v-for="type in types" :key="type.index" v-bind:value="type.value" >{{type.text}}</option>
+            
+         
+            </select>
+              </div>
 
             <router-link :to="{ name: 'section_category',    params: { posId: this.postId ,sectionId:this.sectionId} }" class="btn btn-white block">
                 Back
@@ -99,7 +107,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["category"])
+        ...mapGetters(["category","types"])
     },
     methods: {
         create() {
@@ -119,6 +127,7 @@ export default {
 
                     })
                     .catch(error => {
+                        console.log(error);
                         if (!_.isEmpty(error.response)) {
                         if ((error.response.status == 422)) {
                             this.errors = error.response.data.errors;

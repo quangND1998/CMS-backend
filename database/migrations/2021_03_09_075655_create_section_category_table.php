@@ -17,6 +17,7 @@ class CreateSectionCategoryTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->unsignedInteger('section_id')->unsigned()->nullable();
+            $table->string('type');
             $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
             $table->timestamps();
         });

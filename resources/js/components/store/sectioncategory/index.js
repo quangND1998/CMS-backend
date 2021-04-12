@@ -11,9 +11,18 @@ const initialState = {
   section_categorys: [],
 
   category: {
-    title: ""
+    title: "",
+    type:""
     
   }
+  ,
+    types: [
+      { text: 'Video',value:0 },
+      { text: 'Image',value:1 },
+      { text: 'Tour',value:2 },
+      { text: 'Scan',value:3 },
+  ]
+
 
 };
 
@@ -95,6 +104,9 @@ const getters = {
   },
   category(state) {
     return state.category;
+  },
+  types(state) {
+    return state.types;
   }
 
 };

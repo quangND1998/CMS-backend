@@ -43,6 +43,7 @@ class SectionCategoryController extends Controller
         }
         $section_category = new Section_Category();
         $section_category->title = $request->title;
+        $section_category->type = $request->type;
         $section_category->section_id = $section->id;
         $section_category->save();
         return new SectionCategoryResource($section_category);

@@ -15,13 +15,16 @@ const initialState = {
     title: "",
     text: "",
     sub_title: "",
-    template:"",
+    template: "",
     
   },
   options: [
-      { text: 'styles.template1' },
-      { text: 'styles.template2'},
-      { text: 'styles.template3' }
+      { text: 'styles.template1', value: 'styles.template1' },
+      { text: 'styles.template2' , value: 'styles.template2'},
+      { text: 'styles.template3',value:  'styles.template3'},
+      { text: 'styles.template4',value:  'styles.template4'},
+      { text: 'styles.template5',value: 'styles.template5'},
+      { text: 'styles.template6',value:'styles.template6' }
   ]
 
 };
