@@ -134,6 +134,7 @@
 
 @foreach ($data->section as $section)
     <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
+    
     @include($section->template)
 
 @endforeach

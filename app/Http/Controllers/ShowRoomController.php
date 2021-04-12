@@ -12,9 +12,10 @@ class ShowRoomController extends Controller
         $data = Page::with([
             'section',
         ])->first();
-
-   
-
-        return view('landingpage.landingpage', compact('data'));
+        if ($data) {
+            return view('landingpage.landingpage', compact('data'));
+        } else {
+            return redirect('admin/login');
+        }
     }
 }
