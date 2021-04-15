@@ -1,5 +1,5 @@
 @extends('client.layout.index')
-<div class="wrap-header" id="introduction">
+{{-- <div class="wrap-header" id="introduction">
     <div class="video">
         <video src="assets/video/header-video.mp4" loop muted autoplay>
         </video>
@@ -63,7 +63,7 @@
 
 
 <!-- PARTNER -->
-<div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true"
+{{-- <div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true"
     class="vc_row wpb_row vc_row-fluid vc_custom_1557304191682 vc_row-has-fill vc_row-no-padding">
     <div class="wpb_column vc_column_container vc_col-sm-12">
         <div class="vc_column-inner ">
@@ -126,20 +126,18 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- PARTNER -->
 
 <!-- LOGIN FORM -->
 
 
-@foreach ($data->section as $section)
+@foreach ($sections as $section)
     <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
     
-    @include($section->template)
+    @include($section->theme->link_code)
 
 @endforeach
-
-
 
 <section id="blogs news">
     <div class="container">
@@ -217,7 +215,7 @@
     </div>
 
 </div>
-
+{{-- 
 <div class="slider" id="slider_image_pre">
     <div class="w3-content w3-display-container">
         <button onclick="closeImage_pre()" class="w3-button w3-black w3-display-close">&#10006;</button>
@@ -257,7 +255,7 @@
         </iframe>
     </div>
 
-</div>
+</div> --}}
 
 
 

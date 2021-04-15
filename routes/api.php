@@ -1,12 +1,18 @@
 <?php
 
 use App\Http\Controllers\APi\AuthController;
+use App\Http\Controllers\BLog\ContactController;
+use App\Http\Controllers\Blog\LoaiTinController;
+use App\Http\Controllers\Blog\SlideController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SectionCategoryController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StyleController;
+use App\Http\Controllers\Blog\TheLoaiController;
+use App\Http\Controllers\Blog\TinTucController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Resources\TheLoaiResource;
 use App\Models\Style;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -61,10 +67,7 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
             Route::get('', [SectionCategoryController::class, 'getSectionCateGory']);
             Route::post('', [SectionCategoryController::class, 'store']);
         });
-        Route::prefix('{id}/theme')->group(function () {
-            Route::get('', [ThemeController::class, 'getTheme']);
-            Route::post('', [ThemeController::class, 'store']);
-        });
+   
     });
     Route::prefix('item')->group(function () {
         Route::get('/{id}', [ItemController::class, 'edit']);
@@ -72,8 +75,10 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
         Route::delete('delete/{id}', [ItemController::class, 'delete']);
     });
     Route::prefix('theme')->group(function () {
+        Route::get('', [ThemeController::class, 'getTheme']);
+        Route::post('', [ThemeController::class, 'store']);
         Route::get('{id}', [ThemeController::class, 'edit']);
-        Route::put('update/{id}', [ThemeController::class, 'update']);
+        Route::post('update/{id}', [ThemeController::class, 'update']);
         Route::delete('delete/{id}', [ThemeController::class, 'delete']);
     });
     Route::prefix('style')->group(function () {
@@ -95,6 +100,63 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
 
 
     Route::post("logout", [AuthController::class, 'logout']);
+    	// Route group The Loai
+	Route::group(['prefix' => 'theloai'],function(){
+		// Route URL: admin/theloai/danhsach
+		Route::get('',[TheLoaiController::class,'list']);
+
+	
+		Route::post('',[TheLoaiController::class,'store']);
+
+		// Route URL: admin/theloai/sua
+		Route::get('{id}',[TheLoaiController::class,'get']);
+
+		Route::put('update/{id}',[TheLoaiController::class,'update']);
+
+		Route::delete('delete/{id}',[TheLoaiController::class, 'delete']);
+	});
+    Route::group(['prefix' => 'loaitin'],function(){
+		Route::get('',[LoaiTinController::class,'list']);
+
+		Route::post('',[LoaiTinController::class,'store']);
+
+		Route::get('{id}',[LoaiTinController::class,'get']);
+
+		Route::put('update/{id}',[LoaiTinController::class,'update']);
+
+		Route::delete('delete/{id}',[LoaiTinController::class,'delete']);
+	});
+
+    Route::group(['prefix' => 'tintuc'],function(){
+		Route::get('',[TinTucController::class,'list']);
+
+
+
+		Route::post('',[TinTucController::class,'store']);
+
+		Route::get('{id}',[TinTucController::class,'get']);
+
+		Route::post('update/{id}',[TinTucController::class,'update']);
+
+		Route::delete('delete/{id}',[TinTucController::class,'delete']);
+	});
+
+
+    Route::group(['prefix' => 'slide'],function(){
+		Route::get('',[SlideController::class,'list']);
+		Route::post('',[SlideController::class,'store']);
+
+		Route::get('{id}',[SlideController::class,'get']);
+
+		Route::post('update/{id}',[SlideController::class,'update']);
+
+		Route::delete('delete/{id}',[SlideController::class,'delete']);
+	});
+    Route::group(['prefix' => 'contact'],function(){
+		Route::get('',[ContactController::class,'getDanhSach']);
+		Route::delete('delete/{id}',[ContactController::class,'Xoa']);
+	});
+
 });
 
     

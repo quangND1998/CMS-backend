@@ -1,6 +1,7 @@
 <template>
     <div class="">
         <div class="app-title">
+        
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <li class="breadcrumb-item">
@@ -49,7 +50,17 @@
                     ref="title"
                     class="form-control"
                     id="title"
-                    placeholder="Enter name"
+                    placeholder="Enter name English"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="title_vn"
+                    class="form-control"
+                    id="title_vn"
+                    placeholder="Enter name  Vietnamese"
                     required
                 />
             </div>
@@ -57,10 +68,21 @@
             <div class="form-group">
                 <input
                     type="title"
+                
                     ref="sub_title"
                     class="form-control"
                     id="sub_title"
-                    placeholder="Enter sub title"
+                    placeholder="Enter sub title English"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="sub_title_vn"
+                    class="form-control"
+                    id="sub_title_vn"
+                    placeholder="Enter sub title VietNamese"
                     required
                 />
             </div>
@@ -70,26 +92,62 @@
                     class="form-control"
                     ref="text"
                     id="text"
-                    placeholder="Enter a body"
+                    placeholder="Enter a body English"
                     rows="6"
                     required
                 ></textarea>
             </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1" v-model="section.template">
-                <option v-for="option in options" :key="option.index" >{{option.text}}</option>
-            
-         
-            </select>
-              </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="text_vn"
+                    class="form-control"
+                    id="text_vn"
+                    placeholder="Enter body VietNamese"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="number"
+                    ref="number"
+                    class="form-control"
+                    id="number"
+                    placeholder="Nhập vào số thứ tự section"
+                    required
+                />
+            </div>
+            <div class="form-group">
+
+                <div v-for="theme in themes" :key="theme.index"  class="form-check form-check-inline">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        v-model="section.theme_id"
+                        v-bind:value="theme.id"
+                   
+                    />
+                    <img :src="theme.image_template" style="width: 200px">
+                    <label class="form-check-label" for="inlineRadio1"  >{{theme.id}}</label>
+                </div>
+                  
+                <!-- <label for="exampleFormControlSelect1">Chọn Template</label>
+                <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    v-model="section.theme_id"
+                >
+                    <option v-for="theme in themes" :key="theme.index" heigh="200px">
+                        <img :src="theme.image_template" style="width: 50px"/></option>
+                </select> -->
+            </div>
 
             <div class="modal-footer justify-content-center">
                 <router-link
                     :to="{ name: 'section', params: { postId: postId } }"
                     class="btn btn-white block"
                 >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
                 <button
@@ -109,6 +167,7 @@ import { PAGE_RESET_STATE } from "../store/actions/page";
 import { CREATE_SECTION } from "../store/actions/section";
 import { mapGetters } from "vuex";
 import store from "../store/store";
+import { FETCH_THEMES } from "../store/actions/theme";
 
 export default {
     props: {
@@ -123,46 +182,60 @@ export default {
             errors: []
         };
     },
+    created() {
+        this.getTemplate();
+    },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
         next();
     },
 
     computed: {
-        ...mapGetters(["section", "sections","options"])
+        ...mapGetters(["section", "sections", "themes"])
     },
     methods: {
         create() {
             this.section.title = this.$refs.title.value;
             this.section.text = this.$refs.text.value;
             this.section.sub_title = this.$refs.sub_title.value;
-    
-            this.$store.dispatch(CREATE_SECTION, this.postId)
-            .then(response => {
-                        this.successful = true;
-                        this.error = false;
-                        this.errors = [];
-                         this.$router.push({
-                            name: "section",
-                            params: { posId: this.postId }
-                        });
-
-                    })
-                    .catch(error => {
-                
-                        if (!_.isEmpty(error.response)) {
-                        if ((error.response.status == 422)) {
+            this.section.title_vn = this.$refs.title_vn.value;
+            this.section.text_vn = this.$refs.text_vn.value;
+            this.section.sub_title_vn = this.$refs.sub_title_vn.value;
+            this.section.number = this.$refs.number.value;
+       
+            this.$store
+                .dispatch(CREATE_SECTION, this.postId)
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.push({
+                        name: "section",
+                        params: { posId: this.postId }
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
                             this.successful = false;
                             this.error = true;
                         }
-                        }
-                    });;
-      
-          
+                    }
+                });
+
             this.$refs.title.value = "";
             this.$refs.text.value = "";
             this.$refs.sub_title.value = "";
+            this.$refs.title_vn.value = "";
+            this.$refs.text_vn.value = "";
+            this.$refs.sub_title_vn.value = "";
+            this.$refs.number.value = "";
+        },
+
+        getTemplate() {
+            this.$store.dispatch(FETCH_THEMES);
         }
     }
 };

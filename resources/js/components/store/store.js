@@ -5,6 +5,12 @@ import section from './sectionmodule'
 import item from './itemmodule'
 import login from './loginmodule'
 import category from './sectioncategory'
+import theme from './thememodule'
+import theloai from './theloaimodule'
+import loatin from './loaitinmodule'
+import tintuc from './tintucModule'
+import slide from './slideModule'
+import contact from './contactModule'
 Vue.use(Vuex)
 
 
@@ -14,7 +20,13 @@ export default new Vuex.Store({
         section,
         item,
         login,
-        category
+        category,
+        theme,
+        theloai,
+        loatin,
+        tintuc,
+        slide,
+        contact
     },
 
     state: {

@@ -15,17 +15,14 @@ const initialState = {
     title: "",
     text: "",
     sub_title: "",
-    template: "",
+    title_vn: "",
+    text_vn: "",
+    sub_title_vn: "",
+    number :0,
+    theme_id:''
     
   },
-  options: [
-      { text: 'styles.template1', value: 'styles.template1' },
-      { text: 'styles.template2' , value: 'styles.template2'},
-      { text: 'styles.template3',value:  'styles.template3'},
-      { text: 'styles.template4',value:  'styles.template4'},
-      { text: 'styles.template5',value: 'styles.template5'},
-      { text: 'styles.template6',value:'styles.template6' }
-  ]
+
 
 };
 
@@ -63,8 +60,10 @@ export const actions = {
   },
 
   [CREATE_SECTION]({state},slug) {
-  
-    // console.log('CREATE_SECTION',slug)  
+    
+    console.log('CREATE_SECTION',slug)  
+        
+    console.log('STATE',state)  
     return sectionService.post(slug, state.section);
   },
   [SECTION_DELETE](context, slug) {

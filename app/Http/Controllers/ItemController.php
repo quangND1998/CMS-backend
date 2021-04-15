@@ -52,21 +52,19 @@ class ItemController extends Controller
 
         $item = new Content();
         $item->title = $request->title;
+        $item->title_vn = $request->title_vn;
         $item->video = $request->video;
-        $item->subtitle = $request->subtitle;
-        $item->short_content = $request->short_content;
+        $item->tour360 = $request->tour360;
+        $item->scan = $request->scan;
         $item->detail = $request->detail;
-        $item->icon_class = $request->icon_class;
+        $item->detail_vn = $request->detail_vn;
+
         if ($request->hasfile('image')) {
             $files = $request->file('image');
             $destinationpath = 'images/content/';
             $item->image = $this->image($files, $destinationpath);
         }
-        if ($request->hasfile('icon_image')) {
-            $files = $request->file('icon_image');
-            $destinationpath = 'images/icon/';
-            $item->icon_image = $this->image($files, $destinationpath);
-        }
+      
         $item->section_id = $section->id;
         $item->save();
         return new ItemResource($item);
@@ -99,23 +97,19 @@ class ItemController extends Controller
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
         $item->title = $request->title;
+        $item->title_vn = $request->title_vn;
         $item->video = $request->video;
-        $item->subtitle = $request->subtitle;
-        $item->short_content = $request->short_content;
+        $item->tour360 = $request->tour360;
+        $item->scan = $request->scan;
         $item->detail = $request->detail;
-        $item->icon_class = $request->icon_class;
+        $item->detail_vn = $request->detail_vn;
         if ($request->hasfile('image')) {
             $files = $request->file('image');
             $destinationpath = 'images/content/';
             $attribute = $item->image;
             $item->image = $this->update_image($files, $destinationpath, $attribute);
         }
-        if ($request->hasfile('icon_image')) {
-            $files = $request->file('icon_image');
-            $destinationpath = 'images/icon/';
-            $attribute = $item->icon_image;
-            $item->icon_image = $this->update_image($files, $destinationpath, $attribute);
-        }
+    
         $item->save();
         if ($item->section_id) {
             return new ItemResource($item);

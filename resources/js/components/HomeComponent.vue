@@ -14,13 +14,27 @@
             </div>
             <ul class="app-menu">
                 <li>
-                    <a class="app-menu__item active" href="#">
-                        <i
-                            class="app-menu__icon fa fa-file-text-o"
-                            aria-hidden="true"
-                        ></i>
-                        <span class="app-menu__label">Page list</span>
-                    </a>
+                    <router-link :to="{ name: 'page' }">
+                        <a class="app-menu__item active" href="#">
+                            <i
+                                class="app-menu__icon fa fa-file-text-o"
+                                aria-hidden="true"
+                            ></i>
+                            <span class="app-menu__label">Page list</span>
+                        </a>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link :to="{ name: 'theme' }">
+                        <a class="app-menu__item active" href="#">
+                            <i
+                                class="app-menu__icon fa fa-file-text-o"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span class="app-menu__label">Theme</span>
+                        </a>
+                    </router-link>
                 </li>
                 <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"
@@ -52,6 +66,8 @@
                         </li> -->
                     </ul>
                 </li>
+
+                <!-- Thể Loại -->
                 <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"
                         ><i class="fa fa-list fa-fw icon-mright"></i>
@@ -59,26 +75,22 @@
                         <i class="treeview-indicator fa fa-angle-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li>
-                            <a class="treeview-item" href="#"
-                                ><i class="icon fa fa-circle-o"></i>Danh Sách</a
-                            >
-                        </li>
-                        <!-- <li>
-                            <a
-                                class="treeview-item"
-                                href="#"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                ><i class="icon fa fa-circle-o"></i> Roles</a
-                            >
-                        </li>
-                        <li>
-                            <a class="treeview-item" href="#"
-                                ><i class="icon fa fa-circle-o"></i>
-                                Permissions</a
-                            >
-                        </li> -->
+                        <router-link :to="{ name: 'theloai' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Danh
+                                    Sách</a
+                                >
+                            </li>
+                        </router-link>
+                        <router-link :to="{ name: 'theloai.create' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Thêm Thể
+                                    Loại</a
+                                >
+                            </li>
+                        </router-link>
                     </ul>
                 </li>
                 <!-- <li>
@@ -87,6 +99,106 @@
                         <span class="app-menu__label">Settings</span>
                     </a>
                 </li> -->
+
+                <!-- Loai TIn -->
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"
+                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        <span class="app-menu__label">Loại Tin</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <router-link :to="{ name: 'loaitin' }">
+                            <li>
+                                <a class="treeview-item"
+                                    ><i class="icon fa fa-circle-o"></i>Danh
+                                    Sách</a
+                                >
+                            </li>
+                        </router-link>
+                        <router-link :to="{ name: 'loaitin.create' }">
+                            <li>
+                                <a class="treeview-item"
+                                    ><i class="icon fa fa-circle-o"></i>Thêm
+                                    Loại Tin</a
+                                >
+                            </li>
+                        </router-link>
+                    </ul>
+                </li>
+
+                <!-- Tin Tức -->
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"
+                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        <span class="app-menu__label">Tin Tức</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <router-link :to="{ name: 'tintuc' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Danh
+                                    Sách</a
+                                >
+                            </li>
+                        </router-link>
+                        <router-link :to="{ name: 'tintuc.create' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Thêm Tin
+                                    Tức</a
+                                >
+                            </li>
+                        </router-link>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"
+                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        <span class="app-menu__label">Quản lý Slider</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                     <router-link :to="{ name: 'slide' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Danh
+                                    Sách</a
+                                >
+                            </li>
+                        </router-link>
+                           <router-link :to="{ name: 'slide.create' }">
+                             <li>
+                            <a class="treeview-item" href="#"
+                                ><i class="icon fa fa-circle-o"></i>Thêm Slide
+                            </a>
+                        </li>
+                        </router-link>
+                       
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"
+                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        <span class="app-menu__label">Contact</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <router-link :to="{ name: 'contact' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Danh
+                                    Sách</a
+                                >
+                            </li>
+                        </router-link>
+                       
+                    </ul>
+                </li>
+
                 <li>
                     <a class="app-menu__item" href="#" @click.prevent="logout"
                         ><i class="app-menu__icon fa fa-sign-out"></i>

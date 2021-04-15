@@ -37,7 +37,7 @@ class SectionController extends Controller
 
         $this->validate($request, [
             'title' => 'required|unique:section',
-            'template' => 'required',
+   
         ]);
         // $validator = Validator::make($request->all(), [
         //     'title' => 'required|unique:section',
@@ -49,7 +49,7 @@ class SectionController extends Controller
         $page = Page::find($id);
         if (!$page) {
             $msg = [
-                'msg' => 'The template is not found'
+                'msg' => 'The page is not found'
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         } else {
@@ -57,8 +57,12 @@ class SectionController extends Controller
             $section->title = $request->title;
             $section->text = $request->text;
             $section->sub_title = $request->sub_title;
-            $section->template = $request->template;
+            $section->title_vn = $request->title_vn;
+            $section->text_vn = $request->text_vn;
+            $section->sub_title_vn = $request->sub_title_vn;
             $section->page_id = $page->id;
+            $section->number = $request->number;
+            $section->theme_id = $request->theme_id;
             $section->save();
         }
         broadcast(new PageSent($section))->toOthers();
@@ -91,6 +95,11 @@ class SectionController extends Controller
         $section->title = $request->title;
         $section->text = $request->text;
         $section->sub_title = $request->sub_title;
+        $section->title_vn = $request->title_vn;
+        $section->text_vn = $request->text_vn;
+        $section->sub_title_vn = $request->sub_title_vn;
+        $section->number = $request->number;
+        $section->theme_id = $request->theme_id;
         $section->save();
         return new SectionResource($section);
     }

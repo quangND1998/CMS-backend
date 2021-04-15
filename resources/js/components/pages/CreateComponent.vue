@@ -20,7 +20,6 @@
                 ADD NEW
             </router-link> -->
         </div>
- 
 
         <!-- {{page}}   -->
         <form @submit.prevent="create()">
@@ -38,6 +37,9 @@
                 <span v-if="errors.name" class="label label-danger">
                     {{ errors.name[0] }}
                 </span>
+                <span v-if="errors.name_vn" class="label label-danger">
+                    {{ errors.name_vn[0] }}
+                </span>
                 <span v-if="errors.description" class="label label-danger">
                     {{ errors.description[0] }}
                 </span>
@@ -53,7 +55,15 @@
                     class="form-control"
                     id="name"
                     placeholder="Enter page name"
-                 
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    ref="name_vn"
+                    class="form-control"
+                    id="name_vn"
+                    placeholder="Enter page name"
                 />
             </div>
 
@@ -84,7 +94,7 @@
                     type="button"
                     class="mr-1 btn btn-sucess block"
                 >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
                 <button type="submit" class="btn btn-primary block">
@@ -120,9 +130,10 @@ export default {
         create() {
             const formData = new FormData();
             formData.append("name", this.$refs.name.value);
+            formData.append("name_vn", this.$refs.name_vn.value);
             formData.append("description", this.$refs.description.value);
             formData.append("image", this.$refs.image.files[0]);
-
+    
             // this.page.name = formData.get('name')
             // this.page.description = formData.get('description')
             // this.page.image = formData.get('image')
@@ -130,20 +141,20 @@ export default {
             this.$store
                 .dispatch(PAGE_PUBLISH, formData)
                 .then(response => {
-                        this.successful = true;
-                        this.error = false;
-                        this.errors = [];
-                        this.$router.push({name:'page'});
-                    })
-                    .catch(error => {
-                        if (!_.isEmpty(error.response)) {
-                        if ((error.response.status == 422)) {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.push({ name: "page" });
+                })
+                .catch(error => {
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
                             this.successful = false;
                             this.error = true;
                         }
-                        }
-                    });
+                    }
+                });
 
             // axios
             //   .post("/api/page", formData)

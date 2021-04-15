@@ -16,6 +16,7 @@ class CreateSectionCategoryTable extends Migration
         Schema::create('section_category', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('title_vn');
             $table->unsignedInteger('section_id')->unsigned()->nullable();
             $table->string('type');
             $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');

@@ -31,30 +31,24 @@
                 <span v-if="successful" class="label label-sucess"
                     >Published!</span
                 >
-            </div>
+            </div> -->
             <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
-                <span v-if="errors.subtitle" class="label label-danger">
-                    {{ errors.subtitle[0] }}
+                <!-- <span v-if="errors.scan" class="label label-danger">
+                    {{ errors.scan[0] }}
                 </span>
-                <span v-if="errors.short_content" class="label label-danger">
-                    {{ errors.short_content[0] }}
-                </span>
+                <span v-if="errors.tour360" class="label label-danger">
+                    {{ errors.tour360[0] }}
+                </span> -->
                 <span v-if="errors.image" class="label label-danger">
                     {{ errors.image[0] }}
                 </span>
-                <span v-if="errors.detail" class="label label-danger">
+                <!-- <span v-if="errors.detail" class="label label-danger">
                     {{ errors.detail[0] }}
-                </span>
+                </span> -->
                 <span v-if="errors.title" class="label label-danger">
                     {{ errors.sub_title[0] }}
                 </span>
-                <span v-if="errors.icon_image" class="label label-danger">
-                    {{ errors.icon_image[0] }}
-                </span>
-                <span v-if="errors.icon_class" class="label label-danger">
-                    {{ errors.icon_class[0] }}
-                </span>
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <input
@@ -62,28 +56,38 @@
                     ref="title"
                     class="form-control"
                     id="title"
-                    placeholder="Enter title"
+                    placeholder="Enter title English"
                     required
                 />
             </div>
             <div class="form-group">
                 <input
                     type="title"
-                    ref="subtitle"
+                    ref="title_vn"
                     class="form-control"
-                    id="subtitle"
-                    placeholder="Enter subtitle"
+                    id="title_vn"
+                    placeholder="Enter title Vienamese"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="tour360"
+                    class="form-control"
+                    id="tour360"
+                    placeholder="Enter tour360"
                 />
             </div>
 
             <div class="form-group">
-                <textarea
+                <input
                     class="form-control"
-                    ref="short_content"
+                    ref="scan"
                     id="short_content"
-                    placeholder="Enter  short_content"
+                    placeholder="Enter  link scan"
                     rows="8"
-                ></textarea>
+                />
             </div>
 
             <div class="form-group">
@@ -91,19 +95,20 @@
                     class="form-control"
                     ref="detail"
                     id="detail"
-                    placeholder="Enter  detail"
+                    placeholder="Enter  detail English"
                     rows="8"
                 ></textarea>
             </div>
-            <!-- <div class="form-group">
-                <input
-                    type="title"
-                    ref="icon_class"
+            <div class="form-group">
+                <textarea
                     class="form-control"
-                    id="icon_class"
-                    placeholder="Enter class icon"
-                />
-            </div> -->
+                    ref="detail_vn"
+                    id="detail_vn"
+                    placeholder="Enter  detail VietNamese"
+                    rows="8"
+                ></textarea>
+            </div>
+       
             <div class="form-group">
                 <input
                     type="title"
@@ -125,18 +130,7 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
-            <!-- <div class="custom-file mb-3">
-                <input
-                    type="file"
-                    ref="icon_image"
-                    name="icon_image"
-                    class="custom-file-input"
-                    id="icon_image"
-                    required
-                />
-                <label class="custom-file-label">Choose file...</label>
-            </div> -->
-
+          
             <div class="modal-footer justify-content-center">
                 <router-link
                     :to="{
@@ -145,7 +139,7 @@
                     }"
                     class="btn btn-white block"
                 >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
                 <button
@@ -192,21 +186,35 @@ export default {
         create() {
             const formData = new FormData();
             formData.append("title", this.$refs.title.value);
-            formData.append("subtitle", this.$refs.subtitle.value);
-            formData.append("short_content", this.$refs.short_content.value);
+            formData.append("title_vn", this.$refs.title_vn.value);
+            formData.append("tour360", this.$refs.tour360.value);
+            formData.append("scan", this.$refs.scan.value);
             formData.append("detail", this.$refs.detail.value);
-            // formData.append("icon_class", this.$refs.icon_class.value);
+            formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
-
             formData.append("image", this.$refs.image.files[0]);
-            // formData.append("icon_image", this.$refs.icon_image.files[0]);
 
-            this.$store.dispatch(CREATE_ITEM, {
-                slug: this.sectionId,
-                data: formData
-            });
 
-            this.$router.back();
+            this.$store
+                .dispatch(CREATE_ITEM, {
+                    slug: this.sectionId,
+                    data: formData
+                })
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.back();
+                })
+                .catch(error => {
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                    }
+                });
 
             //   this.$refs.name.value = "";
             //   this.$refs.description.value = "";

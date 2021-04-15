@@ -53,6 +53,16 @@
                     required
                 />
             </div>
+             <div class="form-group">
+                <input
+                    type="title"
+                    ref="title_vn"
+                    class="form-control"
+                    id="title"
+                    placeholder="Enter name  VietNamese"
+                    required
+                />
+            </div>
 
 
             {{category}}
@@ -112,6 +122,7 @@ export default {
     methods: {
         create() {
             this.category.title = this.$refs.title.value;
+            this.category.title_vn = this.$refs.title_vn.value;
             
 
             this.$store.dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
@@ -139,6 +150,7 @@ export default {
       
           
             this.$refs.title.value = "";
+            this.$refs.title_vn.value = "";
 
         }
     }

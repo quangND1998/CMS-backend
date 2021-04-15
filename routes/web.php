@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BLog\ContactController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ShowRoomController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\ShowRoomController;
 // Auth::routes();
 // Route :: view ( '/ admin' , 'admin.dashboard.index' ); 
 // Route :: view ( '/ admin / login' , 'admin.auth.login' );
+
 Route::group(['middleware' => ['prevent-back-history']], function () {
     Route::get('/', [ShowRoomController::class, 'index']);
 
@@ -32,6 +34,8 @@ Route::group(['middleware' => ['prevent-back-history']], function () {
     })->where('any', '.*');;
     // });
 
-
+    Route::post('message/send',[ContactController::class, 'XuLyThemMessage']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
+
+Route::post('message/send',[ContactController::class, 'XuLyThemMessage']);

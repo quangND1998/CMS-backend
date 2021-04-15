@@ -19,6 +19,7 @@ class PageResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'name_vn' => $this->name_vn,
             'description' => $this->description,
             'image' => $this->image,
             'section' => SectionResource::collection($this->section)
