@@ -57,9 +57,14 @@
                         >
                             Thêm
                         </button>
-                        <button type="reset" class="btn btn-danger btn-mleft">
-                            Nhập Lại
-                        </button>
+                        <router-link :to="{ name: 'loaitin' }">
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-mleft"
+                            >
+                                Hủy
+                            </button>
+                        </router-link>
                     </form>
                 </div>
             </div>

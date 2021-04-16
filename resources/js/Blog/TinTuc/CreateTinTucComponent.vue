@@ -43,7 +43,7 @@
                     <form @submit.prevent="create()">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1"
-                                >Chọn Thể Loại</label
+                                >Chọn Loại Tin</label
                             >
                             <select
                                 class="form-control"
@@ -170,12 +170,15 @@
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-default">
+                        <button type="submit" class="btn btn-success">
                             Thêm
                         </button>
-                        <button type="reset" class="btn btn-default btn-mleft">
-                            Nhập Lại
+                        <router-link :to="{ name: 'tintuc' }">
+                             <button type="reset" class="btn btn-danger btn-mleft">
+                           Hủy
                         </button>
+                        </router-link>
+                       
                     </form>
                 </div>
             </div>

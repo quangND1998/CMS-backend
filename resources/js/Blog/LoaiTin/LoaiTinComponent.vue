@@ -9,7 +9,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tên Thể Loại</th>
+                                <th>Tên Loại Tin</th>
                                 <th>Tên Không Dấu</th>
                                  <th>Tên Thể loại</th>
                                 <th>#</th>

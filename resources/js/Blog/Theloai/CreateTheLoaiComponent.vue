@@ -14,7 +14,6 @@
                     <span v-if="errors.Ten" class="label label-danger">
                         {{ errors.Ten[0] }}
                     </span>
-                   
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
@@ -28,18 +27,17 @@
                                 placeholder="Nhập tên Thể Loại.."
                             />
                         </div>
-
-                        <button
-                            type="submit"
-                            class="btn btn-default"
-                            @click.prevent="create"
-                        >
+                        <button type="submit" class="btn btn-success" @click.prevent="create">
                             Thêm
                         </button>
-
-                        <button type="reset" class="btn btn-default btn-mleft">
-                            Nhập Lại
-                        </button>
+                        <router-link :to="{ name: 'theloai' }">
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-mleft"
+                            >
+                                Hủy
+                            </button>
+                        </router-link>
                     </form>
                 </div>
             </div>

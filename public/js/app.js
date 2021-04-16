@@ -2186,6 +2186,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2410,6 +2411,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3147,8 +3153,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 
@@ -3692,6 +3696,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3945,6 +3952,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -59199,94 +59209,104 @@ var render = function() {
             staticStyle: { "padding-bottom": "120px" }
           },
           [
-            _c("form", [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-                  _vm._v("Chọn Thể Loại")
+            _c(
+              "form",
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+                    _vm._v("Chọn Thể Loại")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.loaitin.theloai_id,
+                          expression: "loaitin.theloai_id"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "exampleFormControlSelect1" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.loaitin,
+                            "theloai_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.theloais, function(theloai) {
+                      return _c(
+                        "option",
+                        { key: theloai.index, domProps: { value: theloai.id } },
+                        [_vm._v(_vm._s(theloai.Ten))]
+                      )
+                    }),
+                    0
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("input", {
+                    ref: "Ten",
+                    staticClass: "form-control input-width",
+                    attrs: { placeholder: "Nhập Tên Loại Tin.." }
+                  })
                 ]),
                 _vm._v(" "),
                 _c(
-                  "select",
+                  "button",
                   {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.loaitin.theloai_id,
-                        expression: "loaitin.theloai_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "exampleFormControlSelect1" },
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
                     on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.loaitin,
-                          "theloai_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.create($event)
                       }
                     }
                   },
-                  _vm._l(_vm.theloais, function(theloai) {
-                    return _c(
-                      "option",
-                      { key: theloai.index, domProps: { value: theloai.id } },
-                      [_vm._v(_vm._s(theloai.Ten))]
+                  [
+                    _vm._v(
+                      "\n                        Thêm\n                    "
                     )
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(1),
+                  ]
+                ),
                 _vm._v(" "),
-                _c("input", {
-                  ref: "Ten",
-                  staticClass: "form-control input-width",
-                  attrs: { placeholder: "Nhập Tên Loại Tin.." }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "submit" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.create($event)
-                    }
-                  }
-                },
-                [_vm._v("\n                        Thêm\n                    ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default btn-mleft",
-                  attrs: { type: "reset" }
-                },
-                [
-                  _vm._v(
-                    "\n                        Nhập Lại\n                    "
+                _c("router-link", { attrs: { to: { name: "loaitin" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-mleft",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                       Hủy\n                    "
+                      )
+                    ]
                   )
-                ]
-              )
-            ])
+                ])
+              ],
+              1
+            )
           ]
         )
       ])
@@ -59436,7 +59456,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Tên Thể Loại")]),
+        _c("th", [_vm._v("Tên Loại Tin")]),
         _vm._v(" "),
         _c("th", [_vm._v("Tên Không Dấu")]),
         _vm._v(" "),
@@ -59512,111 +59532,121 @@ var render = function() {
                 _vm._s(_vm.loaitin) +
                 "\n\n                "
             ),
-            _c("form", [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-                  _vm._v("Chọn Thể Loại")
+            _c(
+              "form",
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+                    _vm._v("Chọn Thể Loại")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.loaitin.theloai_id,
+                          expression: "loaitin.theloai_id"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "exampleFormControlSelect1" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.loaitin,
+                            "theloai_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    _vm._l(_vm.theloais, function(theloai) {
+                      return _c(
+                        "option",
+                        { key: theloai.index, domProps: { value: theloai.id } },
+                        [_vm._v(_vm._s(theloai.Ten))]
+                      )
+                    }),
+                    0
+                  )
                 ]),
                 _vm._v(" "),
-                _c(
-                  "select",
-                  {
+                _c("div", { staticClass: "form-group" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("input", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.loaitin.theloai_id,
-                        expression: "loaitin.theloai_id"
+                        value: _vm.loaitin.Ten,
+                        expression: "loaitin.Ten"
                       }
                     ],
-                    staticClass: "form-control",
-                    attrs: { id: "exampleFormControlSelect1" },
+                    ref: "Ten",
+                    staticClass: "form-control input-width",
+                    attrs: { placeholder: "Nhập Tên Loại Tin.." },
+                    domProps: { value: _vm.loaitin.Ten },
                     on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.loaitin,
-                          "theloai_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.loaitin, "Ten", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.update($event)
                       }
                     }
                   },
-                  _vm._l(_vm.theloais, function(theloai) {
-                    return _c(
-                      "option",
-                      { key: theloai.index, domProps: { value: theloai.id } },
-                      [_vm._v(_vm._s(theloai.Ten))]
+                  [
+                    _vm._v(
+                      "\n                        Thêm\n                    "
                     )
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(1),
+                  ]
+                ),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
+                _c("router-link", { attrs: { to: { name: "loaitin" } } }, [
+                  _c(
+                    "button",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.loaitin.Ten,
-                      expression: "loaitin.Ten"
-                    }
-                  ],
-                  ref: "Ten",
-                  staticClass: "form-control input-width",
-                  attrs: { placeholder: "Nhập Tên Loại Tin.." },
-                  domProps: { value: _vm.loaitin.Ten },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.loaitin, "Ten", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: { type: "submit" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.update($event)
-                    }
-                  }
-                },
-                [_vm._v("\n                        Thêm\n                    ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-danger btn-mleft",
-                  attrs: { type: "reset" }
-                },
-                [
-                  _vm._v(
-                    "\n                        Nhập Lại\n                    "
+                      staticClass: "btn btn-danger btn-mleft",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Hủy\n                        "
+                      )
+                    ]
                   )
-                ]
-              )
-            ])
+                ])
+              ],
+              1
+            )
           ]
         )
       ])
@@ -60318,48 +60348,58 @@ var render = function() {
             staticStyle: { "padding-bottom": "120px" }
           },
           [
-            _c("form", [
-              _c("div", { staticClass: "form-group" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("input", {
-                  ref: "Ten",
-                  staticClass: "form-control input-width",
-                  attrs: {
-                    name: "cate_name",
-                    placeholder: "Nhập tên Thể Loại.."
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "submit" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.create($event)
+            _c(
+              "form",
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("input", {
+                    ref: "Ten",
+                    staticClass: "form-control input-width",
+                    attrs: {
+                      name: "cate_name",
+                      placeholder: "Nhập tên Thể Loại.."
                     }
-                  }
-                },
-                [_vm._v("\n                        Thêm\n                    ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default btn-mleft",
-                  attrs: { type: "reset" }
-                },
-                [
-                  _vm._v(
-                    "\n                        Nhập Lại\n                    "
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.create($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Thêm\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: { name: "theloai" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-mleft",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Hủy\n                        "
+                      )
+                    ]
                   )
-                ]
-              )
-            ])
+                ])
+              ],
+              1
+            )
           ]
         )
       ])
@@ -60799,7 +60839,7 @@ var render = function() {
               [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-                    _vm._v("Chọn Thể Loại")
+                    _vm._v("Chọn Loại Tin")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -60983,7 +61023,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-default", attrs: { type: "submit" } },
+                  { staticClass: "btn btn-success", attrs: { type: "submit" } },
                   [
                     _vm._v(
                       "\n                        Thêm\n                    "
@@ -60991,19 +61031,22 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default btn-mleft",
-                    attrs: { type: "reset" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Nhập Lại\n                    "
-                    )
-                  ]
-                )
-              ]
+                _c("router-link", { attrs: { to: { name: "tintuc" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-mleft",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                       Hủy\n                    "
+                      )
+                    ]
+                  )
+                ])
+              ],
+              1
             )
           ]
         )
@@ -61651,7 +61694,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-default", attrs: { type: "submit" } },
+                  { staticClass: "btn btn-success", attrs: { type: "submit" } },
                   [
                     _vm._v(
                       "\n                        Thêm\n                    "
@@ -61659,19 +61702,22 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default btn-mleft",
-                    attrs: { type: "reset" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Nhập Lại\n                    "
-                    )
-                  ]
-                )
-              ]
+                _c("router-link", { attrs: { to: { name: "tintuc" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-mleft",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                       Hủy\n                    "
+                      )
+                    ]
+                  )
+                ])
+              ],
+              1
             )
           ]
         )

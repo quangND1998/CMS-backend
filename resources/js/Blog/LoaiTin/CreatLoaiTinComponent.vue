@@ -49,14 +49,15 @@
                                ref="Ten"
                                 placeholder="Nhập Tên Loại Tin.."
                             />
-                        </div>
-
-                        <button type="submit" class="btn btn-default" @click.prevent="create" >
+                        </div>                        
+                        <button type="submit" class="btn btn-success"  @click.prevent="create">
                             Thêm
                         </button>
-                        <button type="reset" class="btn btn-default btn-mleft">
-                            Nhập Lại
+                        <router-link :to="{ name: 'loaitin' }">
+                             <button type="reset" class="btn btn-danger btn-mleft">
+                           Hủy
                         </button>
+                        </router-link>
                     </form>
                 </div>
             </div>
