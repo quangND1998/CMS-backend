@@ -74,8 +74,17 @@
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn btn-default">Thực Hiện</button>
-                            <button type="reset" class="btn btn-default btn-mleft">Nhập Lại</button>
+                           <button type="submit" class="btn btn-success">
+                            Thực Hiện
+                        </button>
+                        <router-link :to="{ name: 'user' }">
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-mleft"
+                            >
+                                Hủy
+                            </button>
+                        </router-link>
                         </form>
                     </div>
                 </div>

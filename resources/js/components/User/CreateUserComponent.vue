@@ -8,7 +8,7 @@
                         <small>> Thêm Người Dùng</small>
                     </h1>
                 </div>
-        
+
                 <div
                     :class="['form-group m-1 p-3', error ? 'alert-danger' : '']"
                 >
@@ -21,10 +21,13 @@
                     <span v-if="errors.password" class="label label-danger">
                         {{ errors.password[0] }}
                     </span>
-                    <span v-if="errors.password_again" class="label label-danger">
+                    <span
+                        v-if="errors.password_again"
+                        class="label label-danger"
+                    >
                         {{ errors.password_again[0] }}
                     </span>
-                      <span v-if="errors.account_type" class="label label-danger">
+                    <span v-if="errors.account_type" class="label label-danger">
                         {{ errors.account_type[0] }}
                     </span>
                 </div>
@@ -40,7 +43,6 @@
                                 type="text"
                                 name="username"
                                 placeholder="Nhập tên người dùng"
-                          
                             />
                         </div>
 
@@ -52,7 +54,6 @@
                                 type="email"
                                 name="email"
                                 placeholder="Nhập địa chỉ Email"
-                        
                             />
                         </div>
 
@@ -99,12 +100,17 @@
                             </label>
                         </div>
 
-                        <button type="submit" class="btn btn-default">
+                        <button type="submit" class="btn btn-success">
                             Thực Hiện
                         </button>
-                        <button type="reset" class="btn btn-default btn-mleft">
-                            Nhập Lại
-                        </button>
+                        <router-link :to="{ name: 'user' }">
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-mleft"
+                            >
+                                Hủy
+                            </button>
+                        </router-link>
                     </form>
                 </div>
             </div>
@@ -145,7 +151,6 @@ export default {
             this.get_user.email = this.$refs.email.value;
             this.get_user.password = this.$refs.password.value;
             this.get_user.password_again = this.$refs.password_again.value;
-
 
             this.$store
                 .dispatch(CREATE_USER, this.get_user)

@@ -6355,6 +6355,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6426,6 +6432,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6600,6 +6615,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -64631,7 +64647,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-default", attrs: { type: "submit" } },
+                  { staticClass: "btn btn-success", attrs: { type: "submit" } },
                   [
                     _vm._v(
                       "\n                        Thực Hiện\n                    "
@@ -64639,19 +64655,22 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default btn-mleft",
-                    attrs: { type: "reset" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Nhập Lại\n                    "
-                    )
-                  ]
-                )
-              ]
+                _c("router-link", { attrs: { to: { name: "user" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-mleft",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Hủy\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ],
+              1
             )
           ]
         )
@@ -64998,19 +65017,30 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "btn btn-default", attrs: { type: "submit" } },
-                  [_vm._v("Thực Hiện")]
+                  { staticClass: "btn btn-success", attrs: { type: "submit" } },
+                  [
+                    _vm._v(
+                      "\n                          Thực Hiện\n                      "
+                    )
+                  ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default btn-mleft",
-                    attrs: { type: "reset" }
-                  },
-                  [_vm._v("Nhập Lại")]
-                )
-              ]
+                _c("router-link", { attrs: { to: { name: "user" } } }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-mleft",
+                      attrs: { type: "reset" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                              Hủy\n                          "
+                      )
+                    ]
+                  )
+                ])
+              ],
+              1
             )
           ]
         )
