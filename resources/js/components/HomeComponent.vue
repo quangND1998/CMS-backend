@@ -43,12 +43,23 @@
                         <i class="treeview-indicator fa fa-angle-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li>
+                        <router-link :to="{ name: 'user' }" >
+
+                               <li>
                             <a class="treeview-item" href="#"
                                 ><i class="icon fa fa-circle-o"></i> Admin
                                 Users</a
                             >
                         </li>
+                        </router-link>
+                           <router-link :to="{ name: 'user.create' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Thêm User</a
+                                >
+                            </li>
+                        </router-link>
+                     
                         <!-- <li>
                             <a
                                 class="treeview-item"
@@ -103,7 +114,7 @@
                 <!-- Loai TIn -->
                 <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"
-                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        ><i class="fa fa-tasks fa-fw icon-mright"></i>
                         <span class="app-menu__label">Loại Tin</span>
                         <i class="treeview-indicator fa fa-angle-right"></i>
                     </a>
@@ -130,7 +141,7 @@
                 <!-- Tin Tức -->
                 <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"
-                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        ><i class="fa fa-newspaper-o fa-fw icon-mright"></i>
                         <span class="app-menu__label">Tin Tức</span>
                         <i class="treeview-indicator fa fa-angle-right"></i>
                     </a>
@@ -156,7 +167,7 @@
 
                 <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"
-                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        ><i class="fa fa-slideshare fa-fw icon-mright"></i>
                         <span class="app-menu__label">Quản lý Slider</span>
                         <i class="treeview-indicator fa fa-angle-right"></i>
                     </a>
@@ -182,12 +193,30 @@
 
                 <li class="treeview">
                     <a class="app-menu__item" href="#" data-toggle="treeview"
-                        ><i class="fa fa-list fa-fw icon-mright"></i>
+                        ><i class="fa fa-slideshare fa-fw icon-mright"></i>
                         <span class="app-menu__label">Contact</span>
                         <i class="treeview-indicator fa fa-angle-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <router-link :to="{ name: 'contact' }">
+                            <li>
+                                <a class="treeview-item" href="#"
+                                    ><i class="icon fa fa-circle-o"></i>Danh
+                                    Sách</a
+                                >
+                            </li>
+                        </router-link>
+                       
+                    </ul>
+                </li>
+                    <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"
+                        ><i class="fa fa-users fa-fw icon-mright"></i>
+                        <span class="app-menu__label">Comment</span>
+                        <i class="treeview-indicator fa fa-angle-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <router-link :to="{ name: 'comment' }">
                             <li>
                                 <a class="treeview-item" href="#"
                                     ><i class="icon fa fa-circle-o"></i>Danh

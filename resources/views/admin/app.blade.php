@@ -26,7 +26,7 @@
     
 
     <!-- DataTables CSS -->
-    <link href="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    {{-- <link href="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet"> --}}
 
  
    
@@ -59,7 +59,6 @@
     <script src="{{ asset('admin_asset/bower_components/dataTables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin_asset/bower_components/dataTables/media/js/dataTable.bootstrap4.min.js') }}"></script>
     <script src="http://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-
     <script
         src="{{ asset('admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}">
     </script>

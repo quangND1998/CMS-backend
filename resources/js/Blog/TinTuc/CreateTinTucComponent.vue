@@ -203,10 +203,7 @@ export default {
             error: false,
             successful: false,
             errors: [],
-            editorData: "<p>Content of the editor.</p>",
-            editorConfig: {
-                // The configuration of the editor.
-            }
+       
         };
     },
     computed: {

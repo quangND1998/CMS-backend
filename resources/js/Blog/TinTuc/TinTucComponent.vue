@@ -28,7 +28,8 @@
                 </thead>
                 <tbody>
                     <tr
-                        v-if="news.length > 0"
+                        
+
                         v-for="(item, index) in news"
                         :key="item.id"
                         align="center"
@@ -73,9 +74,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr v-else>
-                        <td colspan="3">No data available in table</td>
-                    </tr>
+                  
                 </tbody>
             </table>
         </div>

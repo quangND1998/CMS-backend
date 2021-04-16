@@ -1,7 +1,7 @@
 import Vue from "vue";
 
-import {  contactService } from  '../../../common/contactService'
-import {FETCH_CONTACT,CONTACT_DELETE,CONTACT_RESET_STATE} from './action'
+import {  commentService } from  '../../../common/commentService'
+import {FETCH_COMMENT,COMMENT_DELETE,COMMENT_RESET_STATE} from './action'
 import {
     FETCH_START,FETCH_END,RESET_STATE,
 } from './muntation';
@@ -10,25 +10,19 @@ import ApiService from "../../../common/api.service";
 import jwtToken from "../../../common/token";
 const initialState = {
    
-    contacts: [],
-    check: true,
-    contact: {
-        contact_name: "",
-        contact_email:"",
-        contact_message:""
-  
-    },
+    comments: [],
+    ischeck: true,
     isAuthenticated: !!jwtToken.getToken()
 };
 
 export const state = {...initialState };
 
 export const actions = {
-    [FETCH_CONTACT]({ commit }) {
+    [FETCH_COMMENT]({ commit }) {
         commit(FETCH_START);
         if (jwtToken.getToken()) {
             ApiService.setHeader();
-            return contactService
+            return commentService
                 .query()
                 .then(({ data }) => {
                   
@@ -41,22 +35,22 @@ export const actions = {
         }
     },
  
-    [CONTACT_DELETE](context, slug) {
+    [COMMENT_DELETE](context, slug) {
         // console.log(context);
         //   console.log('pageservice',slug)
-        return LoaiTinService.destroy(slug);
+        return commentService.destroy(slug);
     },
-    [CONTACT_RESET_STATE]({ commit }) {
+    [COMMENT_RESET_STATE]({ commit }) {
         commit(RESET_STATE);
     }
 };
 export const mutations = {
     [FETCH_START](state) {
-        state.check = true;
+        state.ischeck = true;
     },
     [FETCH_END](state, {data} ) {
-   
-        state.contacts = data;
+
+        state.comments = data;
 
     },
  
@@ -68,13 +62,9 @@ export const mutations = {
 };
 
 const getters = {
-    contacts(state) {
-        return state.contacts;
+    comments(state) {
+        return state.comments;
     },
-    contact(state) {
-        return state.contact;
-    },
-
    
 };
 

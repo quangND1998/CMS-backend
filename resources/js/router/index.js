@@ -51,6 +51,13 @@ import UpdateSildeComponent from '../Blog/Slide/UpdateSildeComponent'
 
 ///ConTact
 import ContactComponent from '../Blog/Contact/ContactComponent'
+///Comment
+import CommentComponent from '../Blog/Comment/CommentComponent'
+
+/// User
+import UserComponent from '../components/User/UserComponent';
+import CreateUserComponent from '../components/User/CreateUserComponent';
+import UpdateUserComponent from '../components/User/UpdateUserComponent';
 Vue.use(Router)
 
 export default new Router({
@@ -385,6 +392,56 @@ export default new Router({
                     props: true,
                     params: true,
                 },
+        
+            ]
+        },
+        {
+            path: '/admin/comment',
+            name: 'comment',
+            component: HomeComponent,
+            redirect: {
+                name: "comment"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"comment",
+                    component:CommentComponent,
+                    props: true,
+                    params: true,
+                },
+        
+            ]
+        },
+        {
+            path: '/admin/user',
+            name: 'user',
+            component: HomeComponent,
+            redirect: {
+                name: "user"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"user",
+                    component:UserComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:"create",
+                    name:"user.create",
+                    component:CreateUserComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:":userId/update",
+                    name:"user.update",
+                    component:UpdateUserComponent,
+                    props: true,
+                    params: true,
+                }
         
             ]
         }

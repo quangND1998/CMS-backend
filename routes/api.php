@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\APi\AuthController;
+use App\Http\Controllers\Blog\CommentController;
 use App\Http\Controllers\BLog\ContactController;
 use App\Http\Controllers\Blog\LoaiTinController;
 use App\Http\Controllers\Blog\SlideController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\StyleController;
 use App\Http\Controllers\Blog\TheLoaiController;
 use App\Http\Controllers\Blog\TinTucController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\UserController;
 use App\Http\Resources\TheLoaiResource;
 use App\Models\Style;
 use Illuminate\Http\Request;
@@ -155,6 +157,20 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
     Route::group(['prefix' => 'contact'],function(){
 		Route::get('',[ContactController::class,'getDanhSach']);
 		Route::delete('delete/{id}',[ContactController::class,'Xoa']);
+	});
+    Route::group(['prefix' => 'comment'],function(){
+		Route::get('',[CommentController::class,'getDanhSach']);
+		Route::delete('delete/{id}',[CommentController::class,'Xoa']);
+        Route::post('{article_id}',[CommentController::class,'Them']);
+	});
+    Route::group(['prefix' => 'user'],function(){
+		Route::get('',[UserController::class,'getDanhSach']);
+        Route::post('',[UserController::class,'XuLyThemUser']);
+        Route::get('{id}',[UserController::class,'Sua']);
+
+		Route::put('update/{id}',[UserController::class,'XuLySuaUser']);
+
+		Route::delete('delete/{id}',[UserController::class,'Xoa']);
 	});
 
 });

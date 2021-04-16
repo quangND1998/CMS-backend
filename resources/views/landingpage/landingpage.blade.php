@@ -148,7 +148,7 @@
             </div>
         </div>
         <div class="blog-slider center-align owl-carousel owl-theme">
-            {{-- @foreach ($data['theloai'] as $theloai)
+            @foreach ($blog['theloai'] as $theloai)
                     @if (count($theloai->LoaiTin) > 0)
                         <?php $data = $theloai->TinTuc
                             ->where('NoiBat', 1)
@@ -160,7 +160,7 @@
                                 <div class="post-block">
                                     <a href="tin-tuc/{{ $remaining_article['TieuDeKhongDau'] }}.html">
                                         <img class="img-fluid image_new w-100"
-                                            src="upload/tintuc/{{ $remaining_article['Hinh'] }}" alt="" />
+                                            src="{{ $remaining_article['Hinh'] }}" alt="" />
                                     </a>
                                     @if (Config::get('app.locale') == 'vn')
                                         <h5 class=" text-center mb-3 mt-3">{{ $remaining_article['TieuDe'] }}</h5>
@@ -173,7 +173,7 @@
                             </div>
                         @endforeach
                     @endif
-                @endforeach --}}
+                @endforeach
         </div>
     </div>
 </section>

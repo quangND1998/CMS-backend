@@ -39,3 +39,7 @@ Route::group(['middleware' => ['prevent-back-history']], function () {
 });
 
 Route::post('message/send',[ContactController::class, 'XuLyThemMessage']);
+
+Route::get('loai-tin/{unsigned_name}',[ShowRoomController::class, 'LoaiTin']);
+
+Route::get('tin-tuc/{unsigned_name}.html',[ShowRoomController::class, 'TinTuc']);

@@ -11,6 +11,8 @@ import loatin from './loaitinmodule'
 import tintuc from './tintucModule'
 import slide from './slideModule'
 import contact from './contactModule'
+import comment from './commentModule'
+import users from './userModule'
 Vue.use(Vuex)
 
 
@@ -26,7 +28,9 @@ export default new Vuex.Store({
         loatin,
         tintuc,
         slide,
-        contact
+        contact,
+        comment,
+        users
     },
 
     state: {

@@ -17,7 +17,7 @@ class ContactController extends Controller
         $message->content = $request->input('contact_message');
  
         $message->save();
-        return $message;
+        return redirect('/');
      }
      public function getDanhSach(){
          $messages = Contact::latest()->take(20)->get();
@@ -36,6 +36,7 @@ class ContactController extends Controller
 
    
         $contact->delete();
-        return response()->json(' Delete Sussessfully', Response::HTTP_OK);
+        return response()->json('Delete Sussessfully', Response::HTTP_OK);
+     
      }
 }
