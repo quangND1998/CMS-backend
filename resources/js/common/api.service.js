@@ -33,13 +33,13 @@ const ApiService = {
     },
 
     update(resource, params, slug) {
-        console.log('apiservice_update', params);
+        // console.log('apiservice_update', params);
         return axios.post(API_URL + "/" + resource + "/" + slug, params);
     },
 
     put(resource, params) {
-        console.log('apiservice_put', params);
-        console.log('apiservice_put', resource);
+        // console.log('apiservice_put', params);
+        // console.log('apiservice_put', resource);
         return axios.put(API_URL + "/" + resource, params);
     },
 

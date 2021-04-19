@@ -54,12 +54,12 @@
                                          type="radio" checked=""><span for="no">Không</span>
                                     </label>
                                 </p>
-                                <input v-model="get_user.password" class="form-control input-width disabled-field" type="password" name="password" placeholder="Nhập mật khẩu" disabled="" />
+                                <input v-model="get_user.password" class="form-control input-width disabled-field" type="password" name="password" placeholder="Nhập mật khẩu" disabled="" autocomplete="on" />
                             </div>
 
                             <div class="form-group">
                                 <p><label>Xác nhận Mật khẩu</label></p>
-                                <input v-model="get_user.password_again"  class="form-control input-width disabled-field" type="password" name="password_again" placeholder="Nhập lại mật khẩu" disabled="" />
+                                <input v-model="get_user.password_again"  class="form-control input-width disabled-field" type="password" name="password_again" placeholder="Nhập lại mật khẩu" disabled="" autocomplete="on" />
                             </div>
 
                             <div class="form-group">
@@ -137,7 +137,7 @@ export default {
                     this.$router.push({ name: "user" });
                 })
                 .catch(error => {
-                    console.log(error);
+                    // console.log(error);
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;

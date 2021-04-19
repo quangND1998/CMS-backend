@@ -15,14 +15,16 @@ class ShowRoomController extends Controller
     public function index()
     {
         $data = Page::first();
-        $sections = Section::where('page_id', $data->id)->orderBy('number')->get();
-     
-        // $section = $data->section->orderBy('number')->get();
-        $blog  = [
-			'theloai' => TheLoai::all(),
-			'slide' => Slide::all()
-		];
+      
+       
         if ($data) {
+            $sections = Section::where('page_id', $data->id)->orderBy('number')->get();
+     
+            // $section = $data->section->orderBy('number')->get();
+            $blog  = [
+                'theloai' => TheLoai::all(),
+                'slide' => Slide::all()
+            ];
             return view('landingpage.landingpage', compact('sections','blog'));
         } else {
             return redirect('admin/login');

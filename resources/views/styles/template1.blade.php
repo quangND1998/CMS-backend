@@ -3,7 +3,13 @@
         <div class="row">
             <div class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp" data-wow-duration=".2s"
                 data-wow-delay=".1s">
-                <h2 class="heading">{{ $section->title }}</h2>
+                @if (Config::get('app.locale') == 'vn')
+                    <h2 class="heading">{{ $section->title_vn }}</h2>
+                @endif
+                @if (Config::get('app.locale') == 'en')
+                    <h2 class="heading">{{ $section->title }}</h2>
+                @endif
+
 
                 <div class="tab">
 
@@ -26,9 +32,18 @@
 
 
                 {{-- @endforeach --}}
-                <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
-                    {{ $section->sub_title }}
-                </p>
+                @if (Config::get('app.locale') == 'vn')
+                    <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
+                        {{ $section->sub_title_vn }}
+                    </p>
+                @endif
+                @if (Config::get('app.locale') == 'en')
+                    <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
+                        {{ $section->sub_title }}
+                    </p>
+                @endif
+
+
             </div>
         </div>
         @foreach ($section->section_category as $categorys)
@@ -40,7 +55,15 @@
                         <div class="project">
                             <div class="row grid" id="project-list">
                                 @foreach ($categorys->contents as $content)
-                                    <a>{{ $content->title }}</a>
+
+                                    @if (Config::get('app.locale') == 'vn')
+                                        <a>{{ $content->title_vn }}</a>
+                                    @endif
+                                    @if (Config::get('app.locale') == 'en')
+                                        <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
+                                            <a>{{ $content->title }}</a>
+                                        </p>
+                                    @endif
                                 @endforeach
 
                             </div>
@@ -62,6 +85,7 @@
                                         data-wow-delay=".1s">
                                         <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
                                             src={{ $content->video }}></iframe>
+                                            
                                         <h6 class="text-center mb-3 mt-3">{{ $content->title }}</h6>
                                     </div>
 

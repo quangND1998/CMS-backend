@@ -187,7 +187,7 @@ export default new Router({
                         ///CateGory item
                         , {
                             path: ":sectionId/section_category/:categoryId",
-                            name: "section_category_content",
+                            // name: "section_category_content",
                             component: ContentCateComponent,
                             params: true,
                             props: true,
@@ -251,7 +251,7 @@ export default new Router({
 
         {
             path: '/admin/theloai',
-            name: 'theloai',
+       
             component: HomeComponent,
             redirect: {
                 name: "theloai"
@@ -283,7 +283,7 @@ export default new Router({
         },
         {
             path: '/admin/loaitin',
-            name: 'loaitin',
+   
             component: HomeComponent,
             redirect: {
                 name: "loaitin"
@@ -315,7 +315,7 @@ export default new Router({
         },
         {
             path: '/admin/tintuc',
-            name: 'tintuc',
+ 
             component: HomeComponent,
             redirect: {
                 name: "tintuc"
@@ -347,7 +347,7 @@ export default new Router({
         },
         {
             path: '/admin/slide',
-            name: 'slide',
+
             component: HomeComponent,
             redirect: {
                 name: "slide"
@@ -379,7 +379,7 @@ export default new Router({
         },
         {
             path: '/admin/contact',
-            name: 'contact',
+      
             component: HomeComponent,
             redirect: {
                 name: "contact"
@@ -397,7 +397,7 @@ export default new Router({
         },
         {
             path: '/admin/comment',
-            name: 'comment',
+
             component: HomeComponent,
             redirect: {
                 name: "comment"
@@ -415,7 +415,7 @@ export default new Router({
         },
         {
             path: '/admin/user',
-            name: 'user',
+
             component: HomeComponent,
             redirect: {
                 name: "user"

@@ -54,7 +54,7 @@
                                 <div class="post-block">
                                     <div class="">
                                         <a href="#" class="">
-                                            <img class="img-news w-100" src="upload/tintuc/{{ $tintuc->Hinh }}" alt="" />
+                                            <img class="img-news w-100" src="{{ $tintuc->Hinh }}" alt="" />
                                         </a>
                                     </div>
                                     <!-- Post Content -->
@@ -127,7 +127,7 @@
                                         <div class="row" style="margin-top: 10px;">
                                             <div class="col-md-12">
                                                 <a href="tin-tuc/{{ $tlq->TieuDeKhongDau }}.html">
-                                                    <img class="img-fluid" src="upload/tintuc/{{ $tlq->Hinh }}" alt="Hình ảnh của bài viết">
+                                                    <img class="img-fluid" src="{{ $tlq->Hinh }}" alt="Hình ảnh của bài viết">
                                                 </a>
                                             </div>
                                             <div class="col-md-12">
@@ -149,7 +149,7 @@
                                         <div class="row" style="margin-top: 10px;">
                                             <div class="col-md-12">
                                                 <a href="tin-tuc/{{ $tnb->TieuDeKhongDau }}.html">
-                                                    <img class="img-fluid" src="upload/tintuc/{{ $tnb->Hinh }}" alt="Hình ảnh của bài viết">
+                                                    <img class="img-fluid" src="{{ $tnb->Hinh }}" alt="Hình ảnh của bài viết">
                                                 </a>
                                             </div>
                                             <div class="col-md-12">

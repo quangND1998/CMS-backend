@@ -136,9 +136,9 @@ export default {
                     this.$router.push({ name: "theme" });
                 })
                 .catch(error => {
-                         console.log(error);
+                        //  console.log(error);
                     if (!_.isEmpty(error.response)) {
-                        console.log(error);
+                        // console.log(error);
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
                             this.successful = false;

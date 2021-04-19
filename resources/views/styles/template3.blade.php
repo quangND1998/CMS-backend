@@ -3,8 +3,15 @@
             <div class="row">
                 <div class="col-lg-10 ml-auto mr-auto text-center topsection_margin wow fadeInUp"
                     data-wow-duration=".2s" data-wow-delay=".1s">
-                    <h2 class="heading">{{ $section->title }}</h2>
-                    <p>{{ $section->sub_title }}</p>
+                    @if (Config::get('app.locale') == 'vn')
+                        <h2 class="heading">{{ $section->title_vn }}</h2>
+                        <p>{{ $section->sub_title_vn }}</p>
+                    @endif
+                    @if (Config::get('app.locale') == 'en')
+                        <h2 class="heading">{{ $section->title }}</h2>
+                        <p>{{ $section->sub_title }}</p>
+                    @endif
+
                 </div>
             </div>
             <div class="row">
@@ -13,7 +20,13 @@
                         data-wow-delay=".1s">
                         <div class=" mb-md-5 mb-sm-4">
                             <img src={{ $content->image }}>
-                            <h5 class="">{{ $content->title }}</h5>
+                            @if (Config::get('app.locale') == 'vn')
+                                <h5 class="">{{ $content->title }}</h5>
+                            @endif
+                            @if (Config::get('app.locale') == 'en')
+                                <h5 class="">{{ $content->title }}</h5>
+                            @endif
+
 
                         </div>
                     </div>

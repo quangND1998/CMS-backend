@@ -78,7 +78,7 @@ export const mutations = {
         state.isRun = true;
     },
     [FETCH_END](state, {data} ) {
-        console.log(data)
+        // console.log(data)
         state.loaitins = data;
 
     },

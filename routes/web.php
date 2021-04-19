@@ -19,7 +19,7 @@ use App\Http\Controllers\ShowRoomController;
 // Route :: view ( '/ admin' , 'admin.dashboard.index' ); 
 // Route :: view ( '/ admin / login' , 'admin.auth.login' );
 
-Route::group(['middleware' => ['prevent-back-history']], function () {
+Route::group(['middleware' => ['prevent-back-history','lang']], function () {
     Route::get('/', [ShowRoomController::class, 'index']);
 
 
@@ -36,10 +36,10 @@ Route::group(['middleware' => ['prevent-back-history']], function () {
 
     Route::post('message/send',[ContactController::class, 'XuLyThemMessage']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('message/send',[ContactController::class, 'XuLyThemMessage']);
+
+    Route::get('loai-tin/{unsigned_name}',[ShowRoomController::class, 'LoaiTin']);
+
+    Route::get('tin-tuc/{unsigned_name}.html',[ShowRoomController::class, 'TinTuc']);
 });
 
-Route::post('message/send',[ContactController::class, 'XuLyThemMessage']);
-
-Route::get('loai-tin/{unsigned_name}',[ShowRoomController::class, 'LoaiTin']);
-
-Route::get('tin-tuc/{unsigned_name}.html',[ShowRoomController::class, 'TinTuc']);

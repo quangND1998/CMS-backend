@@ -215,7 +215,7 @@ export default {
                     });
                 })
                 .catch(error => {
-                    console.log(error);
+                  
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;

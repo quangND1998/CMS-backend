@@ -167,7 +167,7 @@ export default {
             this.getPosts();
         },
         bindingData(data){
-            console.log(data.type)
+            // console.log(data.type)
             // console.log()
          
            for(let i=0 ;i<this.types.length;i++){

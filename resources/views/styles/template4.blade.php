@@ -3,18 +3,40 @@
         <div class="row">
             <div class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp" data-wow-duration=".2s"
                 data-wow-delay=".1s">
-                <h2 class="heading">{{ $section->title }}</h2>
+                @if (Config::get('app.locale') == 'vn')
+                    <h2 class="heading">{{ $section->title_vn }}</h2>
+                @endif
+                @if (Config::get('app.locale') == 'en')
+                    <h2 class="heading">{{ $section->title }}</h2>
+                @endif
+
+
 
                 <div class="tab">
 
 
                     @foreach ($section->section_category as $categorys)
                         @if ($loop->first)
-                            <button class="tablinks tablinks2 active" id="defaultOpen1"
-                                onclick="showContentTab(event, '{{ Str::of($categorys->title)->slug('-') }}')">{{ $categorys->title }}</button>
+
+                            @if (Config::get('app.locale') == 'vn')
+                                <button class="tablinks tablinks2 active" id="defaultOpen1"
+                                    onclick="showContentTab(event, '{{ Str::of($categorys->title)->slug('-') }}')">{{ $categorys->title_vn }}</button>
+                            @endif
+                            @if (Config::get('app.locale') == 'en')
+                                <button class="tablinks tablinks2 active" id="defaultOpen1"
+                                    onclick="showContentTab(event, '{{ Str::of($categorys->title)->slug('-') }}')">{{ $categorys->title }}</button>
+                            @endif
+
                         @else
-                            <button class="tablinks tablinks2"
-                                onclick="showContentTab(event, '{{ Str::of($categorys->title)->slug('-') }}')">{{ $categorys->title }}</button>
+                            @if (Config::get('app.locale') == 'vn')
+                                <button class="tablinks tablinks2"
+                                    onclick="showContentTab(event, '{{ Str::of($categorys->title)->slug('-') }}')">{{ $categorys->title_vn }}</button>
+                            @endif
+                            @if (Config::get('app.locale') == 'en')
+                                <button class="tablinks tablinks2"
+                                    onclick="showContentTab(event, '{{ Str::of($categorys->title)->slug('-') }}')">{{ $categorys->title }}</button>
+                            @endif
+
 
                         @endif
                     @endforeach
@@ -24,14 +46,20 @@
 
                 {{-- @endforeach --}}
                 <p class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp">
-                    {{ $section->sub_title }}
+                    @if (Config::get('app.locale') == 'vn')
+                        {{ $section->sub_title_vn }}
+                    @endif
+                    @if (Config::get('app.locale') == 'en')
+                        {{ $section->sub_title }}
+                    @endif
+
                 </p>
             </div>
         </div>
         @foreach ($section->section_category as $categorys)
 
-        
-            @if($categorys->type ==0)
+
+            @if ($categorys->type == 0)
 
 
 
@@ -139,8 +167,8 @@
                                 @foreach ($categorys->contents as $content)
                                     <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
                                         <div class="post-block">
-                                            <a data-fancybox data-type="iframe"
-                                                data-src="{{ $content->scan }}" href="javascript:;">
+                                            <a data-fancybox data-type="iframe" data-src="{{ $content->scan }}"
+                                                href="javascript:;">
                                                 <img class=" w-100" src="{{ $content->image }}" alt="" />
                                             </a>
                                             <div class="post-meta m-0 px-3 py-2">

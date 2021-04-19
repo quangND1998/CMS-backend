@@ -65,6 +65,7 @@
                                 type="password"
                                 name="password"
                                 placeholder="Nhập mật khẩu"
+                                autocomplete 
                             />
                         </div>
 
@@ -76,6 +77,7 @@
                                 type="password"
                                 name="password_again"
                                 placeholder="Nhập lại mật khẩu"
+                                autocomplete 
                             />
                         </div>
 
@@ -161,7 +163,7 @@ export default {
                     this.$router.push({ name: "user" });
                 })
                 .catch(error => {
-                    console.log(error);
+                    // console.log(error);
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;

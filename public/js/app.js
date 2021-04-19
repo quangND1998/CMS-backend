@@ -2222,8 +2222,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "loaitin"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error);
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -2529,8 +2528,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "loaitin"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error);
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -2855,8 +2853,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "slide"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error)
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -3453,8 +3450,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "theloai"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error);
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -3734,8 +3730,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("idLoaiTin", this.item.idLoaiTin);
       formData.append("NoiBat", this.item.NoiBat);
       formData.append("Hinh", this.$refs.Hinh.files[0]);
-      var tieude = this.$refs.Hinh.value;
-      console.log(tieude);
+      var tieude = this.$refs.Hinh.value; // console.log(tieude);
+
       this.$store.dispatch(_components_store_tintucModule_action__WEBPACK_IMPORTED_MODULE_1__.TIN_TUC_PUBLISH, formData).then(function (response) {
         _this.successful = true;
         _this.error = false;
@@ -4203,8 +4199,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "tintuc"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error);
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -5823,11 +5818,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "theme"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        //  console.log(error);
         if (!_.isEmpty(error.response)) {
-          console.log(error);
-
+          // console.log(error);
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
             _this.successful = false;
@@ -6053,8 +6046,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "theme"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error);
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -6361,6 +6353,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -6396,8 +6390,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "user"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error);
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -6568,8 +6561,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           name: "user"
         });
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error);
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -7728,8 +7720,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         });
       })["catch"](function (error) {
-        console.log(error);
-
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -8545,8 +8535,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         });
       })["catch"](function (error) {
-        console.log(error);
-
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -8771,8 +8759,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.getPosts();
     },
     bindingData: function bindingData(data) {
-      console.log(data.type); // console.log()
-
+      // console.log(data.type)
+      // console.log()
       for (var i = 0; i < this.types.length; i++) {
         if (this.types[i].value == data.type) {
           return this.types[i].text;
@@ -9855,12 +9843,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             posId: _this.postId,
             sectionId: _this.sectionId
           }
-        });
+        }); // console.log(response)
 
-        console.log(response);
       })["catch"](function (error) {
-        console.log(error);
-
+        // console.log(error)
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -10103,12 +10089,12 @@ var ApiService = {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post(_config__WEBPACK_IMPORTED_MODULE_2__.default + "/" + resource, params);
   },
   update: function update(resource, params, slug) {
-    console.log('apiservice_update', params);
+    // console.log('apiservice_update', params);
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post(_config__WEBPACK_IMPORTED_MODULE_2__.default + "/" + resource + "/" + slug, params);
   },
   put: function put(resource, params) {
-    console.log('apiservice_put', params);
-    console.log('apiservice_put', resource);
+    // console.log('apiservice_put', params);
+    // console.log('apiservice_put', resource);
     return axios__WEBPACK_IMPORTED_MODULE_0___default().put(_config__WEBPACK_IMPORTED_MODULE_2__.default + "/" + resource, params);
   },
   "delete": function _delete(resource) {
@@ -11179,7 +11165,7 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, _muntation__WEBPAC
   state.isRun = true;
 }), _defineProperty(_mutations, _muntation__WEBPACK_IMPORTED_MODULE_2__.FETCH_END, function (state, _ref8) {
   var data = _ref8.data;
-  console.log(data);
+  // console.log(data)
   state.loaitins = data;
 }), _defineProperty(_mutations, _muntation__WEBPACK_IMPORTED_MODULE_2__.FETCH_ID_LOAI_TIN, function (state, _ref9) {
   var data = _ref9.data;
@@ -12970,7 +12956,7 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
       } ///CateGory item
       , {
         path: ":sectionId/section_category/:categoryId",
-        name: "section_category_content",
+        // name: "section_category_content",
         component: _components_sectioncatergory_Item_ContentCateComponent__WEBPACK_IMPORTED_MODULE_17__.default,
         params: true,
         props: true,
@@ -13019,7 +13005,6 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
   }, //BLog
   {
     path: '/admin/theloai',
-    name: 'theloai',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
       name: "theloai"
@@ -13045,7 +13030,6 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
     }]
   }, {
     path: '/admin/loaitin',
-    name: 'loaitin',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
       name: "loaitin"
@@ -13071,7 +13055,6 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
     }]
   }, {
     path: '/admin/tintuc',
-    name: 'tintuc',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
       name: "tintuc"
@@ -13097,7 +13080,6 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
     }]
   }, {
     path: '/admin/slide',
-    name: 'slide',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
       name: "slide"
@@ -13123,7 +13105,6 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
     }]
   }, {
     path: '/admin/contact',
-    name: 'contact',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
       name: "contact"
@@ -13137,7 +13118,6 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
     }]
   }, {
     path: '/admin/comment',
-    name: 'comment',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
       name: "comment"
@@ -13151,7 +13131,6 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
     }]
   }, {
     path: '/admin/user',
-    name: 'user',
     component: _components_HomeComponent__WEBPACK_IMPORTED_MODULE_11__.default,
     redirect: {
       name: "user"
@@ -64567,7 +64546,8 @@ var render = function() {
                     attrs: {
                       type: "password",
                       name: "password",
-                      placeholder: "Nhập mật khẩu"
+                      placeholder: "Nhập mật khẩu",
+                      autocomplete: ""
                     }
                   })
                 ]),
@@ -64581,7 +64561,8 @@ var render = function() {
                     attrs: {
                       type: "password",
                       name: "password_again",
-                      placeholder: "Nhập lại mật khẩu"
+                      placeholder: "Nhập lại mật khẩu",
+                      autocomplete: ""
                     }
                   })
                 ]),
@@ -64908,7 +64889,8 @@ var render = function() {
                       type: "password",
                       name: "password",
                       placeholder: "Nhập mật khẩu",
-                      disabled: ""
+                      disabled: "",
+                      autocomplete: "on"
                     },
                     domProps: { value: _vm.get_user.password },
                     on: {
@@ -64939,7 +64921,8 @@ var render = function() {
                       type: "password",
                       name: "password_again",
                       placeholder: "Nhập lại mật khẩu",
-                      disabled: ""
+                      disabled: "",
+                      autocomplete: "on"
                     },
                     domProps: { value: _vm.get_user.password_again },
                     on: {

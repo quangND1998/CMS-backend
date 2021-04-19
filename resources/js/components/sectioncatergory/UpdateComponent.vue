@@ -140,12 +140,12 @@ export default {
                             name: "section_category",
                             params: { posId: this.postId ,sectionId:this.sectionId}
                         });
-                        console.log(response)
+                        // console.log(response)
               
 
                     })
                     .catch(error => {
-                            console.log(error)
+                            // console.log(error)
                         if (!_.isEmpty(error.response)) {
                         if ((error.response.status == 422)) {
                             this.errors = error.response.data.errors;

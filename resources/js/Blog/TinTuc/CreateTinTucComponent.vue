@@ -231,7 +231,7 @@ export default {
             formData.append("NoiBat", this.item.NoiBat);
             formData.append("Hinh", this.$refs.Hinh.files[0]);
             let tieude = this.$refs.Hinh.value;
-            console.log(tieude);
+            // console.log(tieude);
             this.$store
                 .dispatch(TIN_TUC_PUBLISH, formData)
                 .then(response => {

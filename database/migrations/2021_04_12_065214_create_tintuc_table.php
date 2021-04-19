@@ -25,7 +25,7 @@ class CreateTintucTable extends Migration
             $table->text('TomTat_en');
             $table->longText('NoiDung_en');
 
-            $table->string('Hinh');
+            $table->string('Hinh')->nullable();
             $table->integer('NoiBat')->default(0);
             $table->integer('SoLuotXem')->default(0);
             $table->integer('idLoaiTin')->unsigned();
