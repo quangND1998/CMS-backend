@@ -12,6 +12,7 @@ class ShowRoomController extends Controller
         $data = Page::with([
             'section',
         ])->first();
+        // dd($data);
         if ($data) {
             return view('landingpage.landingpage', compact('data'));
         } else {
