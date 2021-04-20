@@ -22,42 +22,31 @@
                         <span class="app-menu__label">Page list</span>
                     </a>
                 </li>
-                <!-- <li class="treeview">
-                    <a class="app-menu__item" href="#" data-toggle="treeview"
-                        ><i class="app-menu__icon fa fa-users"></i>
-                        <span class="app-menu__label">Users</span>
-                        <i class="treeview-indicator fa fa-angle-right"></i>
-                    </a>
+                <li class="treeview">
+                    <a class="app-menu__item" href="javascript:void(0)" data-toggle="treeview"
+                        ><i class="app-menu__icon fa fa-th-list"></i
+                        ><span class="app-menu__label">Tables</span
+                        ><i class="treeview-indicator fa fa-angle-right"></i
+                    ></a>
                     <ul class="treeview-menu">
                         <li>
-                            <a class="treeview-item" href="#"
-                                ><i class="icon fa fa-circle-o"></i> Admin
-                                Users</a
+                            <a
+                                class="treeview-item active"
+                                href="table-basic.html"
+                                ><i class="icon fa fa-circle-o"></i> Basic
+                                Tables</a
                             >
                         </li>
                         <li>
                             <a
                                 class="treeview-item"
-                                href="#"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                ><i class="icon fa fa-circle-o"></i> Roles</a
-                            >
-                        </li>
-                        <li>
-                            <a class="treeview-item" href="#"
-                                ><i class="icon fa fa-circle-o"></i>
-                                Permissions</a
+                                href="table-data-table.html"
+                                ><i class="icon fa fa-circle-o"></i> Data
+                                Tables</a
                             >
                         </li>
                     </ul>
-                </li> -->
-                <!-- <li>
-                    <a class="app-menu__item" href="#"
-                        ><i class="app-menu__icon fa fa-cogs"></i>
-                        <span class="app-menu__label">Settings</span>
-                    </a>
-                </li> -->
+                </li>
                 <li>
                     <a class="app-menu__item" href="#" @click.prevent="logout"
                         ><i class="app-menu__icon fa fa-sign-out"></i>

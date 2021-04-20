@@ -24,6 +24,21 @@
     <script src="{{ asset('backend/js/main.js') }}"></script>
     <script src="{{ asset('backend/js/plugins/pace.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        // Toggle Sidebar
+        $('[data-toggle="sidebar"]').click(function(event) {
+            event.preventDefault();
+            $('.app').toggleClass('sidenav-toggled');
+        });
+
+        $("[data-toggle='treeview']").click(function(event) {
+            event.preventDefault();
+            if (!$(this).parent().hasClass('is-expanded')) {
+                $('.app-menu').find("[data-toggle='treeview']").parent().removeClass('is-expanded');
+            }
+            $(this).parent().toggleClass('is-expanded');
+        });
+    </script>
 </body>
 
 </html>

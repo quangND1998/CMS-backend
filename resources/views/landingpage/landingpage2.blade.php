@@ -1,6 +1,47 @@
-@extends('client.layout.index')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="VNi - Mobile Sales kit for Real estate">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>@yield('title')</title>
+    <base href="{{ asset('') }}">
+    <link rel="stylesheet" type="text/css" href="admin_asset/dist/css/style.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="assets/css/fancybox.css">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="css/my.css" rel="stylesheet">
+    <link href="admin_asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/my.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="transparent-header" data-spy="scroll" data-offset="75" data-target="#navbarCollapse">
+
+    {{-- @include('landingpage.header') --}}
+    @extends('client.layout.index')
     <div class="wrap-header" id="introduction">
         <div class="video">
             <video src="assets/video/header-video.mp4" loop muted autoplay>
@@ -201,8 +242,8 @@
     <section id="solution">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 ml-auto mr-auto text-center topsection_margin wow fadeInUp" data-wow-duration=".2s"
-                    data-wow-delay=".1s">
+                <div class="col-lg-10 ml-auto mr-auto text-center topsection_margin wow fadeInUp"
+                    data-wow-duration=".2s" data-wow-delay=".1s">
                     <h2 class="heading">{{ $data[0]['section'][1]['title'] }}</h2>
                     <p>{{ $data[0]['section'][1]['sub_title'] }}</p>
                 </div>
@@ -310,8 +351,6 @@
                                         <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
                                             src="{{ $item->video }}"></iframe>
 
-                                        {{-- <a data-fancybox data-type="iframe" data-src="{{ $item->video }}">aaaaaaa</a> --}}
-
                                         <div class="post-meta m-0 px-3 py-2">
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item"><a><i class="fa fa-heart"></i>1147</a></li>
@@ -321,20 +360,6 @@
                                         </div>
                                         <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
                                     </div>
-                                    {{-- <div class="item ml-auto mr-auto wow fadeIn" data-wow-duration=".2s"
-                                        data-wow-delay=".1s">
-                                        <iframe class="fame_mobile" width="100%" height="300" allowfullscreen
-                                            src="{{ $item->video }}"></iframe>
-
-                                        <div class="post-meta m-0 px-3 py-2">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item"><a><i class="fa fa-heart"></i>1147</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-comment"></i>24</a></li>
-                                                <li class="list-inline-item"><a><i class="fa fa-eye"></i>4211</a></li>
-                                            </ul>
-                                        </div>
-                                        <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
-                                    </div> --}}
                                 @endforeach
                             </div>
                         </div>
@@ -377,27 +402,6 @@
                                 @foreach ($data[0]['section'][3]['section_category'][2]['contents'] as $item)
                                     <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
                                         <div class="post-block">
-                                            <a data-fancybox data-type="iframe"
-                                                data-src="https://vni.pro.vn/duan/SunPrimavera/index.html"
-                                                href="javascript:;">
-                                                <img class=" w-100"
-                                                src="{{ $item->image }}" alt="" />
-                                            </a>
-                                            <div class="post-meta m-0 px-3 py-2">
-                                                <ul class="list-inline mb-0">
-                                                    <li class="list-inline-item"><a><i class="fa fa-heart"></i>915</a>
-                                                    </li>
-                                                    <li class="list-inline-item"><a><i class="fa fa-comment"></i>11</a>
-                                                    </li>
-                                                    <li class="list-inline-item"><a><i class="fa fa-eye"></i>1252</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
-                                        </div>
-                                    </div>
-                                    {{-- <div class="item  fadeIn" data-wow-duration=".2s" data-wow-delay=".1s">
-                                        <div class="post-block">
                                             <img id="3" onclick="openTour360(this.id)" class=" w-100"
                                                 src="{{ $item->image }}" alt="" />
                                             <div class="post-meta m-0 px-3 py-2">
@@ -412,7 +416,7 @@
                                             </div>
                                             <h6 class="px-3 py-1 my-0">{{ $item->title }}</h6>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -460,7 +464,44 @@
     <!-- 3D CONTENT -->
 
     <!-- NEWS -->
-
+    {{-- <section id="blogs news">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 ml-auto mr-auto text-center">
+                    <h2 class="heading">{{ trans('home.news') }}</h2>
+                    <p>{{ trans('home.des_news') }}</p>
+                </div>
+            </div>
+            <div class="blog-slider center-align owl-carousel owl-theme">
+                @foreach ($data['theloai'] as $theloai)
+                    @if (count($theloai->LoaiTin) > 0)
+                        <?php $data = $theloai->TinTuc
+                            ->where('NoiBat', 1)
+                            ->sortByDesc('created_at')
+                            ->take(10); ?>
+                        @foreach ($data as $remaining_article)
+                            <div class="icon-block text-center item wow fadeIn" data-wow-duration=".2s"
+                                data-wow-delay=".1s">
+                                <div class="post-block">
+                                    <a href="tin-tuc/{{ $remaining_article['TieuDeKhongDau'] }}.html">
+                                        <img class="img-fluid image_new w-100"
+                                            src="upload/tintuc/{{ $remaining_article['Hinh'] }}" alt="" />
+                                    </a>
+                                    @if (Config::get('app.locale') == 'vn')
+                                        <h5 class=" text-center mb-3 mt-3">{{ $remaining_article['TieuDe'] }}</h5>
+                                    @endif
+                                    @if (Config::get('app.locale') == 'en')
+                                        <h5 class=" text-center mb-3 mt-3">{{ $remaining_article['TieuDe_en'] }}</h5>
+                                    @endif
+                                    <h6 class=" mb-3 mt-3">Time: {{ $remaining_article['created_at'] }}</h6>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </section> --}}
     <!-- NEWS -->
 
     <section class="bg-light">
@@ -540,5 +581,66 @@
         </div>
 
     </div>
+    {{-- <section id="app">
+        <landing-component>
 
-@endsection
+        </landing-component>
+    </section> --}}
+
+    @include('landingpage.footer')
+
+    <div style="text-align: left;" id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-login">
+
+            <!-- Modal content-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Đăng nhập</h4>
+                </div>
+                <div class="panel-body">
+
+                    <form action="dang-nhap" method="POST">
+                        {{ csrf_field() }}
+                        <div>
+                            <label>Email</label>
+                            <input type="email" class="form-control input" placeholder="Địa Chỉ Email" name="email">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Mật khẩu</label>
+                            <input type="password" class="form-control" placeholder="Mật Khẩu" name="password">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Đăng nhập
+                            </button>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 3em;">
+                            <a href="">Quên Mật Khẩu?</a>3
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fancybox JS -->
+    <script src="assets/js/fancybox.js"></script>
+    <script>
+        $().fancybox({
+            selector: '#perspective-images .owl-item:not(.cloned) .fcb',
+            hash: false,
+            thumbs: {
+                autoStart: true
+            },
+            buttons: [
+                'zoom',
+                'close'
+            ],
+        });
+    </script>
+
+</body>
+
+</html>

@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="assets/css/news.css">
     <link rel="stylesheet" href="assets/css/slider.css">
     <link rel="stylesheet" href="assets/css/product.css">
+        <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="assets/css/fancybox.css">
     <!-- Style Switch CSS -->
     <link rel="stylesheet" href="zero-styleswitch/style.css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -86,6 +88,20 @@
     <script type='text/javascript' src='assets/js/theme/jquery.appear.js?ver=5.2.2'></script>
     <script type='text/javascript' src='assets/js/theme/slick.min.js?ver=5.2.2'></script>
     <script type='text/javascript' src='assets/js/theme/jquery.paroller.min.js?ver=5.2.2'></script>
+    <script src="assets/js/fancybox.js"></script>
+    <script>
+        $().fancybox({
+            selector: '#perspective-images .owl-item:not(.cloned) .fcb',
+            hash: false,
+            thumbs: {
+                autoStart: true
+            },
+            buttons: [
+                'zoom',
+                'close'
+            ],
+        });
+    </script>
     <script>
         var language = window.navigator.userLanguage || window.navigator.language;
     </script>
@@ -322,12 +338,6 @@
             document.getElementById("defaultOpen_img").click();
         }
     </script>
-    {{-- <script>
-        $(".btn-login").click(function() {
-            $(".wrap-login-form").fadeIn();
-        })
-        $(".login-form span").click(function() {
-            $(".wrap-login-form").fadeOut();
-        })
-    </script> --}}
+    <!-- Fancybox JS -->
+
 </body>

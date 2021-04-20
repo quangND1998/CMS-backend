@@ -1,4 +1,4 @@
-</header>
+<header>
 <nav class="navbar navbar-expand-lg navbar-sticky">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}"><img class="img-fluid" src="assets/images/vni/logo_vni.png"

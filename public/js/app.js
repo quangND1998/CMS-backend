@@ -2961,17 +2961,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -52775,6 +52764,8 @@ var render = function() {
         _c("ul", { staticClass: "app-menu" }, [
           _vm._m(1),
           _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
           _c("li", [
             _c(
               "a",
@@ -52836,6 +52827,55 @@ var staticRenderFns = [
         }),
         _vm._v(" "),
         _c("span", { staticClass: "app-menu__label" }, [_vm._v("Page list")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "treeview" }, [
+      _c(
+        "a",
+        {
+          staticClass: "app-menu__item",
+          attrs: { href: "javascript:void(0)", "data-toggle": "treeview" }
+        },
+        [
+          _c("i", { staticClass: "app-menu__icon fa fa-th-list" }),
+          _c("span", { staticClass: "app-menu__label" }, [_vm._v("Tables")]),
+          _c("i", { staticClass: "treeview-indicator fa fa-angle-right" })
+        ]
+      ),
+      _vm._v(" "),
+      _c("ul", { staticClass: "treeview-menu" }, [
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "treeview-item active",
+              attrs: { href: "table-basic.html" }
+            },
+            [
+              _c("i", { staticClass: "icon fa fa-circle-o" }),
+              _vm._v(" Basic\n                            Tables")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c(
+            "a",
+            {
+              staticClass: "treeview-item",
+              attrs: { href: "table-data-table.html" }
+            },
+            [
+              _c("i", { staticClass: "icon fa fa-circle-o" }),
+              _vm._v(" Data\n                            Tables")
+            ]
+          )
+        ])
       ])
     ])
   }
