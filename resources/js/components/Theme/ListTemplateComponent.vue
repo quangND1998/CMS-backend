@@ -45,6 +45,7 @@
                                 <th>Template</th>
                                 <th>link_code</th>
                                 <th>image_tmeplate</th>
+                                <th>Type</th>
                              
                              
                             </tr>
@@ -66,6 +67,7 @@
                                     />
                                 </td>
                                 <td v-else><span class="text-success">Updating...</span></td>
+                                <td>{{theme.type}}</td>
                                 <td class="align-middle">
                                     <router-link
                                         :to="{

@@ -26,6 +26,9 @@ class ItemCategoryResource extends JsonResource
             'scan' => $this->scan,
             'detail' => $this->detail,
             'detail_vn' => $this->detail_vn,
+            'video_upload'=>$this->video_upload,
+            'icon_class'=>$this->icon_class,
+
             'section_category' => $this->section_category_id
         ];
     }

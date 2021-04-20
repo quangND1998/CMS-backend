@@ -95,7 +95,7 @@
 
     @yield('content')
 
-    @include('client.layout.footer')
+    {{-- @include('client.layout.footer') --}}
 
     <script src="assets/plugins/dist/js/plugins.min.js"></script>
     <!-- Main JS -->

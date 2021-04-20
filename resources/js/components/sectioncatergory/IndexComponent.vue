@@ -20,12 +20,12 @@
                 :to="{ name: 'section_category_create', params: { postId: postId ,sectionId:sectionId} }"
             >
                 <button type="button" class="btn btn-success">
-                    NEW SECTION
+                    NEW CATEGORY
                 </button>
             </router-link>
         </div>
         <div>
-            <router-link :to="{ name: 'content', params: { postId: postId ,sectionId: sectionId} }">
+            <router-link :to="{ name: 'content', params: { postId: postId ,sectionId: sectionId ,themeId:this.themeId} }">
                 <button
                     type="button"
                     class="p-1 mx-3  btn btn-success"
@@ -139,6 +139,9 @@ export default {
         },
         sectionId:{
                     required: true
+        },
+        themeId:{
+           
         }
     },
 

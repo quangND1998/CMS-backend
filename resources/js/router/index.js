@@ -140,21 +140,21 @@ export default new Router({
                             params: true
                         },
                         {
-                            path: ":sectionId/item",
+                            path: ":sectionId/theme/:themeId/item/",
                             name: "content",
                             component: ContentComponent,
                             params: true,
                             props: true
                         },
                         {
-                            path: ":sectionId/item/create",
+                            path: ":sectionId/theme/:themeId/item/create",
                             name: "content_create",
                             component: CreateContentComponent,
                             params: true,
                             props: true
                         },
                         {
-                            path: ":sectionId/section_category",
+                            path: ":sectionId/theme/:themeId/section_category",
                             name: "section_category",
                             component: IndexComponent,
                             params: true,
@@ -162,14 +162,14 @@ export default new Router({
 
                         },
                         {
-                            path: ":sectionId/section_category/create",
+                            path: ":sectionId/theme/:themeId/section_category/create",
                             name: "section_category_create",
                             component: CreateCategoryComponent,
                             params: true,
                             props: true
                         },
                         {
-                            path: ":sectionId/section_category/:categoryId/update",
+                            path: ":sectionId/theme/:themeId/section_category/:categoryId/update",
                             name: "section_category_update",
                             component: UpdateCategoryComponent,
                             params: true,
@@ -177,7 +177,7 @@ export default new Router({
                         },
 
                         {
-                            path: ":contentId/update",
+                            path: ":contentId/theme/:themeId/update",
                             name: "content.update",
                             component: EditContentComponent,
                             params: true,
@@ -186,7 +186,7 @@ export default new Router({
 
                         ///CateGory item
                         , {
-                            path: ":sectionId/section_category/:categoryId",
+                            path: ":sectionId/theme/:themeId/section_category/:categoryId",
                             // name: "section_category_content",
                             component: ContentCateComponent,
                             params: true,

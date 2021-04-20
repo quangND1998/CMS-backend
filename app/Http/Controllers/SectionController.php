@@ -107,6 +107,7 @@ class SectionController extends Controller
     {
         $section = Section::find($id);
         $extension = " ";
+        $extension_video = 'mp4';
         if (!$section) {
             $msg = [
                 'msg' => 'Delete section  is not working'
@@ -124,6 +125,7 @@ class SectionController extends Controller
                 foreach ($category->contents as $content) {
                     $this->DeleteFolder($content->image, $extension);
                     $this->DeleteFolder($content->icon_image, $extension);
+                    $this->DeleteFolder($content->video_upload, $extension_video);
                 }
             }
         }

@@ -19,10 +19,13 @@ const initialState = {
   ,
     types: [
       { text: 'Product',value:-1 },
-      { text: 'Video',value:0 },
+      { text: 'Video Link',value:0 },
       { text: 'Image',value:1 },
       { text: 'Tour',value:2 },
       { text: 'Scan',value:3 },
+      { text: 'Video',value:4 },
+      { text: 'Nabar',value:5 },
+      { text: 'Text',value:6 },
 
   ]
 

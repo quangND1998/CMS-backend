@@ -4380,10 +4380,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store */ "./resources/js/components/store/store.js");
 /* harmony import */ var _store_actions_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/actions/item */ "./resources/js/components/store/actions/item.js");
 /* harmony import */ var _store_actions_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/page */ "./resources/js/components/store/actions/page.js");
+/* harmony import */ var _store_actions_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/actions/theme */ "./resources/js/components/store/actions/theme.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4607,6 +4608,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -4619,12 +4644,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     postId: {
       required: true
+    },
+    themeId: {
+      required: true
     }
   },
   mounted: function mounted() {
     this.getPosts();
+    this.getTheme();
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["contents", "content", "time"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)(["contents", "content", "time", 'theme'])),
   data: function data() {
     return {};
   },
@@ -4655,6 +4684,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deletePost: function deletePost(id) {
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_2__.ITEM_DELETE, id);
       this.getPosts();
+    },
+    getTheme: function getTheme() {
+      this.$store.dispatch(_store_actions_theme__WEBPACK_IMPORTED_MODULE_4__.GET_THEME_ID, this.themeId);
     }
   }
 });
@@ -4690,6 +4722,25 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4900,6 +4951,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("detail_vn", this.$refs.detail_vn.value);
       formData.append("video", this.$refs.video.value);
       formData.append("image", this.$refs.image.files[0]);
+      formData.append("icon_class", this.$refs.icon_class.value);
+      formData.append("video_upload", this.$refs.video_upload.files[0]);
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_2__.CREATE_ITEM, {
         slug: this.sectionId,
         data: formData
@@ -4910,6 +4963,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.$router.back();
       })["catch"](function (error) {
+        console.log(error);
+
         if (!_.isEmpty(error.response)) {
           if (error.response.status == 422) {
             _this.errors = error.response.data.errors;
@@ -4958,6 +5013,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5204,6 +5272,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("detail_vn", this.$refs.detail_vn.value);
       formData.append("video", this.$refs.video.value);
       formData.append("image", this.$refs.image.files[0]);
+      formData.append("icon_class", this.$refs.icon_class.value);
+      formData.append("video_upload", this.$refs.video_upload.files[0]);
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_1__.ITEM_EDIT, {
         slug: this.content.id,
         data: formData
@@ -5781,6 +5851,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5805,7 +5902,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var formData = new FormData();
       formData.append("title", this.$refs.title.value);
       formData.append("link_code", this.$refs.link_code.value);
-      formData.append("image_template", this.$refs.image_template.files[0]); // this.page.name = formData.get('name')
+      formData.append("image_template", this.$refs.image_template.files[0]);
+      formData.append("type", this.theme.type); // this.page.name = formData.get('name')
       // this.page.description = formData.get('description')
       // this.page.image = formData.get('image')
 
@@ -5982,6 +6080,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6030,7 +6150,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var formData = new FormData();
       formData.append("title", this.$refs.title.value);
       formData.append("link_code", this.$refs.link_code.value);
-      formData.append("image_template", this.$refs.image_template.files[0]); // this.page.name = formData.get("name");
+      formData.append("image_template", this.$refs.image_template.files[0]);
+      formData.append("type", this.theme.type); // this.page.name = formData.get("name");
       // this.page.description = formData.get("description");
       // this.page.image = formData.get("image");
 
@@ -6084,6 +6205,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -8008,6 +8131,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -8721,7 +8845,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     sectionId: {
       required: true
-    }
+    },
+    themeId: {}
   },
   created: function created() {
     this.getPosts();
@@ -8980,6 +9105,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -9003,7 +9150,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       errors: []
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["page"])),
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)(["page", 'content'])),
   beforeRouteLeave: function beforeRouteLeave(to, from, next) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -9036,7 +9183,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("detail", this.$refs.detail.value);
       formData.append("detail_vn", this.$refs.detail_vn.value);
       formData.append("video", this.$refs.video.value);
+      formData.append("icon_class", this.$$refs.icon_class.value);
       formData.append("image", this.$refs.image.files[0]);
+      formData.append("video_upload", this.$refs.video_upload.files[0]);
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_2__.CREATE_ITEM_BY_CATEGORY, {
         slug: this.categoryId,
         data: formData
@@ -9097,6 +9246,32 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9570,6 +9745,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -9629,7 +9817,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append("detail", this.$refs.detail.value);
       formData.append("detail_vn", this.$refs.detail_vn.value);
       formData.append("video", this.$refs.video.value);
+      formData.append("icon_class", this.$refs.icon_class.value);
       formData.append("image", this.$refs.image.files[0]);
+      formData.append("video_upload", this.$refs.video_upload.files[0]);
       this.$store.dispatch(_store_actions_item__WEBPACK_IMPORTED_MODULE_1__.ITEM_EDIT, {
         slug: this.content.id,
         data: formData
@@ -10952,7 +11142,9 @@ var initialState = {
     tour360: "",
     detail: "",
     detail_vn: "",
-    title_vn: ""
+    title_vn: "",
+    icon_class: "",
+    video_upload: {}
   }
 };
 var state = _objectSpread({}, initialState);
@@ -11640,7 +11832,7 @@ var initialState = {
     text: 'Product',
     value: -1
   }, {
-    text: 'Video',
+    text: 'Video Link',
     value: 0
   }, {
     text: 'Image',
@@ -11651,6 +11843,15 @@ var initialState = {
   }, {
     text: 'Scan',
     value: 3
+  }, {
+    text: 'Video',
+    value: 4
+  }, {
+    text: 'Nabar',
+    value: 5
+  }, {
+    text: 'Text',
+    value: 6
   }]
 };
 var state = _objectSpread({}, initialState);
@@ -12310,7 +12511,8 @@ var initialState = {
   theme: {
     title: "",
     link_code: "",
-    image_template: {}
+    image_template: {},
+    type: 0
   },
   isAuthenticated: !!_common_token__WEBPACK_IMPORTED_MODULE_4__.default.getToken()
 };
@@ -12918,44 +13120,44 @@ vue__WEBPACK_IMPORTED_MODULE_41__.default.use(vue_router__WEBPACK_IMPORTED_MODUL
         props: true,
         params: true
       }, {
-        path: ":sectionId/item",
+        path: ":sectionId/theme/:themeId/item/",
         name: "content",
         component: _components_Content_ContentComponent_vue__WEBPACK_IMPORTED_MODULE_6__.default,
         params: true,
         props: true
       }, {
-        path: ":sectionId/item/create",
+        path: ":sectionId/theme/:themeId/item/create",
         name: "content_create",
         component: _components_Content_CreateContentComponent_vue__WEBPACK_IMPORTED_MODULE_7__.default,
         params: true,
         props: true
       }, {
-        path: ":sectionId/section_category",
+        path: ":sectionId/theme/:themeId/section_category",
         name: "section_category",
         component: _components_sectioncatergory_IndexComponent__WEBPACK_IMPORTED_MODULE_14__.default,
         params: true,
         props: true
       }, {
-        path: ":sectionId/section_category/create",
+        path: ":sectionId/theme/:themeId/section_category/create",
         name: "section_category_create",
         component: _components_sectioncatergory_CreateComponent__WEBPACK_IMPORTED_MODULE_15__.default,
         params: true,
         props: true
       }, {
-        path: ":sectionId/section_category/:categoryId/update",
+        path: ":sectionId/theme/:themeId/section_category/:categoryId/update",
         name: "section_category_update",
         component: _components_sectioncatergory_UpdateComponent__WEBPACK_IMPORTED_MODULE_16__.default,
         params: true,
         props: true
       }, {
-        path: ":contentId/update",
+        path: ":contentId/theme/:themeId/update",
         name: "content.update",
         component: _components_Content_EditContentComponent_vue__WEBPACK_IMPORTED_MODULE_8__.default,
         params: true,
         props: true
       } ///CateGory item
       , {
-        path: ":sectionId/section_category/:categoryId",
+        path: ":sectionId/theme/:themeId/section_category/:categoryId",
         // name: "section_category_content",
         component: _components_sectioncatergory_Item_ContentCateComponent__WEBPACK_IMPORTED_MODULE_17__.default,
         params: true,
@@ -62023,87 +62225,100 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "posts" } }, [
-    _c(
-      "div",
-      { staticClass: "app-title" },
-      [
-        _c("div", [
-          _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "breadcrumb-item active" },
-              [
-                _c("router-link", { attrs: { to: { name: "page" } } }, [
-                  _vm._v(
-                    "\n                        Page list\n                    "
-                  )
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("li", { staticClass: "breadcrumb-item text-danger" }, [
-              _vm._v("Page name")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
-            _vm._v(" "),
-            _c("li", { staticClass: "breadcrumb-item text-danger" }, [
-              _vm._v("Section name")
-            ])
+    _c("div", { staticClass: "app-title" }, [
+      _c("div", [
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "page" } } }, [
+                _vm._v(
+                  "\n                        Page list\n                    "
+                )
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Page name")
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Section")]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item text-danger" }, [
+            _vm._v("Section name")
+          ])
         ]),
         _vm._v(" "),
-        _c(
-          "router-link",
-          {
-            attrs: {
-              to: {
-                name: "section_category",
-                params: { sectionId: _vm.sectionId, postId: _vm.postId }
-              }
-            }
-          },
-          [
-            _c(
-              "button",
-              {
-                staticClass: "p-2 mx-3 float-left btn btn-success",
-                attrs: { type: "button" }
-              },
-              [_vm._v("\n                Section Category\n            ")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          {
-            attrs: {
-              to: {
-                name: "content_create",
-                params: { sectionId: _vm.sectionId, postId: _vm.postId }
-              }
-            }
-          },
-          [
-            _c(
-              "button",
-              {
-                staticClass: "p-2 mx-3 float-left btn btn-success",
-                attrs: { type: "button" }
-              },
-              [_vm._v("\n                NEW ITEM\n            ")]
-            )
-          ]
-        )
-      ],
-      1
-    ),
+        _vm._m(1)
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        [
+          _vm.theme.type === 1
+            ? _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: {
+                      name: "section_category",
+                      params: {
+                        sectionId: _vm.sectionId,
+                        postId: _vm.postId,
+                        themeId: this.themeId
+                      }
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "p-2 mx-3 float-left btn btn-success",
+                      attrs: { type: "button" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Section Category\n                "
+                      )
+                    ]
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.theme.type === 0
+            ? _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: {
+                      name: "content_create",
+                      params: { sectionId: _vm.sectionId, postId: _vm.postId }
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "p-2 mx-3 float-left btn btn-success",
+                      attrs: { type: "button" }
+                    },
+                    [_vm._v("\n                    NEW ITEM\n                ")]
+                  )
+                ]
+              )
+            : _vm._e()
+        ],
+        1
+      )
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -62286,6 +62501,48 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "td",
+                        {
+                          class: [
+                            content.icon_class ? "" : "text-success",
+                            "align-middle"
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(
+                                content.icon_class
+                                  ? content.icon_class
+                                  : "Updating..."
+                              ) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          class: [
+                            content.video_upload ? "" : "text-success",
+                            "align-middle"
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(
+                                content.video_upload
+                                  ? content.video_upload
+                                  : "Updating..."
+                              ) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
                         { staticClass: "align-middle" },
                         [
                           _c(
@@ -62389,9 +62646,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Tour360")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Video")]),
+        _c("th", [_vm._v("Video Link")]),
         _vm._v(" "),
         _c("th", [_vm._v("Image")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Icon Class")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Video Upload")]),
         _vm._v(" "),
         _c("th")
       ])
@@ -62557,6 +62818,18 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("input", {
+          ref: "icon_class",
+          staticClass: "form-control",
+          attrs: {
+            id: "icon_class",
+            placeholder: "Enter icon_class",
+            rows: "8"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
           ref: "video",
           staticClass: "form-control",
           attrs: { type: "title", id: "video", placeholder: "Enter video link" }
@@ -62572,6 +62845,23 @@ var render = function() {
         _vm._v(" "),
         _c("label", { staticClass: "custom-file-label" }, [
           _vm._v("Choose image file...")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "custom-file mb-3" }, [
+        _c("input", {
+          ref: "video_upload",
+          staticClass: "custom-file-input",
+          attrs: {
+            type: "file",
+            name: "video_upload",
+            id: "video_upload",
+            required: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "custom-file-label" }, [
+          _vm._v("Choose image file for Upload Video...")
         ])
       ]),
       _vm._v(" "),
@@ -62871,6 +63161,36 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
+              value: _vm.content.icon_class,
+              expression: "content.icon_class"
+            }
+          ],
+          ref: "icon_class",
+          staticClass: "form-control",
+          attrs: {
+            type: "title",
+            id: "icon_class",
+            placeholder: "Enter class icon",
+            required: ""
+          },
+          domProps: { value: _vm.content.icon_class },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.content, "icon_class", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
               value: _vm.content.video,
               expression: "content.video"
             }
@@ -62892,6 +63212,23 @@ var render = function() {
             }
           }
         })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "custom-file mb-3" }, [
+        _c("input", {
+          ref: "video_upload",
+          staticClass: "custom-file-input",
+          attrs: {
+            type: "file",
+            name: "video_upload",
+            id: "video_upload",
+            required: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { staticClass: "custom-file-label" }, [
+          _vm._v("Choose image file for Upload Video...")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "custom-file mb-3" }, [
@@ -63549,7 +63886,18 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("main", { staticClass: "app-content", attrs: { id: "app" } }, [
-        _c("div", [_c("router-view")], 1)
+        _c(
+          "div",
+          [
+            _c(
+              "transition",
+              { attrs: { name: "slide" } },
+              [_c("router-view")],
+              1
+            )
+          ],
+          1
+        )
       ])
     ],
     1
@@ -63796,7 +64144,7 @@ var render = function() {
             [
               _c("router-link", { attrs: { to: { name: "theme" } } }, [
                 _vm._v(
-                  "\n                      Template List\n                    "
+                  "\n                        Template List\n                    "
                 )
               ])
             ],
@@ -63911,6 +64259,78 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.theme.type,
+                  expression: "theme.type"
+                }
+              ],
+              attrs: {
+                name: "article_rep",
+                value: "1",
+                checked: "",
+                type: "radio"
+              },
+              domProps: { checked: _vm._q(_vm.theme.type, "1") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.theme, "type", "1")
+                }
+              }
+            }),
+            _vm._v("Có Section Category\n            ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.theme.type,
+                  expression: "theme.type"
+                }
+              ],
+              attrs: { name: "article_rep", value: "0", type: "radio" },
+              domProps: { checked: _vm._q(_vm.theme.type, "0") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.theme, "type", "0")
+                }
+              }
+            }),
+            _vm._v("Không Section Category\n            ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.theme.type,
+                  expression: "theme.type"
+                }
+              ],
+              attrs: { name: "article_rep", value: "3", type: "radio" },
+              domProps: { checked: _vm._q(_vm.theme.type, "3") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.theme, "type", "3")
+                }
+              }
+            }),
+            _vm._v("Blog\n            ")
+          ])
+        ]),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "modal-footer justify-content-center" },
@@ -63962,6 +64382,12 @@ var staticRenderFns = [
       _c("i", { staticClass: "fa fa-th-list" }),
       _vm._v(" Page list")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("label", [_vm._v("Type Template")])])
   }
 ]
 render._withStripped = true
@@ -64153,6 +64579,57 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.theme.type,
+                  expression: "theme.type"
+                }
+              ],
+              attrs: {
+                name: "article_rep",
+                value: "1",
+                checked: "",
+                type: "radio"
+              },
+              domProps: { checked: _vm._q(_vm.theme.type, "1") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.theme, "type", "1")
+                }
+              }
+            }),
+            _vm._v("Có Section Category\n            ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.theme.type,
+                  expression: "theme.type"
+                }
+              ],
+              attrs: { name: "article_rep", value: "0", type: "radio" },
+              domProps: { checked: _vm._q(_vm.theme.type, "0") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.theme, "type", "0")
+                }
+              }
+            }),
+            _vm._v("Không Section Category\n            ")
+          ])
+        ]),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "modal-footer justify-content-center" },
@@ -64212,6 +64689,12 @@ var staticRenderFns = [
       _c("i", { staticClass: "fa fa-th-list" }),
       _vm._v(" Page list")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [_c("label", [_vm._v("Tin Tức Nổi Bật?")])])
   }
 ]
 render._withStripped = true
@@ -64319,6 +64802,8 @@ var render = function() {
                         ])
                       ]),
                   _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(theme.type))]),
+                  _vm._v(" "),
                   _c(
                     "td",
                     { staticClass: "align-middle" },
@@ -64403,7 +64888,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("link_code")]),
         _vm._v(" "),
-        _c("th", [_vm._v("image_tmeplate")])
+        _c("th", [_vm._v("image_tmeplate")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")])
       ])
     ])
   }
@@ -66575,7 +67062,8 @@ var render = function() {
                                 name: "content",
                                 params: {
                                   sectionId: section.id,
-                                  postId: _vm.postId
+                                  postId: _vm.postId,
+                                  themeId: section.theme_id
                                 }
                               }
                             }
@@ -67597,7 +68085,7 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn btn-success", attrs: { type: "button" } },
-              [_vm._v("\n                NEW SECTION\n            ")]
+              [_vm._v("\n                NEW CATEGORY\n            ")]
             )
           ]
         )
@@ -67614,7 +68102,11 @@ var render = function() {
             attrs: {
               to: {
                 name: "content",
-                params: { postId: _vm.postId, sectionId: _vm.sectionId }
+                params: {
+                  postId: _vm.postId,
+                  sectionId: _vm.sectionId,
+                  themeId: this.themeId
+                }
               }
             }
           },
@@ -67888,7 +68380,7 @@ var render = function() {
             [
               _c("router-link", { attrs: { to: { name: "page" } } }, [
                 _vm._v(
-                  "\n                          Page list\n                      "
+                  "\n                        Page list\n                    "
                 )
               ])
             ],
@@ -67913,7 +68405,7 @@ var render = function() {
         _vm._m(1)
       ])
     ]),
-    _vm._v("\n\n      " + _vm._s(_vm.page) + "\n      "),
+    _vm._v("\n\n    " + _vm._s(_vm.page) + "\n    "),
     _c(
       "form",
       [
@@ -68003,6 +68495,18 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            ref: "icon_class",
+            staticClass: "form-control",
+            attrs: {
+              id: "icon_class",
+              placeholder: "Enter icon_class",
+              rows: "8"
+            }
+          })
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "custom-file mb-3" }, [
           _c("input", {
             ref: "image",
@@ -68012,6 +68516,23 @@ var render = function() {
           _vm._v(" "),
           _c("label", { staticClass: "custom-file-label" }, [
             _vm._v("Choose image file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "video_upload",
+            staticClass: "custom-file-input",
+            attrs: {
+              type: "file",
+              name: "video_upload",
+              id: "video_upload",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose image file for Upload Video...")
           ])
         ]),
         _vm._v(" "),
@@ -68026,7 +68547,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n              Back\n          ")]
+          [_vm._v("\n            Back\n        ")]
         ),
         _vm._v(" "),
         _c(
@@ -68041,7 +68562,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n              Create\n          ")]
+          [_vm._v("\n            Create\n        ")]
         )
       ],
       1
@@ -68340,6 +68861,48 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "td",
+                        {
+                          class: [
+                            content.icon_class ? "" : "text-success",
+                            "align-middle"
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(
+                                content.icon_class
+                                  ? content.icon_class
+                                  : "Updating..."
+                              ) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          class: [
+                            content.video_upload ? "" : "text-success",
+                            "align-middle"
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(
+                                content.video_upload
+                                  ? content.video_upload
+                                  : "Updating..."
+                              ) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
                         { staticClass: "align-middle" },
                         [
                           _c(
@@ -68447,6 +69010,10 @@ var staticRenderFns = [
         _c("th", [_vm._v("Video")]),
         _vm._v(" "),
         _c("th", [_vm._v("Image")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("ICon class")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Video Upload")]),
         _vm._v(" "),
         _c("th")
       ])
@@ -68831,6 +69398,36 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
+                value: _vm.content.icon_class,
+                expression: "content.icon_class"
+              }
+            ],
+            ref: "icon_class",
+            staticClass: "form-control",
+            attrs: {
+              type: "title",
+              id: "icon_class",
+              placeholder: "Enter class icon",
+              required: ""
+            },
+            domProps: { value: _vm.content.icon_class },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.content, "icon_class", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
                 value: _vm.content.video,
                 expression: "content.video"
               }
@@ -68863,6 +69460,23 @@ var render = function() {
           _vm._v(" "),
           _c("label", { staticClass: "custom-file-label" }, [
             _vm._v("Choose image file...")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "custom-file mb-3" }, [
+          _c("input", {
+            ref: "video_upload",
+            staticClass: "custom-file-input",
+            attrs: {
+              type: "file",
+              name: "video_upload",
+              id: "video_upload",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "custom-file-label" }, [
+            _vm._v("Choose image file for Upload Video...")
           ])
         ]),
         _vm._v(" "),

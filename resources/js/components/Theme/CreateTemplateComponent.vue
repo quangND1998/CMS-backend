@@ -9,7 +9,7 @@
 
                     <li class="breadcrumb-item active">
                         <router-link :to="{ name: 'theme' }">
-                          Template List
+                            Template List
                         </router-link>
                     </li>
                     <li class="breadcrumb-item">Create</li>
@@ -54,7 +54,6 @@
                     placeholder="Enter title theme"
                 />
             </div>
-       
 
             <div class="form-group">
                 <input
@@ -75,6 +74,34 @@
                     id="image_template"
                 />
                 <label class="custom-file-label">Choose file...</label>
+            </div>
+            <div class="form-group">
+                <p><label>Type Template</label></p>
+                <label class="radio-inline">
+                    <input
+                        name="article_rep"
+                        value="1"
+                        checked=""
+                        v-model="theme.type"
+                        type="radio"
+                    />Có Section Category
+                </label>
+                <label class="radio-inline">
+                    <input
+                        name="article_rep"
+                        value="0"
+                        v-model="theme.type"
+                        type="radio"
+                    />Không Section Category
+                </label>
+                      <label class="radio-inline">
+                    <input
+                        name="article_rep"
+                        value="3"
+                        v-model="theme.type"
+                        type="radio"
+                    />Blog
+                </label>
             </div>
 
             <div class="modal-footer justify-content-center">
@@ -121,8 +148,11 @@ export default {
             formData.append("title", this.$refs.title.value);
 
             formData.append("link_code", this.$refs.link_code.value);
-            formData.append("image_template", this.$refs.image_template.files[0]);
-
+            formData.append(
+                "image_template",
+                this.$refs.image_template.files[0]
+            );
+            formData.append("type", this.theme.type);
             // this.page.name = formData.get('name')
             // this.page.description = formData.get('description')
             // this.page.image = formData.get('image')
@@ -136,7 +166,7 @@ export default {
                     this.$router.push({ name: "theme" });
                 })
                 .catch(error => {
-                        //  console.log(error);
+                    //  console.log(error);
                     if (!_.isEmpty(error.response)) {
                         // console.log(error);
                         if (error.response.status == 422) {

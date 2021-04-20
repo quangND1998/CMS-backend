@@ -242,9 +242,9 @@
             </router-link> -->
 
             <div>
-                <!-- <transition name="slide"> -->
+                <transition name="slide">
                 <router-view></router-view>
-                <!-- </transition> -->
+                </transition>
             </div>
         </main>
     </div>

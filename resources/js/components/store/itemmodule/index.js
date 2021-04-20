@@ -18,7 +18,8 @@ const initialState = {
         detail: "",
         detail_vn:"",
         title_vn:"",
-     
+        icon_class:"",
+        video_upload:{}        
 
     }
 
