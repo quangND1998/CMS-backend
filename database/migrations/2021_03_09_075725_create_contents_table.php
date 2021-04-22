@@ -17,12 +17,12 @@ class CreateContentsTable extends Migration
             $table->increments('id');
             $table->string('video')->nullable();
             $table->string('image')->nullable();
-            $table->string('subtitle')->nullable();
-            $table->string('short_content')->nullable();
+            $table->string('tour360')->nullable();
+            $table->string('scan')->nullable();
             $table->text('detail')->nullable();
+            $table->text('detail_vn')->nullable();
             $table->string('title');
-            $table->string('icon_image')->nullable();
-            $table->string('icon_class')->nullable();
+            $table->string('title_vn');
             $table->unsignedInteger('section_id')->unsigned()->nullable();
             $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
             $table->unsignedInteger('section_category_id')->unsigned()->nullable();

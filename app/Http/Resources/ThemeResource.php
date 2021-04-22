@@ -18,9 +18,9 @@ class ThemeResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
+            'image_template' => $this->image_template,
             'link_code' => $this->link_code,
-            'section_id' => $this->section_id
+          
         ];
     }
 }

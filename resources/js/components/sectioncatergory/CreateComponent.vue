@@ -53,16 +53,29 @@
                     required
                 />
             </div>
+             <div class="form-group">
+                <input
+                    type="title"
+                    ref="title_vn"
+                    class="form-control"
+                    id="title"
+                    placeholder="Enter name  VietNamese"
+                    required
+                />
+            </div>
 
-            <div class="text-center">
-                <router-link
-                :to="{
-                    name: 'section_category',
-                    params: { posId: this.postId, sectionId: this.sectionId }
-                }"
-                class="btn btn-white block"
-            >
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+
+            {{category}}
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select class="form-control" id="exampleFormControlSelect1" v-model="category.type">
+                <option v-for="type in types" :key="type.index" v-bind:value="type.value" >{{type.text}}</option>
+
+
+            </select>
+              </div>
+
+            <router-link :to="{ name: 'section_category',    params: { posId: this.postId ,sectionId:this.sectionId} }" class="btn btn-white block">
                 Back
             </router-link>
             <button
@@ -105,35 +118,40 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["category"])
+        ...mapGetters(["category","types"])
     },
     methods: {
         create() {
             this.category.title = this.$refs.title.value;
+            this.category.title_vn = this.$refs.title_vn.value;
 
-            this.$store
-                .dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
-                .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
-                    this.$router.push({
-                        name: "section_category",
-                        params: {
-                            posId: this.postId,
-                            sectionId: this.sectionId
-                        }
-                    });
-                })
-                .catch(error => {
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
+
+            this.$store.dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
+            .then(response => {
+                        this.successful = true;
+                        this.error = false;
+                        this.errors = [];
+                         this.$router.push({
+                            name: "section_category",
+                            params: { posId: this.postId ,sectionId:this.sectionId}
+                        });
+
+
+                    })
+                    .catch(error => {
+
+                        if (!_.isEmpty(error.response)) {
+                        if ((error.response.status == 422)) {
                             this.errors = error.response.data.errors;
                             this.successful = false;
                             this.error = true;
                         }
-                    }
-                });
+                        }
+                    });;
+
+
+            this.$refs.title.value = "";
+            this.$refs.title_vn.value = "";
 
             this.$refs.title.value = "";
         }

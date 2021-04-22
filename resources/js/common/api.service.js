@@ -38,6 +38,8 @@ const ApiService = {
     },
 
     put(resource, params) {
+        // console.log('apiservice_put', params);
+        // console.log('apiservice_put', resource);
         return axios.put(API_URL + "/" + resource, params);
     },
 

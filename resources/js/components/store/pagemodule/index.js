@@ -25,6 +25,7 @@ const initialState = {
     page: {
         name: "",
         description: "",
+        name_vn :"",
         image: {}
     },
     isAuthenticated: !!jwtToken.getToken()

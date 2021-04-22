@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
         'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class,
+        'lang' => \App\Http\Middleware\Language::class,
     ];
 }

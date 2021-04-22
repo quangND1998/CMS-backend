@@ -81,7 +81,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
+                                <th>Name english</th>
+                                    <th>Name VN</th>
                                 <th>Description</th>
                                 <th>Image</th>
                                 <th>#</th>
@@ -99,6 +100,17 @@
                                         class="text-uppercase font-weight-bold"
                                     >
                                         {{ post.name }}
+                                    </router-link>
+                                </td>
+                                     <td class="align-middle">
+                                    <router-link
+                                        :to="{
+                                            name: 'section',
+                                            params: { postId: post.id }
+                                        }"
+                                        class="text-uppercase font-weight-bold"
+                                    >
+                                        {{ post.name_vn }}
                                     </router-link>
                                 </td>
                                 <td class="align-middle">

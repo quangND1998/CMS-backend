@@ -10,10 +10,30 @@ import ApiService from '../../../common/api.service'
 const initialState = {
     section_categorys: [],
 
+    <<
+    << << < HEAD
     category: {
         title: ""
 
-    }
+    } ===
+    === =
+    category: {
+        title: "",
+        title_vn: "",
+        type: ""
+
+    },
+    types: [
+        { text: 'Product', value: -1 },
+        { text: 'Video', value: 0 },
+        { text: 'Image', value: 1 },
+        { text: 'Tour', value: 2 },
+        { text: 'Scan', value: 3 },
+
+    ]
+
+        >>>
+        >>> > origin
 
 };
 
@@ -89,13 +109,25 @@ export const mutations = {
 
 };
 
-const getters = {
+const getters = { <<
+    << << < HEAD
     section_categorys(state) {
         return state.section_categorys;
     },
     category(state) {
         return state.category;
-    }
+    } ===
+    === =
+    section_categorys(state) {
+        return state.section_categorys;
+    },
+    category(state) {
+        return state.category;
+    },
+    types(state) {
+        return state.types;
+    } >>>
+    >>> > origin
 
 };
 

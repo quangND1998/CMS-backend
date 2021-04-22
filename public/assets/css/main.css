@@ -2165,9 +2165,6 @@ Footer style
     .bg-videos {
         height: 56vh;
     }
-    .owl-carousel.row .owl-item {
-        padding: 0 40px !important;
-    }
 }
 
 

@@ -12,7 +12,7 @@ const initialState = {
     msg: "",
     token:"",
     user_name: '',
-    user: {
+    auth: {
         email: "",
         password: ""
     },
@@ -47,7 +47,17 @@ export const actions = {
     ,
  
     [LOGOUT]({ commit }) {
-        commit(PURGE_AUTH)
+        return new Promise((resolve, reject) => {
+            axios.post(API_URL + "/logout", { "token":token.getToken() }, {
+
+    
+            })
+                .then(({ data }) => {
+                    // console.log('a');
+                    commit(PURGE_AUTH, data);
+                    resolve(data);
+                })
+        });
     },
  
     
@@ -61,12 +71,13 @@ export const mutations = {
     },
     [PURGE_AUTH](state, data) {
         state.isAuthenticated = false;
-        state.user.email = "";
-        state.user.password = "";
+        state.auth.email = "";
+        state.auth.password = "";
         state.pending = false;
         state.token = "";
         state.msg = "email or password wrong"
         state.data = data
+        console.log(data);
         token.destroyToken();
     },
     [RESET_STATE]() {
@@ -84,8 +95,8 @@ export const mutations = {
 };
 
 const getters = {
-  user(state) {
-    return state.user;
+    auth(state) {
+    return state.auth;
   },
   
 isAuthenticated(state) {

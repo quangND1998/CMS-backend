@@ -21,6 +21,7 @@ class PageController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:page',
+            'name_vn' => 'required|unique:page',
             'image.*' => 'mimes:png,jpg,jpeg'
         ]);
         // $validator = Validator::make($request->all(), [
@@ -34,6 +35,7 @@ class PageController extends Controller
 
         $page = new Page();
         $page->name = $request->name;
+        $page->name_vn = $request->name_vn;
         if ($request->hasfile('image')) {
             $files = $request->file('image');
             $destinationpath = 'images/page/';
@@ -46,7 +48,6 @@ class PageController extends Controller
     }
     public function get()
     {
-
         return  PageResource::collection(Page::get());
     }
     public function edit($id)
@@ -67,6 +68,7 @@ class PageController extends Controller
 
         $this->validate($request, [
             'name' => 'required',
+            'name_vn' => 'required',
             'image.*' => 'mimes:png,jpg,jpeg',
         ]);
 
@@ -87,6 +89,7 @@ class PageController extends Controller
             $page->image = $this->update_image($files, $destinationpath, $attribute);
         }
         $page->name = $request->name;
+        $page->name_vn = $request->name_vn;
         $page->description = $request->description;
         $page->save();
 

@@ -28,6 +28,22 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="assets/css/partner.css" />
     <script src="assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="assets/css/fancybox.css">
+    <script src="assets/js/fancybox.js"></script>
+    <script>
+        $().fancybox({
+            selector: '#perspective-images .owl-item:not(.cloned) .fcb',
+            hash: false,
+            thumbs: {
+                autoStart: true
+            },
+            buttons: [
+                'zoom',
+                'close'
+            ],
+        });
+
+    </script>
     <style>
         button:focus {
             outline: inherit;
@@ -108,6 +124,7 @@
     <script>
         var video = document.getElementById("myVideo");
         var btn = document.getElementById("myBtn");
+
         var array = [
             'https://vni.pro.vn/duan/SunPrimavera/index.html',
             'https://vni.pro.vn/duan/SolCity/final/tour.html',
@@ -172,10 +189,13 @@
 
         /*tour 360*/
         function openTour360(id) {
+
+
+
+
             unmute();
             document.getElementById("slider-tour360").style.visibility = "visible";
             document.getElementById("slidetour360").src = array[id];
-
         }
 
         function closeTour360() {

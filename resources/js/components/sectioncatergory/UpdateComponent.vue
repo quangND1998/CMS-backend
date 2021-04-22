@@ -54,9 +54,29 @@
                     required
                 />
             </div>
+           
+             <div class="form-group">
+                <input
+                    type="title"
+                    v-model="category.title_vn"
+                    ref="title_vn"
+                    class="form-control"
+                    id="title"
+                    placeholder="Enter name  VietNamese"
+                    required
+                />
+            </div>
 
 
             {{category}}
+             <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select class="form-control" id="exampleFormControlSelect1" v-model="category.type">
+                <option v-for="type in types" :key="type.index" v-bind:value="type.value" >{{type.text}}</option>
+            
+            
+            </select>
+             </div>
 
             <router-link :to="{ name: 'section_category',    params: { posId: this.postId ,sectionId:this.sectionId} }" class="btn btn-white block">
                 Back
@@ -106,7 +126,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["category"])
+        ...mapGetters(["category","types"])
     },
     methods: {
         create() {
@@ -120,12 +140,12 @@ export default {
                             name: "section_category",
                             params: { posId: this.postId ,sectionId:this.sectionId}
                         });
-                        console.log(response)
+                        // console.log(response)
               
 
                     })
                     .catch(error => {
-                            console.log(error)
+                            // console.log(error)
                         if (!_.isEmpty(error.response)) {
                         if ((error.response.status == 422)) {
                             this.errors = error.response.data.errors;
@@ -141,6 +161,17 @@ export default {
         },
         getPost() {
             this.$store.dispatch(GET_SECTION_CATEGORY_ID, this.categoryId);
+        }
+        ,
+         bindingData(data){
+            console.log(data.type)
+            // console.log()
+         
+           for(let i=0 ;i<this.types.length;i++){
+               if(this.types[i].value == data.type){
+                   return this.types[i].text
+               }
+           }
         }
     }
 };

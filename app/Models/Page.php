@@ -9,7 +9,7 @@ class Page extends Model
 {
     use HasFactory;
     protected $table = 'page';
-    protected $fillable = ['id', 'name', 'image', 'description'];
+    protected $fillable = ['id', 'name','name_vn', 'image', 'description'];
     public function section()
     {
         return $this->hasMany(Section::class, 'page_id');

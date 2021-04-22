@@ -21,11 +21,11 @@ const initialState = {
         title: "",
         video: "",
         image: {},
-        subtitle: "",
-        short_content: "",
+        scan: "",
+        tour360: "",
         detail: "",
-        icon_image: {},
-        icon_class: ""
+        detail_vn: "",
+        title_vn: ""
     }
 };
 

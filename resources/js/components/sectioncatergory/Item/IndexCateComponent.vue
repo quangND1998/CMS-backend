@@ -1,7 +1,7 @@
 <template>
-
     <div id="posts">
         <div class="app-title">
+
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <li class="breadcrumb-item">
@@ -18,23 +18,14 @@
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
-                <!-- <router-link
-                :to="{
-                    name: 'section_category',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
-            >
-                <button
-                    type="button"
-                    class="p-2 mx-3 float-left btn btn-success"
-                >
-                    Section Category
-                </button>
-            </router-link> -->
             <router-link
                 :to="{
                     name: 'section_category_content.create',
-                    params: { sectionId: sectionId, postId: postId,categoryId:categoryId }
+                    params: {
+                        sectionId: sectionId,
+                        postId: postId,
+                        categoryId: categoryId
+                    }
                 }"
             >
                 <button
@@ -44,7 +35,10 @@
                     NEW ITEM
                 </button>
             </router-link>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin
         </div>
         <div>
             <!-- <router-link
@@ -60,11 +54,8 @@
                     NEW CONTENT
                 </button>
             </router-link> -->
-            <router-link :to="{ name: 'section', params: { postId: postId } }">
-                <button
-                    type="button"
-                     class="p-1 mx-3  btn btn-success"
-                >
+            <router-link :to="{ name: 'section_category', params: { postId: postId ,sectionId:sectionId} }">
+                <button type="button" class="p-1 mx-3  btn btn-success">
                     BACK
                 </button>
             </router-link>
@@ -76,9 +67,12 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Sub-title</th>
-                                <th>Short content</th>
+                                <th>Title English</th>
+                                <th>Title Vienamese</th>
+                                <th>Detail English</th>
+                                <th>Detail Vienamese</th>
+                                <th>Scan Link</th>
+                                <th>Tour360</th>
                                 <th>Video</th>
                                 <th>Image</th>
                                 <th></th>
@@ -92,9 +86,62 @@
                                 class="user_input"
                             >
                                 <td class="align-middle">{{ index + 1 }}</td>
-                                <td class="align-middle">{{ content.title }}</td>
-                                <td :class="[content.subtitle ? '' : 'text-success', 'align-middle']">{{ content.subtitle ? content.subtitle : 'Updating...' }}</td>
-                                <td :class="[content.short_content ? '' : 'text-success', 'align-middle']">{{ content.short_content ? content.short_content : 'Updating...' }}</td>
+                                <td class="align-middle">
+                                    {{ content.title }}
+                                </td>
+                                  <td class="align-middle">
+                                    {{ content.title_vn }}
+                                </td>
+                                <td
+                                    :class="[
+                                        content.detail ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.detail
+                                            ? content.detail
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                   <td
+                                    :class="[
+                                        content.detail_vn ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.detail_vn
+                                            ? content.detail_vn
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                   <td
+                                    :class="[
+                                        content.scan ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.scan
+                                            ? content.scan
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                <td
+                                    :class="[
+                                        content.tour360
+                                            ? ''
+                                            : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.tour360
+                                            ? content.tour360
+                                            : "Updating..."
+                                    }}
+                                </td>
                                 <td v-if="content.video">
                                     <iframe
                                         width="560"
@@ -106,7 +153,9 @@
                                         allowfullscreen
                                     ></iframe>
                                 </td>
-                                <td v-else class="text-success align-middle">Updating...</td>
+                                <td v-else class="text-success align-middle">
+                                    Updating...
+                                </td>
                                 <td>
                                     <img
                                         :src="content.image"
@@ -117,12 +166,13 @@
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
-                                            name: 'section_category_content.update',
+                                            name:
+                                                'section_category_content.update',
                                             params: {
                                                 contentId: content.id,
                                                 sectionId: sectionId,
                                                 postId: postId,
-                                                categoryId :categoryId
+                                                categoryId: categoryId
                                             }
                                         }"
                                     >
@@ -152,9 +202,13 @@
 
 <script>
 import { mapGetters } from "vuex";
-import store from '../../store/store'
+import store from "../../store/store";
 // import store from "../store/store";
-import { FETCH_ITEM, ITEM_DELETE, FETCH_ITEM_BY_CATEGORY} from "../../store/actions/item";
+import {
+    FETCH_ITEM,
+    ITEM_DELETE,
+    FETCH_ITEM_BY_CATEGORY
+} from "../../store/actions/item";
 import { PAGE_RESET_STATE } from "../../store/actions/page";
 export default {
     name: "page-component",
@@ -165,8 +219,8 @@ export default {
         postId: {
             required: true
         },
-        categoryId:{
-          required: true
+        categoryId: {
+            required: true
         }
     },
 
@@ -174,7 +228,7 @@ export default {
         this.getPosts();
     },
     computed: {
-        ...mapGetters(["contents", "content","time"])
+        ...mapGetters(["contents", "content", "time"])
     },
 
     data() {

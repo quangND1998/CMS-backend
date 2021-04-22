@@ -55,35 +55,55 @@
                     {{ errors.icon_class[0] }}
                 </span>
             </div> -->
-
-            <div class="form-group">
+  <div class="form-group">
                 <input
                     type="title"
                     ref="title"
                     class="form-control"
                     id="title"
-                    placeholder="Enter title"
+                    placeholder="Enter title English"
                     required
                 />
             </div>
             <div class="form-group">
                 <input
                     type="title"
-                    ref="subtitle"
+                    ref="title_vn"
                     class="form-control"
+<<<<<<< HEAD
                     id="subtitle"
                     placeholder="Enter subtitle"
+=======
+                    id="title_vn"
+                    placeholder="Enter title Vienamese"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="tour360"
+                    class="form-control"
+                    id="tour360"
+                    placeholder="Enter tour360"
+>>>>>>> origin
                 />
             </div>
 
             <div class="form-group">
-                <textarea
+                <input
                     class="form-control"
-                    ref="short_content"
+                    ref="scan"
                     id="short_content"
+<<<<<<< HEAD
                     placeholder="Enter short_content"
                     rows="8"
                 ></textarea>
+=======
+                    placeholder="Enter  link scan"
+                    rows="8"
+                />
+>>>>>>> origin
             </div>
 
             <div class="form-group">
@@ -91,6 +111,7 @@
                     class="form-control"
                     ref="detail"
                     id="detail"
+<<<<<<< HEAD
                     placeholder="Enter detail"
                     rows="8"
                 ></textarea>
@@ -104,6 +125,22 @@
                     placeholder="Enter class icon"
                 />
             </div> -->
+=======
+                    placeholder="Enter  detail English"
+                    rows="8"
+                ></textarea>
+            </div>
+            <div class="form-group">
+                <textarea
+                    class="form-control"
+                    ref="detail_vn"
+                    id="detail_vn"
+                    placeholder="Enter  detail VietNamese"
+                    rows="8"
+                ></textarea>
+            </div>
+       
+>>>>>>> origin
             <div class="form-group">
                 <input
                     type="title"
@@ -125,6 +162,7 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
+<<<<<<< HEAD
             <!-- <div class="custom-file mb-3">
                 <input
                     type="file"
@@ -136,6 +174,9 @@
                 />
                 <label class="custom-file-label">Choose file...</label>
             </div> -->
+=======
+          
+>>>>>>> origin
 
             <div class="text-center">
                 <router-link
@@ -195,21 +236,45 @@ export default {
         create() {
             const formData = new FormData();
             formData.append("title", this.$refs.title.value);
-            formData.append("subtitle", this.$refs.subtitle.value);
-            formData.append("short_content", this.$refs.short_content.value);
+            formData.append("title_vn", this.$refs.title_vn.value);
+            formData.append("tour360", this.$refs.tour360.value);
+            formData.append("scan", this.$refs.scan.value);
             formData.append("detail", this.$refs.detail.value);
+<<<<<<< HEAD
             // formData.append("icon_class", this.$refs.icon_class.value);
+=======
+            formData.append("detail_vn", this.$refs.detail_vn.value);
+>>>>>>> origin
             formData.append("video", this.$refs.video.value);
-
             formData.append("image", this.$refs.image.files[0]);
+<<<<<<< HEAD
             // formData.append("icon_image", this.$refs.icon_image.files[0]);
+=======
+>>>>>>> origin
 
-            this.$store.dispatch(CREATE_ITEM_BY_CATEGORY, {
-                slug: this.categoryId,
-                data: formData
-            });
+            this.$store
+                .dispatch(CREATE_ITEM_BY_CATEGORY, {
+                    slug: this.categoryId,
+                    data: formData
+                })
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.back();
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                    }
+                });
 
-            this.$router.back();
+
 
             //   this.$refs.name.value = "";
             //   this.$refs.description.value = "";

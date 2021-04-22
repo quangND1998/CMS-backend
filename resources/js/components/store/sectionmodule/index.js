@@ -7,15 +7,22 @@ import { FETCH_ID_SECTION } from '../muntation/section';
 import {  FETCH_END ,RESET_STATE} from '../muntation/page'
 import jwtToken from '../../../common/token'
 import ApiService from '../../../common/api.service'
+
 const initialState = {
   sections: [],
 
   section: {
     title: "",
     text: "",
-    sub_title:""
+    sub_title: "",
+    title_vn: "",
+    text_vn: "",
+    sub_title_vn: "",
+    number :0,
+    theme_id:''
     
-  }
+  },
+
 
 };
 
@@ -53,8 +60,10 @@ export const actions = {
   },
 
   [CREATE_SECTION]({state},slug) {
-  
-    // console.log('CREATE_SECTION',slug)  
+    
+    console.log('CREATE_SECTION',slug)  
+        
+    console.log('STATE',state)  
     return sectionService.post(slug, state.section);
   },
   [SECTION_DELETE](context, slug) {
@@ -95,6 +104,9 @@ const getters = {
   },
   section(state) {
     return state.section;
+  },
+  options(state) {
+    return state.options
   }
 
 };
