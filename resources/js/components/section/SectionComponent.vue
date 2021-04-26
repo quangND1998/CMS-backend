@@ -24,79 +24,6 @@
                 </button>
             </router-link>
         </div>
-<<<<<<< HEAD
-        <!-- <div class="table-responsive">
-            <table
-                id="user-table"
-                class="table table-striped table-bordered responsive"
-                style="width:100%"
-            >
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>title</th>
-                        <th>Text</th>
-                        <th>subtitle</th>
-                        <th style="width: 15%">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        v-for="section in sections"
-                        :key="section.id"
-                        data-entry-id=""
-                        class="user_input"
-                    >
-                        <td></td>
-
-                        <td>
-                            <router-link
-                                :to="{
-                                    name: 'content',
-                                    params: {
-                                        sectionId: section.id,
-                                        postId: postId
-                                    }
-                                }"
-                            >
-                                {{ section.title }}
-                            </router-link>
-                        </td>
-
-                        <td>{{ section.text }}</td>
-
-                        <td>{{ section.sub_title }}</td>
-
-                        <td>
-                            <button
-                                class="btn btn-xs btn-danger deleteRecord"
-                                id="deleteRecord"
-                                @click="deletePost(section.id)"
-                            >
-                                Delete
-                            </button>
-                            <router-link
-                                :to="{
-                                    name: 'section.update',
-                                    params: {
-                                        sectionId: section.id,
-                                        id: postId
-                                    }
-                                }"
-                            >
-                                <button
-                                    class="btn btn-xs btn-success deleteRecord"
-                                    id="deleteRecord"
-                                >
-                                    Update
-                                </button>
-                            </router-link>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
-=======
         <div>
             <router-link :to="{ name: 'page' }">
                 <button type="button" class="p-1 mx-3  btn btn-success">
@@ -105,7 +32,6 @@
             </router-link>
         </div>
 
->>>>>>> origin
         <div class="col-md-12">
             <div class="">
                 <div class="table-responsive">
@@ -141,7 +67,8 @@
                                             name: 'content',
                                             params: {
                                                 sectionId: section.id,
-                                                postId: postId
+                                                postId: postId,
+                                                themeId: section.theme_id
                                             }
                                         }"
                                     >
@@ -302,10 +229,6 @@ export default {
 
     created() {
         this.getPosts();
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
     },
     computed: {
         ...mapGetters(["posts", "sections", "section"])

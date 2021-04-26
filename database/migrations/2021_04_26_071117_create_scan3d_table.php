@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThemeTable extends Migration
+class CreateScan3dTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateThemeTable extends Migration
      */
     public function up()
     {
-        Schema::create('theme', function (Blueprint $table) {
+        Schema::create('scan3d', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('image_template');
-            $table->string('link_code');
-            $table->tinyInteger('type')->default(0);         
+            $table->string('name');
+            $table->string('title');
+            $table->string('favicon')->nullable();
+            $table->string('model_code');
+            $table->string('slug')->nullable();
+            $table->tinyInteger('isRemove')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateThemeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('theme');
+        Schema::dropIfExists('scan3d');
     }
 }

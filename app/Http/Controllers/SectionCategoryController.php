@@ -143,10 +143,16 @@ class SectionCategoryController extends Controller
         $item->scan = $request->scan;
         $item->detail = $request->detail;
         $item->detail_vn = $request->detail_vn;
+        $item->icon_class = $request->icon_class;
         if ($request->hasfile('image')) {
             $files = $request->file('image');
             $destinationpath = 'images/content/';
             $item->image = $this->image($files, $destinationpath);
+        }
+        if ($request->hasfile('video_upload')) {
+            $files = $request->file('video_upload');
+            $destinationpath = 'video/';
+            $item->video_upload = $this->image($files, $destinationpath);
         }
         $item->section_category_id = $section_category->id;
         $item->save();

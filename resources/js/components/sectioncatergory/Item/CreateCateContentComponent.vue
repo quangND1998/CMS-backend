@@ -21,6 +21,7 @@
             </div>
         </div>
 
+        {{ page }}
         <form>
             <!-- <div
                 :class="[
@@ -55,7 +56,7 @@
                     {{ errors.icon_class[0] }}
                 </span>
             </div> -->
-  <div class="form-group">
+            <div class="form-group">
                 <input
                     type="title"
                     ref="title"
@@ -70,10 +71,6 @@
                     type="title"
                     ref="title_vn"
                     class="form-control"
-<<<<<<< HEAD
-                    id="subtitle"
-                    placeholder="Enter subtitle"
-=======
                     id="title_vn"
                     placeholder="Enter title Vienamese"
                     required
@@ -86,7 +83,6 @@
                     class="form-control"
                     id="tour360"
                     placeholder="Enter tour360"
->>>>>>> origin
                 />
             </div>
 
@@ -95,15 +91,9 @@
                     class="form-control"
                     ref="scan"
                     id="short_content"
-<<<<<<< HEAD
-                    placeholder="Enter short_content"
-                    rows="8"
-                ></textarea>
-=======
                     placeholder="Enter  link scan"
                     rows="8"
                 />
->>>>>>> origin
             </div>
 
             <div class="form-group">
@@ -111,21 +101,6 @@
                     class="form-control"
                     ref="detail"
                     id="detail"
-<<<<<<< HEAD
-                    placeholder="Enter detail"
-                    rows="8"
-                ></textarea>
-            </div>
-            <!-- <div class="form-group">
-                <input
-                    type="title"
-                    ref="icon_class"
-                    class="form-control"
-                    id="icon_class"
-                    placeholder="Enter class icon"
-                />
-            </div> -->
-=======
                     placeholder="Enter  detail English"
                     rows="8"
                 ></textarea>
@@ -139,8 +114,7 @@
                     rows="8"
                 ></textarea>
             </div>
-       
->>>>>>> origin
+
             <div class="form-group">
                 <input
                     type="title"
@@ -151,6 +125,16 @@
                 />
             </div>
 
+
+            <div class="form-group">
+                <input
+                    class="form-control"
+                    ref="icon_class"
+                    id="icon_class"
+                    placeholder="Enter icon_class"
+                    rows="8"
+                >
+            </div>
             <div class="custom-file mb-3">
                 <input
                     type="file"
@@ -162,41 +146,36 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
-<<<<<<< HEAD
-            <!-- <div class="custom-file mb-3">
+              <div class="custom-file mb-3">
                 <input
                     type="file"
-                    ref="icon_image"
-                    name="icon_image"
+                    ref="video_upload"
+                    name="video_upload"
                     class="custom-file-input"
-                    id="icon_image"
+                    id="video_upload"
                     required
                 />
-                <label class="custom-file-label">Choose file...</label>
-            </div> -->
-=======
-          
->>>>>>> origin
-
-            <div class="text-center">
-                <router-link
-                    :to="{
-                        name: 'content',
-                        params: { sectionId: sectionId, postId: postId }
-                    }"
-                    class="btn btn-white block"
+                <label class="custom-file-label"
+                    >Choose image file for Upload Video...</label
                 >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                    Back
-                </router-link>
-                <button
-                    type="submit"
-                    @click.prevent="create"
-                    class="btn btn-primary block"
-                >
-                    Create
-                </button>
             </div>
+
+            <router-link
+                :to="{
+                    name: 'content',
+                    params: { sectionId: sectionId, postId: postId }
+                }"
+                class="btn btn-white block"
+            >
+                Back
+            </router-link>
+            <button
+                type="submit"
+                @click.prevent="create"
+                class="btn btn-primary block"
+            >
+                Create
+            </button>
         </form>
     </div>
 </template>
@@ -226,7 +205,7 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(["page"])
+        ...mapGetters(["page",'content'])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
@@ -240,18 +219,11 @@ export default {
             formData.append("tour360", this.$refs.tour360.value);
             formData.append("scan", this.$refs.scan.value);
             formData.append("detail", this.$refs.detail.value);
-<<<<<<< HEAD
-            // formData.append("icon_class", this.$refs.icon_class.value);
-=======
             formData.append("detail_vn", this.$refs.detail_vn.value);
->>>>>>> origin
             formData.append("video", this.$refs.video.value);
+            formData.append("icon_class", this.$$refs.icon_class.value);
             formData.append("image", this.$refs.image.files[0]);
-<<<<<<< HEAD
-            // formData.append("icon_image", this.$refs.icon_image.files[0]);
-=======
->>>>>>> origin
-
+            formData.append("video_upload", this.$refs.video_upload.files[0]);
             this.$store
                 .dispatch(CREATE_ITEM_BY_CATEGORY, {
                     slug: this.categoryId,
@@ -273,9 +245,6 @@ export default {
                         }
                     }
                 });
-
-
-
             //   this.$refs.name.value = "";
             //   this.$refs.description.value = "";
             //     this.$refs.name.value = "";

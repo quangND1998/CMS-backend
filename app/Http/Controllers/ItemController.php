@@ -58,11 +58,17 @@ class ItemController extends Controller
         $item->scan = $request->scan;
         $item->detail = $request->detail;
         $item->detail_vn = $request->detail_vn;
+        $item->icon_class = $request->icon_class;
 
         if ($request->hasfile('image')) {
             $files = $request->file('image');
             $destinationpath = 'images/content/';
             $item->image = $this->image($files, $destinationpath);
+        }
+        if ($request->hasfile('video_upload')) {
+            $files = $request->file('video_upload');
+            $destinationpath = 'video/';
+            $item->video_upload = $this->image($files, $destinationpath);
         }
       
         $item->section_id = $section->id;
@@ -103,13 +109,20 @@ class ItemController extends Controller
         $item->scan = $request->scan;
         $item->detail = $request->detail;
         $item->detail_vn = $request->detail_vn;
+        $item->icon_class = $request->icon_class;
+
         if ($request->hasfile('image')) {
             $files = $request->file('image');
             $destinationpath = 'images/content/';
             $attribute = $item->image;
             $item->image = $this->update_image($files, $destinationpath, $attribute);
         }
-    
+        if ($request->hasfile('video_upload')) {
+            $files = $request->file('video_upload');
+            $destinationpath = 'video/';
+            $attribute = $item->video_upload;
+            $item->video_upload = $this->update_image($files, $destinationpath, $attribute);
+        }
         $item->save();
         if ($item->section_id) {
             return new ItemResource($item);
@@ -129,9 +142,12 @@ class ItemController extends Controller
 
         $image = $item->image;
         $icon_image = $item->icon_image;
+        $icon_image = $item->video_upload;
         $extension = " ";
+        $extension1= "mp4 ";
         $this->DeleteFolder($image, $extension);
         $this->DeleteFolder($icon_image, $extension);
+        $this->DeleteFolder($icon_image, $extension1);
         $item->delete();
         return response()->json(' Delete Sussessfully', Response::HTTP_OK);
     }

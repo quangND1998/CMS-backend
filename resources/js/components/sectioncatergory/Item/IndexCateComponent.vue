@@ -75,6 +75,8 @@
                                 <th>Tour360</th>
                                 <th>Video</th>
                                 <th>Image</th>
+                                <th>ICon class</th>
+                                <th>Video Upload</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -161,6 +163,30 @@
                                         :src="content.image"
                                         style="width: 150px"
                                     />
+                                </td>
+                                     <td
+                                    :class="[
+                                        content.icon_class ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.icon_class
+                                            ? content.icon_class
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                        <td
+                                    :class="[
+                                        content.video_upload ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.video_upload
+                                            ? content.video_upload
+                                            : "Updating..."
+                                    }}
                                 </td>
 
                                 <td class="align-middle">

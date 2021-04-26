@@ -105,6 +105,7 @@ class PageController extends Controller
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
         $extension = " ";
+        $extension_video ='mp4';
         $image = $page->image;
 
             $this->DeleteFolder($image, $extension);
@@ -113,6 +114,7 @@ class PageController extends Controller
                 foreach ($section->contents as $content) {
                     $this->DeleteFolder($content->image, $extension);
                     $this->DeleteFolder($content->icon_image, $extension);
+                    $this->DeleteFolder($content->video_upload, $extension_video);
                 }
             }
             foreach ($page->section as $section){
@@ -123,6 +125,7 @@ class PageController extends Controller
                         foreach ($category->contents as $content) {
                             $this->DeleteFolder($content->image, $extension);
                             $this->DeleteFolder($content->icon_image, $extension);
+                            $this->DeleteFolder($content->video_upload, $extension_video);
                         }
                     }
                 }

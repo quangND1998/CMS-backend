@@ -1,10 +1,15 @@
 <template>
     <div id="posts">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                Danh sách
-                <small>> Bình luận người dùng</small>
-            </h1>
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item">Comment</li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-commenting-o"></i> Comment</h1>
+            </div>
         </div>
 
         <div class="col-md-12 px-0">

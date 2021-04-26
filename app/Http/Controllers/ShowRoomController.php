@@ -19,7 +19,7 @@ class ShowRoomController extends Controller
 
         if ($data) {
             $sections = Section::where('page_id', $data->id)->orderBy('number')->get();
-
+            // return $sections;
             // $section = $data->section->orderBy('number')->get();
             $blog  = [
                 'theloai' => TheLoai::all(),

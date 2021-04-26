@@ -118,7 +118,7 @@
                     rows="8"
                 ></textarea>
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <input
                     type="title"
                     ref="icon_class"
@@ -128,7 +128,7 @@
                     placeholder="Enter class icon"
                     required
                 />
-            </div> -->
+            </div>
             <div class="form-group">
                 <input
                     type="title"
@@ -138,6 +138,19 @@
                     id="video"
                     placeholder="Enter video link"
                 />
+            </div>
+            <div class="custom-file mb-3">
+                <input
+                    type="file"
+                    ref="video_upload"
+                    name="video_upload"
+                    class="custom-file-input"
+                    id="video_upload"
+                    required
+                />
+                <label class="custom-file-label"
+                    >Choose image file for Upload Video...</label
+                >
             </div>
 
             <div class="custom-file mb-3">
@@ -229,7 +242,8 @@ export default {
             formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
             formData.append("image", this.$refs.image.files[0]);
-
+            formData.append("icon_class", this.$refs.icon_class.value);
+            formData.append("video_upload", this.$refs.video_upload.files[0]);
             this.$store
                 .dispatch(ITEM_EDIT, {
                     slug: this.content.id,

@@ -20,7 +20,8 @@ const initialState = {
     theme: {
         title: "",
         link_code: "",
-        image_template: {}
+        image_template: {},
+        type:0
     },
     isAuthenticated: !!jwtToken.getToken()
 };

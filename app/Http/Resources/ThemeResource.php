@@ -20,6 +20,7 @@ class ThemeResource extends JsonResource
             'title' => $this->title,
             'image_template' => $this->image_template,
             'link_code' => $this->link_code,
+            'type' => $this->type
           
         ];
     }

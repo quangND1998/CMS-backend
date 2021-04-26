@@ -1,6 +1,26 @@
 <template>
     <div id="posts">
-     
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item">
+                        Thể loại
+                    </li>
+                </ul>
+                <h1 class="mt-2">
+                    <i class="fa fa-list-ul" aria-hidden="true"></i> Thể loại
+                </h1>
+            </div>
+            <router-link
+                :to="{ name: 'theloai.create' }"
+                class="btn btn-success"
+            >
+                ADD NEW
+            </router-link>
+        </div>
 
         <div></div>
 
@@ -11,24 +31,25 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tên Thể Loại</th>
-                                <th>Tên Không Dấu</th>
+                                <th>Tên thể loại</th>
+                                <th>Tên không dấu</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(theloai, index) in theloais" :key="theloai.id">
+                            <tr
+                                v-for="(theloai, index) in theloais"
+                                :key="theloai.id"
+                            >
                                 <td class="align-middle">{{ index + 1 }}</td>
                                 <td class="align-middle">
-                             
-                                        {{ theloai.Ten }}
-                           
+                                    {{ theloai.Ten }}
                                 </td>
-                               
+
                                 <td class="align-middle">
                                     {{ theloai.TenKhongDau }}
                                 </td>
-                          
+
                                 <td class="align-middle">
                                     <router-link
                                         :to="{

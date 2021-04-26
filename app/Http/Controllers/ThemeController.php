@@ -38,6 +38,7 @@ class ThemeController extends Controller
             $destinationpath = 'images/theme/';
             $theme->image_template = $this->image($files, $destinationpath);
         }
+        $theme->type = $request->type;
         $theme->save();
         return new ThemeResource($theme);
     }
@@ -78,6 +79,7 @@ class ThemeController extends Controller
     
         $theme->title = $request->title;
         $theme->link_code = $request->link_code;
+        $theme->type = $request->type;
         $theme->save();
 
         return new ThemeResource($theme);

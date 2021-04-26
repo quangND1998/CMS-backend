@@ -1,30 +1,27 @@
 <template>
-    <div id="page-wrapper">
+    <div id="posts">
+                <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Loại tin
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Add new
+                    </li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-tags" aria-hidden="true"></i> Loại tin</h1>
+            </div>
+        </div>
+
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Loại Tin
-                        <small>> Thêm</small>
-                    </h1>
-                </div>
-                <div
-                    :class="['form-group m-1 p-3', error ? 'alert-danger' : '']"
-                >
-                    <span v-if="errors.Ten" class="label label-danger">
-                        {{ errors.Ten[0] }}
-                    </span>
-                       <span v-if="errors.theloai_id" class="label label-danger">
-                        {{ errors.theloai_id[0] }}
-                    </span>
-                   
-                </div>
-                <!-- /.col-lg-12 -->
+
                 <div class="col-lg-7" style="padding-bottom:120px">
-                
-                   
                     <form>
-                       
                         <div class="form-group">
                             <label for="exampleFormControlSelect1"
                                 >Chọn Thể Loại</label
@@ -46,17 +43,24 @@
                             <p><label>Tên Loại Tin</label></p>
                             <input
                                 class="form-control input-width"
-                               ref="Ten"
+                                ref="Ten"
                                 placeholder="Nhập Tên Loại Tin.."
                             />
-                        </div>                        
-                        <button type="submit" class="btn btn-success"  @click.prevent="create">
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            @click.prevent="create"
+                        >
                             Thêm
                         </button>
                         <router-link :to="{ name: 'loaitin' }">
-                             <button type="reset" class="btn btn-danger btn-mleft">
-                           Hủy
-                        </button>
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-mleft"
+                            >
+                                Hủy
+                            </button>
                         </router-link>
                     </form>
                 </div>
@@ -97,7 +101,6 @@ export default {
     methods: {
         create() {
             this.loaitin.Ten = this.$refs.Ten.value;
-        
 
             this.$store
                 .dispatch(LOAI_TIN_PUBLISH, this.loaitin)

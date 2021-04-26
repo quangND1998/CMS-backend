@@ -67,22 +67,13 @@
         </div> -->
         <div class="col-md-12 px-0">
             <div class="">
-                <!-- <div class="d-flex">
-                    <h3 class="tile-title">Page list</h3>
-                    <router-link
-                        :to="{ name: 'create' }"
-                        class="btn btn-success"
-                    >
-                        ADD NEW
-                    </router-link>
-                </div> -->
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name english</th>
-                                    <th>Name VN</th>
+                                <th>Name (EN)</th>
+                                <th>Name (VN)</th>
                                 <th>Description</th>
                                 <th>Image</th>
                                 <th>#</th>

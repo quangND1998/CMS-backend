@@ -25,10 +25,11 @@
                 }"
             >
                 <button type="button" class="btn btn-success">
-                    NEW SECTION
+                    NEW CATEGORY
                 </button>
             </router-link>
         </div>
+        <<<<<<< HEAD
         <!-- <div>
             <router-link
                 :to="{
@@ -39,6 +40,16 @@
             >
                 <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                 Back
+=======
+        <div>
+            <router-link :to="{ name: 'content', params: { postId: postId ,sectionId: sectionId ,themeId:this.themeId} }">
+                <button
+                    type="button"
+                    class="p-1 mx-3  btn btn-success"
+                >
+                    Back
+                </button>
+>>>>>>> origin/master
             </router-link>
         </div> -->
 
@@ -80,7 +91,9 @@
                                         {{ category.title }}
                                     </router-link>
                                 </td>
-                                    <td class="align-middle text-uppercase font-weight-bold">
+                                <td
+                                    class="align-middle text-uppercase font-weight-bold"
+                                >
                                     <router-link
                                         :to="{
                                             name: 'section_category_content',
@@ -95,12 +108,10 @@
                                     </router-link>
                                 </td>
 
-                                    <td class="align-middle text-uppercase font-weight-bold">
-
-                                             {{ bindingData(category)}}
-
-
-
+                                <td
+                                    class="align-middle text-uppercase font-weight-bold"
+                                >
+                                    {{ bindingData(category) }}
                                 </td>
 
                                 <!-- <td class="align-middle">{{ section.sub_title }}</td> -->
@@ -138,15 +149,18 @@
                     </table>
                     <div class="text-center">
                         <router-link
-                :to="{
-                    name: 'content',
-                    params: { postId: postId, sectionId: sectionId }
-                }"
-                class="p-1 mx-3 btn btn-white block"
-            >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                Back
-            </router-link>
+                            :to="{
+                                name: 'content',
+                                params: { postId: postId, sectionId: sectionId }
+                            }"
+                            class="p-1 mx-3 btn btn-white block"
+                        >
+                            <i
+                                class="fa fa-long-arrow-left"
+                                aria-hidden="true"
+                            ></i>
+                            Back
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -169,14 +183,15 @@ export default {
         },
         sectionId: {
             required: true
-        }
+        },
+        themeId: {}
     },
 
     created() {
         this.getPosts();
     },
     computed: {
-        ...mapGetters(["section_categorys", "category","types"])
+        ...mapGetters(["section_categorys", "category", "types"])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
@@ -195,15 +210,15 @@ export default {
             this.$store.dispatch(SECTION_CATEGORY_DELETE, id);
             this.getPosts();
         },
-        bindingData(data){
+        bindingData(data) {
             // console.log(data.type)
             // console.log()
 
-           for(let i=0 ;i<this.types.length;i++){
-               if(this.types[i].value == data.type){
-                   return this.types[i].text
-               }
-           }
+            for (let i = 0; i < this.types.length; i++) {
+                if (this.types[i].value == data.type) {
+                    return this.types[i].text;
+                }
+            }
         }
     }
 };

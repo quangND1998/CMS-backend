@@ -1,49 +1,31 @@
 <template>
-    <div id="page-wrapper">
+    <div id="posts">
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item active"><a href="/admin/page/" aria-current="page" class="router-link-exact-active router-link-active">
+                        News
+                    </a></li>
+                    <li class="breadcrumb-item active"><a href="/admin/page/" aria-current="page" class="router-link-exact-active router-link-active">
+                        Add News
+                    </a></li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-newspaper-o"></i></i> Add News</h1>
+            </div>
+        </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Tin Tức
-                        <small>> Thêm</small>
-                    </h1>
-                </div>
+        <div></div>
 
-                <div
-                    :class="['form-group m-1 p-3', error ? 'alert-danger' : '']"
-                >
-                    <span v-if="errors.idTheLoai" class="label label-danger">
-                        {{ errors.idTheLoai[0] }}
-                    </span>
-                    <span v-if="errors.TieuDe" class="label label-danger">
-                        {{ errors.TieuDe[0] }}
-                    </span>
-                    <span v-if="errors.TomTat" class="label label-danger">
-                        {{ errors.TomTat[0] }}
-                    </span>
-                    <span v-if="errors.NoiDung" class="label label-danger">
-                        {{ errors.NoiDung[0] }}
-                    </span>
-                    <span v-if="errors.TieuDe_en" class="label label-danger">
-                        {{ errors.TieuDe_en[0] }}
-                    </span>
-                    <span v-if="errors.TomTat_en" class="label label-danger">
-                        {{ errors.TomTat_en[0] }}
-                    </span>
-                    <span v-if="errors.NoiDung_en" class="label label-danger">
-                        {{ errors.NoiDung_en[0] }}
-                    </span>
-                    <span v-if="errors.Hinh" class="label label-danger">
-                        {{ errors.Hinh[0] }}
-                    </span>
-                </div>
-                <!-- /.col-lg-12 -->
+        <div class="col-md-12 px-0">
+            <div class="">
                 <div class="col-lg-7" style="padding-bottom:120px">
                     <form @submit.prevent="create()">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1"
-                                >Chọn Loại Tin</label
+                                >Chọn loại tin</label
                             >
                             <select
                                 class="form-control"
@@ -68,13 +50,12 @@
                                     type="text"
                                     class="form-control input-width"
                                     ref="TieuDe"
-                                    placeholder="Nhập Tiêu Đề Tin Tức"
+                                    placeholder="Nhập tiêu đề tin tức"
                                 />
                             </div>
 
                             <div class="form-group">
                                 <p><label>Tóm Tắt Nội Dung</label></p>
-
                                 <textarea
                                     ref="TomTat"
                                     id="TomTat"
@@ -85,7 +66,7 @@
                             </div>
 
                             <div class="form-group">
-                                <p><label>Nội Dung Bài Viết</label></p>
+                                <p><label>Nội dung bài viết</label></p>
                                 <textarea
                                     ref="NoiDung"
                                     id="NoiDung"
@@ -99,11 +80,11 @@
                             <h3>Tin tức tiếng Anh</h3>
                             <!-- language : nhập tên tiếng anh  -->
                             <div class="form-group">
-                                <p><label>Tiêu Đề bản tiếng anh</label></p>
+                                <p><label>Tiêu đề bản tiếng anh</label></p>
                                 <input
                                     type="text"
                                     class="form-control input-width"
-                                    placeholder="Nhập Tiêu Đề Tin Tức"
+                                    placeholder="Nhập tiêu đề tin tức"
                                     ref="TieuDe_en"
                                 />
                             </div>
@@ -111,7 +92,7 @@
                             <div class="form-group">
                                 <p>
                                     <label
-                                        >Tóm Tắt Nội Dung bản tiếng anh</label
+                                        >Tóm tắt nội dung bản tiếng Anh</label
                                     >
                                 </p>
 
@@ -127,7 +108,7 @@
                             <div class="form-group">
                                 <p>
                                     <label
-                                        >Nội Dung Bài Viết bản tiếng anh</label
+                                        >Nội dung bài viết bản tiếng Anh</label
                                     >
                                 </p>
                                 <textarea
@@ -140,7 +121,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <p><label>Thêm Hình Ảnh</label></p>
+                            <p><label>Thêm hình ảnh</label></p>
                             <input
                                 type="file"
                                 class="form-control"
@@ -150,7 +131,7 @@
                         </div>
 
                         <div class="form-group">
-                            <p><label>Tin Tức Nổi Bật?</label></p>
+                            <p><label>Chọn là tức nổi bật: </label></p>
                             <label class="radio-inline">
                                 <input
                                     name="article_rep"
@@ -178,7 +159,7 @@
                            Hủy
                         </button>
                         </router-link>
-                       
+
                     </form>
                 </div>
             </div>
@@ -193,7 +174,7 @@ import { mapGetters } from "vuex";
 import store from "../../components/store/store";
 import {
     TIN_TUC_PUBLISH,
-    TIN_TUC_RESET_STATE
+    TIN_TUC_RESET_STATE,
 } from "../../components/store/tintucModule/action";
 import { FETCH_LOAI_TIN } from "../../components/store/loaitinmodule/action";
 export default {
@@ -206,11 +187,10 @@ export default {
             error: false,
             successful: false,
             errors: [],
-       
         };
     },
     computed: {
-        ...mapGetters(["item", "loaitins"])
+        ...mapGetters(["item", "loaitins"]),
     },
     beforeRouteLeave(to, from, next) {
         store.dispatch(TIN_TUC_RESET_STATE);
@@ -234,13 +214,13 @@ export default {
             // console.log(tieude);
             this.$store
                 .dispatch(TIN_TUC_PUBLISH, formData)
-                .then(response => {
+                .then((response) => {
                     this.successful = true;
                     this.error = false;
                     this.errors = [];
                     this.$router.push({ name: "tintuc" });
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.log(error);
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {
@@ -271,8 +251,8 @@ export default {
         },
         fetchLoaiTin() {
             this.$store.dispatch(FETCH_LOAI_TIN);
-        }
-    }
+        },
+    },
 };
 </script>
 

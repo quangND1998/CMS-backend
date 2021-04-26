@@ -17,24 +17,45 @@
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
+
             <div>
                 <router-link
+                    v-if="theme.type === 1"
                     :to="{
                         name: 'section_category',
-                        params: { sectionId: sectionId, postId: postId }
+                        params: {
+                            sectionId: sectionId,
+                            postId: postId,
+                            themeId: this.themeId
+                        }
                     }"
-                    class="p-2 float-left btn btn-success"
                 >
-                        SECTION CATEGORY
+                    <button
+                        type="button"
+                        class="p-2 mx-3 float-left btn btn-success"
+                    >
+                        Section Category
+                    </button>
                 </router-link>
+
                 <router-link
+                    v-if="theme.type === 0"
                     :to="{
                         name: 'content_create',
                         params: { sectionId: sectionId, postId: postId }
                     }"
+                    <<<<<<<
+                    HEAD
                     class="p-2 mx-3 float-left btn btn-success"
                 >
+                    NEW ITEM ======= >
+                    <button
+                        type="button"
+                        class="p-2 mx-3 float-left btn btn-success"
+                    >
                         NEW ITEM
+                    </button>
+                    >>>>>>> origin/master
                 </router-link>
             </div>
         </div>
@@ -58,7 +79,7 @@
                 </button>
             </router-link>
         </div>
-       <div class="col-md-12 px-0">
+        <div class="col-md-12 px-0">
             <div class="">
                 <div class="table-responsive">
                     <table id="user-table" class="table" style="width:100%">
@@ -71,8 +92,10 @@
                                 <th>Detail Vienamese</th>
                                 <th>Scan Link</th>
                                 <th>Tour360</th>
-                                <th>Video</th>
+                                <th>Video Link</th>
                                 <th>Image</th>
+                                <th>Icon Class</th>
+                                <th>Video Upload</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -87,7 +110,7 @@
                                 <td class="align-middle">
                                     {{ content.title }}
                                 </td>
-                                  <td class="align-middle">
+                                <td class="align-middle">
                                     {{ content.title_vn }}
                                 </td>
                                 <td
@@ -102,7 +125,7 @@
                                             : "Updating..."
                                     }}
                                 </td>
-                                   <td
+                                <td
                                     :class="[
                                         content.detail_vn ? '' : 'text-success',
                                         'align-middle'
@@ -114,7 +137,7 @@
                                             : "Updating..."
                                     }}
                                 </td>
-                                   <td
+                                <td
                                     :class="[
                                         content.scan ? '' : 'text-success',
                                         'align-middle'
@@ -128,9 +151,7 @@
                                 </td>
                                 <td
                                     :class="[
-                                        content.tour360
-                                            ? ''
-                                            : 'text-success',
+                                        content.tour360 ? '' : 'text-success',
                                         'align-middle'
                                     ]"
                                 >
@@ -160,17 +181,43 @@
                                         style="width: 150px"
                                     />
                                 </td>
+                                <td
+                                    :class="[
+                                        content.icon_class
+                                            ? ''
+                                            : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.icon_class
+                                            ? content.icon_class
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                <td
+                                    :class="[
+                                        content.video_upload
+                                            ? ''
+                                            : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.video_upload
+                                            ? content.video_upload
+                                            : "Updating..."
+                                    }}
+                                </td>
 
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
-                                            name:
-                                                'content.update',
+                                            name: 'content.update',
                                             params: {
                                                 contentId: content.id,
                                                 sectionId: sectionId,
-                                                postId: postId,
-                                             
+                                                postId: postId
                                             }
                                         }"
                                     >
@@ -203,6 +250,7 @@ import { mapGetters } from "vuex";
 import store from "../store/store";
 import { FETCH_ITEM, ITEM_DELETE, GET_ITEM_ID } from "../store/actions/item";
 import { PAGE_RESET_STATE } from "../store/actions/page";
+import {GET_THEME_ID} from '../store/actions/theme'
 export default {
     name: "page-component",
     props: {
@@ -211,14 +259,18 @@ export default {
         },
         postId: {
             required: true
+        },
+        themeId:{
+            required :true
         }
     },
 
     mounted() {
         this.getPosts();
+        this.getTheme();
     },
     computed: {
-        ...mapGetters(["contents", "content", "time"])
+        ...mapGetters(["contents", "content", "time",'theme'])
     },
 
     data() {
@@ -236,6 +288,9 @@ export default {
         deletePost(id) {
             this.$store.dispatch(ITEM_DELETE, id);
             this.getPosts();
+        },
+        getTheme(){
+            this.$store.dispatch(GET_THEME_ID,this.themeId);
         }
     }
 };
