@@ -15,8 +15,8 @@ class ShowRoomController extends Controller
     public function index()
     {
         $data = Page::first();
-      
-       
+
+
         if ($data) {
             $sections = Section::where('page_id', $data->id)->orderBy('number')->get();
             // return $sections;

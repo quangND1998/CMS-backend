@@ -21,5 +21,5 @@ export const contenService = {
     postItemCategory(slug, pramas) {
         return ApiService.post(`section_category/${slug}/items`, pramas)
     },
-    
+
 }

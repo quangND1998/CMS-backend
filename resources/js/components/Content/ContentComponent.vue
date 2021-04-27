@@ -18,13 +18,16 @@
                 <h1 class="mt-2"><i class="fa fa-th-list"></i> Item list</h1>
             </div>
 
-            <div > 
-
-
-                <router-link v-if="theme.type===1"
+            <div>
+                <router-link
+                    v-if="theme.type === 1"
                     :to="{
                         name: 'section_category',
-                        params: { sectionId: sectionId, postId: postId ,themeId: this.themeId }
+                        params: {
+                            sectionId: sectionId,
+                            postId: postId,
+                            themeId: this.themeId
+                        }
                     }"
                 >
                     <button
@@ -35,18 +38,24 @@
                     </button>
                 </router-link>
 
-                <router-link v-if="theme.type===0"
+                <router-link
+                    v-if="theme.type === 0"
                     :to="{
                         name: 'content_create',
                         params: { sectionId: sectionId, postId: postId }
                     }"
+                    <<<<<<<
+                    HEAD
+                    class="p-2 mx-3 float-left btn btn-success"
                 >
-                    <button 
+                    NEW ITEM ======= >
+                    <button
                         type="button"
                         class="p-2 mx-3 float-left btn btn-success"
                     >
                         NEW ITEM
                     </button>
+                    >>>>>>> origin/master
                 </router-link>
             </div>
         </div>
@@ -85,8 +94,8 @@
                                 <th>Tour360</th>
                                 <th>Video Link</th>
                                 <th>Image</th>
-                                 <th>Icon Class</th>
-                                  <th>Video Upload</th>
+                                <th>Icon Class</th>
+                                <th>Video Upload</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -172,9 +181,11 @@
                                         style="width: 150px"
                                     />
                                 </td>
-                                    <td
+                                <td
                                     :class="[
-                                        content.icon_class ? '' : 'text-success',
+                                        content.icon_class
+                                            ? ''
+                                            : 'text-success',
                                         'align-middle'
                                     ]"
                                 >
@@ -186,7 +197,9 @@
                                 </td>
                                 <td
                                     :class="[
-                                        content.video_upload ? '' : 'text-success',
+                                        content.video_upload
+                                            ? ''
+                                            : 'text-success',
                                         'align-middle'
                                     ]"
                                 >

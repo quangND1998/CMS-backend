@@ -1,25 +1,21 @@
 <template>
-     <div class="">
+     <div id="posts">
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <li class="breadcrumb-item">
                         <i class="fa fa-home fa-lg"></i>
                     </li>
-
-                   
+                    <li class="breadcrumb-item">Slide</li>
                     <li class="breadcrumb-item">Create</li>
                 </ul>
-                <h1 class="mt-2"><i class="fa fa-th-list"></i> Thêm  Slide</h1>
+                <h1 class="mt-2"><i class="fa fa-sliders"></i> Thêm  Slide</h1>
             </div>
-            <!-- <router-link :to="{ name: 'create' }" class="btn btn-success">
-                ADD NEW
-            </router-link> -->
         </div>
 
         <!-- {{page}}   -->
         <form @submit.prevent="create()">
-            <div
+            <!-- <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -42,7 +38,7 @@
                 <span v-if="errors.slide_img" class="label label-danger">
                     {{ errors.slide_img[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
@@ -131,7 +127,7 @@ export default {
             formData.append("slide_content", this.$refs.slide_content.value);
             formData.append("slide_url", this.$refs.slide_url.value);
             formData.append("slide_img", this.$refs.slide_img.files[0]);
-    
+
             // this.page.name = formData.get('name')
             // this.page.description = formData.get('description')
             // this.page.image = formData.get('image')
@@ -155,7 +151,7 @@ export default {
                     }
                 });
 
-      
+
         }
     }
 }

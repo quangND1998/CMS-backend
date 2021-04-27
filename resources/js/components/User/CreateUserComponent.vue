@@ -1,15 +1,24 @@
 <template>
-    <div id="page-wrapper">
+   <div id="posts">
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item active">
+                       User
+                    </li>
+                    <li class="breadcrumb-item active">
+                       Create
+                    </li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-user-o" aria-hidden="true"></i> Create user</h1>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Quản lý Người Dùng
-                        <small>> Thêm Người Dùng</small>
-                    </h1>
-                </div>
-
-                <div
+                <!-- <div
                     :class="['form-group m-1 p-3', error ? 'alert-danger' : '']"
                 >
                     <span v-if="errors.username" class="label label-danger">
@@ -30,9 +39,8 @@
                     <span v-if="errors.account_type" class="label label-danger">
                         {{ errors.account_type[0] }}
                     </span>
-                </div>
+                </div> -->
 
-                <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     <form @submit.prevent="create()">
                         <div class="form-group">
@@ -65,7 +73,7 @@
                                 type="password"
                                 name="password"
                                 placeholder="Nhập mật khẩu"
-                                autocomplete 
+                                autocomplete
                             />
                         </div>
 
@@ -77,7 +85,7 @@
                                 type="password"
                                 name="password_again"
                                 placeholder="Nhập lại mật khẩu"
-                                autocomplete 
+                                autocomplete
                             />
                         </div>
 

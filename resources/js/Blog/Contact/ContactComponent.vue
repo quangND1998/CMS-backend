@@ -1,14 +1,20 @@
 <template>
- <div id="posts">
-   <div class="col-lg-12">
-                <h1 class="page-header">
-                  ConTact
-                    <small>> Danh Sách</small>
+    <div id="posts">
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item">Contact</li>
+                </ul>
+                <h1 class="mt-2">
+                    <i class="fa fa-address-card-o"></i> Contact
                 </h1>
             </div>
+        </div>
 
         <div class="col-md-12 px-0">
-            
             <div class="">
                 <div class="table-responsive">
                     <table class="table">
@@ -17,7 +23,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                 <th>Message</th>
+                                <th>Message</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -35,11 +41,10 @@
                                     {{ contact.contact_email }}
                                 </td>
                                 <td class="align-middle">
-                                  {{contact.contact_message}}
+                                    {{ contact.contact_message }}
                                 </td>
 
                                 <td class="align-middle">
-                           
                                     <button
                                         type="button"
                                         @click="deleteContact(contact.id)"
@@ -64,10 +69,12 @@
 import { mapGetters } from "vuex";
 import store from "../../components/store/store";
 import {
-FETCH_CONTACT,CONTACT_DELETE,CONTACT_RESET_STATE
+    FETCH_CONTACT,
+    CONTACT_DELETE,
+    CONTACT_RESET_STATE
 } from "../../components/store/contactModule/action";
 export default {
-   created() {
+    created() {
         this.tetchContact();
     },
     props: {
@@ -93,9 +100,7 @@ export default {
             this.tetchContact();
         }
     }
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

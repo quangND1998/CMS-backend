@@ -5,7 +5,7 @@
     <div class="cover"></div>
 </section>
 <section class="login-content">
-    
+
      <div v-if="data.errors" :class="['form-group m-1 p-3', data.errors ? 'alert alert-danger alert-dismissible fade show' : '']" role="alert">
           <strong>Opps !!!</strong> {{data.errors}}.
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -16,9 +16,9 @@
         <h1></h1>
     </div>
     <div class="login-box">
-   
+
         <form  @submit.prevent="login()" class="login-form"   role="form">
-     
+
             <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
             <div class="form-group">
                 <label class="control-label" for="email">Email Address</label>
@@ -40,7 +40,6 @@
             <div class="form-group btn-container">
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</button>
             </div>
-              
         </form>
     </div>
 </section>
@@ -56,9 +55,7 @@ import jwtToken from '../../common/token'
 export default {
     name:'login-component',
     data (){
-        return {
-
-        };
+        return {};
     },
        computed: {
           ...mapGetters(["auth","isAuthenticated","msg",'data'])
@@ -67,20 +64,12 @@ export default {
         await store.dispatch(PAGE_RESET_STATE);
         next();
       },
-
        methods: {
-
               login(){
                  this.$store.dispatch(LOGIN,{email:this.auth.email,password:this.auth.password})
                  .then(() => this.$router.push({ name: "index" ,params: { msg : this.msg } }));
            }
-         
        },
- 
-   
-    
-
-
 }
 </script>
 

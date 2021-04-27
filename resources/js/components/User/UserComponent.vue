@@ -1,15 +1,23 @@
 <template>
-    <div id="page-wrapper">
+    <div id="posts">
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item active">
+                       User
+                    </li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-user-o" aria-hidden="true"></i> User</h1>
+            </div>
+            <router-link :to="{ name: 'user.create' }" class="btn btn-success">
+                ADD NEW
+            </router-link>
+        </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Quản lý Người Dùng
-                        <small>> Danh Sách</small>
-                    </h1>
-                </div>
-                <!-- /.col-lg-12 -->
-
                 <div class="col-md-12 px-0">
                     <div class="">
                         <div class="table-responsive">
@@ -20,7 +28,7 @@
                                         <th class="text-center">Tên</th>
                                         <th class="text-center">Email</th>
                                         <th class="text-center">Quyền</th>
-                                        <th class="text-center">Ngày Tạo</th>
+                                        <th class="text-center">Ngày tạo</th>
                                         <th class="text-center">Sửa</th>
                                         <th class="text-center">Xóa</th>
                                     </tr>
@@ -116,7 +124,7 @@
                                                         <div
                                                             class="modal-footer"
                                                         >
-                                                        
+
                                                             <button
                                                                 type="button"
                                                                 data-casetype="user"

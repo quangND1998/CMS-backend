@@ -72,10 +72,11 @@
     font-size: 30px;
 }
 
-button:hover {
-    border-bottom: 3px solid #F7C514;
-    font-weight: 500;
-    opacity: 0.6;
+button:hover,
+button:active {
+    border-bottom: 3px solid #F7C514 !important;
+    font-weight: 500 !important;
+    opacity: 0.6 !important;
 }
 
 

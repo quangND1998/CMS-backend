@@ -21,7 +21,7 @@
         </div>
 
         <form>
-            <div
+            <!-- <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -41,7 +41,7 @@
                 <span v-if="errors.sub_title" class="label label-danger">
                     {{ errors.sub_title[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
@@ -70,8 +70,8 @@
                 <label for="exampleFormControlSelect1">Example select</label>
                 <select class="form-control" id="exampleFormControlSelect1" v-model="category.type">
                 <option v-for="type in types" :key="type.index" v-bind:value="type.value" >{{type.text}}</option>
-            
-         
+
+
             </select>
               </div>
 
@@ -83,15 +83,16 @@
                 @click.prevent="create"
                 class="btn btn-primary block"
             >
-                Submit
+                Create
             </button>
+            </div>
         </form>
     </div>
 </template>
 
 <script>
 import { PAGE_RESET_STATE } from "../store/actions/page";
-import { CREATE_SECTION_CATEGORY  } from "../store/actions/sectioncategory";
+import { CREATE_SECTION_CATEGORY } from "../store/actions/sectioncategory";
 import { mapGetters } from "vuex";
 import store from "../store/store";
 
@@ -100,7 +101,7 @@ export default {
         postId: {
             required: true
         },
-        sectionId:{
+        sectionId: {
             required: true
         }
     },
@@ -123,7 +124,7 @@ export default {
         create() {
             this.category.title = this.$refs.title.value;
             this.category.title_vn = this.$refs.title_vn.value;
-            
+
 
             this.$store.dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
             .then(response => {
@@ -134,11 +135,11 @@ export default {
                             name: "section_category",
                             params: { posId: this.postId ,sectionId:this.sectionId}
                         });
-              
+
 
                     })
                     .catch(error => {
-                 
+
                         if (!_.isEmpty(error.response)) {
                         if ((error.response.status == 422)) {
                             this.errors = error.response.data.errors;
@@ -147,11 +148,12 @@ export default {
                         }
                         }
                     });;
-      
-          
+
+
             this.$refs.title.value = "";
             this.$refs.title_vn.value = "";
 
+            this.$refs.title.value = "";
         }
     }
 };

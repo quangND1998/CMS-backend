@@ -30,7 +30,7 @@
                         <li class="nav-item"><a class="nav-link"
                                 href="{{ url('#contact') }}">{{ trans('home.contact') }}</a></li>
                     </ul>
-              
+
                     <a href="{{ url('admin/login') }}" target="_blank"
                         class="btn btn-light btn-rounded d-none d-lg-block btn-login">{{ trans('home.login') }}</a>
                     <li class=" navbar-nav nav-item-left flat">
@@ -67,7 +67,7 @@
 
 
 
-{{-- 
+{{--
 <div class="slider" id="slider_image_pre">
     <div class="w3-content w3-display-container">
         <button onclick="closeImage_pre()" class="w3-button w3-black w3-display-close">&#10006;</button>
@@ -113,4 +113,4 @@
 
 </body>
 
-</html>
+@endsection

@@ -1,6 +1,6 @@
 <template>
   <header class="app-header">
-    <a class="app-header__logo" href="#"></a>
+    <a class="app-header__logo" href="#"><img src="https://vni.pro.vn/landingpage/public/assets/images/vni/logo_vni.png" alt=""></a>
     <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <ul class="app-nav">
         <li class="app-search">
@@ -81,7 +81,3 @@ export default {
         name:'header-component'
 }
 </script>
-
-<style>
-
-</style>

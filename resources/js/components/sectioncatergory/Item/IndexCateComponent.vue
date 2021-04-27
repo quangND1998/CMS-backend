@@ -35,6 +35,10 @@
                     NEW ITEM
                 </button>
             </router-link>
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin
         </div>
         <div>
             <!-- <router-link
@@ -202,7 +206,7 @@
                                             class="btn btn-xs btn-info deleteRecord"
                                             id="deleteRecord"
                                         >
-                                            Update
+                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
                                         </button>
                                     </router-link>
                                     <button
@@ -210,7 +214,7 @@
                                         id="deleteRecord"
                                         @click="deletePost(content.id)"
                                     >
-                                        Delete
+                                       <i class="fa fa-trash mr-0" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>

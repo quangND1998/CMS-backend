@@ -32,17 +32,6 @@
             </router-link>
         </div>
 
-        <router-link
-            :to="{
-                name: 'content',
-                params: { sectionId: sectionId, postId: postId }
-            }"
-        >
-            <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
-                BACK
-            </button>
-        </router-link>
-        <h2>Create Content</h2>
         <form>
             <div
                 :class="[
@@ -128,10 +117,12 @@
                     v-model="content.detail"
                     ref="detail"
                     id="detail"
-                    placeholder="Enter  detail"
+                    placeholder="Enter detail"
                     rows="8"
                 ></textarea>
             </div>
+<<<<<<< HEAD
+=======
             <div class="form-group">
                 <textarea
                     class="form-control"
@@ -142,7 +133,12 @@
                     rows="8"
                 ></textarea>
             </div>
+<<<<<<< HEAD
+>>>>>>> origin
+            <!-- <div class="form-group">
+=======
             <div class="form-group">
+>>>>>>> origin/master
                 <input
                     type="title"
                     ref="icon_class"
@@ -193,7 +189,7 @@
                 @click.prevent="update"
                 class="btn btn-primary block"
             >
-                Submit
+                Update
             </button>
         </form>
     </div>
@@ -266,6 +262,10 @@ export default {
                         }
                     }
                 });
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
         },
         getPost() {
             this.$store.dispatch(GET_ITEM_ID, this.contentId);

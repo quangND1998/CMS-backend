@@ -1,21 +1,25 @@
 <template>
-    <div id="page-wrapper">
+    <div id="posts">
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item">
+                        Thể loại
+                    </li>
+                    <li class="breadcrumb-item">
+                        Update
+                    </li>
+                </ul>
+                <h1 class="mt-2">
+                    <i class="fa fa-list-ul" aria-hidden="true"></i> Thể loại
+                </h1>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Thể Loại
-                        <small>> Thêm</small>
-                    </h1>
-                </div>
-                <div
-                    :class="['form-group m-1 p-3', error ? 'alert-danger' : '']"
-                >
-                    <span v-if="errors.Ten" class="label label-danger">
-                        {{ errors.Ten[0] }}
-                    </span>
-                </div>
-                <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     <form>
                         <div class="form-group">
@@ -36,7 +40,7 @@
                         >
                             Sửa
                         </button>
-                      
+
                             <router-link
                                 :to="{
                                     name: 'theloai'
@@ -49,7 +53,7 @@
                                     Hủy
                                 </button>
                             </router-link>
-                  
+
                     </form>
                 </div>
             </div>

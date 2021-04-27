@@ -224,7 +224,6 @@ export default {
             formData.append("icon_class", this.$$refs.icon_class.value);
             formData.append("image", this.$refs.image.files[0]);
             formData.append("video_upload", this.$refs.video_upload.files[0]);
-
             this.$store
                 .dispatch(CREATE_ITEM_BY_CATEGORY, {
                     slug: this.categoryId,
@@ -246,7 +245,6 @@ export default {
                         }
                     }
                 });
-
             //   this.$refs.name.value = "";
             //   this.$refs.description.value = "";
             //     this.$refs.name.value = "";

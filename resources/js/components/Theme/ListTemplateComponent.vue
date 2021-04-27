@@ -1,7 +1,5 @@
 <template>
 <div id="theme">
-        
-        
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
@@ -15,17 +13,17 @@
                         </router-link>
                     </li>
                 </ul>
-                <h1 class="mt-2"><i class="fa fa-th-list"></i> Page list</h1>
+                <h1 class="mt-2"><i class="fab fa-buffer"></i> Theme list</h1>
             </div>
             <router-link :to="{ name: 'template_create' }" class="btn btn-success">
                 ADD NEW
             </router-link>
         </div>
-       
+
         <div>
-        
+
         </div>
-      
+
         <div class="col-md-12 px-0">
             <div class="">
                 <!-- <div class="d-flex">
@@ -46,8 +44,8 @@
                                 <th>link_code</th>
                                 <th>image_tmeplate</th>
                                 <th>Type</th>
-                             
-                             
+
+
                             </tr>
                         </thead>
                         <tbody>
@@ -56,7 +54,7 @@
                                 <td class="align-middle">
                                     {{theme.title}}
                                 </td>
-                                     
+
                                 <td class="align-middle">
                                     {{ theme.link_code }}
                                 </td>
@@ -105,7 +103,7 @@ import {
 } from "../store/actions/theme";
 
 export default {
-    
+
     components: {},
     created() {
         this.fetchThemes();

@@ -1,5 +1,5 @@
 <template>
-      <div id="posts">
+    <div id="posts">
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
@@ -14,16 +14,33 @@
                     <li class="breadcrumb-item text-danger">Page name</li>
                     <li class="breadcrumb-item">Section</li>
                 </ul>
-                <h1 class="mt-2"><i class="fa fa-th-list"></i> Section Category list</h1>
+                <h1 class="mt-2">
+                    <i class="fa fa-th-list"></i> Section Category list
+                </h1>
             </div>
             <router-link
-                :to="{ name: 'section_category_create', params: { postId: postId ,sectionId:sectionId} }"
+                :to="{
+                    name: 'section_category_create',
+                    params: { postId: postId, sectionId: sectionId }
+                }"
             >
                 <button type="button" class="btn btn-success">
                     NEW CATEGORY
                 </button>
             </router-link>
         </div>
+        <<<<<<< HEAD
+        <!-- <div>
+            <router-link
+                :to="{
+                    name: 'content',
+                    params: { postId: postId, sectionId: sectionId }
+                }"
+                class="p-1 mx-3 btn btn-white block"
+            >
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                Back
+=======
         <div>
             <router-link :to="{ name: 'content', params: { postId: postId ,sectionId: sectionId ,themeId:this.themeId} }">
                 <button
@@ -32,9 +49,10 @@
                 >
                     Back
                 </button>
+>>>>>>> origin/master
             </router-link>
-        </div>
-       
+        </div> -->
+
         <div class="col-md-12">
             <div class="">
                 <div class="table-responsive">
@@ -57,7 +75,9 @@
                             >
                                 <td class="align-middle">{{ index + 1 }}</td>
 
-                                <td class="align-middle text-uppercase font-weight-bold">
+                                <td
+                                    class="align-middle text-uppercase font-weight-bold"
+                                >
                                     <router-link
                                         :to="{
                                             name: 'section_category_content',
@@ -71,7 +91,9 @@
                                         {{ category.title }}
                                     </router-link>
                                 </td>
-                                    <td class="align-middle text-uppercase font-weight-bold">
+                                <td
+                                    class="align-middle text-uppercase font-weight-bold"
+                                >
                                     <router-link
                                         :to="{
                                             name: 'section_category_content',
@@ -85,13 +107,11 @@
                                         {{ category.title_vn }}
                                     </router-link>
                                 </td>
-                                
-                                    <td class="align-middle text-uppercase font-weight-bold">
-                                       
-                                             {{ bindingData(category)}}
-                                       
-                                       
-                                 
+
+                                <td
+                                    class="align-middle text-uppercase font-weight-bold"
+                                >
+                                    {{ bindingData(category) }}
                                 </td>
 
                                 <!-- <td class="align-middle">{{ section.sub_title }}</td> -->
@@ -108,19 +128,40 @@
                                         }"
                                         class="btn btn-xs btn-info deleteRecord"
                                     >
-                                        Update
+                                        <i
+                                            class="fa fa-pencil mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </router-link>
                                     <button
                                         class="btn btn-xs btn-danger deleteRecord"
                                         id="deleteRecord"
                                         @click="deletePost(category.id)"
                                     >
-                                        Delete
+                                        <i
+                                            class="fa fa-trash mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="text-center">
+                        <router-link
+                            :to="{
+                                name: 'content',
+                                params: { postId: postId, sectionId: sectionId }
+                            }"
+                            class="p-1 mx-3 btn btn-white block"
+                        >
+                            <i
+                                class="fa fa-long-arrow-left"
+                                aria-hidden="true"
+                            ></i>
+                            Back
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,27 +171,27 @@
 <script>
 import { mapGetters } from "vuex";
 import store from "../store/store";
-import { FETCH_SECTION_CATEGORY, SECTION_CATEGORY_DELETE } from "../store/actions/sectioncategory";
+import {
+    FETCH_SECTION_CATEGORY,
+    SECTION_CATEGORY_DELETE
+} from "../store/actions/sectioncategory";
 import { PAGE_RESET_STATE } from "../store/actions/page";
 export default {
-  props: {
+    props: {
         postId: {
             required: true
         },
-        sectionId:{
-                    required: true
+        sectionId: {
+            required: true
         },
-        themeId:{
-           
-        }
+        themeId: {}
     },
 
     created() {
         this.getPosts();
-     
     },
     computed: {
-        ...mapGetters(["section_categorys", "category","types"])
+        ...mapGetters(["section_categorys", "category", "types"])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
@@ -169,20 +210,18 @@ export default {
             this.$store.dispatch(SECTION_CATEGORY_DELETE, id);
             this.getPosts();
         },
-        bindingData(data){
+        bindingData(data) {
             // console.log(data.type)
             // console.log()
-         
-           for(let i=0 ;i<this.types.length;i++){
-               if(this.types[i].value == data.type){
-                   return this.types[i].text
-               }
-           }
+
+            for (let i = 0; i < this.types.length; i++) {
+                if (this.types[i].value == data.type) {
+                    return this.types[i].text;
+                }
+            }
         }
     }
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
