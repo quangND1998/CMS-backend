@@ -6102,6 +6102,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -12543,15 +12555,18 @@ var actions = (_actions = {}, _defineProperty(_actions, _actions_theme__WEBPACK_
   return _common_themeService__WEBPACK_IMPORTED_MODULE_0__.themeService.update(formdata, slug);
 }), _defineProperty(_actions, _actions_theme__WEBPACK_IMPORTED_MODULE_1__.GET_THEME_ID, function (_ref5, slug) {
   var commit = _ref5.commit;
-  // console.log(slug);
-  return _common_themeService__WEBPACK_IMPORTED_MODULE_0__.themeService.getbyid(slug).then(function (_ref6) {
-    var data = _ref6.data;
-    commit(_muntation_theme__WEBPACK_IMPORTED_MODULE_2__.FETCH_ID_THEME, {
-      data: data
+
+  if (_common_token__WEBPACK_IMPORTED_MODULE_4__.default.getToken()) {
+    _common_api_service__WEBPACK_IMPORTED_MODULE_3__.default.setHeader();
+    return _common_themeService__WEBPACK_IMPORTED_MODULE_0__.themeService.getbyid(slug).then(function (_ref6) {
+      var data = _ref6.data;
+      commit(_muntation_theme__WEBPACK_IMPORTED_MODULE_2__.FETCH_ID_THEME, {
+        data: data
+      });
+    })["catch"](function (error) {
+      throw new Error(error);
     });
-  })["catch"](function (error) {
-    throw new Error(error);
-  }); // }
+  }
 }), _defineProperty(_actions, _actions_theme__WEBPACK_IMPORTED_MODULE_1__.THEME_PUBLISH, function (content, data) {
   // console.log('modeul', content)
   //   console.log('modeul',data)
@@ -64627,6 +64642,27 @@ var render = function() {
               }
             }),
             _vm._v("Không Section Category\n            ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio-inline" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.theme.type,
+                  expression: "theme.type"
+                }
+              ],
+              attrs: { name: "article_rep", value: "3", type: "radio" },
+              domProps: { checked: _vm._q(_vm.theme.type, "3") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.theme, "type", "3")
+                }
+              }
+            }),
+            _vm._v("Blog\n            ")
           ])
         ]),
         _vm._v(" "),
@@ -64694,7 +64730,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [_c("label", [_vm._v("Tin Tức Nổi Bật?")])])
+    return _c("p", [_c("label", [_vm._v("Chọn kiểu tempate")])])
   }
 ]
 render._withStripped = true

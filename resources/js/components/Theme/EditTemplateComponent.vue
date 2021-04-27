@@ -86,7 +86,7 @@
             </div>
 
             <div class="form-group">
-                <p><label>Tin Tức Nổi Bật?</label></p>
+                <p><label>Chọn kiểu tempate</label></p>
                 <label class="radio-inline">
                     <input
                         name="article_rep"
@@ -104,6 +104,18 @@
                         type="radio"
                     />Không Section Category
                 </label>
+                       </label>
+                      <label class="radio-inline">
+                    <input
+                        name="article_rep"
+                        value="3"
+                        v-model="theme.type"
+                        type="radio"
+                    />Blog
+                </label>
+
+                
+                
             </div>
             <div class="modal-footer justify-content-center">
                 <router-link
