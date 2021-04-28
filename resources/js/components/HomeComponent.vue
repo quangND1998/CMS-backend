@@ -25,6 +25,19 @@
                 </li>
                 <li>
                     <router-link
+                        :to="{ name: 'thumbnail' }"
+                        class="app-menu__item"
+                        active-class="active"
+                    >
+                        <i
+                            class="app-menu__icon fa fa-picture-o"
+                            aria-hidden="true"
+                        ></i>
+                        <span class="app-menu__label">Thumbnail</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link
                         :to="{ name: 'page' }"
                         class="app-menu__item"
                         active-class="active"
@@ -49,14 +62,14 @@
                         <span class="app-menu__label">Theme</span>
                     </router-link>
                 </li>
-                 <li>
+                <li>
                     <router-link
                         :to="{ name: 'scan-3d' }"
                         class="app-menu__item"
                         active-class="active"
                     >
                         <i
-                            class="app-menu__icon fa fa-file-text-o"
+                            class="app-menu__icon fa fa-codepen"
                             aria-hidden="true"
                         ></i>
                         <span class="app-menu__label">Scan 3D</span>

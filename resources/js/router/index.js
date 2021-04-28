@@ -62,6 +62,11 @@ import Scan3D from "../components/3d-scan/Index.vue";
 import CreateScan3D from "../components/3d-scan/Create.vue";
 import UpdateScan3D from "../components/3d-scan/Update.vue";
 
+// Scan 3D
+import Thumbnail from "../components/Thumbnail/Index.vue";
+import CreateThumbnail from "../components/Thumbnail/Create.vue";
+import UpdateThumbnail from "../components/Thumbnail/Update.vue";
+
 Vue.use(Router);
 
 export default new Router({
@@ -440,6 +445,35 @@ export default new Router({
                     path: ":id/update",
                     name: "scan-3d.update",
                     component: UpdateScan3D,
+                    props: true,
+                    params: true
+                }
+            ]
+        },
+        {
+            path: "/admin/thumbnail",
+            component: HomeComponent,
+            redirect: {
+                name: "thumbnail"
+            },
+            children: [{
+                    path: "",
+                    name: "thumbnail",
+                    component: Thumbnail,
+                    props: true,
+                    params: true
+                },
+                {
+                    path: "create",
+                    name: "thumbnail.create",
+                    component: CreateThumbnail,
+                    props: true,
+                    params: true
+                },
+                {
+                    path: ":id/update",
+                    name: "thumbnail.update",
+                    component: UpdateThumbnail,
                     props: true,
                     params: true
                 }

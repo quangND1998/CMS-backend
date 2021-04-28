@@ -14,6 +14,7 @@ use App\Http\Controllers\Blog\TheLoaiController;
 use App\Http\Controllers\Blog\TinTucController;
 use App\Http\Controllers\Scan3dController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\ThumbnailController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\TheLoaiResource;
 use App\Models\Style;
@@ -52,7 +53,6 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
             Route::post('', [SectionController::class, 'store']);
         });
         Route::prefix('{id}/style')->group(function () {
-
             Route::get('', [StyleController::class, 'getStyle']);
             Route::post('', [StyleController::class, 'store']);
         });
@@ -104,20 +104,23 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
         });
     });
 
+    Route::prefix('thumbnail')->group(function () {
+        Route::get('', [ThumbnailController::class, 'index']);
+        Route::post('', [ThumbnailController::class, 'store']);
+        Route::get('{id}', [ThumbnailController::class, 'edit']);
+        Route::put('{id}', [ThumbnailController::class, 'update']);
+        Route::delete('{id}', [ThumbnailController::class, 'destroy']);
+    });
+
     Route::post("logout", [AuthController::class, 'logout']);
     // Route group The Loai
     Route::group(['prefix' => 'theloai'], function () {
         // Route URL: admin/theloai/danhsach
         Route::get('', [TheLoaiController::class, 'list']);
-
-
         Route::post('', [TheLoaiController::class, 'store']);
-
         // Route URL: admin/theloai/sua
         Route::get('{id}', [TheLoaiController::class, 'get']);
-
         Route::put('update/{id}', [TheLoaiController::class, 'update']);
-
         Route::delete('delete/{id}', [TheLoaiController::class, 'delete']);
     });
     Route::group(['prefix' => 'loaitin'], function () {
@@ -168,6 +171,8 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
         Route::get('', [Scan3dController::class, 'index']);
         Route::post('', [Scan3dController::class, 'store']);
     });
+
+
 
 });
 // Route::middleware(['jwt.refresh'])->group(function () {

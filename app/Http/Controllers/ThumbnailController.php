@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Scan3dResource;
-use App\Models\Scan3d;
+use App\Http\Resources\ThumbnailResource;
+use App\Models\Thumbnail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class Scan3dController extends Controller
+class ThumbnailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,8 @@ class Scan3dController extends Controller
      */
     public function index()
     {
-        return Scan3dResource::collection(Scan3d::get());
+        // return ThumbnailResource::collection(Thumbnail::get());
+        return Thumbnail::all();
     }
 
     /**
@@ -36,20 +38,19 @@ class Scan3dController extends Controller
      */
     public function store(Request $request)
     {
-        $scan3d = new Scan3d();
-        $scan3d->name = $request->name;
-        $scan3d->title = $request->title;
-        $scan3d->model_code = $request->model_code;
-        if ($request->hasFile('favicon')) {
-            $file = $request->favicon;
+        $thumb = new Thumbnail();
+        $thumb->name = $request->name;
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->thumbnail;
             $fileName = time() . '-' . $file->getClientOriginalName();
-            $file->move('images/scan3D', $fileName);
-            $scan3d->favicon = $fileName;
+            $file->move('images/thumbs', $fileName);
+            $thumb->thumbnail = '/images/thumbs/'.$fileName;
         }
 
-        $scan3d->save();
+        $thumb->save();
 
-        return new Scan3dResource($scan3d);
+        return json_encode($thumb);
+        // return new ThumbnailResource($thumb);
     }
 
     /**
@@ -71,7 +72,8 @@ class Scan3dController extends Controller
      */
     public function edit($id)
     {
-        //
+        $thumb = Thumbnail::find($id);
+        return json_encode($thumb);
     }
 
     /**
@@ -83,7 +85,18 @@ class Scan3dController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $thumb = Thumbnail::find($id);
+        $thumb->name = $request->name;
+        $thumb->isPriority= $request->isPriority;
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->thumbnail;
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->move('images/thumbs', $fileName);
+            $thumb->thumbnail = '/images/thumbs/' . $fileName;
+        }
+
+        $thumb->save();
+        return json_encode($thumb);
     }
 
     /**
@@ -94,6 +107,9 @@ class Scan3dController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $thumb = Thumbnail::find($id);
+        $thumbPath = Str::of($thumb->thumbnail)->ltrim('/');
+        unlink($thumbPath);
+        $thumb->delete();
     }
 }
