@@ -104,13 +104,6 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
         });
     });
 
-    Route::prefix('thumbnail')->group(function () {
-        Route::get('', [ThumbnailController::class, 'index']);
-        Route::post('', [ThumbnailController::class, 'store']);
-        Route::get('{id}', [ThumbnailController::class, 'edit']);
-        Route::put('{id}', [ThumbnailController::class, 'update']);
-        Route::delete('{id}', [ThumbnailController::class, 'destroy']);
-    });
 
     Route::post("logout", [AuthController::class, 'logout']);
     // Route group The Loai
@@ -167,11 +160,18 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
         Route::delete('delete/{id}', [UserController::class, 'Xoa']);
     });
 
-    Route::group(['prefix' => 'scan3d'], function() {
+    Route::group(['prefix' => 'scan-3d'], function() {
         Route::get('', [Scan3dController::class, 'index']);
         Route::post('', [Scan3dController::class, 'store']);
     });
 
+    Route::prefix('thumbnail')->group(function () {
+        Route::get('', [ThumbnailController::class, 'index']);
+        Route::post('', [ThumbnailController::class, 'store']);
+        Route::get('{id}', [ThumbnailController::class, 'edit']);
+        Route::post('{id}', [ThumbnailController::class, 'update']);
+        Route::delete('{id}', [ThumbnailController::class, 'destroy']);
+    });
 
 
 });

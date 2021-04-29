@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { AXIOS } from '../../common/http-common'
+import { AXIOS } from "../../common/http-common";
 
 export default {
     data() {
@@ -97,12 +97,20 @@ export default {
             data.append("name", this.name);
             data.append("thumbnail", this.selectedFile, this.selectedFile.name);
 
-            AXIOS.post("thumbnail", data)
-                .then((res) => {
-                    if (res.status === 200) {
-                        this.$router.push({name: 'thumbnail'})
-                    }
-                })
+            AXIOS.post("thumbnail", data).then(res => {
+                if (res.status === 200) {
+                    this.$router.push({ name: "thumbnail" });
+                    setTimeout(() => {
+                        this.$toast.success(
+                            "Add a new thumbnail image successfully",
+                            {
+                                position: "bottom-right",
+                                duration: 5000
+                            }
+                        );
+                    }, 1300);
+                }
+            });
         }
     }
 };

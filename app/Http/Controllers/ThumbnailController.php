@@ -87,12 +87,14 @@ class ThumbnailController extends Controller
     {
         $thumb = Thumbnail::find($id);
         $thumb->name = $request->name;
-        $thumb->isPriority= $request->isPriority;
+        $thumbPath = Str::of($thumb->thumbnail)->ltrim('/');
+        unlink($thumbPath);
         if ($request->hasFile('thumbnail')) {
             $file = $request->thumbnail;
             $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move('images/thumbs', $fileName);
             $thumb->thumbnail = '/images/thumbs/' . $fileName;
+
         }
 
         $thumb->save();

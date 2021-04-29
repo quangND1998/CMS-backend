@@ -19,12 +19,13 @@
         </div>
         <div class="col-md-12 px-0">
             <div class="">
-                <form>
+                <form @submit.prevent="onSubmit">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input
                             type="text"
                             ref="name"
+                            name="name"
                             class="form-control"
                             id="name"
                             placeholder="Enter the thumbnail name"
@@ -41,13 +42,6 @@
                             id="thumbnail"
                             @change="onFileSelected"
                         />
-                    </div>
-                    <div class="form-group">
-                        <label for="priority">State</label>
-                        <select id="priority" class="form-control">
-                            <option :selected="thumb.isPriority === 1">Public</option>
-                            <option :selected="thumb.isPriority === 0">Private</option>
-                        </select>
                     </div>
                     <div class="modal-footer justify-content-center">
                         <router-link
@@ -89,6 +83,30 @@ export default {
     methods: {
         onFileSelected(e) {
             this.selectedFile = e.target.files[0];
+        },
+        onSubmit() {
+            const dataUpdate = new FormData();
+            dataUpdate.append("name", this.$refs.name.value);
+            dataUpdate.append(
+                "thumbnail",
+                this.selectedFile,
+                this.selectedFile.name
+            );
+
+            AXIOS.post(`thumbnail/${this.id}`, dataUpdate).then(res => {
+                if (res.status === 200) {
+                    this.$router.push({ name: "thumbnail" });
+                    setTimeout(() => {
+                        this.$toast.success(
+                            "Update thumbnail image successfully",
+                            {
+                                position: "bottom-right",
+                                duration: 5000
+                            }
+                        );
+                    }, 1300);
+                }
+            });
         }
     }
 };

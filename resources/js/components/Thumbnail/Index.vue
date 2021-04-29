@@ -13,7 +13,7 @@
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-picture-o"></i> Thumbnail</h1>
             </div>
-            <router-link
+            <router-link v-if="thumbnail.length === 0"
                 :to="{ name: 'thumbnail.create' }"
                 class="btn btn-success"
             >
@@ -29,13 +29,12 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Thumbnail</th>
-                                <th>Status</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="thumb in thumbnails" :key="thumb.id">
-                                <td class="align-middle">1</td>
+                            <tr v-for="(thumb, index) in thumbnail" :key="thumb.id">
+                                <td class="align-middle">{{ index + 1 }}</td>
                                 <td class="align-middle">
                                     {{ thumb.name }}
                                 </td>
@@ -45,12 +44,6 @@
                                         style="width: 120px"
                                         :alt="thumb.name"
                                     />
-                                </td>
-                                <td class="align-middle">
-                                    <span v-if="thumb.isPriority === 1" class="badge badge-success" style="font-size:13px; font-weight: 400"
-                                        >Public</span>
-                                    <span v-else class="badge badge-danger" style="font-size:13px; font-weight: 400"
-                                        >Private</span>
                                 </td>
                                 <td class="align-middle">
                                     <router-link
@@ -151,18 +144,29 @@ import { AXIOS } from "../../common/http-common";
 export default {
     data() {
         return {
-            thumbnails: []
+            thumbnail: []
         };
     },
     created() {
-        AXIOS.get("thumbnail").then(res => (this.thumbnails = res.data));
+        AXIOS.get("thumbnail").then(res => (this.thumbnail = res.data));
     },
     methods: {
         deleteThumb(id) {
-            AXIOS.delete(`thumbnail/${id}`).then(() => {
-                this.thumbnails = this.thumbnails.filter(
+            AXIOS.delete(`thumbnail/${id}`).then((res) => {
+                if (res.status === 200) {
+                    this.thumbnail = this.thumbnail.filter(
                     thumb => thumb.id !== id
                 );
+                setTimeout(() => {
+                    this.$toast.success(
+                        "Delete thumbnail image successfully",
+                        {
+                            position: "bottom-right",
+                            duration: 5000
+                        }
+                    );
+                }, 1300);
+                }
             });
         }
     }

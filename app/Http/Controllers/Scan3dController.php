@@ -44,12 +44,12 @@ class Scan3dController extends Controller
             $file = $request->favicon;
             $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move('images/scan3D', $fileName);
-            $scan3d->favicon = $fileName;
+            $scan3d->favicon = '/images/scan3D/'.$fileName;
         }
 
         $scan3d->save();
 
-        return new Scan3dResource($scan3d);
+        return json_encode($scan3d);
     }
 
     /**

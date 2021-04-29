@@ -6,11 +6,8 @@
                     <li class="breadcrumb-item">
                         <i class="fa fa-home fa-lg"></i>
                     </li>
-                    <!-- <li class="breadcrumb-item">Tables</li> -->
                     <li class="breadcrumb-item">
-                        <!-- <router-link :to="{ name: 'scan-3d' }"> -->
                         Scan 3D
-                        <!-- </router-link> -->
                     </li>
                 </ul>
                 <h1 class="mt-2"><i class="fa fa-codepen"></i> Scan 3D</h1>
@@ -31,6 +28,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Title</th>
+                                <th>Favicon</th>
                                 <th>Model code</th>
                                 <th>Preview link</th>
                                 <th></th>
@@ -41,8 +39,17 @@
                                 <td>1</td>
                                 <td>Aristino Trần Phú</td>
                                 <td>VR Showroom Aristino Tran Phu</td>
+                                <td><img :src="" alt="" /></td>
                                 <td>mSeF8Vh1qLn</td>
-                                <td><a href="" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>View</a></td>
+                                <td>
+                                    <a href="" target="_blank"
+                                        ><i
+                                            class="fa fa-link"
+                                            aria-hidden="true"
+                                        ></i
+                                        >View</a
+                                    >
+                                </td>
                                 <td>
                                     <button
                                         type="button"

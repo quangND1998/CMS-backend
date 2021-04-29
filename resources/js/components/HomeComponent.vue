@@ -15,6 +15,19 @@
             <ul class="app-menu">
                 <li>
                     <router-link
+                        :to="{ name: 'page' }"
+                        class="app-menu__item"
+                        active-class="active"
+                    >
+                        <i
+                            class="app-menu__icon fa fa-file-text-o"
+                            aria-hidden="true"
+                        ></i>
+                        <span class="app-menu__label">Page list</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link
                         :to="{ name: 'user' }"
                         class="app-menu__item"
                         active-class="active"
@@ -36,19 +49,7 @@
                         <span class="app-menu__label">Thumbnail</span>
                     </router-link>
                 </li>
-                <li>
-                    <router-link
-                        :to="{ name: 'page' }"
-                        class="app-menu__item"
-                        active-class="active"
-                    >
-                        <i
-                            class="app-menu__icon fa fa-file-text-o"
-                            aria-hidden="true"
-                        ></i>
-                        <span class="app-menu__label">Page list</span>
-                    </router-link>
-                </li>
+
                 <li>
                     <router-link
                         :to="{ name: 'theme' }"
