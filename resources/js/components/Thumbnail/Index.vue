@@ -139,7 +139,7 @@
 </template>
 
 <script>
-import { AXIOS } from "../../common/http-common";
+import API from "../../common/API/API";
 
 export default {
     data() {
@@ -148,11 +148,11 @@ export default {
         };
     },
     created() {
-        AXIOS.get("thumbnail").then(res => (this.thumbnail = res.data));
+        API.get("thumbnail").then(res => (this.thumbnail = res.data));
     },
     methods: {
         deleteThumb(id) {
-            AXIOS.delete(`thumbnail/${id}`).then((res) => {
+            API.delete(`thumbnail/${id}`).then((res) => {
                 if (res.status === 200) {
                     this.thumbnail = this.thumbnail.filter(
                     thumb => thumb.id !== id

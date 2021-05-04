@@ -4294,6 +4294,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -4376,14 +4378,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     onSubmit: function onSubmit() {
+      var _this = this;
+
       var formData = new FormData();
       formData.append("name", this.$refs.name.value);
       formData.append("title", this.$refs.title.value);
+      formData.append("favicon", this.$refs.favicon.files[0]);
       formData.append("model_code", this.$refs.model_code.value);
-      console.log(formData);
+      this.$store.dispatch('add_scan3d', formData);
+      this.$router.push({
+        name: "scan-3d"
+      });
+      setTimeout(function () {
+        _this.$toast.success("Add a new scan 3D successfully", {
+          position: "bottom-right",
+          duration: 5000
+        });
+      }, 1300);
     }
   }
 });
@@ -4401,6 +4416,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4482,7 +4504,96 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  created: function created() {
+    this.$store.dispatch('get_all_scan3d');
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['scan3ds'])),
+  methods: {
+    deleteScan3d: function deleteScan3d(id) {
+      var _this = this;
+
+      this.$store.dispatch('delete_scan3d', id).then(function (response) {
+        setTimeout(function () {
+          _this.$toast.success("Delete scan 3D successfully", {
+            position: "bottom-right",
+            duration: 5000
+          });
+        }, 1300);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -4497,6 +4608,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -4519,7 +4637,112 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      data: {
+        name: '',
+        title: '',
+        favicon: null,
+        model_code: ''
+      }
+    };
+  },
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['getScan3dById'])), {}, {
+    scan3d: function scan3d() {
+      return this.getScan3dById(this.$route.params.id);
+    }
+  }),
+  methods: {
+    onUpdate: function onUpdate() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append("name", this.$refs.name.value);
+      formData.append("title", this.$refs.title.value);
+      formData.append("favicon", this.$refs.favicon.files[0]);
+      formData.append("model_code", this.$refs.model_code.value);
+      this.$store.dispatch('update_scan3d', {
+        id: this.scan3d.id,
+        data: formData
+      });
+      this.$router.push({
+        name: "scan-3d"
+      });
+      setTimeout(function () {
+        _this.$toast.success("Update scan 3D successfully", {
+          position: "bottom-right",
+          duration: 5000
+        });
+      }, 1300);
+    }
+  }
+});
 
 /***/ }),
 
@@ -6556,7 +6779,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _common_http_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/http-common */ "./resources/js/common/http-common.js");
+/* harmony import */ var _common_API_API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/API/API */ "./resources/js/common/API/API.js");
 //
 //
 //
@@ -6655,7 +6878,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = new FormData();
       data.append("name", this.name);
       data.append("thumbnail", this.selectedFile, this.selectedFile.name);
-      _common_http_common__WEBPACK_IMPORTED_MODULE_0__.AXIOS.post("thumbnail", data).then(function (res) {
+      _common_API_API__WEBPACK_IMPORTED_MODULE_0__.default.post("thumbnail", data).then(function (res) {
         if (res.status === 200) {
           _this.$router.push({
             name: "thumbnail"
@@ -6686,7 +6909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _common_http_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/http-common */ "./resources/js/common/http-common.js");
+/* harmony import */ var _common_API_API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/API/API */ "./resources/js/common/API/API.js");
 //
 //
 //
@@ -6837,7 +7060,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    _common_http_common__WEBPACK_IMPORTED_MODULE_0__.AXIOS.get("thumbnail").then(function (res) {
+    _common_API_API__WEBPACK_IMPORTED_MODULE_0__.default.get("thumbnail").then(function (res) {
       return _this.thumbnail = res.data;
     });
   },
@@ -6845,7 +7068,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteThumb: function deleteThumb(id) {
       var _this2 = this;
 
-      _common_http_common__WEBPACK_IMPORTED_MODULE_0__.AXIOS.delete("thumbnail/".concat(id)).then(function (res) {
+      _common_API_API__WEBPACK_IMPORTED_MODULE_0__.default.delete("thumbnail/".concat(id)).then(function (res) {
         if (res.status === 200) {
           _this2.thumbnail = _this2.thumbnail.filter(function (thumb) {
             return thumb.id !== id;
@@ -6875,7 +7098,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _common_http_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/http-common */ "./resources/js/common/http-common.js");
+/* harmony import */ var _common_API_API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../common/API/API */ "./resources/js/common/API/API.js");
 //
 //
 //
@@ -6954,7 +7177,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    _common_http_common__WEBPACK_IMPORTED_MODULE_0__.AXIOS.get("thumbnail/".concat(this.id)).then(function (res) {
+    _common_API_API__WEBPACK_IMPORTED_MODULE_0__.default.get("thumbnail/".concat(this.id)).then(function (res) {
       _this.thumb = res.data;
     });
   },
@@ -6968,7 +7191,7 @@ __webpack_require__.r(__webpack_exports__);
       var dataUpdate = new FormData();
       dataUpdate.append("name", this.$refs.name.value);
       dataUpdate.append("thumbnail", this.selectedFile, this.selectedFile.name);
-      _common_http_common__WEBPACK_IMPORTED_MODULE_0__.AXIOS.post("thumbnail/".concat(this.id), dataUpdate).then(function (res) {
+      _common_API_API__WEBPACK_IMPORTED_MODULE_0__.default.post("thumbnail/".concat(this.id), dataUpdate).then(function (res) {
         if (res.status === 200) {
           _this2.$router.push({
             name: "thumbnail"
@@ -10492,6 +10715,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+vue__WEBPACK_IMPORTED_MODULE_9__.default.use((vue_toast_notification__WEBPACK_IMPORTED_MODULE_7___default()));
 var app = new vue__WEBPACK_IMPORTED_MODULE_9__.default({
   el: '#app',
   components: {
@@ -10502,7 +10726,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_9__.default({
   store: _components_store_store__WEBPACK_IMPORTED_MODULE_1__.default
 });
 vue__WEBPACK_IMPORTED_MODULE_9__.default.use((ckeditor4_vue__WEBPACK_IMPORTED_MODULE_0___default()));
-vue__WEBPACK_IMPORTED_MODULE_9__.default.use((vue_toast_notification__WEBPACK_IMPORTED_MODULE_7___default()));
 _router_index__WEBPACK_IMPORTED_MODULE_2__.default.beforeEach(function (to, from, next) {
   if (to.name !== 'login' && _common_token__WEBPACK_IMPORTED_MODULE_5__.default.getToken() == null) next({
     name: 'login'
@@ -10557,6 +10780,66 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   key: "",
   cluster: "mt1",
   encrypted: true
+});
+
+/***/ }),
+
+/***/ "./resources/js/common/API/API.js":
+/*!****************************************!*\
+  !*** ./resources/js/common/API/API.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _token__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../token */ "./resources/js/common/token.js");
+
+
+var API = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
+  baseURL: "http://127.0.0.1:8000/api/",
+  headers: {
+    Authorization: "Bearer ".concat(_token__WEBPACK_IMPORTED_MODULE_1__.default.getToken())
+  }
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API);
+
+/***/ }),
+
+/***/ "./resources/js/common/API/Scan3d.js":
+/*!*******************************************!*\
+  !*** ./resources/js/common/API/Scan3d.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _API__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./API */ "./resources/js/common/API/API.js");
+
+var END_POINT = "scan-3d";
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  all: function all() {
+    return _API__WEBPACK_IMPORTED_MODULE_0__.default.get(END_POINT);
+  },
+  show: function show(id) {
+    return _API__WEBPACK_IMPORTED_MODULE_0__.default.get("".concat(END_POINT, "/").concat(id));
+  },
+  store: function store(payload) {
+    return _API__WEBPACK_IMPORTED_MODULE_0__.default.post(END_POINT, payload);
+  },
+  update: function update(payload) {
+    return _API__WEBPACK_IMPORTED_MODULE_0__.default.post("".concat(END_POINT, "/").concat(payload.id), payload.data);
+  },
+  "delete": function _delete(id) {
+    return _API__WEBPACK_IMPORTED_MODULE_0__.default.delete("".concat(END_POINT, "/").concat(id));
+  }
 });
 
 /***/ }),
@@ -10799,31 +11082,6 @@ var contenService = {
     return _api_service__WEBPACK_IMPORTED_MODULE_0__.default.post("section_category/".concat(slug, "/items"), pramas);
   }
 };
-
-/***/ }),
-
-/***/ "./resources/js/common/http-common.js":
-/*!********************************************!*\
-  !*** ./resources/js/common/http-common.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AXIOS": () => (/* binding */ AXIOS)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _token__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./token */ "./resources/js/common/token.js");
-
-
-var AXIOS = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-  baseURL: "http://127.0.0.1:8000/api/",
-  headers: {
-    Authorization: "Bearer ".concat(_token__WEBPACK_IMPORTED_MODULE_1__.default.getToken())
-  }
-});
 
 /***/ }),
 
@@ -11963,6 +12221,81 @@ var getters = {
 
 /***/ }),
 
+/***/ "./resources/js/components/store/modules/Scan3d/actions.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/store/modules/Scan3d/actions.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _common_API_Scan3d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../common/API/Scan3d */ "./resources/js/common/API/Scan3d.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  get_all_scan3d: function get_all_scan3d(vuexContext) {
+    _common_API_Scan3d__WEBPACK_IMPORTED_MODULE_0__.default.all().then(function (response) {
+      vuexContext.commit("GET_ALL_SCAN3D", response.data);
+    });
+  },
+  get_detail_scan3d: function get_detail_scan3d(vuexContext, id) {
+    _common_API_Scan3d__WEBPACK_IMPORTED_MODULE_0__.default.show(id).then(function (response) {
+      vuexContext.commit("GET_DETAIL_SCAN3D", response.data);
+    });
+  },
+  add_scan3d: function add_scan3d(vuexContext, payload) {
+    _common_API_Scan3d__WEBPACK_IMPORTED_MODULE_0__.default.store(payload).then(function (response) {
+      vuexContext.commit("ADD_SCAN3D", response.data);
+    });
+  },
+  update_scan3d: function update_scan3d(vuexContext, payload) {
+    _common_API_Scan3d__WEBPACK_IMPORTED_MODULE_0__.default.update(payload).then(function (response) {
+      vuexContext.commit("UPDATE_SCAN3D", response.data); // setTimeout(() => {
+      //     Vue.$toast.success("Add a new scan 3D successfully", {
+      //         position: "bottom-right",
+      //         duration: 5000
+      //     });
+      // }, 1300)
+      //this.$router.push({ name: "scan-3d" })
+    });
+  },
+  delete_scan3d: function delete_scan3d(vuexContext, id) {
+    _common_API_Scan3d__WEBPACK_IMPORTED_MODULE_0__.default.delete(id).then(function (response) {
+      vuexContext.commit("DELETE_SCAN3D", id);
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/store/modules/Scan3d/getters.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/store/modules/Scan3d/getters.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  scan3ds: function scan3ds(state) {
+    return state.scan3ds;
+  },
+  getScan3dById: function getScan3dById(state) {
+    return function (id) {
+      return state.scan3ds.find(function (scan3d) {
+        return scan3d.id === id;
+      });
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/store/modules/Scan3d/index.js":
 /*!***************************************************************!*\
   !*** ./resources/js/components/store/modules/Scan3d/index.js ***!
@@ -11974,18 +12307,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actions */ "./resources/js/components/store/modules/Scan3d/actions.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/components/store/modules/Scan3d/getters.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mutations */ "./resources/js/components/store/modules/Scan3d/mutations.js");
 
-var state = {
+
+
+var defaultState = {
   scan3ds: []
 };
-var getters = {};
-var mutations = {};
-var actions = {};
+var inBrowser = typeof window !== "undefined"; // if in browser, use pre-fetched state injected by SSR
+
+var state = inBrowser && window.__INITIAL_STATE__ ? window.__INITIAL_STATE__.page : defaultState;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: state,
-  getters: getters,
-  mutations: mutations,
-  actions: actions
+  actions: _actions__WEBPACK_IMPORTED_MODULE_0__.default,
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__.default,
+  getters: _getters__WEBPACK_IMPORTED_MODULE_1__.default
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/store/modules/Scan3d/mutations.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/store/modules/Scan3d/mutations.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  GET_ALL_SCAN3D: function GET_ALL_SCAN3D(state, payload) {
+    return state.scan3ds = payload;
+  },
+  GET_DETAIL_SCAN3D: function GET_DETAIL_SCAN3D(state, id) {
+    return state.scan3ds.find(function (scan3d) {
+      return scan3d.id === id;
+    });
+  },
+  ADD_SCAN3D: function ADD_SCAN3D(state, payload) {
+    return state.scan3ds.push(payload);
+  },
+  UPDATE_SCAN3D: function UPDATE_SCAN3D(state, payload) {
+    var index = state.scan3ds.findIndex(function (scan3d) {
+      return scan3d.id === payload.id;
+    });
+    return state.scan3ds[index] = payload.data;
+  },
+  DELETE_SCAN3D: function DELETE_SCAN3D(state, id) {
+    return state.scan3ds = state.scan3ds.filter(function (scan3d) {
+      return scan3d.id !== id;
+    });
+  }
 });
 
 /***/ }),
@@ -62840,8 +63216,264 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {}
-var staticRenderFns = []
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "posts" } }, [
+    _c(
+      "div",
+      { staticClass: "app-title" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-success",
+            attrs: { to: { name: "scan-3d.create" } }
+          },
+          [_vm._v("\n            ADD NEW\n        ")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-12 px-0" }, [
+      _c("div", {}, [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c("table", { staticClass: "table" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.scan3ds, function(scan3d, index) {
+                return _c("tr", { key: scan3d.id }, [
+                  _c("td", [_vm._v(_vm._s(index + 1))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(scan3d.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(scan3d.title))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("img", {
+                      staticStyle: { width: "40px" },
+                      attrs: { src: scan3d.favicon, alt: "Logo" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(scan3d.model_code))]),
+                  _vm._v(" "),
+                  _vm._m(2, true),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-xs btn-info",
+                          attrs: {
+                            to: {
+                              name: "scan-3d.update",
+                              params: {
+                                id: scan3d.id
+                              }
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-pencil mr-0",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-xs btn-danger",
+                          attrs: {
+                            type: "button",
+                            "data-toggle": "modal",
+                            "data-target": "#deleteModal" + scan3d.id
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-trash mr-0",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "modal fade",
+                          attrs: {
+                            id: "deleteModal" + scan3d.id,
+                            tabindex: "-1",
+                            "aria-labelledby": "exampleModalLabel",
+                            "aria-hidden": "true"
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "modal-dialog" }, [
+                            _c("div", { staticClass: "modal-content" }, [
+                              _vm._m(3, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-body" }, [
+                                _vm._v(
+                                  "\n                                                Are you sure you want to\n                                                delete ?\n                                            "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-footer" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-secondary",
+                                    attrs: {
+                                      type: "button",
+                                      "data-dismiss": "modal"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                    Close\n                                                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    attrs: {
+                                      type: "button",
+                                      "data-dismiss": "modal"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.deleteScan3d(scan3d.id)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                    Delete\n                                                "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("ul", { staticClass: "app-breadcrumb breadcrumb side" }, [
+        _c("li", { staticClass: "breadcrumb-item" }, [
+          _c("i", { staticClass: "fa fa-home fa-lg" })
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "breadcrumb-item" }, [
+          _vm._v("\n                    Scan 3D\n                ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("h1", { staticClass: "mt-2" }, [
+        _c("i", { staticClass: "fa fa-codepen" }),
+        _vm._v(" Scan 3D")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Favicon")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Model code")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Preview link")]),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "", target: "_blank" } }, [
+        _c("i", {
+          staticClass: "fa fa-link",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("View")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [
+          _vm._v(
+            "\n                                                    DELETE\n                                                "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
 
 
 
@@ -62883,13 +63515,124 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("li", { staticClass: "breadcrumb-item" }, [
-            _vm._v(_vm._s(_vm.$route.params.id))
+            _vm._v(_vm._s(_vm.scan3d.name))
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Update")])
         ]),
         _vm._v(" "),
         _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-12 px-0" }, [
+      _c("div", {}, [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.onUpdate()
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+              _vm._v(" "),
+              _c("input", {
+                ref: "name",
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "name",
+                  placeholder: "Enter the scan 3D project name"
+                },
+                domProps: { value: _vm.scan3d.name }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c("input", {
+                ref: "title",
+                staticClass: "form-control",
+                attrs: {
+                  id: "title",
+                  type: "text",
+                  placeholder: "Enter the scan 3D project title"
+                },
+                domProps: { value: _vm.scan3d.title }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "favicon" } }, [_vm._v("Favicon")]),
+              _vm._v(" "),
+              _c("input", {
+                ref: "favicon",
+                staticClass: "form-control",
+                attrs: { id: "favicon", type: "file" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { attrs: { for: "model_code" } }, [
+                _vm._v("Model code")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                ref: "model_code",
+                staticClass: "form-control",
+                attrs: {
+                  id: "model_code",
+                  type: "text",
+                  placeholder: "Enter the scan 3D project model code"
+                },
+                domProps: { value: _vm.scan3d.model_code }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "modal-footer justify-content-center" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "mr-1 btn btn-sucess block",
+                    attrs: { to: { name: "scan-3d" }, type: "button" }
+                  },
+                  [
+                    _c("i", {
+                      staticClass: "fa fa-long-arrow-left",
+                      attrs: { "aria-hidden": "true" }
+                    }),
+                    _vm._v(
+                      "\n                         Back\n                     "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-info block",
+                    attrs: { type: "submit" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                         Update\n                     "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ]
+        )
       ])
     ])
   ])

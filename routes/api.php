@@ -163,6 +163,8 @@ Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
     Route::group(['prefix' => 'scan-3d'], function() {
         Route::get('', [Scan3dController::class, 'index']);
         Route::post('', [Scan3dController::class, 'store']);
+        Route::post('{id}', [Scan3dController::class, 'update']);
+        Route::delete('{id}', [Scan3dController::class, 'destroy']);
     });
 
     Route::prefix('thumbnail')->group(function () {

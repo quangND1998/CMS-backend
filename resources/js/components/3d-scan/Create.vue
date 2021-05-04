@@ -81,15 +81,25 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     methods: {
         onSubmit() {
             const formData = new FormData();
             formData.append("name", this.$refs.name.value);
             formData.append("title", this.$refs.title.value);
+            formData.append("favicon", this.$refs.favicon.files[0]);
             formData.append("model_code", this.$refs.model_code.value);
 
-            console.log(formData);
+            this.$store.dispatch('add_scan3d', formData)
+            this.$router.push({ name: "scan-3d" })
+            setTimeout(() => {
+                    this.$toast.success("Add a new scan 3D successfully", {
+                        position: "bottom-right",
+                        duration: 5000
+                    });
+                }, 1300)
+
         }
     }
 };

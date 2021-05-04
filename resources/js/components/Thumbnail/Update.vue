@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { AXIOS } from "../../common/http-common";
+import API from "../../common/API/API";
 
 export default {
     props: ["id"],
@@ -76,7 +76,7 @@ export default {
         };
     },
     created() {
-        AXIOS.get(`thumbnail/${this.id}`).then(res => {
+        API.get(`thumbnail/${this.id}`).then(res => {
             this.thumb = res.data;
         });
     },
@@ -93,7 +93,7 @@ export default {
                 this.selectedFile.name
             );
 
-            AXIOS.post(`thumbnail/${this.id}`, dataUpdate).then(res => {
+            API.post(`thumbnail/${this.id}`, dataUpdate).then(res => {
                 if (res.status === 200) {
                     this.$router.push({ name: "thumbnail" });
                     setTimeout(() => {

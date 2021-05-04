@@ -1,18 +1,21 @@
-import Vue from 'vue'
+import actions from "./actions";
+import getters from "./getters";
+import mutations from "./mutations";
 
-const state = {
+const defaultState = {
     scan3ds: []
-}
+};
 
-const getters = {}
-
-const mutations = {}
-
-const actions = {}
+const inBrowser = typeof window !== "undefined";
+// if in browser, use pre-fetched state injected by SSR
+const state =
+    inBrowser && window.__INITIAL_STATE__ ?
+    window.__INITIAL_STATE__.page :
+    defaultState;
 
 export default {
     state,
-    getters,
+    actions,
     mutations,
-    actions
-}
+    getters
+};
