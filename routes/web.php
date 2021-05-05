@@ -20,7 +20,7 @@ use App\Http\Controllers\ShowRoomController;
 // Route :: view ( '/ admin / login' , 'admin.auth.login' );
 
 Route::group(['middleware' => ['prevent-back-history','lang']], function () {
-    Route::get('/?lang=vn', [ShowRoomController::class, 'index']);
+    Route::get('', [ShowRoomController::class, 'index']);
 
 
 

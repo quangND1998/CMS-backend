@@ -1,6 +1,8 @@
 <template>
     <div id="posts">
-        <div class="app-title">
+
+        <div class="
+        app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <li class="breadcrumb-item">
@@ -19,15 +21,10 @@
             </div>
 
             <div>
-                <router-link
-                    v-if="theme.type === 1"
+             <router-link v-if="theme.type===1"
                     :to="{
                         name: 'section_category',
-                        params: {
-                            sectionId: sectionId,
-                            postId: postId,
-                            themeId: this.themeId
-                        }
+                        params: { sectionId: sectionId, postId: postId ,themeId: this.themeId }
                     }"
                 >
                     <button
@@ -38,24 +35,18 @@
                     </button>
                 </router-link>
 
-                <router-link
-                    v-if="theme.type === 0"
+                <router-link v-if="theme.type===0"
                     :to="{
                         name: 'content_create',
                         params: { sectionId: sectionId, postId: postId }
                     }"
-                    <<<<<<<
-                    HEAD
-                    class="p-2 mx-3 float-left btn btn-success"
                 >
-                    NEW ITEM ======= >
-                    <button
+                    <button 
                         type="button"
                         class="p-2 mx-3 float-left btn btn-success"
                     >
                         NEW ITEM
                     </button>
-                    >>>>>>> origin/master
                 </router-link>
             </div>
         </div>

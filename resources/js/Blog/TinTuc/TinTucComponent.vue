@@ -1,6 +1,7 @@
 <template>
     <div id="posts">
         <div class="app-title">
+            
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <li class="breadcrumb-item">
@@ -58,7 +59,8 @@
                                     <img width="100px" :src="item.Hinh" />
                                 </td>
                                 <td>
-                                    <a href="#">{{ item.TieuDe }}</a>
+                                    <!-- tin-tuc/'+{{$item.TieuDeKhongDau}}+'.html -->
+                                    <a :href="'tin-tuc/'+item.TieuDeKhongDau+'.html'">{{ item.TieuDe }}</a>
                                 </td>
                                 <td>{{ binding(item.idLoaiTin) }}</td>
                                 <td>{{ item.created_at }}</td>

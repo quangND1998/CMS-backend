@@ -35,10 +35,6 @@
                     NEW ITEM
                 </button>
             </router-link>
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
         </div>
         <div>
             <!-- <router-link

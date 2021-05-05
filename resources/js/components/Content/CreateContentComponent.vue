@@ -225,8 +225,7 @@ export default {
                     this.error = false;
                     this.errors = [];
                     this.$router.back();
-                })
-                .catch(error => {
+                }).catch(error => {
                     console.log(error);
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {

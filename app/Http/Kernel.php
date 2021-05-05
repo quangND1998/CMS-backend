@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
         'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class,
         'lang' => \App\Http\Middleware\Language::class,
+        'adminAuth' => \App\Http\Middleware\AdminMiddleware::class, // Khai báo middleware mới trong kernel
     ];
 }

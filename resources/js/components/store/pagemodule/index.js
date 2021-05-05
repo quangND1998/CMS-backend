@@ -41,11 +41,9 @@ export const actions = {
             return pageService
                 .query()
                 .then(({ data }) => {
-                    // console.log(data)
                     commit(FETCH_END, data);
                 })
                 .catch(error => {
-                    console.log(data);
                     throw new Error(error);
                 });
         }

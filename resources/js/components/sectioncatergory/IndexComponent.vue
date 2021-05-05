@@ -29,19 +29,8 @@
                 </button>
             </router-link>
         </div>
-        <<<<<<< HEAD
-        <!-- <div>
-            <router-link
-                :to="{
-                    name: 'content',
-                    params: { postId: postId, sectionId: sectionId }
-                }"
-                class="p-1 mx-3 btn btn-white block"
-            >
-                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                Back
-=======
-        <div>
+
+  <div>
             <router-link :to="{ name: 'content', params: { postId: postId ,sectionId: sectionId ,themeId:this.themeId} }">
                 <button
                     type="button"
@@ -49,9 +38,8 @@
                 >
                     Back
                 </button>
->>>>>>> origin/master
             </router-link>
-        </div> -->
+        </div>
 
         <div class="col-md-12">
             <div class="">

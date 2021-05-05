@@ -121,8 +121,7 @@
                     rows="8"
                 ></textarea>
             </div>
-<<<<<<< HEAD
-=======
+
             <div class="form-group">
                 <textarea
                     class="form-control"
@@ -133,12 +132,11 @@
                     rows="8"
                 ></textarea>
             </div>
-<<<<<<< HEAD
->>>>>>> origin
-            <!-- <div class="form-group">
-=======
+
+      
+
             <div class="form-group">
->>>>>>> origin/master
+
                 <input
                     type="title"
                     ref="icon_class"
@@ -262,10 +260,6 @@ export default {
                         }
                     }
                 });
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
         },
         getPost() {
             this.$store.dispatch(GET_ITEM_ID, this.contentId);

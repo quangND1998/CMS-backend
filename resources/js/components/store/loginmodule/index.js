@@ -30,12 +30,12 @@ export const actions = {
     
             })
                 .then(({ data }) => {
-                    // console.log('a');
+
                     commit(LOGIN_SUCCESS, data);
                     resolve(data);
                 })
                 .catch(({ response }) => {
-                    // console.log('b');
+                    console.log(response);
                     commit(PURGE_AUTH, response.data);
                     // reject(response);
                 });
@@ -64,12 +64,14 @@ export const actions = {
 }
 export const mutations = {
     [LOGIN_SUCCESS](state, data) {
+        console.log(data);
         state.isAuthenticated = true;
         state.pending = true;
         state.msg = data.msg
         token.saveToken(data.token)
     },
     [PURGE_AUTH](state, data) {
+        console.log(data);
         state.isAuthenticated = false;
         state.auth.email = "";
         state.auth.password = "";
