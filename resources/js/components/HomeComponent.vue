@@ -15,16 +15,6 @@
             <ul class="app-menu">
                 <li>
                     <router-link
-                        :to="{ name: 'user' }"
-                        class="app-menu__item"
-                        active-class="active"
-                    >
-                        <i class="app-menu__icon fa fa-user-o"></i>
-                        <span class="app-menu__label">User</span>
-                    </router-link>
-                </li>
-                <li>
-                    <router-link
                         :to="{ name: 'page' }"
                         class="app-menu__item"
                         active-class="active"
@@ -38,6 +28,30 @@
                 </li>
                 <li>
                     <router-link
+                        :to="{ name: 'user' }"
+                        class="app-menu__item"
+                        active-class="active"
+                    >
+                        <i class="app-menu__icon fa fa-user-o"></i>
+                        <span class="app-menu__label">User</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link
+                        :to="{ name: 'thumbnail' }"
+                        class="app-menu__item"
+                        active-class="active"
+                    >
+                        <i
+                            class="app-menu__icon fa fa-picture-o"
+                            aria-hidden="true"
+                        ></i>
+                        <span class="app-menu__label">Thumbnail</span>
+                    </router-link>
+                </li>
+
+                <li>
+                    <router-link
                         :to="{ name: 'theme' }"
                         class="app-menu__item"
                         active-class="active"
@@ -49,14 +63,14 @@
                         <span class="app-menu__label">Theme</span>
                     </router-link>
                 </li>
-                 <li>
+                <li>
                     <router-link
                         :to="{ name: 'scan-3d' }"
                         class="app-menu__item"
                         active-class="active"
                     >
                         <i
-                            class="app-menu__icon fa fa-file-text-o"
+                            class="app-menu__icon fa fa-codepen"
                             aria-hidden="true"
                         ></i>
                         <span class="app-menu__label">Scan 3D</span>
@@ -180,13 +194,23 @@ export default {
 
     methods: {
         logout() {
-            this.$store.dispatch(LOGOUT);
-            this.$router.push("/admin/login");
+            this.$store.dispatch(LOGOUT).then(response => {
+     
+                this.$router.push("/admin/login");
+                setTimeout(() => {
+                    this.$toast.success(
+                        response,
+                        {
+                            position: "top-right",
+                            duration: 2000
+                        }
+                    );
+                }, 1300);
+            });
         }
     }
 };
 </script>
->
 <style scoped>
 @import url(
     https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,

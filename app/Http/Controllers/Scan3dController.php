@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Scan3dResource;
 use App\Models\Scan3d;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Scan3dController extends Controller
 {
@@ -15,7 +16,9 @@ class Scan3dController extends Controller
      */
     public function index()
     {
-        return Scan3dResource::collection(Scan3d::get());
+        $scan3ds = Scan3d::all();
+        // return Scan3dResource::collection(Scan3d::get());
+        return json_encode($scan3ds);
     }
 
     /**
@@ -36,20 +39,27 @@ class Scan3dController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:scan3d',
+            'title' => 'required|unique:scan3d',
+            'favicon.*' => 'mimes:png,jpg,jpeg',
+            'model_code' => 'required|unique:scan3d'
+        ]);
         $scan3d = new Scan3d();
         $scan3d->name = $request->name;
         $scan3d->title = $request->title;
         $scan3d->model_code = $request->model_code;
+        $scan3d->slug = Str::slug($request->name, '-');
         if ($request->hasFile('favicon')) {
             $file = $request->favicon;
-            $fileName = time() . '-' . $file->getClientOriginalName('favicon');
-            $file->move('uploads/images', $fileName);
-            $scan3d->favicon = $fileName;
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->move('images/scan3D', $fileName);
+            $scan3d->favicon = '/images/scan3D/'.$fileName;
         }
 
         $scan3d->save();
 
-        return new Scan3dResource($scan3d);
+        return json_encode($scan3d);
     }
 
     /**
@@ -83,7 +93,30 @@ class Scan3dController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'title' => 'required',
+            'favicon.*' => 'mimes:png,jpg,jpeg',
+            'model_code' => 'required'
+        ]);
+        $scan3d = Scan3d::find($id);
+        $scan3d->name = $request->name;
+        $scan3d->title = $request->title;
+        $scan3d->model_code = $request->model_code;
+        $scan3d->slug = Str::slug($request->name, '-');
+        $faviconPath = Str::of($scan3d->favicon)->ltrim('/');
+      
+        if ($request->hasFile('favicon')) {
+            $file = $request->favicon;
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->move('images/scan3D', $fileName);
+            $scan3d->favicon = '/images/scan3D/' . $fileName;
+            unlink($faviconPath);
+        }
+
+        $scan3d->save();
+
+        return json_encode($scan3d);
     }
 
     /**
@@ -94,6 +127,7 @@ class Scan3dController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $scan3d = Scan3d::find($id);
+        $scan3d->delete();
     }
 }

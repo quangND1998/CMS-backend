@@ -253,7 +253,15 @@ export default {
                     this.successful = true;
                     this.error = false;
                     this.errors = [];
-                    this.$router.back();
+                 
+                    setTimeout(() => {
+                        console.log(this.content);
+                        this.$toast.success(`Edit  content asuccessfully`, {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
+                       this.$router.back();
                 })
                 .catch(error => {
                     if (!_.isEmpty(error.response)) {
@@ -263,6 +271,12 @@ export default {
                             this.error = true;
                         }
                     }
+                    setTimeout(() => {
+                        this.$toast.error(`Edit content fail`, {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
                 });
         },
         getPost() {

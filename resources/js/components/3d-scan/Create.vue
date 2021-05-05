@@ -82,14 +82,42 @@
 
 <script>
 export default {
+       data() {
+        return {
+            error: false,
+            successful: false,
+            errors: []
+        };
+    },
     methods: {
         onSubmit() {
             const formData = new FormData();
             formData.append("name", this.$refs.name.value);
             formData.append("title", this.$refs.title.value);
+            formData.append("favicon", this.$refs.favicon.files[0]);
             formData.append("model_code", this.$refs.model_code.value);
 
-            console.log(formData);
+            this.$store
+                .dispatch("add_scan3d", formData)
+                .then(response => {
+                    this.$router.push({ name: "scan-3d" });
+                    setTimeout(() => {
+                        this.$toast.success("Add a new scan 3D successfully", {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                    }
+                });
         }
     }
 };

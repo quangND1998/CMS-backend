@@ -22,33 +22,17 @@
         </div>
 
         <form>
-            <!-- <div
-                :class="[
-                    'form-group m-1 p-3',
-                    successful ? 'alert-success' : ''
-                ]"
-            >
-                <span v-if="successful" class="label label-sucess"
-                    >Published!</span
-                >
-            </div> -->
-            <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
-                <!-- <span v-if="errors.scan" class="label label-danger">
-                    {{ errors.scan[0] }}
-                </span>
-                <span v-if="errors.tour360" class="label label-danger">
-                    {{ errors.tour360[0] }}
-                </span> -->
+       
+            <!-- <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+              
                 <span v-if="errors.image" class="label label-danger">
                     {{ errors.image[0] }}
                 </span>
-                <!-- <span v-if="errors.detail" class="label label-danger">
-                    {{ errors.detail[0] }}
-                </span> -->
+            
                 <span v-if="errors.title" class="label label-danger">
                     {{ errors.sub_title[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
@@ -225,8 +209,15 @@ export default {
                     this.error = false;
                     this.errors = [];
                     this.$router.back();
+                      setTimeout(() => {
+                        this.$toast.success("Add a new content asuccessfully", {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
                 }).catch(error => {
                     console.log(error);
+            
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
@@ -234,6 +225,12 @@ export default {
                             this.error = true;
                         }
                     }
+                    setTimeout(() => {
+                        this.$toast.error("Add a new content fail", {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
                 });
 
             //   this.$refs.name.value = "";

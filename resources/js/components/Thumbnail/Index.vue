@@ -6,14 +6,16 @@
                     <li class="breadcrumb-item">
                         <i class="fa fa-home fa-lg"></i>
                     </li>
+                    <!-- <li class="breadcrumb-item">Tables</li> -->
                     <li class="breadcrumb-item">
-                        Scan 3D
+                        Thumbnail
                     </li>
                 </ul>
-                <h1 class="mt-2"><i class="fa fa-codepen"></i> Scan 3D</h1>
+                <h1 class="mt-2"><i class="fa fa-picture-o"></i> Thumbnail</h1>
             </div>
             <router-link
-                :to="{ name: 'scan-3d.create' }"
+                v-if="thumbnail.length === 0"
+                :to="{ name: 'thumbnail.create' }"
                 class="btn btn-success"
             >
                 ADD NEW
@@ -27,35 +29,32 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Title</th>
-                                <th>Favicon</th>
-                                <th>Model code</th>
-                                <th>Preview link</th>
-                                <th></th>
+                                <th>Thumbnail</th>
+                                <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(scan3d, index) in scan3ds" :key="scan3d.id">
-                                <td>{{ index + 1 }}</td>
-                                <td>{{ scan3d.name }}</td>
-                                <td>{{ scan3d.title }}</td>
-                                <td><img :src="scan3d.favicon" alt="Logo" style="width: 40px"></td>
-                                <td>{{ scan3d.model_code }}</td>
-                                <td>
-                                    <a href="" target="_blank"
-                                        ><i
-                                            class="fa fa-link"
-                                            aria-hidden="true"
-                                        ></i
-                                        >View</a
-                                    >
+                            <tr
+                                v-for="(thumb, index) in thumbnail"
+                                :key="thumb.id"
+                            >
+                                <td class="align-middle">{{ index + 1 }}</td>
+                                <td class="align-middle">
+                                    {{ thumb.name }}
                                 </td>
-                                <td>
+                                <td class="align-middle">
+                                    <img
+                                        :src="thumb.thumbnail"
+                                        style="width: 120px"
+                                        :alt="thumb.name"
+                                    />
+                                </td>
+                                <td class="align-middle">
                                     <router-link
                                         :to="{
-                                            name: 'scan-3d.update',
+                                            name: 'thumbnail.update',
                                             params: {
-                                                id: scan3d.id
+                                                id: thumb.id
                                             }
                                         }"
                                         class="btn btn-xs btn-info"
@@ -65,30 +64,21 @@
                                             aria-hidden="true"
                                         ></i>
                                     </router-link>
-                                    <!-- <button
-                                        type="button"
-                                        class="btn btn-xs btn-info"
-                                    >
-                                        <i
-                                            class="fa fa-pencil mr-0"
-                                            aria-hidden="true"
-                                        ></i>
-                                    </button> -->
                                     <button
                                         type="button"
                                         class="btn btn-xs btn-danger"
                                         data-toggle="modal"
-                                        :data-target="'#deleteModal' + scan3d.id"
+                                        :data-target="'#deleteModal' + thumb.id"
                                     >
                                         <i
                                             class="fa fa-trash mr-0"
                                             aria-hidden="true"
                                         ></i>
                                     </button>
-                                    <!-- Modal Delete -->
+                                    <!-- modal -->
                                     <div
                                         class="modal fade"
-                                        :id="'deleteModal' + scan3d.id"
+                                        :id="'deleteModal' + thumb.id"
                                         tabindex="-1"
                                         aria-labelledby="exampleModalLabel"
                                         aria-hidden="true"
@@ -128,7 +118,11 @@
                                                     <button
                                                         type="button"
                                                         class="btn btn-danger"
-                                                        @click="deleteScan3d(scan3d.id)"
+                                                        @click="
+                                                            deleteThumb(
+                                                                thumb.id
+                                                            )
+                                                        "
                                                         data-dismiss="modal"
                                                     >
                                                         Delete
@@ -137,7 +131,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Modal Delete -->
+                                    <!-- modal -->
                                 </td>
                             </tr>
                         </tbody>
@@ -149,30 +143,39 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
+import API from "../../common/API/API";
+import jwtToken from '../../common/token';
+import ApiService from '../../common/api.service';
 export default {
-    created() {
-        this.$store.dispatch('get_all_scan3d')
+    data() {
+        return {
+            thumbnail: []
+        };
     },
-    computed: {
-        ...mapGetters([
-            'scan3ds'
-        ])
+    created() {
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
+            ApiService.query("thumbnail").then(res => (this.thumbnail = res.data));
+        }
     },
     methods: {
-        deleteScan3d(id) {
-            this.$store.dispatch('delete_scan3d', id).then(response => {
-                setTimeout(() => {
+        deleteThumb(id) {
+            ApiService.delete(`thumbnail/${id}`).then(res => {
+                if (res.status === 200) {
+                    this.thumbnail = this.thumbnail.filter(
+                        thumb => thumb.id !== id
+                    );
+                    setTimeout(() => {
                         this.$toast.success(
-                            "Delete scan 3D successfully",
+                            "Delete thumbnail image successfully",
                             {
                                 position: "bottom-right",
                                 duration: 5000
                             }
                         );
                     }, 1300);
-            })
+                }
+            });
         }
     }
 };

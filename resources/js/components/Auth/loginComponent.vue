@@ -6,12 +6,8 @@
 </section>
 <section class="login-content">
 
-     <div v-if="data.errors" :class="['form-group m-1 p-3', data.errors ? 'alert alert-danger alert-dismissible fade show' : '']" role="alert">
-          <strong>Opps !!!</strong> {{data.errors}}.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+    
+ 
     <div class="logo">
         <h1></h1>
     </div>
@@ -67,7 +63,34 @@ export default {
        methods: {
               login(){
                  this.$store.dispatch(LOGIN,{email:this.auth.email,password:this.auth.password})
-                 .then(() => this.$router.push({ name: "index" ,params: { msg : this.msg } }));
+                  .then(response => {
+               
+                    this.$router.push({ name: "index" ,params: { msg : this.msg } });
+                         setTimeout(() => {
+                            this.$toast.success(
+                                response.msg,
+                                {
+                                    position: "bottom-right",
+                                    duration: 2000
+                                }
+                            );
+                        }, 1000);
+                })
+                .catch(error => {
+                   
+                    if (!_.isEmpty(error.data)) {
+                         setTimeout(() => {
+                            this.$toast.warning(
+                                error.data.errors,
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                });
+       
            }
        },
 }
