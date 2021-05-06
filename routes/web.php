@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BLog\ContactController;
+use App\Http\Controllers\Scan3dController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ShowRoomController;
@@ -18,7 +19,7 @@ use App\Http\Controllers\ShowRoomController;
 // Auth::routes();
 // Route :: view ( '/ admin' , 'admin.dashboard.index' ); 
 // Route :: view ( '/ admin / login' , 'admin.auth.login' );
-
+Route::get('/project/{slug}.html/', [Scan3dController::class,'public'])->name('project.public');
 Route::group(['middleware' => ['prevent-back-history','lang']], function () {
     Route::get('', [ShowRoomController::class, 'index']);
 

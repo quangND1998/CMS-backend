@@ -63888,7 +63888,24 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(scan3d.model_code))]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "project/" + scan3d.slug + ".html",
+                          target: "_blank"
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-link",
+                          attrs: { "aria-hidden": "true" }
+                        }),
+                        _vm._v("View")
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   _c(
                     "td",
@@ -63946,7 +63963,7 @@ var render = function() {
                         [
                           _c("div", { staticClass: "modal-dialog" }, [
                             _c("div", { staticClass: "modal-content" }, [
-                              _vm._m(3, true),
+                              _vm._m(2, true),
                               _vm._v(" "),
                               _c("div", { staticClass: "modal-body" }, [
                                 _vm._v(
@@ -64050,20 +64067,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Preview link")]),
         _vm._v(" "),
         _c("th")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "", target: "_blank" } }, [
-        _c("i", {
-          staticClass: "fa fa-link",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v("View")
       ])
     ])
   },

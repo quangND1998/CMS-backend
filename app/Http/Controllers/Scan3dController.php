@@ -130,4 +130,10 @@ class Scan3dController extends Controller
         $scan3d = Scan3d::find($id);
         $scan3d->delete();
     }
+    
+    public function public($slug)
+    {
+        $project = Scan3d::where('slug', '=', $slug)->first();
+        return view('public.index', compact('project'));
+    }
 }

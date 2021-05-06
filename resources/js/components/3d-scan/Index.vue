@@ -42,7 +42,7 @@
                                 <td><img :src="scan3d.favicon" alt="Logo" style="width: 40px"></td>
                                 <td>{{ scan3d.model_code }}</td>
                                 <td>
-                                    <a href="" target="_blank"
+                                    <a :href="'project/'+scan3d.slug+'.html'" target="_blank"
                                         ><i
                                             class="fa fa-link"
                                             aria-hidden="true"
