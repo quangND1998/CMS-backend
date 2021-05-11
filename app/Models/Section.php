@@ -9,7 +9,7 @@ class Section extends Model
 {
     use HasFactory;
     protected $table = 'section';
-    protected $fillable = ['id', 'title', 'text', 'sub_title', 'template_id'];
+    protected $fillable = ['id', 'title', 'text', 'sub_title','title_vn', 'text_vn', 'sub_title_vn','number' ,'template_id'];
     public function page()
     {
         return $this->belongsTo(Page::class);
@@ -20,7 +20,7 @@ class Section extends Model
     }
     public function theme()
     {
-        return $this->hasOne(Theme::class, 'section_id');
+        return $this->belongsTo(Theme::class);
     }
     public function section_category()
     {

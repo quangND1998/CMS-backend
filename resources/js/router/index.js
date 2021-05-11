@@ -20,13 +20,83 @@ import UpdateCategoryComponent from '../components/sectioncatergory/UpdateCompon
 import ContentCateComponent from '../components/sectioncatergory/Item/ContentCateComponent';
 import IndexCateComponent from '../components/sectioncatergory/Item/IndexCateComponent';
 import CreateCateContentComponent from '../components/sectioncatergory/Item/CreateCateContentComponent';
-import UpdateCateContentComponent from '../components/sectioncatergory/Item/UpdateCateContentComponent'
+import UpdateCateContentComponent from '../components/sectioncatergory/Item/UpdateCateContentComponent';
+import CreateTemplateComponent from '../components/Theme/CreateTemplateComponent';
+import ListTemplateComponent from '../components/Theme/ListTemplateComponent';
+import EditTemplateComponent from '../components/Theme/EditTemplateComponent';
+
+
+
+////BLog
+
+///The Loai
+import TheLoaiComponent from '../Blog/Theloai/TheLoaiComponent'
+import CreateTheLoaiComponent from '../Blog/Theloai/CreateTheLoaiComponent'
+import UpdateTheLoaiComponent from '../Blog/Theloai/UpdateTheLoaiComponent'
+
+/// LoaiTIn 
+import LoaiTinComponent from '../Blog/LoaiTin/LoaiTinComponent';
+import CreateLoaiTinComponent from '../Blog/LoaiTin/CreatLoaiTinComponent';
+import UpdateLoaiTinComponent from '../Blog/LoaiTin/UpdateLoaiTinComponent';
+
+/// TinTuc
+import TinTucComponent from '../Blog/TinTuc/TinTucComponent'
+import CreateTinTucComponent from '../Blog/TinTuc/CreateTinTucComponent'
+import UpdateTinTucComponent from '../Blog/TinTuc/UpdateTinTucComponent'
+
+///Slide
+import SlideComponent from '../Blog/Slide/SlideComponent'
+import SlideCreateCompoent from '../Blog/Slide/SlideCreateCompoent'
+import UpdateSildeComponent from '../Blog/Slide/UpdateSildeComponent'
+
+///ConTact
+import ContactComponent from '../Blog/Contact/ContactComponent'
+///Comment
+import CommentComponent from '../Blog/Comment/CommentComponent'
+
+/// User
+import UserComponent from '../components/User/UserComponent';
+import CreateUserComponent from '../components/User/CreateUserComponent';
+import UpdateUserComponent from '../components/User/UpdateUserComponent';
 Vue.use(Router)
 
 export default new Router({
     mode: "history",
 
-    routes: [{
+    routes: [
+
+        {
+            path: '/admin/theme',
+            name: 'theme',
+            component: HomeComponent,
+            redirect: {
+                name: "list"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"list",
+                    component:ListTemplateComponent
+
+                },
+                {
+                    path:"create",
+                    name:"template_create",
+                    component:CreateTemplateComponent 
+                },
+                {
+                    path:":themeId/update",
+                    name:"template_update",
+                    component:EditTemplateComponent,
+                    props: true,
+                    params: true,
+                }
+        
+            ]
+        }
+
+        ,
+        {
             path: "/admin/login",
             name: "login",
             component: loginComponent
@@ -35,7 +105,9 @@ export default new Router({
             path: "/admin/page",
             name: "index",
             component: HomeComponent,
-            redirect: { name: "page" },
+            redirect: {
+                name: "page"
+            },
             props: true,
             params: true,
             beforeEnter: (to, from, next) => {
@@ -81,14 +153,14 @@ export default new Router({
                             params: true,
                             props: true
                         },
-                             {
+                        {
                             path: ":sectionId/section_category",
                             name: "section_category",
                             component: IndexComponent,
                             params: true,
                             props: true,
-                          
-                },
+
+                        },
                         {
                             path: ":sectionId/section_category/create",
                             name: "section_category_create",
@@ -96,14 +168,14 @@ export default new Router({
                             params: true,
                             props: true
                         },
-                         {
+                        {
                             path: ":sectionId/section_category/:categoryId/update",
                             name: "section_category_update",
                             component: UpdateCategoryComponent,
                             params: true,
                             props: true
                         },
-                        
+
                         {
                             path: ":contentId/update",
                             name: "content.update",
@@ -115,27 +187,26 @@ export default new Router({
                         ///CateGory item
                         , {
                             path: ":sectionId/section_category/:categoryId",
-                            name: "section_category_content",
+                            // name: "section_category_content",
                             component: ContentCateComponent,
                             params: true,
                             props: true,
-                            children: [
-                                {
-                                   path: "",
+                            children: [{
+                                    path: "",
                                     name: "section_category_content",
                                     component: IndexCateComponent,
                                     params: true,
                                     props: true,
                                 },
-                                 {
-                                   path: "create",
+                                {
+                                    path: "create",
                                     name: "section_category_content.create",
                                     component: CreateCateContentComponent,
                                     params: true,
                                     props: true,
                                 },
-                                    {
-                                   path: "update",
+                                {
+                                    path: "update",
                                     name: "section_category_content.update",
                                     component: UpdateCateContentComponent,
                                     params: true,
@@ -173,6 +244,208 @@ export default new Router({
         {
             path: "*",
             component: PageNotFound
+        },
+
+
+        //BLog
+
+        {
+            path: '/admin/theloai',
+       
+            component: HomeComponent,
+            redirect: {
+                name: "theloai"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"theloai",
+                    component:TheLoaiComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:"create",
+                    name:"theloai.create",
+                    component:CreateTheLoaiComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:":theloaiId/update",
+                    name:"theloai.update",
+                    component:UpdateTheLoaiComponent,
+                    props: true,
+                    params: true,
+                }
+        
+            ]
+        },
+        {
+            path: '/admin/loaitin',
+   
+            component: HomeComponent,
+            redirect: {
+                name: "loaitin"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"loaitin",
+                    component:LoaiTinComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:"create",
+                    name:"loaitin.create",
+                    component:CreateLoaiTinComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:":loaitinId/update",
+                    name:"loaitin.update",
+                    component:UpdateLoaiTinComponent,
+                    props: true,
+                    params: true,
+                }
+        
+            ]
+        },
+        {
+            path: '/admin/tintuc',
+ 
+            component: HomeComponent,
+            redirect: {
+                name: "tintuc"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"tintuc",
+                    component:TinTucComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:"create",
+                    name:"tintuc.create",
+                    component:CreateTinTucComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:":tintucId/update",
+                    name:"tintuc.update",
+                    component:UpdateTinTucComponent,
+                    props: true,
+                    params: true,
+                }
+        
+            ]
+        },
+        {
+            path: '/admin/slide',
+
+            component: HomeComponent,
+            redirect: {
+                name: "slide"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"slide",
+                    component:SlideComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:"create",
+                    name:"slide.create",
+                    component:SlideCreateCompoent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:":slideId/update",
+                    name:"slide.update",
+                    component:UpdateSildeComponent,
+                    props: true,
+                    params: true,
+                }
+        
+            ]
+        },
+        {
+            path: '/admin/contact',
+      
+            component: HomeComponent,
+            redirect: {
+                name: "contact"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"contact",
+                    component:ContactComponent,
+                    props: true,
+                    params: true,
+                },
+        
+            ]
+        },
+        {
+            path: '/admin/comment',
+
+            component: HomeComponent,
+            redirect: {
+                name: "comment"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"comment",
+                    component:CommentComponent,
+                    props: true,
+                    params: true,
+                },
+        
+            ]
+        },
+        {
+            path: '/admin/user',
+
+            component: HomeComponent,
+            redirect: {
+                name: "user"
+            },
+            children: [
+                {
+                    path:"",
+                    name:"user",
+                    component:UserComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:"create",
+                    name:"user.create",
+                    component:CreateUserComponent,
+                    props: true,
+                    params: true,
+                },
+                {
+                    path:":userId/update",
+                    name:"user.update",
+                    component:UpdateUserComponent,
+                    props: true,
+                    params: true,
+                }
+        
+            ]
         }
+
+
     ]
 });

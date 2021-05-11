@@ -12,6 +12,6 @@ class Theme extends Model
     protected $fillable = ['id', 'title', 'link_code', 'description', 'section_id'];
     public function section()
     {
-        return $this->belongsTo(Section::class);
+        return $this->hasMany(Section::class,'theme_id');
     }
 }

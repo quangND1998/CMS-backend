@@ -4,9 +4,11 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use Illuminate\Validation\ValidationException;
-use App\Exceptions\InvalidOrderException;
 
+use Illuminate\Support\Facades\Auth;
+use App\Exceptions\InvalidOrderException;
+use Illuminate\Auth\AuthenticationException;
+use Exception;
 class Handler extends ExceptionHandler
 {
     /**
@@ -35,6 +37,40 @@ class Handler extends ExceptionHandler
     ];
 
     /**
+     * Report or log an exception.
+     *
+     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     *
+     * @param  \Exception  $exception
+     * @return void
+     */
+  
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
+     */
+  
+
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        return redirect()->guest(route('login'));
+    }
+    /**
      * Register the exception handling callbacks for the application.
      *
      * @return void
@@ -43,8 +79,9 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (InvalidOrderException $e, $request) {
             if ($request->expectsJson()) {
-                return response('Sorry, validation failed.', 422);
+                return response()->view('errors', [], 500);
             }
         });
     }
+  
 }

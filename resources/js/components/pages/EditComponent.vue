@@ -42,6 +42,9 @@
                 <span v-if="errors.name" class="label label-danger">
                     {{ errors.name[0] }}
                 </span>
+                 <span v-if="errors.name_vn" class="label label-danger">
+                    {{ errors.name_vn[0] }}
+                </span>
                 <span v-if="errors.description" class="label label-danger">
                     {{ errors.description[0] }}
                 </span>
@@ -58,7 +61,16 @@
                     class="form-control"
                     id="name"
                     placeholder="Enter title"
-                    
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="name_vn"
+                    v-model="page.name_vn"
+                    class="form-control"
+                    id="name_vn"
+                    placeholder="Enter title"
                 />
             </div>
 
@@ -70,7 +82,7 @@
                     id="description"
                     placeholder="Enter a body"
                     rows="8"
-                    required
+                    
                 ></textarea>
             </div>
             <div class="custom-file mb-3">
@@ -137,6 +149,7 @@ export default {
         update() {
             const formData = new FormData();
             formData.append("name", this.$refs.name.value);
+            formData.append("name_vn", this.$refs.name_vn.value);
             formData.append("description", this.$refs.description.value);
             formData.append("image", this.$refs.image.files[0]);
             this.page.name = formData.get("name");
@@ -145,23 +158,21 @@ export default {
 
             this.$store
                 .dispatch(PAGE_EDIT, { slug: this.postId, formdata: formData })
-             .then(response => {
-                this.successful = true;
-                this.error = false;
-                this.errors = [];
-                this.$router.push({name:'page'});
-              })
-              .catch(error => {
-                if (!_.isEmpty(error.response)) {
-                  if ((error.response.status == 422)) {
-                    this.errors = error.response.data.errors;
-                    this.successful = false;
-                    this.error = true;
-                  }
-                }
-              });
-          
-
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.push({ name: "page" });
+                })
+                .catch(error => {
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                    }
+                });
         },
         getPost() {
             this.$store.dispatch(GET_PAGE_ID, this.postId);

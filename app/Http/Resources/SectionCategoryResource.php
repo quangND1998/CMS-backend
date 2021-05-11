@@ -18,6 +18,8 @@ class SectionCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'title_vn' => $this->title_vn,
+            'type' => $this->type,
             'section' => $this->section_id
         ];
     }

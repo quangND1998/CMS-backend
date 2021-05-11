@@ -12,15 +12,18 @@ const initialState = {
 
   category: {
     title: "",
+    title_vn:"",
     type:""
     
   }
   ,
     types: [
+      { text: 'Product',value:-1 },
       { text: 'Video',value:0 },
       { text: 'Image',value:1 },
       { text: 'Tour',value:2 },
       { text: 'Scan',value:3 },
+
   ]
 
 

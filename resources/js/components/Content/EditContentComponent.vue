@@ -68,23 +68,34 @@
             <div class="form-group">
                 <input
                     type="title"
-                    ref="subtitle"
-                    v-model="content.subtitle"
+                    ref="title_vn"
+                    v-model="content.title_vn"
                     class="form-control"
-                    id="subtitle"
-                    placeholder="Enter subtitle"
+                    id="title_vn"
+                    placeholder="Enter title"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="tour360"
+                    v-model="content.tour360"
+                    class="form-control"
+                    id="tour360"
+                    placeholder="Enter link tour360 "
                 />
             </div>
 
             <div class="form-group">
-                <textarea
+                <input
                     class="form-control"
-                    v-model="content.short_content"
-                    ref="short_content"
-                    id="short_content"
-                    placeholder="Enter  short_content"
+                    v-model="content.scan"
+                    ref="scan"
+                    id="scan"
+                    placeholder="Enter link scan"
                     rows="8"
-                ></textarea>
+                />
             </div>
 
             <div class="form-group">
@@ -94,6 +105,16 @@
                     ref="detail"
                     id="detail"
                     placeholder="Enter  detail"
+                    rows="8"
+                ></textarea>
+            </div>
+            <div class="form-group">
+                <textarea
+                    class="form-control"
+                    v-model="content.detail_vn"
+                    ref="detail_vn"
+                    id="detail_vn"
+                    placeholder="Enter  detail VietNamese"
                     rows="8"
                 ></textarea>
             </div>
@@ -126,7 +147,6 @@
                     name="image"
                     class="custom-file-input"
                     id="image"
-                    required
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
@@ -143,22 +163,22 @@
             </div> -->
             <div class="modal-footer justify-content-center">
                 <router-link
-                :to="{
-                    name: 'content',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
-                class="btn btn-white block"
-            >
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                Back
-            </router-link>
-            <button
-                type="submit"
-                @click.prevent="update"
-                class="btn btn-primary block"
-            >
-                Update
-            </button>
+                    :to="{
+                        name: 'content',
+                        params: { sectionId: sectionId, postId: postId }
+                    }"
+                    class="btn btn-white block"
+                >
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    Back
+                </router-link>
+                <button
+                    type="submit"
+                    @click.prevent="update"
+                    class="btn btn-primary block"
+                >
+                    Update
+                </button>
             </div>
         </form>
     </div>
@@ -202,21 +222,34 @@ export default {
         update() {
             const formData = new FormData();
             formData.append("title", this.$refs.title.value);
-            formData.append("subtitle", this.$refs.subtitle.value);
-            formData.append("short_content", this.$refs.short_content.value);
+            formData.append("title_vn", this.$refs.title_vn.value);
+            formData.append("tour360", this.$refs.tour360.value);
+            formData.append("scan", this.$refs.scan.value);
             formData.append("detail", this.$refs.detail.value);
-            // formData.append("icon_class", this.$refs.icon_class.value);
+            formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
-
             formData.append("image", this.$refs.image.files[0]);
-            // formData.append("icon_image", this.$refs.icon_image.files[0]);
 
-            this.$store.dispatch(ITEM_EDIT, {
-                slug: this.content.id,
-                data: formData
-            })
-            ;
-            this.$router.back();
+            this.$store
+                .dispatch(ITEM_EDIT, {
+                    slug: this.content.id,
+                    data: formData
+                })
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.back();
+                })
+                .catch(error => {
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                    }
+                });
         },
         getPost() {
             this.$store.dispatch(GET_ITEM_ID, this.contentId);

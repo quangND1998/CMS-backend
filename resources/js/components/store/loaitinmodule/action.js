@@ -1,0 +1,7 @@
+export const FETCH_LOAI_TIN = 'FETCH_LOAI_TIN';
+export const GET_LOAI_TIN_ID = 'GET_LOAI_TIN_ID';
+export const LOAI_TIN_EDIT = 'LOAI_TIN_EDIT';
+export const LOAI_TIN_DELETE = 'LOAI_TIN_DELETE';
+export const LOAI_TIN_SECTION = 'LOAI_TIN_SECTION';
+export const LOAI_TIN_PUBLISH = 'LOAI_TIN_PUBLISH';
+export const LOAI_TIN_RESET_STATE = "LOAI_TIN_RESET_STATE"

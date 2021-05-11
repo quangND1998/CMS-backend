@@ -16,10 +16,9 @@ class CreateThemeTable extends Migration
         Schema::create('theme', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->string('description')->nullable();
+            $table->string('image_template');
             $table->string('link_code');
-            $table->integer('section_id')->unique()->unsigned();
-            $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
+         
             $table->timestamps();
         });
     }

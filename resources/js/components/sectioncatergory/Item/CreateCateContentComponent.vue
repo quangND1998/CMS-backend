@@ -56,37 +56,44 @@
                     {{ errors.icon_class[0] }}
                 </span>
             </div> -->
-
-            <div class="form-group">
+  <div class="form-group">
                 <input
                     type="title"
                     ref="title"
                     class="form-control"
                     id="title"
-                    placeholder="Enter title"
+                    placeholder="Enter title English"
                     required
                 />
             </div>
             <div class="form-group">
                 <input
                     type="title"
-                    ref="subtitle"
+                    ref="title_vn"
                     class="form-control"
-                    id="subtitle"
-                    placeholder="Enter subtitle"
-
+                    id="title_vn"
+                    placeholder="Enter title Vienamese"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <input
+                    type="title"
+                    ref="tour360"
+                    class="form-control"
+                    id="tour360"
+                    placeholder="Enter tour360"
                 />
             </div>
 
             <div class="form-group">
-                <textarea
+                <input
                     class="form-control"
-                    ref="short_content"
+                    ref="scan"
                     id="short_content"
-                    placeholder="Enter  short_content"
+                    placeholder="Enter  link scan"
                     rows="8"
-
-                ></textarea>
+                />
             </div>
 
             <div class="form-group">
@@ -94,19 +101,20 @@
                     class="form-control"
                     ref="detail"
                     id="detail"
-                    placeholder="Enter  detail"
+                    placeholder="Enter  detail English"
                     rows="8"
                 ></textarea>
             </div>
             <div class="form-group">
-                <input
-                    type="title"
-                    ref="icon_class"
+                <textarea
                     class="form-control"
-                    id="icon_class"
-                    placeholder="Enter class icon"
-                />
+                    ref="detail_vn"
+                    id="detail_vn"
+                    placeholder="Enter  detail VietNamese"
+                    rows="8"
+                ></textarea>
             </div>
+       
             <div class="form-group">
                 <input
                     type="title"
@@ -114,7 +122,6 @@
                     class="form-control"
                     id="video"
                     placeholder="Enter video link"
-
                 />
             </div>
 
@@ -129,17 +136,7 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
-            <div class="custom-file mb-3">
-                <input
-                    type="file"
-                    ref="icon_image"
-                    name="icon_image"
-                    class="custom-file-input"
-                    id="icon_image"
-                    required
-                />
-                <label class="custom-file-label">Choose file...</label>
-            </div>
+          
 
             <router-link
                 :to="{
@@ -163,7 +160,7 @@
 
 <script>
 import { PAGE_RESET_STATE } from "../../store/actions/page";
-import { CREATE_ITEM,CREATE_ITEM_BY_CATEGORY} from "../../store/actions/item";
+import { CREATE_ITEM, CREATE_ITEM_BY_CATEGORY } from "../../store/actions/item";
 import { mapGetters } from "vuex";
 import store from "../../store/store";
 export default {
@@ -174,8 +171,8 @@ export default {
         postId: {
             required: true
         },
-        categoryId:{
-            required:true
+        categoryId: {
+            required: true
         }
     },
     data() {
@@ -196,21 +193,37 @@ export default {
         create() {
             const formData = new FormData();
             formData.append("title", this.$refs.title.value);
-            formData.append("subtitle", this.$refs.subtitle.value);
-            formData.append("short_content", this.$refs.short_content.value);
+            formData.append("title_vn", this.$refs.title_vn.value);
+            formData.append("tour360", this.$refs.tour360.value);
+            formData.append("scan", this.$refs.scan.value);
             formData.append("detail", this.$refs.detail.value);
-            formData.append("icon_class", this.$refs.icon_class.value);
+            formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
-
             formData.append("image", this.$refs.image.files[0]);
-            formData.append("icon_image", this.$refs.icon_image.files[0]);
 
-            this.$store.dispatch(CREATE_ITEM_BY_CATEGORY, {
-                slug: this.categoryId,
-                data: formData
-            });
+            this.$store
+                .dispatch(CREATE_ITEM_BY_CATEGORY, {
+                    slug: this.categoryId,
+                    data: formData
+                })
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$router.back();
+                })
+                .catch(error => {
+                    console.log(error);
+                    if (!_.isEmpty(error.response)) {
+                        if (error.response.status == 422) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                    }
+                });
 
-            this.$router.back();
+
 
             //   this.$refs.name.value = "";
             //   this.$refs.description.value = "";

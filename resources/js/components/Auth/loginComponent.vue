@@ -22,11 +22,11 @@
             <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
             <div class="form-group">
                 <label class="control-label" for="email">Email Address</label>
-                <input class="form-control" v-model="user.email" type="email" id="email" name="email" placeholder="Email address" autofocus value="">
+                <input class="form-control" v-model="auth.email" type="email" id="email" name="email" placeholder="Email address" autofocus value="">
             </div>
             <div class="form-group">
                 <label class="control-label" for="password">Password</label>
-                <input class="form-control" v-model="user.password"  type="password" id="password" name="password" placeholder="Password">
+                <input class="form-control" v-model="auth.password"  type="password" id="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
                 <div class="utility">
@@ -61,7 +61,7 @@ export default {
         };
     },
        computed: {
-          ...mapGetters(["user","isAuthenticated","msg",'data'])
+          ...mapGetters(["auth","isAuthenticated","msg",'data'])
        },
          async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
@@ -71,7 +71,7 @@ export default {
        methods: {
 
               login(){
-                 this.$store.dispatch(LOGIN,{email:this.user.email,password:this.user.password})
+                 this.$store.dispatch(LOGIN,{email:this.auth.email,password:this.auth.password})
                  .then(() => this.$router.push({ name: "index" ,params: { msg : this.msg } }));
            }
          

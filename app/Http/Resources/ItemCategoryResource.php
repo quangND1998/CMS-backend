@@ -19,13 +19,13 @@ class ItemCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'title_vn' => $this->title_vn,
             'video' => $this->video,
             'image' => $this->image,
-            'subtitle' => $this->subtitle,
-            'short_content' => $this->short_content,
+            'tour360' => $this->tour360,
+            'scan' => $this->scan,
             'detail' => $this->detail,
-            'icon_image' => $this->icon_image,
-            'icon_class' => $this->icon_class,
+            'detail_vn' => $this->detail_vn,
             'section_category' => $this->section_category_id
         ];
     }

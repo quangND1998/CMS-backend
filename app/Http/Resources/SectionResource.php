@@ -19,8 +19,12 @@ class SectionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'text' => $this->text,
+            'title_vn' => $this->title_vn,
+            'text_vn' => $this->text_vn,
             'sub_title' => $this->sub_title,
-            'template_id' => $this->template_id,
+            'sub_title_vn' => $this->sub_title_vn,
+            'number' => $this->number,
+            'theme_id' => $this->theme_id,
         ];
     }
     public function withResponse($request, $response)

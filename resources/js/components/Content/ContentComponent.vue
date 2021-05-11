@@ -69,16 +69,19 @@
                 </button>
             </router-link>
         </div>
-        <div class="col-md-12 px-0">
+       <div class="col-md-12 px-0">
             <div class="">
                 <div class="table-responsive">
                     <table id="user-table" class="table" style="width:100%">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Sub-title</th>
-                                <th>Short content</th>
+                                <th>Title English</th>
+                                <th>Title Vienamese</th>
+                                <th>Detail English</th>
+                                <th>Detail Vienamese</th>
+                                <th>Scan Link</th>
+                                <th>Tour360</th>
                                 <th>Video</th>
                                 <th>Image</th>
                                 <th></th>
@@ -95,29 +98,56 @@
                                 <td class="align-middle">
                                     {{ content.title }}
                                 </td>
+                                  <td class="align-middle">
+                                    {{ content.title_vn }}
+                                </td>
                                 <td
                                     :class="[
-                                        content.subtitle ? '' : 'text-success',
+                                        content.detail ? '' : 'text-success',
                                         'align-middle'
                                     ]"
                                 >
                                     {{
-                                        content.subtitle
-                                            ? content.subtitle
+                                        content.detail
+                                            ? content.detail
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                   <td
+                                    :class="[
+                                        content.detail_vn ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.detail_vn
+                                            ? content.detail_vn
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                   <td
+                                    :class="[
+                                        content.scan ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.scan
+                                            ? content.scan
                                             : "Updating..."
                                     }}
                                 </td>
                                 <td
                                     :class="[
-                                        content.short_content
+                                        content.tour360
                                             ? ''
                                             : 'text-success',
                                         'align-middle'
                                     ]"
                                 >
                                     {{
-                                        content.short_content
-                                            ? content.short_content
+                                        content.tour360
+                                            ? content.tour360
                                             : "Updating..."
                                     }}
                                 </td>
@@ -138,18 +168,20 @@
                                 <td>
                                     <img
                                         :src="content.image"
-                                        style="width: 80px"
+                                        style="width: 150px"
                                     />
                                 </td>
 
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
-                                            name: 'content.update',
+                                            name:
+                                                'content.update',
                                             params: {
                                                 contentId: content.id,
                                                 sectionId: sectionId,
-                                                postId: postId
+                                                postId: postId,
+                                             
                                             }
                                         }"
                                     >
@@ -157,10 +189,7 @@
                                             class="btn btn-xs btn-info deleteRecord"
                                             id="deleteRecord"
                                         >
-                                            <i
-                                                class="fa fa-pencil mr-0"
-                                                aria-hidden="true"
-                                            ></i>
+                                            Update
                                         </button>
                                     </router-link>
                                     <button
@@ -168,30 +197,12 @@
                                         id="deleteRecord"
                                         @click="deletePost(content.id)"
                                     >
-                                        <i
-                                            class="fa fa-trash mr-0"
-                                            aria-hidden="true"
-                                        ></i>
+                                        Delete
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="modal-footer justify-content-center">
-                        <router-link
-                            :to="{
-                                name: 'section',
-                                params: { postId: postId }
-                            }"
-                            class="btn btn-white block"
-                        >
-                            <i
-                                class="fa fa-long-arrow-left"
-                                aria-hidden="true"
-                            ></i>
-                            Back
-                        </router-link>
-                    </div>
                 </div>
             </div>
         </div>

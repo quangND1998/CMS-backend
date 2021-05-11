@@ -43,7 +43,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                         
+                                <th>Name Vienamese</th>
+                                <th>type</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -69,6 +70,28 @@
                                     >
                                         {{ category.title }}
                                     </router-link>
+                                </td>
+                                    <td class="align-middle text-uppercase font-weight-bold">
+                                    <router-link
+                                        :to="{
+                                            name: 'section_category_content',
+                                            params: {
+                                                categoryId: category.id,
+                                                postId: postId,
+                                                sectionId: sectionId
+                                            }
+                                        }"
+                                    >
+                                        {{ category.title_vn }}
+                                    </router-link>
+                                </td>
+                                
+                                    <td class="align-middle text-uppercase font-weight-bold">
+                                       
+                                             {{ bindingData(category)}}
+                                       
+                                       
+                                 
                                 </td>
 
                                 <!-- <td class="align-middle">{{ section.sub_title }}</td> -->
@@ -124,7 +147,7 @@ export default {
      
     },
     computed: {
-        ...mapGetters(["section_categorys", "category"])
+        ...mapGetters(["section_categorys", "category","types"])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
@@ -142,6 +165,16 @@ export default {
         deletePost(id) {
             this.$store.dispatch(SECTION_CATEGORY_DELETE, id);
             this.getPosts();
+        },
+        bindingData(data){
+            // console.log(data.type)
+            // console.log()
+         
+           for(let i=0 ;i<this.types.length;i++){
+               if(this.types[i].value == data.type){
+                   return this.types[i].text
+               }
+           }
         }
     }
 }

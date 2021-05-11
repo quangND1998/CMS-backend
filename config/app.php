@@ -67,8 +67,9 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
-
+    'timezone' => 'Asia/Ho_Chi_Minh',
+    'date_format' => 'Y-m-d',
+    'date_format_js' => 'yy-mm-dd',
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -80,7 +81,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locales' => ['en' => 'English', 'vn' => 'VietNam'],
 
     /*
     |--------------------------------------------------------------------------

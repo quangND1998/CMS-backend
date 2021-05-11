@@ -1,5 +1,5 @@
 @extends('client.layout.index')
-<div class="wrap-header" id="introduction">
+ <div class="wrap-header" id="introduction">
     <div class="video">
         <video src="assets/video/header-video.mp4" loop muted autoplay>
         </video>
@@ -59,85 +59,12 @@
 
     </header>
 </div>
-<!-- End Section App Feature -->
 
 
-<!-- PARTNER -->
-<div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true"
-    class="vc_row wpb_row vc_row-fluid vc_custom_1557304191682 vc_row-has-fill vc_row-no-padding">
-    <div class="wpb_column vc_column_container vc_col-sm-12">
-        <div class="vc_column-inner ">
-            <div class="wpb_wrapper">
-                <div class="integrio_module_spacing">
-                    <div class="spacing_size spacing_size-initial" style="height:20px;"></div>
-                </div>
-                <div class="integrio_module_clients clearfix anim-grayscale">
-                    <div class="integrio_module_carousel-wrapper">
-                        <div id=integrio_carousel_5d42ab0eb2e86 class="integrio_module_carousel pag_align_center">
-                            <div class="integrio_carousel_slick"
-                                data-slick='{"slidesToShow":6,"slidesToScroll":1,"infinite":true,"variableWidth":false,"autoplay":true,"autoplaySpeed":"3000","speed":300,"arrows":false,"dots":false,"adaptiveHeight":false,"responsive":[{"breakpoint":1025,"settings":{"slidesToShow":4,"slidesToScroll":1}},{"breakpoint":800,"settings":{"slidesToShow":2,"slidesToScroll":1}},{"breakpoint":480,"settings":{"slidesToShow":1,"slidesToScroll":1}}]}'>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_1.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_2.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_3.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_4.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_5.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_6.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_7.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_8.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_9.png" alt="" /></div>
-                                </div>
-                                <div class="clients_image">
-                                    <div class="image_wrapper"><img class="main_image"
-                                            src="assets/images/partner/partners_10.png" alt="" /></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="integrio_module_spacing">
-                    <div class="spacing_size spacing_size-initial" style="height:20px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- PARTNER -->
-
-<!-- LOGIN FORM -->
-
-
-@foreach ($data->section as $section)
-    <!-- VIRTUAL SALES GALLERY - VR SHOWROOM  -->
-    
-    @include($section->template)
-
+@foreach ($sections as $section)
+    @include($section->theme->link_code)
 @endforeach
+
 
 
 
@@ -150,7 +77,7 @@
             </div>
         </div>
         <div class="blog-slider center-align owl-carousel owl-theme">
-            {{-- @foreach ($data['theloai'] as $theloai)
+            @foreach ($blog['theloai'] as $theloai)
                     @if (count($theloai->LoaiTin) > 0)
                         <?php $data = $theloai->TinTuc
                             ->where('NoiBat', 1)
@@ -162,7 +89,7 @@
                                 <div class="post-block">
                                     <a href="tin-tuc/{{ $remaining_article['TieuDeKhongDau'] }}.html">
                                         <img class="img-fluid image_new w-100"
-                                            src="upload/tintuc/{{ $remaining_article['Hinh'] }}" alt="" />
+                                            src="{{ $remaining_article['Hinh'] }}" alt="" />
                                     </a>
                                     @if (Config::get('app.locale') == 'vn')
                                         <h5 class=" text-center mb-3 mt-3">{{ $remaining_article['TieuDe'] }}</h5>
@@ -175,7 +102,7 @@
                             </div>
                         @endforeach
                     @endif
-                @endforeach --}}
+                @endforeach
         </div>
     </div>
 </section>
@@ -217,7 +144,7 @@
     </div>
 
 </div>
-
+{{-- 
 <div class="slider" id="slider_image_pre">
     <div class="w3-content w3-display-container">
         <button onclick="closeImage_pre()" class="w3-button w3-black w3-display-close">&#10006;</button>
@@ -257,7 +184,7 @@
         </iframe>
     </div>
 
-</div>
+</div> --}}
 
 
 

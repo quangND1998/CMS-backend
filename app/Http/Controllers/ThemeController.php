@@ -8,61 +8,36 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\ThemeResource;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Controllers\Traits\FileUploadTrait;
 class ThemeController extends Controller
 {
-    public function getTheme($id)
+    use FileUploadTrait;
+    public function getTheme()
     {
-        $section = Section::find($id);
-
-        if (!$section) {
-            return response()->json('The section is not found ', Response::HTTP_BAD_REQUEST);
-        } elseif ($section->theme == null) {
-            $response = [
-                'msg' => 'Theme is null',
-                'data' => null
-            ];
-            return response()->json($response, Response::HTTP_OK);
-        } else {
-            $response = [
-                'msg' => 'Get Theme sucsscesfully',
-                'data' => $section->theme
-            ];
-            return response()->json($response, Response::HTTP_OK);
-        }
+        $themes = Theme::get();
+        return  ThemeResource::collection($themes);
     }
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
 
-        $section = Section::find($id);
-        if (!$section) {
-            $msg = [
-                'msg' => 'The section is not found'
-            ];
-            return response()->json($msg, Response::HTTP_BAD_REQUEST);
-        }
-        if ($section->theme) {
-            $msg = [
-                'msg' => 'Theme already exsit'
-            ];
-            return response()->json($msg, Response::HTTP_BAD_REQUEST);
-        }
-        $validator = Validator::make($request->all(), [
+        
+     
+        $this->validate($request, [
             'title' => 'required|unique:theme',
             'link_code' => 'required',
-
+            'image_template.*'=>'required|mimes:png,jpg,jpeg',
 
         ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
-        }
-
+    
         $theme = new Theme();
         $theme->title = $request->title;
         $theme->link_code = $request->link_code;
-        $theme->description = $request->description;
-        $theme->section_id = $section->id;
+        if ($request->hasfile('image_template')) {
+            $files = $request->file('image_template');
+            $destinationpath = 'images/theme/';
+            $theme->image_template = $this->image($files, $destinationpath);
+        }
         $theme->save();
         return new ThemeResource($theme);
     }
@@ -88,20 +63,21 @@ class ThemeController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'title' => 'required',
-
             'link_code' => 'required',
-
+            'image_template.*'=>'mimes:png,jpg,jpeg',
 
         ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
+        $attribute = $theme->image_template;
+        if ($request->hasfile('image_template')) {
+            $files = $request->file('image_template');
+            $destinationpath = 'images/theme/';
+            $theme->image_template = $this->update_image($files, $destinationpath, $attribute);
         }
+    
         $theme->title = $request->title;
         $theme->link_code = $request->link_code;
-        $theme->description = $request->description;
         $theme->save();
 
         return new ThemeResource($theme);
@@ -116,6 +92,9 @@ class ThemeController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
+        $extension = " ";
+        $image = $theme->image_template;
+        $this->DeleteFolder($image, $extension);
         $theme->delete();
         return response()->json('Delet Sussessfully', Response::HTTP_OK);
     }
