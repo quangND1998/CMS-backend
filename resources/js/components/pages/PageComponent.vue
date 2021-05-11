@@ -1,7 +1,5 @@
 <template>
     <div id="posts">
-        
-        
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
@@ -69,22 +67,13 @@
         </div> -->
         <div class="col-md-12 px-0">
             <div class="">
-                <!-- <div class="d-flex">
-                    <h3 class="tile-title">Page list</h3>
-                    <router-link
-                        :to="{ name: 'create' }"
-                        class="btn btn-success"
-                    >
-                        ADD NEW
-                    </router-link>
-                </div> -->
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name english</th>
-                                    <th>Name VN</th>
+                                <th>Name (EN)</th>
+                                <th>Name (VN)</th>
                                 <th>Description</th>
                                 <th>Image</th>
                                 <th>#</th>
@@ -124,7 +113,11 @@
                                         style="width: 100px"
                                     />
                                 </td>
-                                <td v-else><span class="text-success">Updating...</span></td>
+                                <td v-else>
+                                    <span class="text-success"
+                                        >Updating...</span
+                                    >
+                                </td>
                                 <td class="align-middle">
                                     <router-link
                                         :to="{
@@ -133,14 +126,20 @@
                                         }"
                                         class="btn btn-xs btn-info"
                                     >
-                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
+                                        <i
+                                            class="fa fa-pencil mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </router-link>
                                     <button
                                         type="button"
                                         @click="deletePost(post.id)"
                                         class="btn btn-xs btn-danger"
                                     >
-                                       <i class="fa fa-trash mr-0" aria-hidden="true"></i>
+                                        <i
+                                            class="fa fa-trash mr-0"
+                                            aria-hidden="true"
+                                        ></i>
                                     </button>
                                 </td>
                             </tr>
@@ -171,7 +170,7 @@ export default {
         msg: {}
     },
     computed: {
-        ...mapGetters(["posts", "page", "isAuthenticated", 'time'])
+        ...mapGetters(["posts", "page", "isAuthenticated", "time"])
     },
     data() {
         return {};

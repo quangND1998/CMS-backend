@@ -94,7 +94,6 @@ import { PAGE_RESET_STATE } from "../store/actions/page";
 import { CREATE_SECTION_CATEGORY  } from "../store/actions/sectioncategory";
 import { mapGetters } from "vuex";
 import store from "../store/store";
-
 export default {
     props: {
         postId: {
@@ -115,7 +114,6 @@ export default {
         await store.dispatch(PAGE_RESET_STATE);
         next();
     },
-
     computed: {
         ...mapGetters(["category","types"])
     },
@@ -124,7 +122,6 @@ export default {
             this.category.title = this.$refs.title.value;
             this.category.title_vn = this.$refs.title_vn.value;
             
-
             this.$store.dispatch(CREATE_SECTION_CATEGORY, this.sectionId)
             .then(response => {
                         this.successful = true;
@@ -135,7 +132,6 @@ export default {
                             params: { posId: this.postId ,sectionId:this.sectionId}
                         });
               
-
                     })
                     .catch(error => {
                  
@@ -151,7 +147,6 @@ export default {
           
             this.$refs.title.value = "";
             this.$refs.title_vn.value = "";
-
         }
     }
 };

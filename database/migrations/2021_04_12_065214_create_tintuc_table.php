@@ -29,7 +29,7 @@ class CreateTintucTable extends Migration
             $table->integer('NoiBat')->default(0);
             $table->integer('SoLuotXem')->default(0);
             $table->integer('idLoaiTin')->unsigned();
-            $table->foreign('idLoaiTin')->references('id')->on('LoaiTin');
+            $table->foreign('idLoaiTin')->references('id')->on('LoaiTin')->onDelete('cascade');
 
             $table->timestamps();
         });

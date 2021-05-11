@@ -26,6 +26,8 @@ class ItemResource extends JsonResource
             'scan' => $this->scan,
             'detail' => $this->detail,
             'detail_vn' => $this->detail_vn,
+            'icon_class' =>$this->icon_class,
+            'video_upload' => $this->video_upload
           
         ];
     }

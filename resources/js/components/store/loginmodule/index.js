@@ -30,14 +30,14 @@ export const actions = {
     
             })
                 .then(({ data }) => {
-                    // console.log('a');
+
                     commit(LOGIN_SUCCESS, data);
                     resolve(data);
                 })
                 .catch(({ response }) => {
-                    // console.log('b');
+                   
                     commit(PURGE_AUTH, response.data);
-                    // reject(response);
+                    reject(response);
                 });
         });
     },
@@ -64,12 +64,14 @@ export const actions = {
 }
 export const mutations = {
     [LOGIN_SUCCESS](state, data) {
+        // console.log(data);
         state.isAuthenticated = true;
         state.pending = true;
         state.msg = data.msg
         token.saveToken(data.token)
     },
     [PURGE_AUTH](state, data) {
+        // console.log(data);
         state.isAuthenticated = false;
         state.auth.email = "";
         state.auth.password = "";
@@ -77,7 +79,7 @@ export const mutations = {
         state.token = "";
         state.msg = "email or password wrong"
         state.data = data
-        console.log(data);
+        // console.log(data);
         token.destroyToken();
     },
     [RESET_STATE]() {

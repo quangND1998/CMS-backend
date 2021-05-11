@@ -1,5 +1,18 @@
 <template>
-  <div id="page-wrapper">
+  <div id="posts">
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item active">
+                       User
+                    </li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-user-o" aria-hidden="true"></i> Update user</h1>
+            </div>
+        </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -29,9 +42,9 @@
                 </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                    
+
                         <form @submit.prevent="create()">
-                       
+
                             <div class="form-group">
                                 <p><label>Tên Người Dùng</label></p>
                                 <input v-model="get_user.username" class="form-control input-width" type="text" name="username" placeholder="Nhập tên người dùng" value="" />
@@ -116,7 +129,7 @@ export default {
             error: false,
             successful: false,
             errors: [],
-       
+
         };
     },
     computed: {

@@ -20,7 +20,8 @@ const initialState = {
     theme: {
         title: "",
         link_code: "",
-        image_template: {}
+        image_template: {},
+        type:0
     },
     isAuthenticated: !!jwtToken.getToken()
 };
@@ -53,7 +54,8 @@ export const actions = {
         return themeService.update(formdata, slug);
     },
     [GET_THEME_ID]({ commit }, slug) {
-        // console.log(slug);
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
         return themeService
             .getbyid(slug)
             .then(({ data }) => {
@@ -63,7 +65,7 @@ export const actions = {
                 throw new Error(error);
             });
 
-        // }
+        }
     },
 
     [THEME_PUBLISH](content, data) {

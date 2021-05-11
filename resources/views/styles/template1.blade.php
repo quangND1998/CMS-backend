@@ -1,4 +1,4 @@
-<section id="vr-showroom">
+<section id="{{Str::of($section->text)->slug('-')}}">
     <div class="container">
         <div class="row">
             <div class="tab col-lg-12 ml-auto mr-auto text-center wow fadeInUp" data-wow-duration=".2s"

@@ -71,6 +71,8 @@
                                 <th>Tour360</th>
                                 <th>Video</th>
                                 <th>Image</th>
+                                <th>ICon class</th>
+                                <th>Video Upload</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -158,6 +160,30 @@
                                         style="width: 150px"
                                     />
                                 </td>
+                                     <td
+                                    :class="[
+                                        content.icon_class ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.icon_class
+                                            ? content.icon_class
+                                            : "Updating..."
+                                    }}
+                                </td>
+                                        <td
+                                    :class="[
+                                        content.video_upload ? '' : 'text-success',
+                                        'align-middle'
+                                    ]"
+                                >
+                                    {{
+                                        content.video_upload
+                                            ? content.video_upload
+                                            : "Updating..."
+                                    }}
+                                </td>
 
                                 <td class="align-middle">
                                     <router-link
@@ -176,7 +202,7 @@
                                             class="btn btn-xs btn-info deleteRecord"
                                             id="deleteRecord"
                                         >
-                                            Update
+                                            <i class="fa fa-pencil mr-0" aria-hidden="true"></i>
                                         </button>
                                     </router-link>
                                     <button
@@ -184,7 +210,7 @@
                                         id="deleteRecord"
                                         @click="deletePost(content.id)"
                                     >
-                                        Delete
+                                       <i class="fa fa-trash mr-0" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>

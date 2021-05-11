@@ -56,7 +56,7 @@
                     {{ errors.icon_class[0] }}
                 </span>
             </div> -->
-  <div class="form-group">
+            <div class="form-group">
                 <input
                     type="title"
                     ref="title"
@@ -114,7 +114,7 @@
                     rows="8"
                 ></textarea>
             </div>
-       
+
             <div class="form-group">
                 <input
                     type="title"
@@ -125,6 +125,16 @@
                 />
             </div>
 
+
+            <div class="form-group">
+                <input
+                    class="form-control"
+                    ref="icon_class"
+                    id="icon_class"
+                    placeholder="Enter icon_class"
+                    rows="8"
+                >
+            </div>
             <div class="custom-file mb-3">
                 <input
                     type="file"
@@ -136,7 +146,19 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
-          
+              <div class="custom-file mb-3">
+                <input
+                    type="file"
+                    ref="video_upload"
+                    name="video_upload"
+                    class="custom-file-input"
+                    id="video_upload"
+                    required
+                />
+                <label class="custom-file-label"
+                    >Choose image file for Upload Video...</label
+                >
+            </div>
 
             <router-link
                 :to="{
@@ -183,7 +205,7 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(["page"])
+        ...mapGetters(["page",'content'])
     },
     async beforeRouteLeave(to, from, next) {
         await store.dispatch(PAGE_RESET_STATE);
@@ -199,8 +221,9 @@ export default {
             formData.append("detail", this.$refs.detail.value);
             formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
+            formData.append("icon_class", this.$$refs.icon_class.value);
             formData.append("image", this.$refs.image.files[0]);
-
+            formData.append("video_upload", this.$refs.video_upload.files[0]);
             this.$store
                 .dispatch(CREATE_ITEM_BY_CATEGORY, {
                     slug: this.categoryId,
@@ -222,9 +245,6 @@ export default {
                         }
                     }
                 });
-
-
-
             //   this.$refs.name.value = "";
             //   this.$refs.description.value = "";
             //     this.$refs.name.value = "";

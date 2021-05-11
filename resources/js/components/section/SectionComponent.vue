@@ -67,7 +67,8 @@
                                             name: 'content',
                                             params: {
                                                 sectionId: section.id,
-                                                postId: postId
+                                                postId: postId,
+                                                themeId: section.theme_id
                                             }
                                         }"
                                     >

@@ -23,7 +23,7 @@
 
         <!-- {{page}}   -->
         <form @submit.prevent="create()">
-            <div
+            <!-- <div
                 :class="[
                     'form-group m-1 p-3',
                     successful ? 'alert-success' : ''
@@ -32,8 +32,8 @@
                 <span v-if="successful" class="label label-sucess"
                     >Published!</span
                 >
-            </div>
-            <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+            </div> -->
+            <!-- <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
                 <span v-if="errors.name" class="label label-danger">
                     {{ errors.name[0] }}
                 </span>
@@ -46,7 +46,7 @@
                 <span v-if="errors.image" class="label label-danger">
                     {{ errors.image[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
@@ -54,7 +54,7 @@
                     ref="name"
                     class="form-control"
                     id="name"
-                    placeholder="Enter page name"
+                    placeholder="Enter the page name"
                 />
             </div>
             <div class="form-group">
@@ -63,7 +63,7 @@
                     ref="name_vn"
                     class="form-control"
                     id="name_vn"
-                    placeholder="Enter page name"
+                    placeholder="Enter the Vietnamese page name"
                 />
             </div>
 
@@ -72,7 +72,7 @@
                     class="form-control"
                     ref="description"
                     id="description"
-                    placeholder="Enter description for page"
+                    placeholder="Enter a description for the page"
                     rows="8"
                 ></textarea>
             </div>
@@ -109,7 +109,6 @@
 import { PAGE_PUBLISH, PAGE_RESET_STATE } from "../store/actions/page";
 import { mapGetters } from "vuex";
 import store from "../store/store";
-
 export default {
     props: {},
     data() {
@@ -133,11 +132,10 @@ export default {
             formData.append("name_vn", this.$refs.name_vn.value);
             formData.append("description", this.$refs.description.value);
             formData.append("image", this.$refs.image.files[0]);
-    
+
             // this.page.name = formData.get('name')
             // this.page.description = formData.get('description')
             // this.page.image = formData.get('image')
-
             this.$store
                 .dispatch(PAGE_PUBLISH, formData)
                 .then(response => {
@@ -155,24 +153,6 @@ export default {
                         }
                     }
                 });
-
-            // axios
-            //   .post("/api/page", formData)
-            //   .then(response => {
-            //     this.successful = true;
-            //     this.error = false;
-            //     this.errors = [];
-            //     this.$router.push({name:'page'});
-            //   })
-            //   .catch(error => {
-            //     if (!_.isEmpty(error.response)) {
-            //       if ((error.response.status == 422)) {
-            //         this.errors = error.response.data.errors;
-            //         this.successful = false;
-            //         this.error = true;
-            //       }
-            //     }
-            //   });
         }
     }
 };

@@ -19,7 +19,7 @@ import {
 import ApiService from "../../../common/api.service";
 import jwtToken from "../../../common/token";
 const initialState = {
-    time:'aaaaaaaaaaaaaaa',
+    time: 'aaaaaaaaaaaaaaa',
     posts: [],
     isLoading: true,
     page: {
@@ -41,11 +41,9 @@ export const actions = {
             return pageService
                 .query()
                 .then(({ data }) => {
-                    // console.log(data)
                     commit(FETCH_END, data);
                 })
                 .catch(error => {
-                    console.log(data);
                     throw new Error(error);
                 });
         }

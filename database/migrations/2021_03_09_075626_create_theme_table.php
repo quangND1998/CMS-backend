@@ -18,7 +18,7 @@ class CreateThemeTable extends Migration
             $table->string('title')->unique();
             $table->string('image_template');
             $table->string('link_code');
-         
+            $table->tinyInteger('type')->default(0);         
             $table->timestamps();
         });
     }

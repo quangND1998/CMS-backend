@@ -1,49 +1,31 @@
 <template>
-      <div id="page-wrapper">
-       
+      <div id="posts">
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item active"><a href="/admin/page/" aria-current="page" class="router-link-exact-active router-link-active">
+                        News
+                    </a></li>
+                    <li class="breadcrumb-item active"><a href="/admin/page/" aria-current="page" class="router-link-exact-active router-link-active">
+                        Update
+                    </a></li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-newspaper-o"></i></i> Update News</h1>
+            </div>
+        </div>
+
+        <div></div>
+
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Tin Tức
-                        <small>> Update</small>
-                    </h1>
-                </div>
-
-                <div
-                    :class="['form-group m-1 p-3', error ? 'alert-danger' : '']"
-                >
-                    <span v-if="errors.idTheLoai" class="label label-danger">
-                        {{ errors.idTheLoai[0] }}
-                    </span>
-                    <span v-if="errors.TieuDe" class="label label-danger">
-                        {{ errors.TieuDe[0] }}
-                    </span>
-                    <span v-if="errors.TomTat" class="label label-danger">
-                        {{ errors.TomTat[0] }}
-                    </span>
-                    <span v-if="errors.NoiDung" class="label label-danger">
-                        {{ errors.NoiDung[0] }}
-                    </span>
-                    <span v-if="errors.TieuDe_en" class="label label-danger">
-                        {{ errors.TieuDe_en[0] }}
-                    </span>
-                    <span v-if="errors.TomTat_en" class="label label-danger">
-                        {{ errors.TomTat_en[0] }}
-                    </span>
-                    <span v-if="errors.NoiDung_en" class="label label-danger">
-                        {{ errors.NoiDung_en[0] }}
-                    </span>
-                    <span v-if="errors.Hinh" class="label label-danger">
-                        {{ errors.Hinh[0] }}
-                    </span>
-                </div>
-                <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     <form @submit.prevent="create()">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1"
-                                >Chọn Thể Loại</label
+                                >Chọn thể loại</label
                             >
                             <select
                                 class="form-control"
@@ -60,10 +42,10 @@
                         </div>
 
                         <div class="content_vn">
-                            <h3>Tin tức Tiếng Việt</h3>
+                            <h3>Tin tức tiếng Việt</h3>
 
                             <div class="form-group">
-                                <p><label>Tiêu Đề</label></p>
+                                <p><label>Tiêu đề</label></p>
                                 <input
                                     type="text"
                                     class="form-control input-width"
@@ -177,7 +159,7 @@
                             </label>
                         </div>
 
-                    
+
                         <button type="submit" class="btn btn-success">
                             Thêm
                         </button>
@@ -219,7 +201,7 @@ export default {
             error: false,
             successful: false,
             errors: [],
-          
+
         };
     },
     computed: {

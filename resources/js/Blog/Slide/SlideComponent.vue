@@ -6,12 +6,15 @@
                     <li class="breadcrumb-item">
                         <i class="fa fa-home fa-lg"></i>
                     </li>
-
-                
+                    <li class="breadcrumb-item active">
+                        Slider list
+                    </li>
                 </ul>
-                <h1 class="mt-2"><i class="fa fa-th-list"></i> Slide list</h1>
+                <h1 class="mt-2"><i class="fa fa-sliders" aria-hidden="true"></i> Slide list</h1>
             </div>
-    
+            <router-link :to="{ name: 'slide.create' }" class="btn btn-success">
+                ADD NEW
+            </router-link>
         </div>
 
         <div></div>
@@ -34,14 +37,14 @@
                             <tr v-for="(slide, index) in slides" :key="slide.id">
                                 <td class="align-middle">{{ index + 1 }}</td>
                                 <td class="align-middle">
-                                 
+
                                         {{ slide.slide_name }}
-                                  
+
                                 </td>
                                 <td class="align-middle">
-                                   
+
                                         {{ slide.slide_content }}
-                                  
+
                                 </td>
                                 <td class="align-middle">
                                     {{ slide.slide_url }}

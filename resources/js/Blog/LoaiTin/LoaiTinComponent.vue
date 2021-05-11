@@ -1,6 +1,21 @@
 <template>
     <div id="posts">
-
+        <div class="app-title">
+            <div>
+                <ul class="app-breadcrumb breadcrumb side">
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home fa-lg"></i>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        Loại tin
+                    </li>
+                </ul>
+                <h1 class="mt-2"><i class="fa fa-tags" aria-hidden="true"></i> Loại tin</h1>
+            </div>
+            <router-link :to="{ name: 'loaitin.create' }" class="btn btn-success">
+                ADD NEW
+            </router-link>
+        </div>
 
         <div class="col-md-12 px-0">
             <div class="">
@@ -9,9 +24,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tên Loại Tin</th>
-                                <th>Tên Không Dấu</th>
-                                 <th>Tên Thể loại</th>
+                                <th>Tên loại tin</th>
+                                <th>Tên không dấu</th>
+                                <th>Tên thể loại</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -107,7 +122,7 @@ export default {
             this.$store.dispatch(FETCH_THELOAI);
         },
         binding(id) {
-   
+
             for (let i = 0; i < this.theloais.length; i++) {
                 if (this.theloais[i].id == id) {
                     return this.theloais[i].Ten;

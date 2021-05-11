@@ -9,7 +9,7 @@ class Theme extends Model
 {
     use HasFactory;
     protected $table = 'theme';
-    protected $fillable = ['id', 'title', 'link_code', 'description', 'section_id'];
+    protected $fillable = ['id', 'title', 'link_code', 'description','theme', 'section_id'];
     public function section()
     {
         return $this->hasMany(Section::class,'theme_id');

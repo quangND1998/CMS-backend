@@ -22,33 +22,17 @@
         </div>
 
         <form>
-            <!-- <div
-                :class="[
-                    'form-group m-1 p-3',
-                    successful ? 'alert-success' : ''
-                ]"
-            >
-                <span v-if="successful" class="label label-sucess"
-                    >Published!</span
-                >
-            </div> -->
-            <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
-                <!-- <span v-if="errors.scan" class="label label-danger">
-                    {{ errors.scan[0] }}
-                </span>
-                <span v-if="errors.tour360" class="label label-danger">
-                    {{ errors.tour360[0] }}
-                </span> -->
+       
+            <!-- <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
+              
                 <span v-if="errors.image" class="label label-danger">
                     {{ errors.image[0] }}
                 </span>
-                <!-- <span v-if="errors.detail" class="label label-danger">
-                    {{ errors.detail[0] }}
-                </span> -->
+            
                 <span v-if="errors.title" class="label label-danger">
                     {{ errors.sub_title[0] }}
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <input
@@ -108,7 +92,16 @@
                     rows="8"
                 ></textarea>
             </div>
-       
+
+            <div class="form-group">
+                <input
+                    class="form-control"
+                    ref="icon_class"
+                    id="icon_class"
+                    placeholder="Enter icon_class"
+                    rows="8"
+                >
+            </div>
             <div class="form-group">
                 <input
                     type="title"
@@ -130,7 +123,17 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
-          
+              <div class="custom-file mb-3">
+                <input
+                    type="file"
+                    ref="video_upload"
+                    name="video_upload"
+                    class="custom-file-input"
+                    id="video_upload"
+                    required
+                />
+                <label class="custom-file-label">Choose image file for Upload Video...</label>
+            </div>
             <div class="modal-footer justify-content-center">
                 <router-link
                     :to="{
@@ -193,7 +196,8 @@ export default {
             formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
             formData.append("image", this.$refs.image.files[0]);
-
+            formData.append("icon_class", this.$refs.icon_class.value);
+            formData.append("video_upload", this.$refs.video_upload.files[0]);
 
             this.$store
                 .dispatch(CREATE_ITEM, {
@@ -205,8 +209,15 @@ export default {
                     this.error = false;
                     this.errors = [];
                     this.$router.back();
-                })
-                .catch(error => {
+                      setTimeout(() => {
+                        this.$toast.success("Add a new content asuccessfully", {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
+                }).catch(error => {
+                    console.log(error);
+            
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
@@ -214,6 +225,12 @@ export default {
                             this.error = true;
                         }
                     }
+                    setTimeout(() => {
+                        this.$toast.error("Add a new content fail", {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
                 });
 
             //   this.$refs.name.value = "";

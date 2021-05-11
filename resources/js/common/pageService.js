@@ -5,7 +5,6 @@ export const pageService = {
         return ApiService.query("page")
     },
     get() {
-
         return ApiService.get('page');
     },
     getbyid(slug) {

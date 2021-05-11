@@ -13,6 +13,8 @@ import slide from './slideModule'
 import contact from './contactModule'
 import comment from './commentModule'
 import users from './userModule'
+import Scan3dModule from './modules/Scan3d'
+
 Vue.use(Vuex)
 
 
@@ -30,19 +32,19 @@ export default new Vuex.Store({
         slide,
         contact,
         comment,
-        users
+        users,
+        Scan3dModule,
     },
 
     state: {
         result: 0
-        
     },
     getters: {
         tenResult: state => {
             return state.result * 10;
         },
         nameResult: state => {
-            return state.result +'name product'
+            return state.result + 'name product'
         }
     }
 })

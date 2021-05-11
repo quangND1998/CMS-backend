@@ -42,7 +42,7 @@
                 <span v-if="errors.name" class="label label-danger">
                     {{ errors.name[0] }}
                 </span>
-                 <span v-if="errors.name_vn" class="label label-danger">
+                <span v-if="errors.name_vn" class="label label-danger">
                     {{ errors.name_vn[0] }}
                 </span>
                 <span v-if="errors.description" class="label label-danger">
@@ -63,7 +63,6 @@
                     placeholder="Enter title"
                 />
             </div>
-          
 
             <div class="form-group">
                 <input
@@ -73,7 +72,6 @@
                     id="link_code"
                     placeholder="Enter a link_code"
                     rows="8"
-                    
                 />
             </div>
             <div class="custom-file mb-3">
@@ -86,8 +84,44 @@
                 />
                 <label class="custom-file-label">Choose file...</label>
             </div>
+
+            <div class="form-group">
+                <p><label>Chọn kiểu tempate</label></p>
+                <label class="radio-inline">
+                    <input
+                        name="article_rep"
+                        value="1"
+                        checked=""
+                        v-model="theme.type"
+                        type="radio"
+                    />Có Section Category
+                </label>
+                <label class="radio-inline">
+                    <input
+                        name="article_rep"
+                        value="0"
+                        v-model="theme.type"
+                        type="radio"
+                    />Không Section Category
+                </label>
+                       </label>
+                      <label class="radio-inline">
+                    <input
+                        name="article_rep"
+                        value="3"
+                        v-model="theme.type"
+                        type="radio"
+                    />Blog
+                </label>
+
+                
+                
+            </div>
             <div class="modal-footer justify-content-center">
-                <router-link :to="{ name: 'theme' }" class="btn btn-white block">
+                <router-link
+                    :to="{ name: 'theme' }"
+                    class="btn btn-white block"
+                >
                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
@@ -142,13 +176,20 @@ export default {
             formData.append("title", this.$refs.title.value);
 
             formData.append("link_code", this.$refs.link_code.value);
-            formData.append("image_template", this.$refs.image_template.files[0]);
+            formData.append(
+                "image_template",
+                this.$refs.image_template.files[0]
+            );
+            formData.append("type", this.theme.type);
             // this.page.name = formData.get("name");
             // this.page.description = formData.get("description");
             // this.page.image = formData.get("image");
 
             this.$store
-                .dispatch(THEME_EDIT, { slug: this.themeId, formdata: formData })
+                .dispatch(THEME_EDIT, {
+                    slug: this.themeId,
+                    formdata: formData
+                })
                 .then(response => {
                     this.successful = true;
                     this.error = false;

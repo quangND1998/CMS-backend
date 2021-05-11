@@ -213,6 +213,12 @@ export default {
                         name: "section",
                         params: { posId: this.postId }
                     });
+                      setTimeout(() => {
+                        this.$toast.success("Add a new scan 3D successfully", {
+                            position: "bottom-right",
+                            duration: 5000
+                        });
+                    }, 1300);
                 })
                 .catch(error => {
                   

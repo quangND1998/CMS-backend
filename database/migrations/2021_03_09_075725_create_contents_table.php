@@ -23,6 +23,8 @@ class CreateContentsTable extends Migration
             $table->text('detail_vn')->nullable();
             $table->string('title');
             $table->string('title_vn');
+            $table->string('icon_class')->nullable();
+            $table->string('video_upload')->nullable();
             $table->unsignedInteger('section_id')->unsigned()->nullable();
             $table->foreign('section_id')->references('id')->on('section')->onDelete('cascade');
             $table->unsignedInteger('section_category_id')->unsigned()->nullable();

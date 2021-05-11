@@ -1,4 +1,4 @@
-    <section id="solution">
+    <section id="{{Str::of($section->text)->slug('-')}}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 ml-auto mr-auto text-center topsection_margin wow fadeInUp"

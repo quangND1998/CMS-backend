@@ -32,17 +32,6 @@
             </router-link>
         </div>
 
-        <router-link
-            :to="{
-                name: 'content',
-                params: { sectionId: sectionId, postId: postId }
-            }"
-        >
-            <button type="button" class="p-1 mx-3 float-left btn btn-sucess">
-                BACK
-            </button>
-        </router-link>
-        <h2>Create Content</h2>
         <form>
             <div
                 :class="[
@@ -128,10 +117,11 @@
                     v-model="content.detail"
                     ref="detail"
                     id="detail"
-                    placeholder="Enter  detail"
+                    placeholder="Enter detail"
                     rows="8"
                 ></textarea>
             </div>
+
             <div class="form-group">
                 <textarea
                     class="form-control"
@@ -142,7 +132,11 @@
                     rows="8"
                 ></textarea>
             </div>
-            <!-- <div class="form-group">
+
+      
+
+            <div class="form-group">
+
                 <input
                     type="title"
                     ref="icon_class"
@@ -152,7 +146,7 @@
                     placeholder="Enter class icon"
                     required
                 />
-            </div> -->
+            </div>
             <div class="form-group">
                 <input
                     type="title"
@@ -174,13 +168,26 @@
                 />
                 <label class="custom-file-label">Choose image file...</label>
             </div>
+            <div class="custom-file mb-3">
+                <input
+                    type="file"
+                    ref="video_upload"
+                    name="video_upload"
+                    class="custom-file-input"
+                    id="video_upload"
+                    required
+                />
+                <label class="custom-file-label"
+                    >Choose image file for Upload Video...</label
+                >
+            </div>
 
             <button
                 type="submit"
                 @click.prevent="update"
                 class="btn btn-primary block"
             >
-                Submit
+                Update
             </button>
         </form>
     </div>
@@ -230,12 +237,15 @@ export default {
             formData.append("detail", this.$refs.detail.value);
             formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
+            formData.append("icon_class", this.$refs.icon_class.value);
             formData.append("image", this.$refs.image.files[0]);
-
-            this.$store.dispatch(ITEM_EDIT, {
-                slug: this.content.id,
-                data: formData
-            }).then(response => {
+            formData.append("video_upload", this.$refs.video_upload.files[0]);
+            this.$store
+                .dispatch(ITEM_EDIT, {
+                    slug: this.content.id,
+                    data: formData
+                })
+                .then(response => {
                     this.successful = true;
                     this.error = false;
                     this.errors = [];
@@ -250,7 +260,6 @@ export default {
                         }
                     }
                 });
-           
         },
         getPost() {
             this.$store.dispatch(GET_ITEM_ID, this.contentId);

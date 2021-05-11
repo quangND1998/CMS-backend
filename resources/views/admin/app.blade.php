@@ -10,28 +10,12 @@
     <link rel="stylesheet" type="text/css" href="backend/css/main.css" />
     <link rel="stylesheet" type="text/css"
         href="backend/css/font-awesome/4.7.0/css/font-awesome.min.css" />
-       
-
     <!-- Bootstrap Core CSS -->
-   
-
     <!-- MetisMenu CSS -->
-  
-
-  
-
     <!-- Custom CSS -->
-  
     <!-- Custom Fonts -->
-    
-
     <!-- DataTables CSS -->
     {{-- <link href="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet"> --}}
-
- 
-   
-
-
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -83,10 +67,8 @@
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
                 responsive: true,
-
             });
         });
-
     </script>
 </body>
 
