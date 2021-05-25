@@ -1,7 +1,16 @@
 import Vue from "vue";
 
-import {  theloaiService } from "../../../common/theloaiService";
-import {FETCH_THELOAI, THELOAI_DELETE, THELOAI_EDIT,THELOAI_PUBLISH,THELOAI_RESET_STATE,GET_THELOAI_ID} from '../theloaimodule/action'
+import {
+    theloaiService
+} from "../../../common/theloaiService";
+import {
+    FETCH_THELOAI,
+    THELOAI_DELETE,
+    THELOAI_EDIT,
+    THELOAI_PUBLISH,
+    THELOAI_RESET_STATE,
+    GET_THELOAI_ID
+} from '../theloaimodule/action'
 import {
     FETCH_END,
     FETCH_ID_THELOAI,
@@ -13,26 +22,32 @@ import {
 import ApiService from "../../../common/api.service";
 import jwtToken from "../../../common/token";
 const initialState = {
-    time:'aaaaaaaaaaaaaaa',
+    time: 'aaaaaaaaaaaaaaa',
     theloais: [],
     isRun: true,
     theloai: {
         Ten: "",
-  
+
     },
     isAuthenticated: !!jwtToken.getToken()
 };
 
-export const state = {...initialState };
+export const state = {
+    ...initialState
+};
 
 export const actions = {
-    [FETCH_THELOAI]({ commit }) {
+    [FETCH_THELOAI]({
+        commit
+    }) {
         commit(FETCH_START);
         if (jwtToken.getToken()) {
             ApiService.setHeader();
             return theloaiService
                 .query()
-                .then(({ data }) => {
+                .then(({
+                    data
+                }) => {
                     // console.log(data)
                     commit(FETCH_END, data);
                 })
@@ -42,37 +57,55 @@ export const actions = {
                 });
         }
     },
-    [THELOAI_EDIT]({ commit, state }, { slug, data }) {
+    [THELOAI_EDIT]({
+        commit,
+        state
+    }, {
+        slug,
+        data
+    }) {
 
 
         return theloaiService.update(slug, data);
 
     },
-    [GET_THELOAI_ID]({ commit }, slug) {
-        // console.log(slug);
-        return theloaiService
-            .getbyid(slug)
-            .then(({ data }) => {
-                commit(FETCH_ID_THELOAI, { data });
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
+    [GET_THELOAI_ID]({
+        commit
+    }, slug) {
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
+            return theloaiService
+                .getbyid(slug)
+                .then(({
+                    data
+                }) => {
+                    commit(FETCH_ID_THELOAI, {
+                        data
+                    });
+                })
+                .catch(error => {
+                    throw new Error(error);
+                });
 
-        // }
+        }
     },
 
     [THELOAI_PUBLISH](content, data) {
         // console.log('modeul', content)
         //   console.log('modeul',data)
-        return theloaiService.create(data);
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
+            return theloaiService.create(data);
+        }
     },
     [THELOAI_DELETE](context, slug) {
         // console.log(context);
         //   console.log('pageservice',slug)
         return theloaiService.destroy(slug);
     },
-    [THELOAI_RESET_STATE]({ commit }) {
+    [THELOAI_RESET_STATE]({
+        commit
+    }) {
         commit(RESET_STATE);
     }
 };
@@ -80,13 +113,17 @@ export const mutations = {
     [FETCH_START](state) {
         state.isRun = true;
     },
-    [FETCH_END](state, { data }) {
+    [FETCH_END](state, {
+        data
+    }) {
         // console.log(data)
         state.theloais = data;
 
         state.isRun = false;
     },
-    [FETCH_ID_THELOAI](state, { data }) {
+    [FETCH_ID_THELOAI](state, {
+        data
+    }) {
         state.theloai = data.theloai;
     },
     [RESET_STATE]() {
@@ -106,7 +143,7 @@ const getters = {
     isRun(state) {
         return state.isRun;
     },
-   
+
 };
 
 export default {

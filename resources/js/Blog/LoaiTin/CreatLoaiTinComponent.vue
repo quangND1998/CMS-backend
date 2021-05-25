@@ -1,6 +1,6 @@
 <template>
     <div id="posts">
-                <div class="app-title">
+        <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <li class="breadcrumb-item">
@@ -13,13 +13,14 @@
                         Add new
                     </li>
                 </ul>
-                <h1 class="mt-2"><i class="fa fa-tags" aria-hidden="true"></i> Loại tin</h1>
+                <h1 class="mt-2">
+                    <i class="fa fa-tags" aria-hidden="true"></i> Loại tin
+                </h1>
             </div>
         </div>
 
         <div class="container-fluid">
             <div class="row">
-
                 <div class="col-lg-7" style="padding-bottom:120px">
                     <form>
                         <div class="form-group">
@@ -105,39 +106,39 @@ export default {
             this.$store
                 .dispatch(LOAI_TIN_PUBLISH, this.loaitin)
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
+                    setTimeout(() => {
+                        this.$toast.success("Add new Loai Tin successfully", {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                    }, 1000);
                     this.$router.push({ name: "loaitin" });
                 })
                 .catch(error => {
-                    // console.log(error);
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+                  
+                    if (error.response.data.errors.Ten) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.Ten[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 2000);
+                    }
+                    if (error.response.data.errors.theloai_id) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.theloai_id[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
                     }
                 });
-
-            // axios
-            //   .post("/api/page", formData)
-            //   .then(response => {
-            //     this.successful = true;
-            //     this.error = false;
-            //     this.errors = [];
-            //     this.$router.push({name:'page'});
-            //   })
-            //   .catch(error => {
-            //     if (!_.isEmpty(error.response)) {
-            //       if ((error.response.status == 422)) {
-            //         this.errors = error.response.data.errors;
-            //         this.successful = false;
-            //         this.error = true;
-            //       }
-            //     }
-            //   });
         },
         fetchTheLoai() {
             this.$store.dispatch(FETCH_THELOAI);

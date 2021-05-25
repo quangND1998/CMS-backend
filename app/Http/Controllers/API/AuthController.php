@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Tymon\JWTAuth\Exceptions\JWTException;
-
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 class AuthController extends Controller
 {
     public function login(Request $request)
@@ -34,13 +35,20 @@ class AuthController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
         $user = Auth::user();
-        $response = [
-            'msg' => 'You are logged in!',
-            'token' => $token,
-            'user_name' => $user->name,
-
-        ];
+        Auth::login($user, $remember = true);
+         $response = [
+                'msg' => 'You are logged in!',
+                'token' => $token,
+                'user_name' => $user->name,
+            ];
+   
+    
+ 
         return response()->json($response, Response::HTTP_OK);
+      
+       
+    
+       
     }
     public function logout(Request $request)
     {
@@ -56,4 +64,5 @@ class AuthController extends Controller
     {
         return response(JWTAuth::getToken(), Response::HTTP_OK);
     }
+
 }

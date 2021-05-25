@@ -18,4 +18,5 @@ class Page extends Model
     {
         return $this->hasOne(Style::class, 'page_id');
     }
+
 }

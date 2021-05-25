@@ -53,10 +53,14 @@ export const actions = {
     
             })
                 .then(({ data }) => {
-                    // console.log('a');
+                
                     commit(PURGE_AUTH, data);
                     resolve(data);
-                })
+                }).catch(({ response }) => {
+                  
+                    commit(PURGE_AUTH, response.data);
+                    reject(response);
+                });
         });
     },
  

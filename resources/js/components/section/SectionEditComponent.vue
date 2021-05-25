@@ -24,28 +24,7 @@
 
         </div> -->
         <form>
-            <div
-                :class="[
-                    'form-group m-1 p-3',
-                    successful ? 'alert-success' : ''
-                ]"
-            >
-                <span v-if="successful" class="label label-sucess"
-                    >Published!</span
-                >
-            </div>
-            <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
-                <span v-if="errors.title" class="label label-danger">
-                    {{ errors.title[0] }}
-                </span>
-                <span v-if="errors.text" class="label label-danger">
-                    {{ errors.text[0] }}
-                </span>
-                <span v-if="errors.sub_title" class="label label-danger">
-                    {{ errors.sub_title[0] }}
-                </span>
-            </div>
-
+          
             <div class="form-group">
                 <input
                     v-model="section.title"
@@ -149,7 +128,7 @@
 
             <div class="modal-footer justify-content-center">
                 <router-link
-                    :to="{ name: 'section', params: { postId: id } }"
+                    :to="{ name: 'section', params: { postId: postId } }"
                     class="btn btn-white block"
                 >
                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
@@ -184,7 +163,7 @@ export default {
         sectionId: {
             required: true
         },
-        id: {
+        postId: {
             required: true
         }
     },
@@ -220,7 +199,7 @@ export default {
                     this.errors = [];
                     this.$router.push({
                         name: "section",
-                        params: { postId: this.id }
+                        params: { postId: this.postId }
                     });
                 })
                 .catch(error => {

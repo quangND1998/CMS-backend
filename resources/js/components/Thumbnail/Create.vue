@@ -22,7 +22,6 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input
-                            v-model="name"
                             type="text"
                             ref="name"
                             class="form-control"
@@ -35,23 +34,10 @@
                         <input
                             type="file"
                             ref="thumbnail"
-                            name="thumbnail"
                             class="form-control"
                             id="thumbnail"
-                            @change="onFileSelected"
                         />
                     </div>
-                    <!-- <div class="form-group custom-file mb-3">
-                        <input
-                            type="file"
-                            name="thumbnail"
-                            id="thumbnail"
-                            ref="thumbnail"
-                            class="custom-file-input"
-                            @change="onFileSelected"
-                        />
-                        <label class="custom-file-label">Choose file...</label>
-                    </div> -->
 
                     <div class="modal-footer justify-content-center">
                         <router-link
@@ -66,7 +52,7 @@
                             Back
                         </router-link>
                         <button
-                            @click.prevent="onSubmit"
+                            @click.prevent="create"
                             class="btn btn-primary block"
                         >
                             Create
@@ -83,24 +69,15 @@ import API from "../../common/API/API";
 import jwtToken from "../../common/token";
 import ApiService from "../../common/api.service";
 export default {
-    data() {
-        return {
-            name: "",
-            selectedFile: null
-        };
-    },
     methods: {
-        onFileSelected(e) {
-            this.selectedFile = e.target.files[0];
-        },
-        onSubmit() {
-            const data = new FormData();
-            data.append("name", this.name);
-            data.append("thumbnail", this.selectedFile, this.selectedFile.name);
+        create() {
+            const formData = new FormData();
+          formData.append("name", this.$refs.name.value);;
+          formData.append("thumbnail", this.$refs.thumbnail.files[0]);
             if (jwtToken.getToken()) {
                 ApiService.setHeader();
-                ApiService.post("thumbnail", data).then(res => {
-                    if (res.status === 200) {
+                ApiService.post("thumbnail", formData)
+                    .then(res => {
                         this.$router.push({ name: "thumbnail" });
                         setTimeout(() => {
                             this.$toast.success(
@@ -111,20 +88,31 @@ export default {
                                 }
                             );
                         }, 1300);
-                    }
-                    else{
-                         setTimeout(() => {
-                            this.$toast.error();(
-                                "Add a new thumbnail image Fail",
-                                {
-                                    position: "bottom-right",
-                                    duration: 5000
-                                }
-                            );
-                        }, 1300);
-
-                    }
-                });
+                    })
+                    .catch(error => {
+                        if (error.response.data.errors.name) {
+                            setTimeout(() => {
+                                this.$toast.error(
+                                    error.response.data.errors.name[0],
+                                    {
+                                        position: "top-right",
+                                        duration: 3000
+                                    }
+                                );
+                            }, 1000);
+                        }
+                          if (error.response.data.errors.thumbnail) {
+                            setTimeout(() => {
+                                this.$toast.error(
+                                    error.response.data.errors.thumbnail[0],
+                                    {
+                                        position: "top-right",
+                                        duration: 3000
+                                    }
+                                );
+                            }, 1000);
+                        }
+                    });
             }
         }
     }

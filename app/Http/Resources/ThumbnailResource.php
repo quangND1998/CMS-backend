@@ -2,28 +2,25 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class ThumbnailResource extends ResourceCollection
+class ThumbnailResource extends JsonResource
 {
     /**
-     * Transform the resource collection into an array.
+     * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+    public static $wrap = 'thumbnail';
     public function toArray($request)
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
             'thumbnail' => $this->thumbnail,
-            'isPriority' => $this->isPriority,
+            
+          
         ];
-    }
-
-    public function withResponse($request, $response)
-    {
-        $response->header('200', 'successfully');
     }
 }

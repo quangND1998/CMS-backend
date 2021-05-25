@@ -9,6 +9,15 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('backend/css/font-awesome/4.7.0/css/font-awesome.min.css') }}" />
     <title>Login - {{ config('app.name') }}</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6X5HYCVBCC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6X5HYCVBCC');
+</script>
 </head>
 
 <body>

@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
+use App\Observers\PageObserver;
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\Page;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Page::observe(PageObserver::class);
     }
 }

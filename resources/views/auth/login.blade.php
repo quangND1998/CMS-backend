@@ -19,8 +19,19 @@
         <div class="logo">
             <h1>{{ config('app.name') }}</h1>
         </div>
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were problems with input:
+            <br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="login-box">
-            <form class="login-form" action="{{ route('login') }}" method="POST" role="form">
+            <form class="login-form" action="{{ route('auth.login') }}" method="POST" role="form">
                 @csrf
                 <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
                 <div class="form-group">

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\SectionResource;
-
+use Illuminate\Support\Facades\Crypt;
 class PageResource extends JsonResource
 {
     /**
@@ -17,13 +17,11 @@ class PageResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id' =>$this->id,
             'name' => $this->name,
-            'name_vn' => $this->name_vn,
-            'description' => $this->description,
+            'name_vn' =>$this->name_vn,
+            'description' =>  $this->description,
             'image' => $this->image,
-            'section' => SectionResource::collection($this->section)
-
         ];
     }
     public function withResponse($request, $response)

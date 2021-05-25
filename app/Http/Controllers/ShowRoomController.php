@@ -9,15 +9,17 @@ use App\Models\TheLoai;
 use App\Models\Slide;
 use App\Models\LoaiTin;
 use App\Models\TinTuc;
-
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Cache;
 class ShowRoomController extends Controller
 {
     public function index()
     {
         $data = Page::first();
-       
-
-        if ($data) {
+        
+        
+        if ($data){
             $sections = Section::where('page_id', $data->id)->orderBy('number')->get();
             // return $sections;
             // $section = $data->section->orderBy('number')->get();
@@ -25,6 +27,7 @@ class ShowRoomController extends Controller
                 'theloai' => TheLoai::all(),
                 'slide' => Slide::all()
             ];
+           
             return view('landingpage.landingpage', compact('sections','blog'));
         } else {
             return redirect('admin/login');
@@ -40,6 +43,12 @@ class ShowRoomController extends Controller
     	$tintuc = TinTuc::where('TieuDeKhongDau',$unsigned_name)->first();
     	$tinnoibat = TinTuc::where('NoiBat',1)->take(4)->get();
     	$tinlienquan = TinTuc::where('idLoaiTin',$tintuc->idLoaiTin)->take(4)->get();
+          
+     
+        // $user =Auth::user();
+
+  
+
     	return view('client.news.detail',['tintuc' => $tintuc, 'tinnoibat' => $tinnoibat, 'tinlienquan' => $tinlienquan]);
     }
 }

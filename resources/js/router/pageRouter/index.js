@@ -22,7 +22,7 @@ import UpdateCateContentComponent from "../../components/sectioncatergory/Item/U
 import CreateTemplateComponent from "../../components/Theme/CreateTemplateComponent";
 import ListTemplateComponent from "../../components/Theme/ListTemplateComponent";
 import EditTemplateComponent from "../../components/Theme/EditTemplateComponent";
-
+import ContentIndexComponent from "../../components/Content/ContentIndexComponent"
 
 export default [
     {
@@ -31,6 +31,9 @@ export default [
         component: HomeComponent,
         redirect: {
             name: "list"
+        },
+        meta: {
+            requiredRoles: 1
         },
         children: [{
                 path: "",
@@ -81,9 +84,20 @@ export default [
                 component: CreateComponent,
                 props: true
             },
+              {
+                path: ":postId/update",
+                name: "update",
+                component: EditComponent,
+                params: true,
+                props: true
+            },
+        //   Section Route
             {
                 path: ":postId/section",
                 component: IndexSectionComponent,
+                redirect: {
+                    name: "section"
+                },
                 params: true,
                 props: true,
                 children: [{
@@ -94,19 +108,21 @@ export default [
                         params: true
                     },
                     {
-                        path: ":sectionId/theme/:themeId/item/",
-                        name: "content",
-                        component: ContentComponent,
+                        path: "create",
+                        name: "section_create",
+                        component: CreateSectionComponent,
                         params: true,
                         props: true
                     },
                     {
-                        path: ":sectionId/theme/:themeId/item/create",
-                        name: "content_create",
-                        component: CreateContentComponent,
+                        path: ":sectionId/update",
+                        name: "section.update",
+                        component: SectionEditComponent,
                         params: true,
                         props: true
                     },
+
+                   
                     {
                         path: ":sectionId/theme/:themeId/section_category",
                         name: "section_category",
@@ -129,13 +145,40 @@ export default [
                         props: true
                     },
 
+                  ///content
                     {
-                        path: ":contentId/theme/:themeId/update",
-                        name: "content.update",
-                        component: EditContentComponent,
+                        path: ":sectionId/theme/:themeId/item",
+                        component: ContentIndexComponent,
+                        redirect: {
+                            name: "content"
+                        },
                         params: true,
-                        props: true
+                        props: true,
+                        children :[  
+                            {
+                                path: "",
+                                name: "content",
+                                component: ContentComponent,
+                                props: true,
+                                params: true
+                            },
+
+                            {
+                                path: "create",
+                                name: "content_create",
+                                component: CreateContentComponent,
+                                params: true,
+                                props: true
+                            },
+                            {
+                                path: "update/:contentId",
+                                name: "content.update",
+                                component: EditContentComponent,
+                                params: true,
+                                props: true
+                            },]  
                     },
+                  
 
                     ///CateGory item
                     {
@@ -159,7 +202,7 @@ export default [
                                 props: true
                             },
                             {
-                                path: "update",
+                                path: "content/:contentId/update",
                                 name: "section_category_content.update",
                                 component: UpdateCateContentComponent,
                                 params: true,
@@ -170,27 +213,7 @@ export default [
                 ]
             },
 
-            {
-                path: ":postId/update",
-                name: "update",
-                component: EditComponent,
-                params: true,
-                props: true
-            },
-            {
-                path: ":postId/section/create",
-                name: "section_create",
-                component: CreateSectionComponent,
-                params: true,
-                props: true
-            },
-            {
-                path: ":postId/section/:sectionId/update",
-                name: "section.update",
-                component: SectionEditComponent,
-                params: true,
-                props: true
-            }
+          
         ]
     },
 ];

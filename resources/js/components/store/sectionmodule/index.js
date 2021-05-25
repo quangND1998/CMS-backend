@@ -19,7 +19,8 @@ const initialState = {
     text_vn: "",
     sub_title_vn: "",
     number :0,
-    theme_id:''
+    theme_id:'',
+ 
     
   },
 
@@ -61,9 +62,9 @@ export const actions = {
 
   [CREATE_SECTION]({state},slug) {
     
-    console.log('CREATE_SECTION',slug)  
+    // console.log('CREATE_SECTION',slug)  
         
-    console.log('STATE',state)  
+    // console.log('STATE',state)  
     return sectionService.post(slug, state.section);
   },
   [SECTION_DELETE](context, slug) {
@@ -79,9 +80,10 @@ export const actions = {
 }
 export const mutations = {
 
-  [FETCH_END](state, { data } ) {
+  [FETCH_END](state, {data} ) {
     // console.log('FETCH_END',data)
-    state.sections = data.section;
+    state.sections = data;
+  
 
  
   },

@@ -145,18 +145,48 @@ export default {
             this.$store
                 .dispatch(SLIDE_EDIT, { slug: this.slideId, formdata: formData })
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
+                  
+                    setTimeout(() => {
+                        this.$toast.success("Edit  Slide successfully", {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                    }, 1000);
                     this.$router.push({ name: "slide" });
                 })
                 .catch(error => {
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+                    if (error.response.data.errors.slide_name) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.slide_name[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                       if (error.response.data.errors.slide_content) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.slide_content[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                       if (error.response.data.errors.slide_img) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.slide_img[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
                     }
                 });
         },

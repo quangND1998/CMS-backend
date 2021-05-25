@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
-    <a class="app-header__logo" href="#"><img src="https://vni.pro.vn/landingpage/public/assets/images/vni/logo_vni.png" alt=""></a>
-    <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <a class="app-header__logo"><img src="https://vni.pro.vn/landingpage/public/assets/images/vni/logo_vni.png" alt=""></a>
+    <a class="app-sidebar__toggle" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <ul class="app-nav">
         <li class="app-search">
             <input class="app-search__input" type="search" placeholder="Search" />
@@ -10,7 +10,7 @@
             </button>
         </li>
         <li class="dropdown">
-            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+            <a class="app-nav__item"  data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
             <ul class="app-notification dropdown-menu dropdown-menu-right">
                 <li class="app-notification__title">
                     You have 4 new notifications.
@@ -50,13 +50,13 @@
                     </li>
                 </div>
                 <li class="app-notification__footer">
-                    <a href="#">See all notifications.</a>
+                    <a href="javascript:void(0)">See all notifications.</a>
                 </li>
             </ul>
         </li>
         <!-- User Menu-->
         <li class="dropdown">
-            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user-o fa-lg"></i></a>
+            <a class="app-nav__item" href="javascript:void(0)" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user-o fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
                 <li>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-cog fa-lg"></i> Settings</a>
@@ -64,8 +64,9 @@
                 <li>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-user fa-lg"></i> Profile</a>
                 </li>
+              
                 <li>
-                    <a class="dropdown-item" href="logout" >
+                    <a class="dropdown-item" href="javascript:void(0)" @click.prevent="logout" >
                         <i class="fa fa-arrow-left"></i>
                         <span class="title">Logout</span>
                     </a>
@@ -77,7 +78,51 @@
 </template>
 
 <script>
+
+
+import { LOGOUT } from "./store/actions/login";
+import { mapGetters } from "vuex";
+import store from "./store/store";
 export default {
-        name:'header-component'
+    data() {
+        return {
+            title: 0
+        };
+    },
+    computed: {
+        ...mapGetters(["isAuthenticated"])
+    },
+    //  beforeRouteEnter (to, from, next) {
+    //   if(this.isAuthenticated ===undefined){
+
+    //          next(false)
+    //     }
+    //     else{
+    //         next()
+
+    //     }
+    // },
+
+    methods: {
+        logout() {
+            this.$store.dispatch(LOGOUT).then(response => {
+              
+                this.$router.push("/admin/login");
+                setTimeout(() => {
+                    this.$toast.success(
+                        response,
+                        {
+                            position: "top-right",
+                            duration: 2000
+                        }
+                    );
+                }, 1300);
+            }).catch(error =>{
+               
+                this.$router.push("/admin/login");  
+            });
+        }
+    }
+
 }
 </script>

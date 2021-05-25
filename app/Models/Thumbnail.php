@@ -9,5 +9,5 @@ class Thumbnail extends Model
 {
     use HasFactory;
     protected $table = 'thumbnails';
-    protected $fillable = ['id','name', 'thumbnail'];
+    // protected $fillable = ['id','name', 'thumbnail'];
 }

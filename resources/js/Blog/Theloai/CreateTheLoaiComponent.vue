@@ -29,9 +29,14 @@
                                 ref="Ten"
                                 name="cate_name"
                                 placeholder="Nhập tên thể loại.."
+                                required
                             />
                         </div>
-                        <button type="submit" class="btn btn-success" @click.prevent="create">
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            @click.prevent="create"
+                        >
                             Thêm
                         </button>
                         <router-link :to="{ name: 'theloai' }">
@@ -83,19 +88,25 @@ export default {
             this.$store
                 .dispatch(THELOAI_PUBLISH, this.theloai)
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
+                    setTimeout(() => {
+                        this.$toast.success("Add new Types successfully", {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                    }, 1000);
                     this.$router.push({ name: "theloai" });
                 })
                 .catch(error => {
-                    console.log(error);
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+                    if (error.response.data.errors.Ten) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.Ten[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
                     }
                 });
 

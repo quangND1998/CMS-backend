@@ -56,7 +56,8 @@ export const actions = {
         return sectionCatService.update(slug, state.category);
     },
     [GET_SECTION_CATEGORY_ID]({ commit }, slug) {
-        console.log(slug);
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
         return sectionCatService
             .getbyId(slug)
             .then(({ data }) => {
@@ -65,6 +66,7 @@ export const actions = {
             .catch(error => {
                 throw new Error(error);
             });
+        }
     },
 
     [CREATE_SECTION_CATEGORY]({ state }, slug) {

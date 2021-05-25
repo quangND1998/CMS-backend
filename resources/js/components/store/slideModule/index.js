@@ -54,7 +54,8 @@ export const actions = {
         return slideService.update(formdata, slug);
     },
     [GET_SLIDE_ID]({ commit }, slug) {
-        // console.log(slug);
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
         return slideService
             .getbyid(slug)
             .then(({ data }) => {
@@ -64,13 +65,16 @@ export const actions = {
                 throw new Error(error);
             });
 
-        // }
+        }
     },
 
     [SLIDE_PUBLISH](content, data) {
         // console.log('modeul', content)
         //   console.log('modeul',data)
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
         return slideService.create(data);
+        }
     },
     [SLIDE_DELETE](context, slug) {
         // console.log(context);

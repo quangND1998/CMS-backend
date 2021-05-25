@@ -31,7 +31,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-                    {{ loaitin }}
+                    <!-- {{ loaitin }} -->
 
                     <form>
                         <div class="form-group">
@@ -126,19 +126,26 @@ export default {
                     data: this.loaitin
                 })
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
+                   setTimeout(() => {
+                        this.$toast.success("Edit Loai Tin successfully", {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                    }, 1000);
                     this.$router.push({ name: "loaitin" });
                 })
                 .catch(error => {
                     // console.log(error);
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+                       if (error.response.data.errors.Ten) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.Ten[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
                     }
                 });
         },

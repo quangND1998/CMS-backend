@@ -50,8 +50,10 @@ export const actions = {
 
         // console.log('PAGE_EDIT', slug);
         // console.log('PAGE_EDIT', formdata);
-
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
         return themeService.update(formdata, slug);
+        }
     },
     [GET_THEME_ID]({ commit }, slug) {
         if (jwtToken.getToken()) {
@@ -71,7 +73,10 @@ export const actions = {
     [THEME_PUBLISH](content, data) {
         // console.log('modeul', content)
         //   console.log('modeul',data)
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
         return themeService.create(data);
+        }
     },
     [THEME_DELETE](context, slug) {
         // console.log(context);

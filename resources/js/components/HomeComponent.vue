@@ -142,12 +142,12 @@
                         <span class="app-menu__label">Comment</span>
                     </router-link>
                 </li>
-                <li>
+                <!-- <li>
                     <a class="app-menu__item" href="#" @click.prevent="logout"
                         ><i class="app-menu__icon fa fa-sign-out"></i>
                         <span class="app-menu__label">Logout</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </aside>
         <main id="app" class="app-content">
@@ -167,8 +167,8 @@
 <script>
 import HeaderComponent from "./HeaderComponent";
 
-import { LOGOUT } from "./store/actions/login";
-import { mapGetters } from "vuex";
+// import { LOGOUT } from "./store/actions/login";
+// import { mapGetters } from "vuex";
 import store from "./store/store";
 export default {
     name: "home-component",
@@ -178,9 +178,9 @@ export default {
             title: 0
         };
     },
-    computed: {
-        ...mapGetters(["isAuthenticated"])
-    },
+    // computed: {
+    //     ...mapGetters(["isAuthenticated"])
+    // },
     //  beforeRouteEnter (to, from, next) {
     //   if(this.isAuthenticated ===undefined){
 
@@ -193,24 +193,29 @@ export default {
     // },
 
     methods: {
-        logout() {
-            this.$store.dispatch(LOGOUT).then(response => {
-     
-                this.$router.push("/admin/login");
-                setTimeout(() => {
-                    this.$toast.success(
-                        response,
-                        {
-                            position: "top-right",
-                            duration: 2000
-                        }
-                    );
-                }, 1300);
-            });
-        }
+        // logout() {
+        //     this.$store.dispatch(LOGOUT).then(response => {
+              
+        //         this.$router.push("/admin/login");
+        //         setTimeout(() => {
+        //             this.$toast.success(
+        //                 response,
+        //                 {
+        //                     position: "top-right",
+        //                     duration: 2000
+        //                 }
+        //             );
+        //         }, 1300);
+        //     }).catch(error =>{
+               
+        //         this.$router.push("/admin/login");  
+        //     });
+        // }
     }
 };
 </script>
+
+
 <style scoped>
 @import url(
     https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,

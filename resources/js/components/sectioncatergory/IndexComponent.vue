@@ -31,7 +31,7 @@
         </div>
 
   <div>
-            <router-link :to="{ name: 'content', params: { postId: postId ,sectionId: sectionId ,themeId:this.themeId} }">
+            <router-link :to="{ name: 'section', params: { postId: postId ,sectionId: sectionId ,themeId:this.themeId} }">
                 <button
                     type="button"
                     class="p-1 mx-3  btn btn-success"

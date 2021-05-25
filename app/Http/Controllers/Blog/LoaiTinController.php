@@ -64,11 +64,13 @@ class LoaiTinController extends Controller
 
     public function update(Request $request, $id)
     {
+    
+        $loaitin = LoaiTin::find($id);
         $this->validate(
             $request,
             [
                 'theloai_id' => 'required',
-                'Ten' => 'required|min:3|max:100'
+                'Ten' => 'required|min:3|max:100|unique:loaitin,Ten,'.$loaitin->id
             ],
             [
                 'theloai_id.required' => 'Vui lòng chọn Thể Loại!',
@@ -78,7 +80,6 @@ class LoaiTinController extends Controller
                 'Ten.max' => 'Tên Loại Tin gồm tối đa 100 ký tự!'
             ]
         );
-        $loaitin = LoaiTin::find($id);
         if (!$loaitin) {
             $msg = [
                 'msg' => 'The loaitin is not found'

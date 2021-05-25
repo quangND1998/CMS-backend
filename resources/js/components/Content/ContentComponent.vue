@@ -21,7 +21,7 @@
             </div>
 
             <div>
-             <router-link v-if="theme.type===1"
+             <!-- <router-link v-if="theme.type===1"
                     :to="{
                         name: 'section_category',
                         params: { sectionId: sectionId, postId: postId ,themeId: this.themeId }
@@ -33,9 +33,9 @@
                     >
                         Section Category
                     </button>
-                </router-link>
+                </router-link> -->
 
-                <router-link v-if="theme.type===0"
+                <router-link 
                     :to="{
                         name: 'content_create',
                         params: { sectionId: sectionId, postId: postId }
@@ -208,7 +208,8 @@
                                             params: {
                                                 contentId: content.id,
                                                 sectionId: sectionId,
-                                                postId: postId
+                                                postId: postId,
+                                                themeId:themeId
                                             }
                                         }"
                                     >
@@ -258,10 +259,10 @@ export default {
 
     mounted() {
         this.getPosts();
-        this.getTheme();
+        // this.getTheme();
     },
     computed: {
-        ...mapGetters(["contents", "content", "time",'theme'])
+        ...mapGetters(["contents", "content", "time"])
     },
 
     data() {
@@ -279,9 +280,6 @@ export default {
         deletePost(id) {
             this.$store.dispatch(ITEM_DELETE, id);
             this.getPosts();
-        },
-        getTheme(){
-            this.$store.dispatch(GET_THEME_ID,this.themeId);
         }
     }
 };

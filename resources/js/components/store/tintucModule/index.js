@@ -1,8 +1,15 @@
 import Vue from "vue";
 
-import {tintucService} from '../../../common/tintucService';
 import {
-    FETCH_TIN_TUC, GET_TIN_TUC_ID,TIN_TUC_EDIT ,TIN_TUC_DELETE,TIN_TUC_PUBLISH,TIN_TUC_RESET_STATE
+    tintucService
+} from '../../../common/tintucService';
+import {
+    FETCH_TIN_TUC,
+    GET_TIN_TUC_ID,
+    TIN_TUC_EDIT,
+    TIN_TUC_DELETE,
+    TIN_TUC_PUBLISH,
+    TIN_TUC_RESET_STATE
 } from './action';
 import {
     FETCH_START,
@@ -14,7 +21,7 @@ import {
 import ApiService from "../../../common/api.service";
 import jwtToken from "../../../common/token";
 const initialState = {
-    time:'aaaaaaaaaaaaaaa',
+    time: 'aaaaaaaaaaaaaaa',
     news: [],
     loading: true,
     item: {
@@ -32,16 +39,22 @@ const initialState = {
     isAuthenticated: !!jwtToken.getToken()
 };
 
-export const state = {...initialState };
+export const state = {
+    ...initialState
+};
 
 export const actions = {
-    [FETCH_TIN_TUC]({ commit }) {
+    [FETCH_TIN_TUC]({
+        commit
+    }) {
         commit(FETCH_START);
         if (jwtToken.getToken()) {
             ApiService.setHeader();
             return tintucService
                 .query()
-                .then(({ data }) => {
+                .then(({
+                    data
+                }) => {
                     // console.log(data)
                     commit(FETCH_END, data);
                 })
@@ -51,7 +64,13 @@ export const actions = {
                 });
         }
     },
-    [TIN_TUC_EDIT]({ commit, state }, { slug, formdata }) {
+    [TIN_TUC_EDIT]({
+        commit,
+        state
+    }, {
+        slug,
+        formdata
+    }) {
         // console.log('PAGE_EDIT', commit);
 
         // console.log('PAGE_EDIT', slug);
@@ -59,31 +78,43 @@ export const actions = {
 
         return tintucService.update(formdata, slug);
     },
-    [GET_TIN_TUC_ID]({ commit }, slug) {
-        // console.log(slug);
-        return tintucService
-            .getbyid(slug)
-            .then(({ data }) => {
-                commit(FETCH_ID_TIN_TUC, { data });
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
+    [GET_TIN_TUC_ID]({
+        commit
+    }, slug) {
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
+            return tintucService
+                .getbyid(slug)
+                .then(({
+                    data
+                }) => {
+                    commit(FETCH_ID_TIN_TUC, {
+                        data
+                    });
+                })
+                .catch(error => {
+                    throw new Error(error);
+                });
 
-        // }
+        }
     },
 
     [TIN_TUC_PUBLISH](content, data) {
         // console.log('modeul', content)
-          console.log('modeul',data)
-        return tintucService.create(data);
+        //   console.log('modeul',data)
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
+            return tintucService.create(data);
+        }
     },
     [TIN_TUC_DELETE](context, slug) {
         // console.log(context);
         //   console.log('pageservice',slug)
         return tintucService.destroy(slug);
     },
-    [TIN_TUC_RESET_STATE]({ commit }) {
+    [TIN_TUC_RESET_STATE]({
+        commit
+    }) {
         commit(RESET_STATE);
     }
 };
@@ -91,13 +122,17 @@ export const mutations = {
     [FETCH_START](state) {
         state.loading = true;
     },
-    [FETCH_END](state, { data }) {
+    [FETCH_END](state, {
+        data
+    }) {
         // console.log(data)
         state.news = data;
 
         state.loading = false;
     },
-    [FETCH_ID_TIN_TUC](state, { data }) {
+    [FETCH_ID_TIN_TUC](state, {
+        data
+    }) {
         state.item = data.tintuc;
     },
     [RESET_STATE]() {
@@ -117,7 +152,7 @@ const getters = {
     loading(state) {
         return state.loading;
     }
- 
+
 };
 
 export default {

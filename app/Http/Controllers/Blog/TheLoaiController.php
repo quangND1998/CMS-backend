@@ -61,9 +61,11 @@ class TheLoaiController extends Controller
 
     public function update(Request $request,$id){
     	
-    	$this->validate($request,
+  
+        $theloai = TheLoai::find($id);
+          	$this->validate($request,
     		[
-    			'Ten' => 'required|unique:theloai,Ten|min:3|max:100'
+    			'Ten' => 'required|min:3|max:100|unique:theloai,Ten,'.$theloai->id
     		],
     		[
     			'Ten.required' => 'Bạn chưa nhập tên Thể Loại!',
@@ -71,7 +73,6 @@ class TheLoaiController extends Controller
     			'Ten.min' => 'Tên Thể Loại gồm ít nhất 3 ký tự!',
     			'Ten.max' => 'Tên Thể Loại gồm tối đa 100 ký tự!'
     		]);
-        $theloai = TheLoai::find($id);
         if (!$theloai) {
             $msg = [
                 'msg' => 'The item is not found'

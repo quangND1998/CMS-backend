@@ -149,7 +149,8 @@ Route::middleware(['jwt.auth', 'prevent-back-history','adminAuth'])->group(funct
     Route::group(['prefix' => 'comment'], function () {
         Route::get('', [CommentController::class, 'getDanhSach']);
         Route::delete('delete/{id}', [CommentController::class, 'Xoa']);
-        Route::post('{article_id}', [CommentController::class, 'Them']);
+       
+
     });
 
     Route::group(['prefix' => 'user'], function () {

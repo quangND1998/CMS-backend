@@ -6,7 +6,7 @@ use App\Http\Resources\ThumbnailResource;
 use App\Models\Thumbnail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Illuminate\Http\Response;
 class ThumbnailController extends Controller
 {
     /**
@@ -16,8 +16,8 @@ class ThumbnailController extends Controller
      */
     public function index()
     {
-        // return ThumbnailResource::collection(Thumbnail::get());
-        return Thumbnail::all();
+        return ThumbnailResource::collection(Thumbnail::get());
+
     }
 
     /**
@@ -38,6 +38,11 @@ class ThumbnailController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'required|unique:thumbnails',
+            'thumbnail' => 'mimes:jpeg,jpg,png'
+        ]);
         $thumb = new Thumbnail();
         $thumb->name = $request->name;
         if ($request->hasFile('thumbnail')) {
@@ -49,8 +54,8 @@ class ThumbnailController extends Controller
 
         $thumb->save();
 
-        return json_encode($thumb);
-        // return new ThumbnailResource($thumb);
+        // return json_encode($thumb);
+        return new ThumbnailResource($thumb);
     }
 
     /**
@@ -85,7 +90,20 @@ class ThumbnailController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+       
         $thumb = Thumbnail::find($id);
+        $this->validate($request, [
+            'name' => 'required|unique:thumbnails,name,'.$thumb->id,
+            'thumbnail.*' => 'mimes:jpeg,jpg,png'
+        ]);
+        if ($thumb == null) {
+            $msg = [
+                'msg' => 'The pathumbge is not found'
+            ];
+            return response()->json($msg, Response::HTTP_BAD_REQUEST);
+        }
+
         $thumb->name = $request->name;
         $thumbPath = Str::of($thumb->thumbnail)->ltrim('/');
       
@@ -98,7 +116,7 @@ class ThumbnailController extends Controller
         }
 
         $thumb->save();
-        return json_encode($thumb);
+        return new ThumbnailResource($thumb);
     }
 
     /**

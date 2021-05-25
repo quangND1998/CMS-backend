@@ -3,9 +3,12 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import API_URL from "./config";
 import jwtToken from "./token";
-
+import { VueCrypton } from 'laravel-crypton';
+const key = 'YDU7bYV/8EBszqErFIM3v8lQZZcy+3kL1awaCzNzQ/s='; // env('CRYPTON_KEY')
 const ApiService = {
+   
     init() {
+        // Vue.use(VueCrypton(key));
         Vue.use(VueAxios, axios);
         Vue.axios.defaults.baseURL = API_URL;
     },
@@ -48,6 +51,7 @@ const ApiService = {
             throw new Error(`[RWV] ApiService ${error}`);
         });
     }
+
 };
 
 export default ApiService;

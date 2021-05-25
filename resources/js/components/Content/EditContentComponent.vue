@@ -215,6 +215,9 @@ export default {
         },
         postId: {
             required: true
+        },
+        themeId :{
+            required:true
         }
     },
     computed: {
@@ -264,7 +267,9 @@ export default {
                        this.$router.back();
                 })
                 .catch(error => {
+              
                     if (!_.isEmpty(error.response)) {
+                        console.log(error.response);
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
                             this.successful = false;

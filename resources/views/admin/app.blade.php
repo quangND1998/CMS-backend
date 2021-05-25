@@ -5,6 +5,7 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="{{ asset('') }}">
     <link rel="stylesheet" type="text/css" href="backend/css/main.css" />
@@ -21,15 +22,20 @@
 <body class="app sidebar-mini rtl">
 
     <div id="app">
-        <router-view></router-view>
+        <router-view>
+        
+        </router-view>
     </div>
-
     <script src="{{ asset('backend/js/jquery-3.2.1.min.js') }}"></script>
+
+    
+
+    <script src="{{mix ('js/app.js')}}"> </script>
     <script src="{{ asset('backend/js/popper.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('backend/js/main.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/main.js') }}"></script> --}}
     <script src="{{ asset('backend/js/plugins/pace.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
@@ -47,16 +53,13 @@
         src="{{ asset('admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}">
     </script>
 
-    <script type="text/javascript" language="javascript" src="{{ asset('admin_asset/ckeditor/ckeditor.js') }}">
-    </script>
-    <script src="{{ asset('admin_asset/dist/js/extra.js') }}"></script>
+
     <script>
         // Toggle Sidebar
         $('[data-toggle="sidebar"]').click(function(event) {
             event.preventDefault();
             $('.app').toggleClass('sidenav-toggled');
         });
-
         $("[data-toggle='treeview']").click(function(event) {
             event.preventDefault();
             if (!$(this).parent().hasClass('is-expanded')) {

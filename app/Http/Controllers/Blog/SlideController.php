@@ -78,7 +78,7 @@ class SlideController extends Controller
             [
                 'slide_name' => 'required|min:6|max:40',
                 'slide_content' => 'required|min:10|max:100',
-                'slide_img' => 'mimes:png,jpg,jpeg'
+                'slide_img.*' => 'mimes:png,jpg,jpeg'
             ],
             [
                 'slide_name.required' => 'Bạn chưa nhập Tên Slide',

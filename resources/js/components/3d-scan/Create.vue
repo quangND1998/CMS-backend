@@ -99,23 +99,64 @@ export default {
 
             this.$store
                 .dispatch("add_scan3d", formData)
-                .then(response => {
+                   .then(response => {
+         
                     this.$router.push({ name: "scan-3d" });
-                    setTimeout(() => {
-                        this.$toast.success("Add a new scan 3D successfully", {
-                            position: "bottom-right",
-                            duration: 5000
-                        });
-                    }, 1300);
+                         setTimeout(() => {
+                            this.$toast.success(
+                                "Add new scan 3d successfully",
+                                {
+                                    position: "bottom-right",
+                                    duration: 2000
+                                }
+                            );
+                        }, 1000);
                 })
-                .catch(error => {
-                    console.log(error);
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+               .catch(error => {
+   
+                    if (error.response.data.errors.name) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.name[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                    if (error.response.data.errors.title) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.title[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 2000);
+                    }
+                    if (error.response.data.errors.model_code) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.model_code[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 3000);
+                    }
+                       if (error.response.data.errors.favicon) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.favicon[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 3000);
                     }
                 });
         }

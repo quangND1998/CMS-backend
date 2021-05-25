@@ -93,7 +93,7 @@ class TinTucController extends Controller
     	$this->validate($request,
     		[
     			'idLoaiTin'=>'required',
-    			'TieuDe' => 'required|min:3',
+    			'TieuDe' => 'required|min:3|unique:tintuc,TieuDe,'.$tintuc->id,
     			'TomTat' => 'required',
 				'NoiDung'=> 'required|min:20',
 				'Hinh.*' => 'mimes:png,jpg,jpeg'

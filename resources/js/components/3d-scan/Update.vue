@@ -1,5 +1,5 @@
 <template>
-   <div id="posts">
+    <div id="posts">
         <div class="app-title">
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
@@ -85,23 +85,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
     data() {
         return {
             data: {
-                name: '',
-                title: '',
+                name: "",
+                title: "",
                 favicon: null,
-                model_code: ''
+                model_code: ""
             }
-        }
+        };
     },
     computed: {
-        ...mapGetters(['getScan3dById']),
+        ...mapGetters(["getScan3dById"]),
         scan3d() {
-            return this.getScan3dById(this.$route.params.id)
+            return this.getScan3dById(this.$route.params.id);
         }
     },
     methods: {
@@ -112,19 +112,68 @@ export default {
             formData.append("favicon", this.$refs.favicon.files[0]);
             formData.append("model_code", this.$refs.model_code.value);
 
-            this.$store.dispatch('update_scan3d', {
-                id: this.scan3d.id,
-                data: formData
-            })
-
-            this.$router.push({ name: "scan-3d" })
-            setTimeout(() => {
-                    this.$toast.success("Update scan 3D successfully", {
-                        position: "bottom-right",
-                        duration: 5000
-                    });
-                }, 1300)
+            this.$store
+                .dispatch("update_scan3d", {
+                    id: this.scan3d.id,
+                    data: formData
+                })
+                .then(response => {
+                    this.$router.push({ name: "scan-3d" });
+                    setTimeout(() => {
+                        this.$toast.success("Edit  scan 3d successfully", {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                    }, 1000);
+                })
+                .catch(error => {
+                  
+                    if (error.response.data.errors.name) {
+                        setTimeout(() => {
+                            this.$toast.warning(
+                                error.response.data.errors.name[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                    if (error.response.data.errors.title) {
+                        setTimeout(() => {
+                            this.$toast.warning(
+                                error.response.data.errors.title[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                    if (error.response.data.errors.model_code) {
+                        setTimeout(() => {
+                            this.$toast.warning(
+                                error.response.data.errors.model_code[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                        if (error.response.data.errors.favicon) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.favicon[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 3000);
+                    }
+                });
         }
     }
-}
+};
 </script>

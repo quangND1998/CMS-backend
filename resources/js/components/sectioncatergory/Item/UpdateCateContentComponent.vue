@@ -133,10 +133,7 @@
                 ></textarea>
             </div>
 
-      
-
             <div class="form-group">
-
                 <input
                     type="title"
                     ref="icon_class"
@@ -181,14 +178,26 @@
                     >Choose image file for Upload Video...</label
                 >
             </div>
-
-            <button
-                type="submit"
-                @click.prevent="update"
-                class="btn btn-primary block"
-            >
-                Update
-            </button>
+            <div class="modal-footer justify-content-center">
+                <router-link
+                    :to="{
+                        name: 'section_category_content',
+                        params: { sectionId: sectionId, postId: postId ,themeId:themeId,categoryId:categoryId}
+                    }"
+                    class="btn btn-white block"
+                >
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    Back
+                </router-link>
+                <button
+                    type="submit"
+                    @click.prevent="update"
+                    class="btn btn-primary block"
+                >
+                    Update
+                </button>
+            </div>
+        
         </form>
     </div>
 </template>
@@ -210,6 +219,12 @@ export default {
             required: true
         },
         postId: {
+            required: true
+        },
+        themeId: {
+            required: true
+        },
+        categoryId: {
             required: true
         }
     },

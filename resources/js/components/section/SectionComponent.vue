@@ -63,6 +63,20 @@
                                     class="align-middle text-uppercase font-weight-bold"
                                 >
                                     <router-link
+                                        v-if="section.theme.type === 1"
+                                        :to="{
+                                            name: 'section_category',
+                                            params: {
+                                                sectionId: section.id,
+                                                postId: postId,
+                                                themeId: section.theme_id
+                                            }
+                                        }"
+                                    >
+                                        {{ section.title_vn }}
+                                    </router-link>
+
+                                    <router-link v-else
                                         :to="{
                                             name: 'content',
                                             params: {
@@ -172,8 +186,8 @@
                                         :to="{
                                             name: 'section.update',
                                             params: {
-                                                sectionId: section.id,
-                                                id: postId
+                                                postId: postId,
+                                                sectionId: section.id
                                             }
                                         }"
                                         class="btn btn-xs btn-info deleteRecord"

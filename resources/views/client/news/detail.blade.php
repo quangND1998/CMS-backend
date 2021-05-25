@@ -84,7 +84,7 @@
                                             <strong>{{ session('message') }}</strong>
                                         </div>
                                         @endif
-                                        <form role="form" method="POST" action="binh-luan/{{ $tintuc->id }}">
+                                        <form role="form" method="POST" action="comment/{{ $tintuc->id }}">
                                             {{ csrf_field() }}
                                             <div class="form-group">
                                                 <textarea name="content" class="form-control" rows="3"></textarea>
@@ -209,7 +209,9 @@
 
                                 </div>
                                 <!-- Comments Form -->
+                
                                 @if(Auth::user())
+
                                     <div class="well">
                                         <h4>write a comment<i class="fa fa-pencil" aria-hidden="true"></i></h4>
                                         @if(count($errors) > 0)
@@ -224,7 +226,7 @@
                                             <strong>{{ session('message') }}</strong>
                                         </div>
                                         @endif
-                                        <form role="form" method="POST" action="binh-luan/{{ $tintuc->id }}">
+                                        <form role="form" method="POST" action="comment/{{ $tintuc->id }}">
                                             {{ csrf_field() }}
                                             <div class="form-group">
                                                 <textarea name="content" class="form-control" rows="3"></textarea>

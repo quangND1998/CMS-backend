@@ -17,19 +17,21 @@ class SectionController extends Controller
     use FileUploadTrait;
     public function getSession($id)
     {
-        $section = Page::with('section')->find($id);
+        $section = Page::find($id);
+        $section = $section->load('section.theme');
         if (!$section) {
             $msg = [
                 'msg' => "The id is not found "
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-        $response = [
-            'msg' => 'Get List section sucsscesfully',
-            'data' => $section
-        ];
+        // return $section;
+        // $response = [
+        //     'msg' => 'Get List section sucsscesfully',
+        //     'data' => $section->section
+        // ];
 
-        return response()->json($response, Response::HTTP_OK);
+        return SectionResource::collection($section->section);
     }
 
     public function store(Request $request, $id)

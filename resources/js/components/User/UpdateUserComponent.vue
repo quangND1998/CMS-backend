@@ -20,7 +20,6 @@
                             <small>> </small>
                         </h1>
                     </div>
-                    {{get_user}}
                     <div
                     :class="['form-group m-1 p-3', error ? 'alert-danger' : '']"
                 >
@@ -144,19 +143,63 @@ export default {
             this.$store
                 .dispatch(USER_EDIT,{slug:this.userId, data:this.get_user} )
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
+                
                     this.$router.push({ name: "user" });
+                     setTimeout(() => {
+                            this.$toast.success(
+                                "Edit  user successfully",
+                                {
+                                    position: "bottom-right",
+                                    duration: 2000
+                                }
+                            );
+                        }, 1000);
                 })
                 .catch(error => {
                     // console.log(error);
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+                   if (error.response.data.errors.email) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.email[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                    if (error.response.data.errors.password) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.password[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 2000);
+                    }
+                    if (error.response.data.errors.password_again) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.password_again[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 3000);
+                    }
+                       if (error.response.data.errors.username) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.username[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 3000);
                     }
                 });
         },

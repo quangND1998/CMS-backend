@@ -230,39 +230,53 @@ export default {
             this.$store
                 .dispatch(TIN_TUC_EDIT,{slug:this.tintucId,formdata:formData} )
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
+                       setTimeout(() => {
+                        this.$toast.success("Edit Tin Tức successfully", {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                    }, 1000);
                     this.$router.push({ name: "tintuc" });
                 })
                 .catch(error => {
-                    // console.log(error);
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+
+                     if (error.response.data.errors.TieuDe) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.TieuDe[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
                     }
+                      if (error.response.data.errors.TomTat) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.TomTat[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                      if (error.response.data.errors.NoiDung) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.NoiDung[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                     
                 });
 
-            // axios
-            //   .post("/api/page", formData)
-            //   .then(response => {
-            //     this.successful = true;
-            //     this.error = false;
-            //     this.errors = [];
-            //     this.$router.push({name:'page'});
-            //   })
-            //   .catch(error => {
-            //     if (!_.isEmpty(error.response)) {
-            //       if ((error.response.status == 422)) {
-            //         this.errors = error.response.data.errors;
-            //         this.successful = false;
-            //         this.error = true;
-            //       }
-            //     }
-            //   });
+            
         },
         fetchLoaiTin() {
             this.$store.dispatch(FETCH_LOAI_TIN);

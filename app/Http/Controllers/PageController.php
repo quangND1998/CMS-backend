@@ -8,11 +8,8 @@ use App\Http\Controllers\Traits\FileUploadTrait;
 use Illuminate\Http\Response;
 use App\Http\Resources\PageResource;
 use App\Models\Page;
-use App\Http\Requests\TemplateUpdateRequest;
-use App\Events\PageSent;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Validator;
-
 class PageController extends Controller
 {
     use FileUploadTrait;
@@ -22,7 +19,7 @@ class PageController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:page',
             'name_vn' => 'required|unique:page',
-            'image.*' => 'mimes:png,jpg,jpeg'
+            'image.*' => 'mimes:jpeg,jpg,png'
         ]);
         // $validator = Validator::make($request->all(), [
         //     'name' => 'required|unique:page',
@@ -48,10 +45,26 @@ class PageController extends Controller
     }
     public function get()
     {
-        return  PageResource::collection(Page::get());
+        if(!Cache::has('page')){
+           
+            $page =  Page::get();
+     
+             Cache::put('page', $page,60);
+         }
+         else{
+         
+             $page = Cache::get('page');
+            
+         }    
+        // $page = Cache::remember('page', 3600, function () {
+        //     return Page::get();
+        // });
+        return  PageResource::collection($page);
     }
+
     public function edit($id)
     {
+
         $page = Page::find($id);
         if (!$page) {
             $msg = [
@@ -59,7 +72,18 @@ class PageController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
+  
+        // $data=  Crypt::encrypt('aaaaaaaaaaa');
+        // return $data;
+   
 
+        // $data=[
+        //     'page' =>$page
+        // ];
+        // // return Crypt::encrypt(json_encode($data));
+        // return $data;
+        // return response()->json(Crypt::encrypt(json_encode($data,JSON_UNESCAPED_UNICODE)), Response::HTTP_OK,['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+        // JSON_UNESCAPED_UNICODE);
         return new PageResource($page);
     }
     public function update(Request $request, $id)
@@ -69,7 +93,7 @@ class PageController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'name_vn' => 'required',
-            'image.*' => 'mimes:png,jpg,jpeg',
+            'image.*' => 'mimes:jpeg,jpg,png'
         ]);
 
 

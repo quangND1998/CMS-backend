@@ -33,6 +33,7 @@
                     >Published!</span
                 >
             </div> -->
+
             <!-- <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
                 <span v-if="errors.name" class="label label-danger">
                     {{ errors.name[0] }}
@@ -47,7 +48,13 @@
                     {{ errors.image[0] }}
                 </span>
             </div> -->
-
+            <vue-loading
+                v-if="isLoading"
+                type="spiningDubbles"
+                color="#d9544e"
+                :size="{ width: '64px', height: '64px' }"
+                :style="[isLoading ? { zIndex: -1, opacity: 1 } : '']"
+            ></vue-loading>
             <div class="form-group">
                 <input
                     type="text"
@@ -77,7 +84,7 @@
                 ></textarea>
             </div>
 
-            <div class="custom-file mb-3">
+            <!-- <div class="custom-file mb-3">
                 <input
                     type="file"
                     ref="image"
@@ -86,8 +93,10 @@
                     id="image"
                 />
                 <label class="custom-file-label">Choose file...</label>
-            </div>
+            </div> -->
+  
 
+            <UploadImages :max="1" ref="image" />
             <div class="modal-footer justify-content-center">
                 <router-link
                     :to="{ name: 'page' }"
@@ -97,6 +106,7 @@
                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                     Back
                 </router-link>
+
                 <button type="submit" class="btn btn-primary block">
                     Create
                 </button>
@@ -106,16 +116,23 @@
 </template>
 
 <script>
+
+import UploadImages from "vue-upload-drop-images";
 import { PAGE_PUBLISH, PAGE_RESET_STATE } from "../store/actions/page";
 import { mapGetters } from "vuex";
 import store from "../store/store";
 export default {
     props: {},
+    components: {
+        UploadImages,
+
+    },
     data() {
         return {
             error: false,
             successful: false,
-            errors: []
+            errors: [],
+            isLoading: false
         };
     },
     computed: {
@@ -139,18 +156,42 @@ export default {
             this.$store
                 .dispatch(PAGE_PUBLISH, formData)
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
-                    this.$router.push({ name: "page" });
+                    this.isLoading = true;
+
+                    setTimeout(() => {
+                        this.isLoading = false;
+                        this.$toast.success("Add new page successfully", {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                        this.$router.push({ name: "page" });
+                    }, 1000);
                 })
                 .catch(error => {
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+                    this.isLoading = true;
+                    if (error.response.data.errors.name) {
+                        setTimeout(() => {
+                            this.isLoading = false;
+                            this.$toast.error(
+                                error.response.data.errors.name[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                    if (error.response.data.errors.name_vn) {
+                        setTimeout(() => {
+                            this.isLoading = false;
+                            this.$toast.error(
+                                error.response.data.errors.name_vn[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 2000);
                     }
                 });
         }

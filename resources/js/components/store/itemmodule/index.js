@@ -1,6 +1,8 @@
 import Vue from "vue";
 
-import { contenService } from "../../../common/contentService";
+import {
+    contenService
+} from "../../../common/contentService";
 import {
     FETCH_ITEM,
     CREATE_ITEM,
@@ -10,8 +12,14 @@ import {
     FETCH_ITEM_BY_CATEGORY,
     CREATE_ITEM_BY_CATEGORY
 } from "../actions/item";
-import { FETCH_ID_ITEM, FETCH_END_CATEGORY } from "../muntation/item";
-import { FETCH_END, RESET_STATE } from "../muntation/page";
+import {
+    FETCH_ID_ITEM,
+    FETCH_END_CATEGORY
+} from "../muntation/item";
+import {
+    FETCH_END,
+    RESET_STATE
+} from "../muntation/page";
 import jwtToken from "../../../common/token";
 import ApiService from "../../../common/api.service";
 const initialState = {
@@ -32,16 +40,22 @@ const initialState = {
     }
 };
 
-export const state = {...initialState };
+export const state = {
+    ...initialState
+};
 
 export const actions = {
     // Section- Content
-    [FETCH_ITEM]({ commit }, slug) {
+    [FETCH_ITEM]({
+        commit
+    }, slug) {
         if (jwtToken.getToken()) {
             ApiService.setHeader();
             return contenService
                 .get(slug)
-                .then(({ data }) => {
+                .then(({
+                    data
+                }) => {
                     // console.log(data)
                     commit(FETCH_END, data);
                 })
@@ -52,12 +66,16 @@ export const actions = {
     },
 
     /// Section- section_category-> tiem
-    [FETCH_ITEM_BY_CATEGORY]({ commit }, slug) {
+    [FETCH_ITEM_BY_CATEGORY]({
+        commit
+    }, slug) {
         if (jwtToken.getToken()) {
             ApiService.setHeader();
             return contenService
                 .getItemCategory(slug)
-                .then(({ data }) => {
+                .then(({
+                    data
+                }) => {
                     // console.log(data)
                     commit(FETCH_END_CATEGORY, data);
                 })
@@ -67,31 +85,49 @@ export const actions = {
         }
     },
 
-    [ITEM_EDIT](content, { slug, data }) {
+    [ITEM_EDIT](content, {
+        slug,
+        data
+    }) {
         // console.log('ITEM_EDIT', slug);
         // console.log('ITEM_EDIT', data);
         return contenService.update(slug, data);
     },
-    [GET_ITEM_ID]({ commit }, slug) {
-        // console.log(slug);
-        return contenService
-            .getbyId(slug)
-            .then(({ data }) => {
-                commit(FETCH_ID_ITEM, { data });
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
+    [GET_ITEM_ID]({
+        commit
+    }, slug) {
+        if (jwtToken.getToken()) {
+            ApiService.setHeader();
+            return contenService
+                .getbyId(slug)
+                .then(({
+                    data
+                }) => {
+                    commit(FETCH_ID_ITEM, {
+                        data
+                    });
+                })
+                .catch(error => {
+                    throw new Error(error);
+                });
+        }
     },
+
     ///create section ->item
-    [CREATE_ITEM](content, { slug, data }) {
+    [CREATE_ITEM](content, {
+        slug,
+        data
+    }) {
         // console.log('CREATE_ITEM', slug)
         // console.log('CREATE_ITEM',data)
         return contenService.post(slug, data);
     },
 
     ///create section ->section_category -> item
-    [CREATE_ITEM_BY_CATEGORY](content, { slug, data }) {
+    [CREATE_ITEM_BY_CATEGORY](content, {
+        slug,
+        data
+    }) {
         return contenService.postItemCategory(slug, data);
     },
     [ITEM_DELETE](context, slug) {
@@ -104,11 +140,15 @@ export const actions = {
     // }
 };
 export const mutations = {
-    [FETCH_END](state, { data }) {
+    [FETCH_END](state, {
+        data
+    }) {
         // console.log('FETCH_END',data)
         state.contents = data;
     },
-    [FETCH_ID_ITEM](state, { data }) {
+    [FETCH_ID_ITEM](state, {
+        data
+    }) {
         // console.log(FETCH_ID_ITEM,data)
         state.content = data.item;
     },
@@ -117,7 +157,9 @@ export const mutations = {
             Vue.set(state, f, initialState[f]);
         }
     },
-    FETCH_END_CATEGORY(sate, { data }) {
+    FETCH_END_CATEGORY(sate, {
+        data
+    }) {
         state.contents = data;
     }
 };

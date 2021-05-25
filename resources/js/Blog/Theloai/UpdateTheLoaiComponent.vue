@@ -41,19 +41,18 @@
                             Sửa
                         </button>
 
-                            <router-link
-                                :to="{
-                                    name: 'theloai'
-                                }"
+                        <router-link
+                            :to="{
+                                name: 'theloai'
+                            }"
+                        >
+                            <button
+                                type="reset"
+                                class="btn btn-danger btn-mleft"
                             >
-                                <button
-                                    type="reset"
-                                    class="btn btn-danger btn-mleft"
-                                >
-                                    Hủy
-                                </button>
-                            </router-link>
-
+                                Hủy
+                            </button>
+                        </router-link>
                     </form>
                 </div>
             </div>
@@ -100,21 +99,31 @@ export default {
             this.theloai.Ten = this.$refs.Ten.value;
 
             this.$store
-                .dispatch(THELOAI_EDIT, {slug:this.theloaiId,data: this.theloai})
+                .dispatch(THELOAI_EDIT, {
+                    slug: this.theloaiId,
+                    data: this.theloai
+                })
                 .then(response => {
-                    this.successful = true;
-                    this.error = false;
-                    this.errors = [];
+                    setTimeout(() => {
+                        this.$toast.success('Edit The loại  successfully', {
+                            position: "bottom-right",
+                            duration: 2000
+                        });
+                    }, 1000);
                     this.$router.push({ name: "theloai" });
                 })
                 .catch(error => {
-                    // console.log(error);
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+          
+                    if (error.response.data.errors.Ten) {
+                        setTimeout(() => {
+                            this.$toast.error(
+                                error.response.data.errors.Ten[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
                     }
                 });
 

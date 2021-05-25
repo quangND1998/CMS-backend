@@ -15,6 +15,7 @@ class ThemeController extends Controller
     public function getTheme()
     {
         $themes = Theme::get();
+        // $themes = DB::table('theme')->get();
         return  ThemeResource::collection($themes);
     }
     public function store(Request $request)

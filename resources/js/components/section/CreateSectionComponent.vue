@@ -1,7 +1,6 @@
 <template>
     <div class="">
         <div class="app-title">
-        
             <div>
                 <ul class="app-breadcrumb breadcrumb side">
                     <li class="breadcrumb-item">
@@ -22,28 +21,6 @@
         </div>
 
         <form>
-            <div
-                :class="[
-                    'form-group m-1 p-3',
-                    successful ? 'alert-success' : ''
-                ]"
-            >
-                <span v-if="successful" class="label label-sucess"
-                    >Published!</span
-                >
-            </div>
-            <div :class="['form-group m-1 p-3', error ? 'alert-danger' : '']">
-                <span v-if="errors.title" class="label label-danger">
-                    {{ errors.title[0] }}
-                </span>
-                <span v-if="errors.text" class="label label-danger">
-                    {{ errors.text[0] }}
-                </span>
-                <span v-if="errors.sub_title" class="label label-danger">
-                    {{ errors.sub_title[0] }}
-                </span>
-            </div>
-
             <div class="form-group">
                 <input
                     type="title"
@@ -68,12 +45,11 @@
             <div class="form-group">
                 <input
                     type="title"
-                
                     ref="sub_title"
                     class="form-control"
                     id="sub_title"
                     placeholder="Enter sub title English"
-                    required
+            
                 />
             </div>
             <div class="form-group">
@@ -83,7 +59,7 @@
                     class="form-control"
                     id="sub_title_vn"
                     placeholder="Enter sub title VietNamese"
-                    required
+                  
                 />
             </div>
 
@@ -94,7 +70,7 @@
                     id="text"
                     placeholder="Enter a body English"
                     rows="6"
-                    required
+             
                 ></textarea>
             </div>
             <div class="form-group">
@@ -104,7 +80,7 @@
                     class="form-control"
                     id="text_vn"
                     placeholder="Enter body VietNamese"
-                    required
+            
                 />
             </div>
             <div class="form-group">
@@ -114,23 +90,27 @@
                     class="form-control"
                     id="number"
                     placeholder="Nhập vào số thứ tự section"
-                    required
+             
                 />
             </div>
             <div class="form-group">
-
-                <div v-for="theme in themes" :key="theme.index"  class="form-check form-check-inline">
+                <div
+                    v-for="theme in themes"
+                    :key="theme.index"
+                    class="form-check form-check-inline"
+                >
                     <input
                         class="form-check-input"
                         type="radio"
                         v-model="section.theme_id"
                         v-bind:value="theme.id"
-                   
                     />
-                    <img :src="theme.image_template" style="width: 200px">
-                    <label class="form-check-label" for="inlineRadio1"  >{{theme.id}}</label>
+                    <img :src="theme.image_template" style="width: 200px" />
+                    <label class="form-check-label" for="inlineRadio1">{{
+                        theme.id
+                    }}</label>
                 </div>
-                  
+
                 <!-- <label for="exampleFormControlSelect1">Chọn Template</label>
                 <select
                     class="form-control"
@@ -202,7 +182,7 @@ export default {
             this.section.text_vn = this.$refs.text_vn.value;
             this.section.sub_title_vn = this.$refs.sub_title_vn.value;
             this.section.number = this.$refs.number.value;
-       
+
             this.$store
                 .dispatch(CREATE_SECTION, this.postId)
                 .then(response => {
@@ -213,7 +193,7 @@ export default {
                         name: "section",
                         params: { posId: this.postId }
                     });
-                      setTimeout(() => {
+                    setTimeout(() => {
                         this.$toast.success("Add a new scan 3D successfully", {
                             position: "bottom-right",
                             duration: 5000
@@ -221,13 +201,27 @@ export default {
                     }, 1300);
                 })
                 .catch(error => {
-                  
-                    if (!_.isEmpty(error.response)) {
-                        if (error.response.status == 422) {
-                            this.errors = error.response.data.errors;
-                            this.successful = false;
-                            this.error = true;
-                        }
+                    if (error.response.data.errors.title) {
+                        setTimeout(() => {
+                            this.$toast.warning(
+                                error.response.data.errors.title[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
+                    if (error.response.data.errors.title_vn) {
+                        setTimeout(() => {
+                            this.$toast.warning(
+                                error.response.data.errors.title_vn[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
                     }
                 });
 

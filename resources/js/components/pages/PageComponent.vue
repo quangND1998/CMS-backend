@@ -65,6 +65,7 @@
                 Delete
             </button>
         </div> -->
+    
         <div class="col-md-12 px-0">
             <div class="">
                 <div class="table-responsive">
@@ -182,6 +183,7 @@ export default {
 
     methods: {
         fetchPages() {
+           
             this.$store.dispatch(FETCH_PAGES);
         },
         deletePost(id) {

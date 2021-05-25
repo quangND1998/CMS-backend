@@ -11,6 +11,12 @@ class TheLoai extends Model
 {
     use HasFactory;
     protected $table = "theloai";
+    protected $fillable = [
+	    "id",
+		"Ten",
+		"TenKhongDau",
+	
+	];
 
     public function LoaiTin()
     {

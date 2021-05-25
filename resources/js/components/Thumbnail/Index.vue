@@ -155,7 +155,7 @@ export default {
     created() {
         if (jwtToken.getToken()) {
             ApiService.setHeader();
-            ApiService.query("thumbnail").then(res => (this.thumbnail = res.data));
+            ApiService.query("thumbnail").then(res =>(this.thumbnail = res.data.data));
         }
     },
     methods: {

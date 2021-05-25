@@ -85,7 +85,7 @@
                     
                 ></textarea>
             </div>
-            <div class="custom-file mb-3">
+            <!-- <div class="custom-file mb-3">
                 <input
                     type="file"
                     ref="image"
@@ -94,7 +94,8 @@
                     id="image"
                 />
                 <label class="custom-file-label">Choose file...</label>
-            </div>
+            </div> -->
+             <UploadImages :max="1" ref="image" v-model="page.image" />
             <div class="modal-footer justify-content-center">
                 <router-link :to="{ name: 'page' }" class="btn btn-white block">
                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
@@ -112,6 +113,7 @@
 </template>
 
 <script>
+import UploadImages from "vue-upload-drop-images"
 import {
     PAGE_EDIT,
     GET_PAGE_ID,
@@ -122,6 +124,9 @@ import store from "../store/store";
 export default {
     mounted() {
         this.getPost();
+    },
+      components:{
+         UploadImages,
     },
 
     props: {

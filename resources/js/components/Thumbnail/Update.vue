@@ -96,20 +96,42 @@ export default {
             dataUpdate.append("thumbnail",this.$refs.thumbnail.files[0]);
             if (jwtToken.getToken()) {
                 ApiService.setHeader();
-                ApiService.update('thumbnail',dataUpdate ,this.id).then(res => {
-                    if (res.status === 200) {
+                ApiService.update('thumbnail',dataUpdate ,this.id) .then(res => {
                         this.$router.push({ name: "thumbnail" });
                         setTimeout(() => {
                             this.$toast.success(
-                                "Update thumbnail image successfully",
+                                "Edit a thumbnail image successfully",
                                 {
                                     position: "bottom-right",
                                     duration: 5000
                                 }
                             );
                         }, 1300);
-                    }
-                });
+                    })
+                    .catch(error => {
+                        if (error.response.data.errors.name) {
+                            setTimeout(() => {
+                                this.$toast.error(
+                                    error.response.data.errors.name[0],
+                                    {
+                                        position: "top-right",
+                                        duration: 3000
+                                    }
+                                );
+                            }, 1000);
+                        }
+                          if (error.response.data.errors.thumbnail) {
+                            setTimeout(() => {
+                                this.$toast.error(
+                                    error.response.data.errors.thumbnail[0],
+                                    {
+                                        position: "top-right",
+                                        duration: 3000
+                                    }
+                                );
+                            }, 1000);
+                        }
+                    });
             }
         }
     }
