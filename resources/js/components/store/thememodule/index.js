@@ -71,11 +71,9 @@ export const actions = {
     },
 
     [THEME_PUBLISH](content, data) {
-        // console.log('modeul', content)
-        //   console.log('modeul',data)
         if (jwtToken.getToken()) {
             ApiService.setHeader();
-        return themeService.create(data);
+            return themeService.create(data);
         }
     },
     [THEME_DELETE](context, slug) {

@@ -53,7 +53,7 @@ class PageObserver
      */
     public function restored(Page $page)
     {
-        //
+        Cache::forget('page');
     }
 
     /**
@@ -64,6 +64,6 @@ class PageObserver
      */
     public function forceDeleted(Page $page)
     {
-        //
+        Cache::forget('page');
     }
 }

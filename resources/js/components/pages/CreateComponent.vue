@@ -149,10 +149,6 @@ export default {
             formData.append("name_vn", this.$refs.name_vn.value);
             formData.append("description", this.$refs.description.value);
             formData.append("image", this.$refs.image.files[0]);
-
-            // this.page.name = formData.get('name')
-            // this.page.description = formData.get('description')
-            // this.page.image = formData.get('image')
             this.$store
                 .dispatch(PAGE_PUBLISH, formData)
                 .then(response => {

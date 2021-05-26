@@ -2,9 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Content;
 use App\Observers\PageObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Page;
+use App\Models\Section;
+use App\Models\Theme;
+use App\Observers\ContentObserver;
+use App\Observers\SectionObserver;
+use App\Observers\ThemeObserver;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +32,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Page::observe(PageObserver::class);
+        Content::observe(ContentObserver::class);
+        Section::observe(SectionObserver::class);
+        Theme::observe(ThemeObserver::class);
     }
 }

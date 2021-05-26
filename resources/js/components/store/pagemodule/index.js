@@ -15,7 +15,7 @@ import {
     FETCH_ID_PAGE,
     RESET_STATE
 } from "../muntation/page";
-import CryptoJS from "crypto-js"
+
 import ApiService from "../../../common/api.service";
 import jwtToken from "../../../common/token";
 
@@ -31,7 +31,7 @@ const initialState = {
     },
     isAuthenticated: !!jwtToken.getToken()
 };
-var key = 'YDU7bYV/8EBszqErFIM3v8lQZZcy+3kL1awaCzNzQ/s=';
+
 
 export const state = {...initialState };
 

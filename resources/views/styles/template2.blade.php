@@ -16,6 +16,7 @@
 
          </div>
      </div>
+     @if(count($section->contents)>0)
      <div class="row align-items-center">
          <div class="col-lg-4 text-center text-lg-right">
              @for ($i = 0; $i < floor(count($section->contents) / 2); $i++)
@@ -54,9 +55,7 @@
                      @endif
                  </div>
                  @endfor
-
-
-
          </div>
      </div>
+     @endif
  </div>

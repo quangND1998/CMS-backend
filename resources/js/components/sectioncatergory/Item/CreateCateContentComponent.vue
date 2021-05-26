@@ -161,10 +161,10 @@
             </div>
 
             <router-link
-                :to="{
-                    name: 'content',
-                    params: { sectionId: sectionId, postId: postId }
-                }"
+              :to="{
+                        name: 'section_category_content',
+                        params: { sectionId: sectionId, postId: postId ,themeId:themeId,categoryId:categoryId}
+                    }"
                 class="btn btn-white block"
             >
                 Back
@@ -196,6 +196,10 @@ export default {
         categoryId: {
             required: true
         }
+        ,
+         themeId: {
+            required: true
+        }
     },
     data() {
         return {
@@ -221,7 +225,7 @@ export default {
             formData.append("detail", this.$refs.detail.value);
             formData.append("detail_vn", this.$refs.detail_vn.value);
             formData.append("video", this.$refs.video.value);
-            formData.append("icon_class", this.$$refs.icon_class.value);
+            formData.append("icon_class", this.$refs.icon_class.value);
             formData.append("image", this.$refs.image.files[0]);
             formData.append("video_upload", this.$refs.video_upload.files[0]);
             this.$store

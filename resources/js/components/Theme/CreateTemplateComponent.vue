@@ -129,16 +129,9 @@ export default {
         create() {
             const formData = new FormData();
             formData.append("title", this.$refs.title.value);
-
             formData.append("link_code", this.$refs.link_code.value);
-            formData.append(
-                "image_template",
-                this.$refs.image_template.files[0]
-            );
+            formData.append("image_template",this.$refs.image_template.files[0]);
             formData.append("type", this.theme.type);
-            // this.page.name = formData.get('name')
-            // this.page.description = formData.get('description')
-            // this.page.image = formData.get('image')
 
             this.$store
                 .dispatch(THEME_PUBLISH, formData)
@@ -149,7 +142,6 @@ export default {
                             position: "bottom-right",
                             duration: 2000
                         });
-                       
                     }, 1000);
                 })
                 .catch(error => {
@@ -171,6 +163,18 @@ export default {
                             this.isLoading = false;
                             this.$toast.error(
                                 error.response.data.errors.link_code[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 2000);
+                    }
+                      if (error.response.data.errors.image_template) {
+                        setTimeout(() => {
+                            this.isLoading = false;
+                            this.$toast.error(
+                                error.response.data.errors.image_template[0],
                                 {
                                     position: "top-right",
                                     duration: 3000

@@ -12,13 +12,25 @@ use Illuminate\Support\Facades\Validator;
 use  App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Resources\ItemCategoryResource;
 
-
+use Illuminate\Support\Facades\Cache;
 class ItemController extends Controller
 {
     use FileUploadTrait;
     public function getListItem($id)
     {
-        $item = Section::with('contents')->find($id);
+
+        if(!Cache::has("item.{$id}")){
+           
+            $item = Section::with('contents')->find($id);
+     
+             Cache::put("item.{$id}", $item,3600);
+         }
+         else{
+         
+             $item = Cache::get("item.{$id}");
+            
+         }    
+      
         if (!$item) {
             return response()->json('The items is not found ', Response::HTTP_BAD_REQUEST);
         } elseif (count($item->contents) == 0) {

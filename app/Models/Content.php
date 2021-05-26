@@ -10,8 +10,8 @@ class Content extends Model
     use HasFactory;
 
     protected $table = 'contents';
-    protected $fillable = ['id', 'title', 'video', 'image', 'subtitle', 'short_content', 'detail','detail_vn','video_upload','icon_class', 'session_id'];
-    public function session()
+    protected $fillable = ['id', 'title', 'video', 'image', 'subtitle', 'short_content', 'detail','detail_vn','video_upload','icon_class', 'session_id','section_category_id'];
+    public function section()
     {
         return $this->belongsTo(Section::class);
     }

@@ -223,6 +223,17 @@ export default {
                             );
                         }, 1000);
                     }
+                    if (error.response.data.errors.theme_id) {
+                        setTimeout(() => {
+                            this.$toast.warning(
+                                error.response.data.errors.theme_id[0],
+                                {
+                                    position: "top-right",
+                                    duration: 3000
+                                }
+                            );
+                        }, 1000);
+                    }
                 });
 
             this.$refs.title.value = "";

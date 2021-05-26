@@ -11,14 +11,17 @@ use Illuminate\Support\Facades\Validator;
 use  App\Http\Controllers\Traits\FileUploadTrait;
 use App\Models\Section;
 use App\Events\PageSent;
-
+use Illuminate\Support\Facades\Cache;
 class SectionController extends Controller
 {
     use FileUploadTrait;
     public function getSession($id)
     {
-        $section = Page::find($id);
-        $section = $section->load('section.theme');
+
+        $section = Cache::remember("section.{$id}", 3600, function () use ($id) {
+            return Page::with('section.theme')->find($id);
+        });
+       
         if (!$section) {
             $msg = [
                 'msg' => "The id is not found "
@@ -39,8 +42,14 @@ class SectionController extends Controller
 
         $this->validate($request, [
             'title' => 'required|unique:section',
+            'theme_id' =>'required'
    
+        ],
+        [
+            'theme_id.required' => 'Vui lòng chọn Template cho section!',
+          
         ]);
+       
         // $validator = Validator::make($request->all(), [
         //     'title' => 'required|unique:section',
         // ]);

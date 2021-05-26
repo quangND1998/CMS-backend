@@ -49,7 +49,7 @@ class PageController extends Controller
            
             $page =  Page::get();
      
-             Cache::put('page', $page,60);
+             Cache::put('page', $page,3600);
          }
          else{
          

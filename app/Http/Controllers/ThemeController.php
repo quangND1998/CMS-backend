@@ -9,24 +9,26 @@ use Illuminate\Http\Response;
 use App\Http\Resources\ThemeResource;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Traits\FileUploadTrait;
+use Illuminate\Support\Facades\Cache;
 class ThemeController extends Controller
 {
     use FileUploadTrait;
     public function getTheme()
     {
-        $themes = Theme::get();
+        
+        $themes = Cache::remember('themes', 3600, function () {
+            return Theme::get();
+        });
         // $themes = DB::table('theme')->get();
         return  ThemeResource::collection($themes);
     }
     public function store(Request $request)
     {
 
-        
-     
         $this->validate($request, [
             'title' => 'required|unique:theme',
             'link_code' => 'required',
-            'image_template.*'=>'required|mimes:png,jpg,jpeg',
+            'image_template'=>'required|mimes:png,jpg,jpeg',
 
         ]);
 
