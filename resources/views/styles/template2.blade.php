@@ -16,6 +16,7 @@
 
          </div>
      </div>
+     @if(count($section->contents) >0)
      <div class="row align-items-center">
          <div class="col-lg-4 text-center text-lg-right">
              @for ($i = 0; $i < floor(count($section->contents) / 2); $i++)
@@ -40,6 +41,9 @@
              <p><img class="img-fluid" src="{{ $section->contents[floor(count($section->contents) / 2)]->image }}"
                      alt="" /></p>
          </div>
+        
+
+         
          <div class="col-lg-4 text-center text-lg-left">
              @for ($i = ceil((count($section->contents) / 2)); $i < count($section->contents); $i++)
                  <div class="service-box icon-left mb-xs-4 wow zoomIn" data-wow-duration=".2s" data-wow-delay=".1s">
@@ -58,5 +62,7 @@
 
 
          </div>
+      
      </div>
+     @endif
  </div>

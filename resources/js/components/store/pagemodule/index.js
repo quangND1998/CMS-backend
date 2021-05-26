@@ -15,7 +15,7 @@ import {
     FETCH_ID_PAGE,
     RESET_STATE
 } from "../muntation/page";
-import CryptoJS from "crypto-js"
+
 import ApiService from "../../../common/api.service";
 import jwtToken from "../../../common/token";
 

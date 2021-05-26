@@ -40,8 +40,8 @@ Route::prefix('v1')->group(function () {
 });
 
 
-Route::middleware(['jwt.auth', 'prevent-back-history','adminAuth'])->group(function () {
 
+Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
     Route::prefix('page')->group(function () {
         Route::post('', [PageController::class, 'post']);
         Route::get('', [PageController::class, 'get']);

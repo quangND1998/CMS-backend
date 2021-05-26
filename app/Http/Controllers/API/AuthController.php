@@ -12,6 +12,7 @@ use Illuminate\Http\Response;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
+use App\Models\Page;
 class AuthController extends Controller
 {
     public function login(Request $request)
@@ -40,6 +41,7 @@ class AuthController extends Controller
                 'msg' => 'You are logged in!',
                 'token' => $token,
                 'user_name' => $user->name,
+                'page'=>Page::get()
             ];
    
     

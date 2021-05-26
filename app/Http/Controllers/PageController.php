@@ -45,21 +45,8 @@ class PageController extends Controller
     }
     public function get()
     {
-        if(!Cache::has('page')){
-           
-            $page =  Page::get();
-     
-             Cache::put('page', $page,60);
-         }
-         else{
-         
-             $page = Cache::get('page');
-            
-         }    
-        // $page = Cache::remember('page', 3600, function () {
-        //     return Page::get();
-        // });
-        return  PageResource::collection($page);
+        
+        return  PageResource::collection(Page::get());
     }
 
     public function edit($id)
