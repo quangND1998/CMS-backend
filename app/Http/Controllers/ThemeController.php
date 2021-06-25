@@ -9,16 +9,15 @@ use Illuminate\Http\Response;
 use App\Http\Resources\ThemeResource;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Traits\FileUploadTrait;
-use Illuminate\Support\Facades\Cache;
+
+
 class ThemeController extends Controller
 {
     use FileUploadTrait;
     public function getTheme()
     {
         
-        $themes = Cache::remember('themes', 3600, function () {
-            return Theme::get();
-        });
+        $themes =  Theme::get();
         // $themes = DB::table('theme')->get();
         return  ThemeResource::collection($themes);
     }

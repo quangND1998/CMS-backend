@@ -12,25 +12,15 @@ use Illuminate\Support\Facades\Validator;
 use  App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Resources\ItemCategoryResource;
 
-use Illuminate\Support\Facades\Cache;
+
+
 class ItemController extends Controller
 {
     use FileUploadTrait;
     public function getListItem($id)
     {
 
-        if(!Cache::has("item.{$id}")){
-           
-            $item = Section::with('contents')->find($id);
-     
-             Cache::put("item.{$id}", $item,3600);
-         }
-         else{
-         
-             $item = Cache::get("item.{$id}");
-            
-         }    
-      
+        $item = Section::with('contents')->find($id);
         if (!$item) {
             return response()->json('The items is not found ', Response::HTTP_BAD_REQUEST);
         } elseif (count($item->contents) == 0) {
@@ -82,7 +72,7 @@ class ItemController extends Controller
             $destinationpath = 'video/';
             $item->video_upload = $this->image($files, $destinationpath);
         }
-      
+
         $item->section_id = $section->id;
         $item->save();
         return new ItemResource($item);
@@ -156,7 +146,7 @@ class ItemController extends Controller
         $icon_image = $item->icon_image;
         $icon_image = $item->video_upload;
         $extension = " ";
-        $extension1= "mp4 ";
+        $extension1 = "mp4 ";
         $this->DeleteFolder($image, $extension);
         $this->DeleteFolder($icon_image, $extension);
         $this->DeleteFolder($icon_image, $extension1);

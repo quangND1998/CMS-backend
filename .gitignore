@@ -16,3 +16,5 @@ yarn-error.log
 /public/slides
 /public/tintuc
 /public/upload
+/resources/js/common/API/API.js
+/resources/js/common/config.js

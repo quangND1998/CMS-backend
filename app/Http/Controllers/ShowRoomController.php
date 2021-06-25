@@ -11,7 +11,7 @@ use App\Models\LoaiTin;
 use App\Models\TinTuc;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Cache;
+
 class ShowRoomController extends Controller
 {
     public function index()

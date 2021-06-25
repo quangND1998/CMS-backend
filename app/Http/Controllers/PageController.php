@@ -9,7 +9,8 @@ use Illuminate\Http\Response;
 use App\Http\Resources\PageResource;
 use App\Models\Page;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Cache;
+
+
 class PageController extends Controller
 {
     use FileUploadTrait;
@@ -45,20 +46,10 @@ class PageController extends Controller
     }
     public function get()
     {
-        if(!Cache::has('page')){
-           
-            $page =  Page::get();
-     
-             Cache::put('page', $page,3600);
-         }
-         else{
-         
-             $page = Cache::get('page');
-            
-         }    
-        // $page = Cache::remember('page', 3600, function () {
-        //     return Page::get();
-        // });
+
+
+        $page =  Page::get();
+
         return  PageResource::collection($page);
     }
 
@@ -72,18 +63,6 @@ class PageController extends Controller
             ];
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
-  
-        // $data=  Crypt::encrypt('aaaaaaaaaaa');
-        // return $data;
-   
-
-        // $data=[
-        //     'page' =>$page
-        // ];
-        // // return Crypt::encrypt(json_encode($data));
-        // return $data;
-        // return response()->json(Crypt::encrypt(json_encode($data,JSON_UNESCAPED_UNICODE)), Response::HTTP_OK,['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
-        // JSON_UNESCAPED_UNICODE);
         return new PageResource($page);
     }
     public function update(Request $request, $id)
@@ -129,34 +108,33 @@ class PageController extends Controller
             return response()->json($msg, Response::HTTP_BAD_REQUEST);
         }
         $extension = " ";
-        $extension_video ='mp4';
+        $extension_video = 'mp4';
         $image = $page->image;
 
-            $this->DeleteFolder($image, $extension);
-            $sections = $page->section;
-            foreach ($sections as $section) {
-                foreach ($section->contents as $content) {
-                    $this->DeleteFolder($content->image, $extension);
-                    $this->DeleteFolder($content->icon_image, $extension);
-                    $this->DeleteFolder($content->video_upload, $extension_video);
-                }
+        $this->DeleteFolder($image, $extension);
+        $sections = $page->section;
+        foreach ($sections as $section) {
+            foreach ($section->contents as $content) {
+                $this->DeleteFolder($content->image, $extension);
+                $this->DeleteFolder($content->icon_image, $extension);
+                $this->DeleteFolder($content->video_upload, $extension_video);
             }
-            foreach ($page->section as $section){
-                if ($section->section_category != null) {
+        }
+        foreach ($page->section as $section) {
+            if ($section->section_category != null) {
 
-                    foreach ($section->section_category as $category) {
+                foreach ($section->section_category as $category) {
 
-                        foreach ($category->contents as $content) {
-                            $this->DeleteFolder($content->image, $extension);
-                            $this->DeleteFolder($content->icon_image, $extension);
-                            $this->DeleteFolder($content->video_upload, $extension_video);
-                        }
+                    foreach ($category->contents as $content) {
+                        $this->DeleteFolder($content->image, $extension);
+                        $this->DeleteFolder($content->icon_image, $extension);
+                        $this->DeleteFolder($content->video_upload, $extension_video);
                     }
                 }
             }
-           
-            $page->delete();
-            return response()->json(' Delete Sussessfully', Response::HTTP_OK);
-        
+        }
+
+        $page->delete();
+        return response()->json(' Delete Sussessfully', Response::HTTP_OK);
     }
 }

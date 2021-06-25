@@ -11,16 +11,15 @@ use Illuminate\Support\Facades\Validator;
 use  App\Http\Controllers\Traits\FileUploadTrait;
 use App\Models\Section;
 use App\Events\PageSent;
-use Illuminate\Support\Facades\Cache;
+
 class SectionController extends Controller
 {
     use FileUploadTrait;
     public function getSession($id)
     {
 
-        $section = Cache::remember("section.{$id}", 3600, function () use ($id) {
-            return Page::with('section.theme')->find($id);
-        });
+        $section= Page::with('section.theme')->find($id);
+    
        
         if (!$section) {
             $msg = [

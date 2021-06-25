@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use  App\Http\Controllers\Traits\FileUploadTrait;
 use App\Models\Content;
 use App\Http\Resources\ItemCategoryResource;
-use Illuminate\Support\Facades\Cache;
+
 class SectionCategoryController extends Controller
 {
     use FileUploadTrait;
@@ -107,9 +107,8 @@ class SectionCategoryController extends Controller
     {
     
 
-        $item = Cache::remember("item_category.{$id}", 3600, function () use ($id) {
-            return Section_Category::with('contents')->find($id);
-        });
+        $item =  Section_Category::with('contents')->find($id);
+
 
         if (!$item) {
             return response()->json('The items is not found ', Response::HTTP_BAD_REQUEST);

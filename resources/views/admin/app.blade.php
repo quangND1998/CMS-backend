@@ -9,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <base href="{{ asset('') }}">
     <link rel="stylesheet" type="text/css" href="backend/css/main.css" />
-    <link rel="stylesheet" type="text/css"
-        href="backend/css/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="backend/css/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!-- Bootstrap Core CSS -->
     <!-- MetisMenu CSS -->
     <!-- Custom CSS -->
@@ -28,9 +27,9 @@
     </div>
     <script src="{{ asset('backend/js/jquery-3.2.1.min.js') }}"></script>
 
-    
 
-    <script src="{{mix ('js/app.js')}}"> </script>
+
+    <script src="{{ mix('js/app.js') }}"> </script>
     <script src="{{ asset('backend/js/popper.min.js') }}"></script>
     <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
     {{-- <script src="{{ asset('backend/js/main.js') }}"></script> --}}

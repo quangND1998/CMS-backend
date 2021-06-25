@@ -31,9 +31,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Page::observe(PageObserver::class);
-        Content::observe(ContentObserver::class);
-        Section::observe(SectionObserver::class);
-        Theme::observe(ThemeObserver::class);
+ 
     }
 }
