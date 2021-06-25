@@ -51,8 +51,8 @@ export const actions = {
         }
     },
     [SECTION_CATEGORY_EDIT]({ state }, slug) {
-        console.log("SECTION_CATEGORY_EDIT", slug);
-        console.log("STATE", state.category);
+        // console.log("SECTION_CATEGORY_EDIT", slug);
+        // console.log("STATE", state.category);
         return sectionCatService.update(slug, state.category);
     },
     [GET_SECTION_CATEGORY_ID]({ commit }, slug) {

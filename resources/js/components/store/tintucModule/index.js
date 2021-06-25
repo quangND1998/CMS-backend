@@ -59,18 +59,12 @@ export const actions = {
                     commit(FETCH_END, data);
                 })
                 .catch(error => {
-                    console.log(data);
+                    // console.log(data);
                     throw new Error(error);
                 });
         }
     },
-    [TIN_TUC_EDIT]({
-        commit,
-        state
-    }, {
-        slug,
-        formdata
-    }) {
+    [TIN_TUC_EDIT]({ commit, state}, { slug,formdata}) {
         // console.log('PAGE_EDIT', commit);
 
         // console.log('PAGE_EDIT', slug);

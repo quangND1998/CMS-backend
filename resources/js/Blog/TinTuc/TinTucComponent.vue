@@ -139,7 +139,7 @@ export default {
             this.$store.dispatch(FETCH_TIN_TUC);
         },
         deleteNews(id) {
-            console.log(id);
+            // console.log(id);
             this.$store.dispatch(TIN_TUC_DELETE, id);
             this.fetchNews();
         },

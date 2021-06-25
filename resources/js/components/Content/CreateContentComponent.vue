@@ -216,7 +216,7 @@ export default {
                         });
                     }, 1300);
                 }).catch(error => {
-                    console.log(error);
+                    // console.log(error);
             
                     if (!_.isEmpty(error.response)) {
                         if (error.response.status == 422) {

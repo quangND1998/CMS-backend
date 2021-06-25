@@ -52,7 +52,7 @@ export const actions = {
                     commit(FETCH_END, data);
                 })
                 .catch(error => {
-                    console.log(data);
+                    // console.log(data);
                     throw new Error(error);
                 });
         }

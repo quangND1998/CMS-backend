@@ -126,8 +126,8 @@ export default {
                 })
                 .catch(error => {
 
-                    console.log(error.data)
-                       this.isLoading = true
+                    // console.log(error.data)
+                    this.isLoading = true
                     if (!_.isEmpty(error.data)) {
                         setTimeout(() => {
                                this.isLoading = false
