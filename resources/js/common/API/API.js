@@ -2,7 +2,7 @@ import axios from 'axios'
 import jwtToken from "../token"
 
 const API = axios.create({
-    baseURL: `https://cms.nemoviz.com/api/`,
+    baseURL: `https://3dscan.nemoviz.com/api/`,
 
 });
 

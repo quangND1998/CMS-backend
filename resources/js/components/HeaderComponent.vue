@@ -1,6 +1,6 @@
 <template>
   <header class="app-header">
-    <a class="app-header__logo"><img src="https://vni.pro.vn/landingpage/public/assets/images/vni/logo_vni.png" alt=""></a>
+    <a class="app-header__logo"></a>
     <a class="app-sidebar__toggle" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
     <ul class="app-nav">
         <li class="app-search">

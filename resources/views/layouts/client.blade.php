@@ -15,7 +15,7 @@
     <meta property="og:image"
         content="https://my.matterport.com/api/v1/player/models/@yield('model-code-head')/thumb" />
 
-    <link rel="icon" href="uploads/images/@yield('favicon')">
+    <link rel="icon" href="assets/logo/faicon.png">
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"

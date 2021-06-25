@@ -1,3 +1,3 @@
-export const API_URL = "https://cms.nemoviz.com/api";
+export const API_URL = "https://3dscan.nemoviz.com";
 
 export default API_URL;
