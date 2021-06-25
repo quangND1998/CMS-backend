@@ -6,7 +6,7 @@
         <aside class="app-sidebar">
             <div class="app-sidebar__user">
                 <div class="mx-auto">
-                    <p class="app-sidebar__user-name">Admin VNi</p>
+                    <p class="app-sidebar__user-name">Admin Nemoviz</p>
                     <p class="app-sidebar__user-designation">
                         Administrator
                     </p>
@@ -195,7 +195,6 @@ export default {
     methods: {
         // logout() {
         //     this.$store.dispatch(LOGOUT).then(response => {
-              
         //         this.$router.push("/admin/login");
         //         setTimeout(() => {
         //             this.$toast.success(
@@ -207,14 +206,12 @@ export default {
         //             );
         //         }, 1300);
         //     }).catch(error =>{
-               
-        //         this.$router.push("/admin/login");  
+        //         this.$router.push("/admin/login");
         //     });
         // }
     }
 };
 </script>
-
 
 <style scoped>
 @import url(

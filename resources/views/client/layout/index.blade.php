@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>VNi - Mobile Sales kit for Real estate</title>
-    <meta name="description" content="VNi - Mobile Sales kit for Real estate">
+    <title>Nemoviz - VR3D Technology for Real estate</title>
+    <meta name="description" content="Nemoviz - VR3D Technology for Real estate">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="assets/css/news.css">
     <link rel="stylesheet" href="assets/css/slider.css">
     <link rel="stylesheet" href="assets/css/product.css">
-        <!-- Fancybox CSS -->
+    <!-- Fancybox CSS -->
     <link rel="stylesheet" href="assets/css/fancybox.css">
     <!-- Style Switch CSS -->
     <link rel="stylesheet" href="zero-styleswitch/style.css" />
@@ -42,7 +42,6 @@
                 'close'
             ],
         });
-
     </script>
     <style>
         button:focus {
@@ -74,23 +73,27 @@
             transition: 0.3s;
             font-size: 17px;
         }
+
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126581925-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126581925-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-126581925-2');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-126581925-2');
+    </script>
 
 </head>
 
 <body class="transparent-header" data-spy="scroll" data-offset="75" data-target="#navbarCollapse">
     <!-- Loader -->
 
-        @yield('content')
+    @yield('content')
 
     {{-- @include('client.layout.footer') --}}
 
@@ -238,7 +241,7 @@
         function showDivs(n) {
             var i;
             var x = document.getElementsByClassName("mySlides");
-            if( x != null){
+            if (x != null) {
                 if (n > x.length) {
                     slideIndex = 1
                 }
@@ -260,7 +263,7 @@
             console.log(slideIndex);
             var i;
             var x = document.getElementsByClassName("mySlides_pre");
-            if( x != null){
+            if (x != null) {
                 if (n > x.length) {
                     slideIndex = 1
                 }
@@ -282,24 +285,24 @@
             console.log(slideIndex);
             var i;
             var x = document.getElementsByClassName("mySlides_standard");
-                if( x != null){
-                    if (n > x.length) {
-                        slideIndex = 1
-                    }
-                    if (n < 1) {
-                        slideIndex = x.length
-                    }
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = "none";
-                    }
-                    x[slideIndex - 1].style.display = "block";
+            if (x != null) {
+                if (n > x.length) {
+                    slideIndex = 1
                 }
+                if (n < 1) {
+                    slideIndex = x.length
+                }
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                x[slideIndex - 1].style.display = "block";
+            }
 
         }
     </script>
     <script>
         function openCity(evt, el) {
-           let i, tabcontent1, tablinks1;
+            let i, tabcontent1, tablinks1;
             tabcontent1 = document.getElementsByClassName("tabcontent1");
             for (i = 0; i < tabcontent1.length; i++) {
                 tabcontent1[i].style.display = "none";
@@ -327,16 +330,14 @@
         }
 
 
-        if(document.getElementById("defaultOpen") != null){
+        if (document.getElementById("defaultOpen") != null) {
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         }
-        if(document.getElementById("defaultOpen1") != null){
+        if (document.getElementById("defaultOpen1") != null) {
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen1").click();
         }
-
-
     </script>
     <script>
         function openCity_img(evt_img, city_image) {
@@ -353,7 +354,7 @@
             evt_img.currentTarget.className += " active";
         }
 
-        if(document.getElementById("defaultOpen_img") != null){
+        if (document.getElementById("defaultOpen_img") != null) {
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen_img").click();
         }
