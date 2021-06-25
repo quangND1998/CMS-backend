@@ -1,4 +1,3 @@
-
 import ApiService from '../api.service'
 const END_POINT = "scan-3d";
 
@@ -16,7 +15,7 @@ export default {
 
     update(payload) {
         console.log(payload);
-        return ApiService.update(END_POINT,payload.data,payload.id)
+        return ApiService.update(END_POINT, payload.data, payload.id)
     },
 
     delete(id) {

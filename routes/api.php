@@ -40,7 +40,7 @@ Route::prefix('v1')->group(function () {
 });
 
 
-Route::middleware(['jwt.auth', 'prevent-back-history','adminAuth'])->group(function () {
+Route::middleware(['jwt.auth', 'prevent-back-history'])->group(function () {
 
     Route::prefix('page')->group(function () {
         Route::post('', [PageController::class, 'post']);
@@ -149,8 +149,6 @@ Route::middleware(['jwt.auth', 'prevent-back-history','adminAuth'])->group(funct
     Route::group(['prefix' => 'comment'], function () {
         Route::get('', [CommentController::class, 'getDanhSach']);
         Route::delete('delete/{id}', [CommentController::class, 'Xoa']);
-       
-
     });
 
     Route::group(['prefix' => 'user'], function () {
@@ -161,7 +159,7 @@ Route::middleware(['jwt.auth', 'prevent-back-history','adminAuth'])->group(funct
         Route::delete('delete/{id}', [UserController::class, 'Xoa']);
     });
 
-    Route::group(['prefix' => 'scan-3d'], function() {
+    Route::group(['prefix' => 'scan-3d'], function () {
         Route::get('', [Scan3dController::class, 'index']);
         Route::post('', [Scan3dController::class, 'store']);
         Route::post('{id}', [Scan3dController::class, 'update']);
@@ -175,8 +173,6 @@ Route::middleware(['jwt.auth', 'prevent-back-history','adminAuth'])->group(funct
         Route::post('{id}', [ThumbnailController::class, 'update']);
         Route::delete('{id}', [ThumbnailController::class, 'destroy']);
     });
-
-
 });
 // Route::middleware(['jwt.refresh'])->group(function () {
 //     Route::get('/token/refresh', [AuthController::class, 'refresh']);

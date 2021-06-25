@@ -23,7 +23,7 @@
 
     <div id="app">
         <router-view>
-        
+
         </router-view>
     </div>
     <script src="{{ asset('backend/js/jquery-3.2.1.min.js') }}"></script>
@@ -48,7 +48,7 @@
     <!-- DataTables JavaScript -->
     <script src="{{ asset('admin_asset/bower_components/dataTables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin_asset/bower_components/dataTables/media/js/dataTable.bootstrap4.min.js') }}"></script>
-    <script src="http://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script
         src="{{ asset('admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}">
     </script>
