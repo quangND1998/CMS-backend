@@ -258,7 +258,7 @@ export default {
                     this.errors = [];
                  
                     setTimeout(() => {
-                        // console.log(this.content);
+                       
                         this.$toast.success(`Edit  content asuccessfully`, {
                             position: "bottom-right",
                             duration: 5000
@@ -269,7 +269,7 @@ export default {
                 .catch(error => {
               
                     if (!_.isEmpty(error.response)) {
-                        // console.log(error.response);
+                       
                         if (error.response.status == 422) {
                             this.errors = error.response.data.errors;
                             this.successful = false;
