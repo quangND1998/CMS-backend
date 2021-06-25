@@ -1,6 +1,6 @@
 @extends('layouts.client')
 
-@section('title', $project->name)
+@section('title', $project->title)
 {{-- @section('meta-url', $project->public_link) --}}
 @section('meta-title', $project->title)
 @section('model-code-head', $project->model_code)
