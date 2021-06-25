@@ -18,7 +18,7 @@ class CreateCommmentTable extends Migration
             $table->integer('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users');
             $table->integer('idTinTuc')->unsigned();
-            $table->foreign('idTinTuc')->references('id')->on('TinTuc');
+            $table->foreign('idTinTuc')->references('id')->on('tintuc');
             $table->string('NoiDung');
             $table->timestamps();
         });

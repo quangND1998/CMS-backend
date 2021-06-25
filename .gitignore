@@ -11,3 +11,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/public/content
+/public/scan3D
+/public/slides
+/public/tintuc
+/public/upload

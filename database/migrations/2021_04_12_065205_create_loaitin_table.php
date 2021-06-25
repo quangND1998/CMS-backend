@@ -16,7 +16,7 @@ class CreateLoaitinTable extends Migration
         Schema::create('loaitin', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idTheLoai')->unsigned();
-            $table->foreign('idTheLoai')->references('id')->on('TheLoai');
+            $table->foreign('idTheLoai')->references('id')->on('theloai');
             $table->string('Ten');
             $table->string('TenKhongDau');
             $table->timestamps();;
